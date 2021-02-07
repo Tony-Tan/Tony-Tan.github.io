@@ -170,7 +170,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Generalized-Policy-Iteration-GPI"><span class="nav-number">1.</span> <span class="nav-text">Generalized Policy Iteration(GPI)</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#generalized-policy-iterationgpi"><span class="nav-number">1.</span> <span class="nav-text">Generalized Policy Iteration(GPI)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -320,25 +320,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-
-<h2 id="Generalized-Policy-Iteration-GPI"><a href="#Generalized-Policy-Iteration-GPI" class="headerlink" title="Generalized Policy Iteration(GPI)"></a>Generalized Policy Iteration(GPI)</h2><p>Policy interation has been discussed in the post:</p>
-<ol>
-<li><a href="TODO">‘Policy Iteration’</a></li>
-<li><a href="TODO">‘Value Iteration’</a></li>
-</ol>
-<p>It contains policy evaluation and policy improvement and each starts at the end of the other. Generalized policy iteration can be described as:<br><img src="./GPI.png"></p>
+        <p><strong>Abstract:</strong> <a id="more"></a></p>
+<h2 id="generalized-policy-iterationgpi">Generalized Policy Iteration(GPI)</h2>
+<p>Policy interation has been discussed in the post: 1. <a href="TODO">'Policy Iteration'</a> 2. <a href="TODO">'Value Iteration'</a></p>
+<p>It contains policy evaluation and policy improvement and each starts at the end of the other. Generalized policy iteration can be described as: <img src="./GPI.png" /></p>
 <p>The upper arrow represents the policy evaluation which produces the optimal value function. The under arrow represents the policy improvement which produce the optimal policy of current value function. And this process implies the Bellman optimality equation holds.</p>
-<p>Evaluation and improvement in GPI are both competing and cooperating. </p>
-<ul>
-<li>Competing occurs because they pull in opposing directions:<ol>
-<li>greedy policy makes the value function incorrect</li>
-<li>policy evaluation makes the policy is no more greedy.</li>
-</ol>
-</li>
-<li>in long run, these two processes interact to find a single joint solution. That is the optimal value function and optimal policy<br><img src="./competing.jpg"></li>
-</ul>
+<p>Evaluation and improvement in GPI are both competing and cooperating. - Competing occurs because they pull in opposing directions: 1. greedy policy makes the value function incorrect 2. policy evaluation makes the policy is no more greedy. - in long run, these two processes interact to find a single joint solution. That is the optimal value function and optimal policy <img src="./competing.jpg" /></p>
 <p>and incomplete steps of policy evaluation or policy improvement also converge to the point of intersection。</p>
 <p>This process is also called Bootstrapping which means estimation of optimal value function is based on the estimation of greedy policy and so does the estimation of greedy policy.</p>
 

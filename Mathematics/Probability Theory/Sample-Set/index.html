@@ -173,7 +173,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-point-and-Sample-Space"><span class="nav-number">1.</span> <span class="nav-text">Sample point and Sample Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subset"><span class="nav-number">2.</span> <span class="nav-text">Subset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Size-of-Set"><span class="nav-number">3.</span> <span class="nav-text">Size of Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-of-the-Size"><span class="nav-number">3.1.</span> <span class="nav-text">Properties of the Size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Finity-and-Infinity-sets"><span class="nav-number">3.2.</span> <span class="nav-text">Finity and Infinity sets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Well-Defined-Set"><span class="nav-number">4.</span> <span class="nav-text">Well Defined Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Belong-to"><span class="nav-number">4.1.</span> <span class="nav-text">Belong to</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-a-Set"><span class="nav-number">4.2.</span> <span class="nav-text">Define a Set</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subset-Superset-and-Identical-2"><span class="nav-number">5.</span> <span class="nav-text">Subset, Superset, and Identical[^2]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sample-point-and-sample-space"><span class="nav-number">1.</span> <span class="nav-text">Sample point and Sample Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subset"><span class="nav-number">2.</span> <span class="nav-text">Subset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#size-of-set"><span class="nav-number">3.</span> <span class="nav-text">Size of Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#properties-of-the-size"><span class="nav-number">3.1.</span> <span class="nav-text">Properties of the Size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finity-and-infinity-sets"><span class="nav-number">3.2.</span> <span class="nav-text">Finity and Infinity sets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#well-defined-set"><span class="nav-number">4.</span> <span class="nav-text">Well Defined Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#belong-to"><span class="nav-number">4.1.</span> <span class="nav-text">Belong to</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#define-a-set"><span class="nav-number">4.2.</span> <span class="nav-text">Define a Set</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subset-superset-and-identical2"><span class="nav-number">5.</span> <span class="nav-text">Subset, Superset, and Identical2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -330,80 +330,141 @@
         <p><strong>Keywords:</strong> set</p>
 <a id="more"></a>
 <p>Today, We are going to discuss a most fundamental concept of mathematics, of course, as well as of probability theory. It is set.</p>
-<p>Thousands of years ago, our ancestors had been able to distinguish a single apple from a sack of apples. The single apple and the apples in the sack can be regarded as specific objects, that is, every apple can be identified among the ‘bunch’ of apples, and we can label them as ${\text{Apple}_1,\text{Apple}_2,\dots ,\text{Apple}_n}$, and these labels have:</p>
-<p>$$<br>\text{Apple}_i\neq \text{Apple}_j \text{ where } i\neq j<br>$$</p>
-<p>However, the sack of apples also attracted the attention of human beings. It is known as the set.<br>Let’s see another example of a set. We, now, have an Incident Response Team that is made up of several Avengers, they are:</p>
-<p><img src="./marvel-movies-inline.jpg" alt="Marvel"></p>
-<p>$$<br>{\text{Natasha},\text{Thor},\text{Steve},\text{Clinton},\text{Tony},\text{Bruce}}<br>$$<br>But one day, they found they need a more powerful guy to help them learn probability theory. So they invited me to their team, and then, the team became:</p>
-<p><img src="./avangers_tony.jpg" alt="marvel and me"></p>
-<p>Aha, the team now is listed as:<br>$$<br>{\text{Natasha},\text{Thor},\text{Steve},\text{Tony},\text{Clinton},\text{Tony},\text{Bruce}}<br>$$<br>Since we have two ‘Tony’s now, and just according the list above, we can not tell which Tony is me and which one is Anthony Edward Stark(Iron Man).</p>
-<p>The problem we came cross represented an essential property of set – there should not be duplicated in a set list. And we have a lot of methods to solve the duplicate-problem, for instance, we can list their family name at the same time, so they are</p>
-<p>$$<br>{\text{Natasha Romanoff},\text{Thor Odinson},\text{Steve Rogers},\text{Tony Tan},\\<br>\text{Clinton Barton},\text{Tony Stark},\text{Bruce Banner}}<br>$$</p>
+<p>Thousands of years ago, our ancestors had been able to distinguish a single apple from a sack of apples. The single apple and the apples in the sack can be regarded as specific objects, that is, every apple can be identified among the 'bunch' of apples, and we can label them as <span class="math inline">\(\{\text{Apple}_1,\text{Apple}_2,\dots ,\text{Apple}_n\}\)</span>, and these labels have:</p>
+<p><span class="math display">\[
+\text{Apple}_i\neq \text{Apple}_j \text{ where } i\neq j
+\]</span></p>
+<p>However, the sack of apples also attracted the attention of human beings. It is known as the set. Let's see another example of a set. We, now, have an Incident Response Team that is made up of several Avengers, they are:</p>
+<figure>
+<img src="./marvel-movies-inline.jpg" alt="Marvel" /><figcaption aria-hidden="true">Marvel</figcaption>
+</figure>
+<p><span class="math display">\[
+\{\text{Natasha},\text{Thor},\text{Steve},\text{Clinton},\text{Tony},\text{Bruce}\}
+\]</span> But one day, they found they need a more powerful guy to help them learn probability theory. So they invited me to their team, and then, the team became:</p>
+<figure>
+<img src="./avangers_tony.jpg" alt="marvel and me" /><figcaption aria-hidden="true">marvel and me</figcaption>
+</figure>
+<p>Aha, the team now is listed as: <span class="math display">\[
+\{\text{Natasha},\text{Thor},\text{Steve},\text{Tony},\text{Clinton},\text{Tony},\text{Bruce}\}
+\]</span> Since we have two 'Tony's now, and just according the list above, we can not tell which Tony is me and which one is Anthony Edward Stark(Iron Man).</p>
+<p>The problem we came cross represented an essential property of set -- there should not be duplicated in a set list. And we have a lot of methods to solve the duplicate-problem, for instance, we can list their family name at the same time, so they are</p>
+<p><span class="math display">\[
+\{\text{Natasha Romanoff},\text{Thor Odinson},\text{Steve Rogers},\text{Tony Tan},\\\\
+\text{Clinton Barton},\text{Tony Stark},\text{Bruce Banner}\}
+\]</span></p>
 <p>The same members cannot be counted twice in a set and the different members with the same name in the list are considered as the same one(We do not have other information to tell them apart). Although the duplicate-problem has been solved by adding a family name, the list of the set does not always work.</p>
 <p>To represents a specific set, the list should be complete. However, most of the time, we are not able to list a set completely. Here are some examples, which can not list all members in the set and they look like:</p>
-<ol>
-<li>In geometry, we definite circle as: “The set of points which are equidistant from a given point”</li>
-<li>In algebra, “The set of integers which have no other divisors except 1 and itself” is called the set of prime numbers</li>
+<ol type="1">
+<li>In geometry, we definite circle as: "The set of points which are equidistant from a given point"</li>
+<li>In algebra, "The set of integers which have no other divisors except 1 and itself" is called the set of prime numbers</li>
 </ol>
-<p>These two sets seem impossible to be enumerated all elements. </p>
+<p>These two sets seem impossible to be enumerated all elements.</p>
 <p>In probability, the notion of set plays a more fundamental role. The notion of a set can also be divided into general kinds of sets as well as concrete ones. For the general things are always difficult to understand, we begin our probability theory with the easier concrete examples:</p>
 <ul>
-<li>a) A bushel of apples </li>
-<li>b) All Possible outcomes when six dice are rolled</li>
-<li>c) All student in the college</li>
+<li><ol type="a">
+<li>A bushel of apples</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>All Possible outcomes when six dice are rolled</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>All student in the college</li>
+</ol></li>
 </ul>
-<p>Then let’s look at the smaller ones:</p>
-<ul>
-<li>a’) The rotten apples in that bushel</li>
-<li>b’) The situation that six dice show a different face when six dice are rolled</li>
-<li>c’) The mathematics majors of that college</li>
-</ul>
-<p>All the examples(a<del>c and a’</del>c’) are all sets. These examples and the Avengers’ example have an abstract common – they are all “a bunch of things”.</p>
-<h2 id="Sample-point-and-Sample-Space"><a href="#Sample-point-and-Sample-Space" class="headerlink" title="Sample point and Sample Space"></a>Sample point and Sample Space</h2><p>The examples can help us know what is a set intuitively. However, we are mathematicians, and we should be more mathematical and more precise. A bunch of things can never be a formal definition. So we need to set up a mathematical model for a set.<br>Every signal thing(object, situation, result, e.t.c) in the bunch will be called a ‘point’. And the bunch of things is called a ‘space’. If you have learned linear algebra, you would be familiar with the word ‘space’. A space in linear algebra is made up of infinity vectors who obey some certain rules. For instance, in the example a), every apple is a point, and, of course, they are different from each other. And then the bushel of apples which contains all the apples is the space. In the same way, we can find the points in the other examples. And each of them is space. To distinguish the space in probability theory and in other situations, we prefix the space by sample. So does the point. They become sample space and sample point.</p>
-<p>We use $\Omega$ to denote the sample space, and the sample points in the sample space are denoted by $\omega$. Every point can have a specific name, such that the set in the picture where I drew a sack of things.<br><img src="./set.jpg"></p>
-<p>Its mathematical model is:<br>$$<br>\Omega={\omega_{\text{apple}},\omega_{\text{raining}},\omega_{\text{car}},\omega_{\text{sunshine}},\omega_{\text{ghost}}}<br>$$</p>
-<h2 id="Subset"><a href="#Subset" class="headerlink" title="Subset"></a>Subset</h2><p>Sets are made up of elements, in other word, spaces consist of points. When all the elements in a new set $S_n$ are all from another set $S_0$, the set $S_n$ is the subset of $S_0$. The sets in examples a’)~ c’) are subsets of examples a)~ c). Two extreme subsets are the biggest one – the set itself, and the smallest one – empty set which has nothing.<br>The empty set is a special case in set theory and it has its own donation $\emptyset$</p>
-<h2 id="Size-of-Set"><a href="#Size-of-Set" class="headerlink" title="Size of Set"></a>Size of Set</h2><p>“The subset is smaller than the original set and the empty set is the smallest subset”, this description uses an undefined concept, the size of a set, which can be used to identify which one is bigger or smaller among two sets. The number of points in a set is called “size”, and it denotes as:<br>$$\vert S\vert$$</p>
-<p><strong>The size of</strong><br>$$<br>\Omega={\omega_{\text{apple}},\omega_{\text{raining}},\omega_{\text{car}},\omega_{\text{sunshine}},\omega_{\text{ghost}}}<br>$$</p>
+<p>Then let's look at the smaller ones: - a') The rotten apples in that bushel - b') The situation that six dice show a different face when six dice are rolled - c') The mathematics majors of that college</p>
+<p>All the examples(a~c and a'~c') are all sets. These examples and the Avengers' example have an abstract common -- they are all "a bunch of things".</p>
+<h2 id="sample-point-and-sample-space">Sample point and Sample Space</h2>
+<p>The examples can help us know what is a set intuitively. However, we are mathematicians, and we should be more mathematical and more precise. A bunch of things can never be a formal definition. So we need to set up a mathematical model for a set. Every signal thing(object, situation, result, e.t.c) in the bunch will be called a 'point'. And the bunch of things is called a 'space'. If you have learned linear algebra, you would be familiar with the word 'space'. A space in linear algebra is made up of infinity vectors who obey some certain rules. For instance, in the example a), every apple is a point, and, of course, they are different from each other. And then the bushel of apples which contains all the apples is the space. In the same way, we can find the points in the other examples. And each of them is space. To distinguish the space in probability theory and in other situations, we prefix the space by sample. So does the point. They become sample space and sample point.</p>
+<p>We use <span class="math inline">\(\Omega\)</span> to denote the sample space, and the sample points in the sample space are denoted by <span class="math inline">\(\omega\)</span>. Every point can have a specific name, such that the set in the picture where I drew a sack of things. <img src="./set.jpg" /></p>
+<p>Its mathematical model is: <span class="math display">\[
+\Omega=\{\omega_{\text{apple}},\omega_{\text{raining}},\omega_{\text{car}},\omega_{\text{sunshine}},\omega_{\text{ghost}}\}
+\]</span></p>
+<h2 id="subset">Subset</h2>
+<p>Sets are made up of elements, in other word, spaces consist of points. When all the elements in a new set <span class="math inline">\(S_n\)</span> are all from another set <span class="math inline">\(S_0\)</span>, the set <span class="math inline">\(S_n\)</span> is the subset of <span class="math inline">\(S_0\)</span>. The sets in examples a')~ c') are subsets of examples a)~ c). Two extreme subsets are the biggest one -- the set itself, and the smallest one -- empty set which has nothing. The empty set is a special case in set theory and it has its own donation <span class="math inline">\(\emptyset\)</span></p>
+<h2 id="size-of-set">Size of Set</h2>
+<p>"The subset is smaller than the original set and the empty set is the smallest subset", this description uses an undefined concept, the size of a set, which can be used to identify which one is bigger or smaller among two sets. The number of points in a set is called "size", and it denotes as: <span class="math display">\[\vert S\vert\]</span></p>
+<p><strong>The size of</strong> <span class="math display">\[
+\Omega=\{\omega_{\text{apple}},\omega_{\text{raining}},\omega_{\text{car}},\omega_{\text{sunshine}},\omega_{\text{ghost}}\}
+\]</span></p>
 <p><strong>is</strong></p>
-<p>$$<br>\vert \Omega\vert=5<br>$$</p>
-<p><strong>The size of</strong><br>$$<br>\Omega_{\text{Avangers}}={\text{Natasha Romanoff},\text{Thor Odinson},\text{Steve Rogers},\text{Tony Tan},\\<br>\text{Clinton Barton},\text{Tony Stark},\text{Bruce Banner}}<br>$$<br><strong>is</strong><br>$$<br>\vert\Omega_{\text{Avangers}}\vert=7<br>$$</p>
-<h3 id="Properties-of-the-Size"><a href="#Properties-of-the-Size" class="headerlink" title="Properties of the Size"></a>Properties of the Size</h3><p>The size has several properties, and here are the most useful three:</p>
-<ol>
-<li>The size should be a non-negative integer </li>
+<p><span class="math display">\[
+\vert \Omega\vert=5
+\]</span></p>
+<p><strong>The size of</strong> <span class="math display">\[
+\Omega_{\text{Avangers}}=\{\text{Natasha Romanoff},\text{Thor Odinson},\text{Steve Rogers},\text{Tony Tan},\\\\
+\text{Clinton Barton},\text{Tony Stark},\text{Bruce Banner}\}
+\]</span> <strong>is</strong> <span class="math display">\[
+\vert\Omega_{\text{Avangers}}\vert=7
+\]</span></p>
+<h3 id="properties-of-the-size">Properties of the Size</h3>
+<p>The size has several properties, and here are the most useful three:</p>
+<ol type="1">
+<li>The size should be a non-negative integer</li>
 <li>The size can be infinity</li>
 <li>The size of the empty set is 0</li>
 </ol>
 <p>By the way, the natural number can be defined by the size of the set. But that is not our business here.</p>
-<h3 id="Finity-and-Infinity-sets"><a href="#Finity-and-Infinity-sets" class="headerlink" title="Finity and Infinity sets"></a>Finity and Infinity sets</h3><p>“Finity” and “infinity” are two general classifications of size. However “countable” and “uncountable” are another two distinct concepts. “Countable” is not equal to “finite”, while “Uncountable” is infinity.<br>Their precise relation is shown in the Venn Diagram</p>
-<p><img src="./finite.png"></p>
+<h3 id="finity-and-infinity-sets">Finity and Infinity sets</h3>
+<p>"Finity" and "infinity" are two general classifications of size. However "countable" and "uncountable" are another two distinct concepts. "Countable" is not equal to "finite", while "Uncountable" is infinity. Their precise relation is shown in the Venn Diagram</p>
+<p><img src="./finite.png" /></p>
 <blockquote>
-<p>Definition of Countable/Uncountable: An inﬁnite set $A$ is countable if there is a one-to-one correspondence between the elements of A and the set of natural numbers ${1, 2, 3, \dots}$. A set is uncountable if it is neither ﬁnite nor countable. If we say that a set has at most countably many elements, we mean that the set is either ﬁnite or countable.[^1]</p>
+<p>Definition of Countable/Uncountable: An inﬁnite set <span class="math inline">\(A\)</span> is countable if there is a one-to-one correspondence between the elements of A and the set of natural numbers <span class="math inline">\(\{1, 2, 3, \dots\}\)</span>. A set is uncountable if it is neither ﬁnite nor countable. If we say that a set has at most countably many elements, we mean that the set is either ﬁnite or countable.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
-<p>The most common example of the set which is infinity but countable is the set of all odd numbers and the index of element $n$ can be calculated by:<br>$$<br>f(n)=\frac{n-1}{2}<br>$$</p>
-<h2 id="Well-Defined-Set"><a href="#Well-Defined-Set" class="headerlink" title="Well Defined Set"></a>Well Defined Set</h2><p>All the sets above are defined by words. Although we have had a mathematical model, it’s also difficult to find a current method to define set rigidly. What the well-defined set means is that it is possible to tell whether a point belongs to the set or not. </p>
-<h3 id="Belong-to"><a href="#Belong-to" class="headerlink" title="Belong to"></a>Belong to</h3><p><em>Belong to</em> is a relation between point and space. We say “Iron Man” (point) belongs to the Avengers(space). It’s denoted as:</p>
-<p>$$<br>\omega_{\text{Iron Man}}\in \Omega_{\text{Avengers}}<br>$$</p>
-<p>And “not belong to” is denoted as:</p>
-<p>$$<br>\omega_{\text{Super Man}}\notin \Omega_{\text{Avengers}}<br>$$</p>
-<h3 id="Define-a-Set"><a href="#Define-a-Set" class="headerlink" title="Define a Set"></a>Define a Set</h3><p>The first method that can define the set rigidly is “enumerate”, and we put all points in curly brackets. For example, rolling a six-face dice may get $6$ outcomes as:</p>
-<p>$$<br>{1,2,3,4,5,6}<br>$$</p>
-<p>Intuitively, rolling two different six-face dice may get $6\times 6$ outcomes:</p>
-<p>$$<br>\begin{aligned}<br>{&amp;(1,1),(1,2),(1,3),(1,4),(1,5),(1,6) \<br>&amp;(2,1),(2,2),(2,3),(2,4),(2,5),(2,6) \<br>&amp;(3,1),(3,2),(3,3),(3,4),(3,5),(3,6) \<br>&amp;(4,1),(4,2),(4,3),(4,4),(4,5),(4,6) \<br>&amp;(5,1),(5,2),(5,3),(5,4),(5,5),(5,6) \<br>&amp;(6,1),(6,2),(6,3),(6,4),(6,5),(6,6) }<br>\end{aligned}<br>$$</p>
-<p>As we can see, two different dice would produce $6^2=36$ outcomes, and then three different dice would produce $6^3=216$ outcomes. When we roll $6$ dice, we would get a set of size 46656. It is impossible to list all the combinations. However, we can solve this problem through a mathematical model:</p>
-<p>$$<br>\Omega={(s_1,s_2,s_3,s_4,s_5,s_6)|s_j \text{ may be: }1,2,3,4,5,6 \text{ where } 1\leq j\leq 6}<br>$$</p>
+<p>The most common example of the set which is infinity but countable is the set of all odd numbers and the index of element <span class="math inline">\(n\)</span> can be calculated by: <span class="math display">\[
+f(n)=\frac{n-1}{2}
+\]</span></p>
+<h2 id="well-defined-set">Well Defined Set</h2>
+<p>All the sets above are defined by words. Although we have had a mathematical model, it's also difficult to find a current method to define set rigidly. What the well-defined set means is that it is possible to tell whether a point belongs to the set or not.</p>
+<h3 id="belong-to">Belong to</h3>
+<p><em>Belong to</em> is a relation between point and space. We say "Iron Man" (point) belongs to the Avengers(space). It's denoted as:</p>
+<p><span class="math display">\[
+\omega_{\text{Iron Man}}\in \Omega_{\text{Avengers}}
+\]</span></p>
+<p>And "not belong to" is denoted as:</p>
+<p><span class="math display">\[
+\omega_{\text{Super Man}}\notin \Omega_{\text{Avengers}}
+\]</span></p>
+<h3 id="define-a-set">Define a Set</h3>
+<p>The first method that can define the set rigidly is "enumerate", and we put all points in curly brackets. For example, rolling a six-face dice may get <span class="math inline">\(6\)</span> outcomes as:</p>
+<p><span class="math display">\[
+\{1,2,3,4,5,6\}
+\]</span></p>
+<p>Intuitively, rolling two different six-face dice may get <span class="math inline">\(6\times 6\)</span> outcomes:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\{&amp;(1,1),(1,2),(1,3),(1,4),(1,5),(1,6) \\
+&amp;(2,1),(2,2),(2,3),(2,4),(2,5),(2,6) \\
+&amp;(3,1),(3,2),(3,3),(3,4),(3,5),(3,6) \\
+&amp;(4,1),(4,2),(4,3),(4,4),(4,5),(4,6) \\
+&amp;(5,1),(5,2),(5,3),(5,4),(5,5),(5,6) \\
+&amp;(6,1),(6,2),(6,3),(6,4),(6,5),(6,6) \}
+\end{aligned}
+\]</span></p>
+<p>As we can see, two different dice would produce <span class="math inline">\(6^2=36\)</span> outcomes, and then three different dice would produce <span class="math inline">\(6^3=216\)</span> outcomes. When we roll <span class="math inline">\(6\)</span> dice, we would get a set of size 46656. It is impossible to list all the combinations. However, we can solve this problem through a mathematical model:</p>
+<p><span class="math display">\[
+\Omega=\{(s_1,s_2,s_3,s_4,s_5,s_6)|s_j \text{ may be: }1,2,3,4,5,6 \text{ where } 1\leq j\leq 6\}
+\]</span></p>
 <p>This is a simple use of the mathematical expression. However, it does not always work, such as defining the set of all the girls in the world. Listing all the names of them is tedious and impossible, and this set is dynamic because girls are born and died at the present moment.</p>
 <p>The second method to determine a set is through a specified rule of membership, however, there are always people who quibbled about the meaning of words. That is meaningless.</p>
-<h2 id="Subset-Superset-and-Identical-2"><a href="#Subset-Superset-and-Identical-2" class="headerlink" title="Subset, Superset, and Identical[^2]"></a>Subset, Superset, and Identical[^2]</h2><p>Subset has been explained above, but here we have an official definition:</p>
-<blockquote>
-<p>If every point of $A$ belongs to $B$, Then $A$ is contained or included in $B$ and is a <em>subset</em> of $B$, and $B$ is the superset of $A$</p>
-</blockquote>
-<p>We can write this relation in two ways:<br>$$<br>A\subset B\text{ , } B\supset A<br>$$</p>
-<p>Two sets are identical if they contain exactly the same points, and then we write<br>$$<br>A=B<br>$$</p>
-<p>By the way, a roundabout method to check whether two sets are identical is to chech: if and only if $A\subset B$ and $A\supset B$. Although this roundabout way seems indirect, it might be the easiest way to investigate whether these two sets are identical.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This post is the first one of our series of Probability Theory. We talked about some concepts and properties of set and sample set. And the relationship between elements (also known as points) and space (also known as a set) and between set and another set. The subset is also a set, however, it is in a special position in probability theory. Without understanding the concept of subset, we might be confused in later discussion.  </p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[^1]:DeGroot M H, Schervish M J. Probability and statistics[M]. Pearson Education, 2012.</p>
-<p>[^2]:Chung K L. Elementary probability theory with stochastic processes[M]. Springer Science &amp; Business Media, 2012.</p>
+<h2 id="subset-superset-and-identical2">Subset, Superset, and Identical<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
+<p>Subset has been explained above, but here we have an official definition: &gt; If every point of <span class="math inline">\(A\)</span> belongs to <span class="math inline">\(B\)</span>, Then <span class="math inline">\(A\)</span> is contained or included in <span class="math inline">\(B\)</span> and is a <em>subset</em> of <span class="math inline">\(B\)</span>, and <span class="math inline">\(B\)</span> is the superset of <span class="math inline">\(A\)</span></p>
+<p>We can write this relation in two ways: <span class="math display">\[
+A\subset B\text{ , } B\supset A
+\]</span></p>
+<p>Two sets are identical if they contain exactly the same points, and then we write <span class="math display">\[
+A=B
+\]</span></p>
+<p>By the way, a roundabout method to check whether two sets are identical is to chech: if and only if <span class="math inline">\(A\subset B\)</span> and <span class="math inline">\(A\supset B\)</span>. Although this roundabout way seems indirect, it might be the easiest way to investigate whether these two sets are identical.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This post is the first one of our series of Probability Theory. We talked about some concepts and properties of set and sample set. And the relationship between elements (also known as points) and space (also known as a set) and between set and another set. The subset is also a set, however, it is in a special position in probability theory. Without understanding the concept of subset, we might be confused in later discussion.</p>
+<h2 id="reference">Reference</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>DeGroot M H, Schervish M J. Probability and statistics[M]. Pearson Education, 2012.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Chung K L. Elementary probability theory with stochastic processes[M]. Springer Science &amp; Business Media, 2012.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

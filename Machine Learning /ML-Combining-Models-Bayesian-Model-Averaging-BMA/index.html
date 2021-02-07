@@ -171,7 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayesian-Model-Averaging-BMA-1"><span class="nav-number">1.</span> <span class="nav-text">Bayesian Model Averaging(BMA)[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mixture-of-Gaussian-Combining-Models"><span class="nav-number">2.</span> <span class="nav-text">Mixture of Gaussian(Combining Models)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distinction"><span class="nav-number">3.</span> <span class="nav-text">Distinction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bayesian-model-averagingbma1"><span class="nav-number">1.</span> <span class="nav-text">Bayesian Model Averaging(BMA)1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mixture-of-gaussiancombining-models"><span class="nav-number">2.</span> <span class="nav-text">Mixture of Gaussian(Combining Models)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#distinction"><span class="nav-number">3.</span> <span class="nav-text">Distinction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -325,27 +325,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> Bayesian model averaging, BMA and combining models</p>
-<a id="more"></a>
-
-<h2 id="Bayesian-Model-Averaging-BMA-1"><a href="#Bayesian-Model-Averaging-BMA-1" class="headerlink" title="Bayesian Model Averaging(BMA)[^1]"></a>Bayesian Model Averaging(BMA)[^1]</h2><p>Bayesian model averaging(BMA) is another wildly used method which is very like a combining model. However, the difference between BMA and combining models is significant. </p>
-<p>A Bayesian model averaging is a Bayesian formula in which the random variable are models(hypothesises) $h=1,2,\cdots,H$ with prior probability $p(h)$, then the marginal distribution over data $X$ is:</p>
-<p>$$<br>p(X)=\sum_{h=1}^{H}p(X|h)p(h)<br>$$</p>
-<p>And the MBA is used to select a model(hypothesis) that can model the data best through Bayesian theory. When we have a larger size of $X$, the posterior probability </p>
-<p>$$<br>p(h|X)=\frac{p(X|h)p(h)}{\sum_{i=1}^{H}p(X|i)p(i)}<br>$$</p>
+        <p><strong>Keywords:</strong> Bayesian model averaging, BMA and combining models <a id="more"></a></p>
+<h2 id="bayesian-model-averagingbma1">Bayesian Model Averaging(BMA)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Bayesian model averaging(BMA) is another wildly used method which is very like a combining model. However, the difference between BMA and combining models is significant.</p>
+<p>A Bayesian model averaging is a Bayesian formula in which the random variable are models(hypothesises) <span class="math inline">\(h=1,2,\cdots,H\)</span> with prior probability <span class="math inline">\(p(h)\)</span>, then the marginal distribution over data <span class="math inline">\(X\)</span> is:</p>
+<p><span class="math display">\[
+p(X)=\sum_{h=1}^{H}p(X|h)p(h)
+\]</span></p>
+<p>And the MBA is used to select a model(hypothesis) that can model the data best through Bayesian theory. When we have a larger size of <span class="math inline">\(X\)</span>, the posterior probability</p>
+<p><span class="math display">\[
+p(h|X)=\frac{p(X|h)p(h)}{\sum_{i=1}^{H}p(X|i)p(i)}
+\]</span></p>
 <p>become sharper. Then we got a good hypothesis.</p>
-<h2 id="Mixture-of-Gaussian-Combining-Models"><a href="#Mixture-of-Gaussian-Combining-Models" class="headerlink" title="Mixture of Gaussian(Combining Models)"></a>Mixture of Gaussian(Combining Models)</h2><p>In post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">‘Mixtures of Gaussians’</a>, we have seen how a mixture of Gaussians works. Then joint distribution of input data $\boldsymbol{x}$ and latent varible $\boldsymbol{z}$ is:</p>
-<p>$$<br>p(\boldsymbol{x},\boldsymbol{z})<br>$$</p>
-<p>and the margin distribution of $\boldsymbol{x}$ is</p>
-<p>$$<br>p(\boldsymbol{x})=\sum_{\boldsymbol{z}}p(\boldsymbol{x},\boldsymbol{z})<br>$$</p>
-<p>For the mixture of Gaussians:<br>$$<br>p(\boldsymbol{x})=\sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)<br>$$<br>the latent variable $\boldsymbol{z}$ is designed:<br>$$<br>p(z_k) = \pi_k<br>$$<br>for $k={1,2,\cdots,K}$. And $z_k\in{0,1}$ is a $1$-of-$K$ representation.</p>
-<p>Then this mixture of Gaussians is a king of combining models. Each time, only one $k$ is selected(for $\boldsymbol{z}$ is $1$-of-$K$ representation). An example of a mixture of Gaussians, and its original curve is like:</p>
-<p><img src="./mixture_of_Gaussians.png"></p>
-<p>And the latent variables $\boldsymbol{z}$ separate the whole distribution into several Gaussian distributions:</p>
-<p><img src="./mixture_of_Gaussians.gif"></p>
-<p>This is the simplest model of combining models where each expert is a Gaussian model. And during the voting, only one model selected by $\boldsymbol{z}$ makes the final decision.</p>
-<h2 id="Distinction"><a href="#Distinction" class="headerlink" title="Distinction"></a>Distinction</h2><p>A combining model method contains several models and predicts by voting or other rules. However, Bayesian model averaging can be used to generate a hypothesis from several candidates.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<h2 id="mixture-of-gaussiancombining-models">Mixture of Gaussian(Combining Models)</h2>
+<p>In post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">'Mixtures of Gaussians'</a>, we have seen how a mixture of Gaussians works. Then joint distribution of input data <span class="math inline">\(\boldsymbol{x}\)</span> and latent varible <span class="math inline">\(\boldsymbol{z}\)</span> is:</p>
+<p><span class="math display">\[
+p(\boldsymbol{x},\boldsymbol{z})
+\]</span></p>
+<p>and the margin distribution of <span class="math inline">\(\boldsymbol{x}\)</span> is</p>
+<p><span class="math display">\[
+p(\boldsymbol{x})=\sum_{\boldsymbol{z}}p(\boldsymbol{x},\boldsymbol{z})
+\]</span></p>
+<p>For the mixture of Gaussians: <span class="math display">\[
+p(\boldsymbol{x})=\sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)
+\]</span> the latent variable <span class="math inline">\(\boldsymbol{z}\)</span> is designed: <span class="math display">\[
+p(z_k) = \pi_k
+\]</span> for <span class="math inline">\(k=\{1,2,\cdots,K\}\)</span>. And <span class="math inline">\(z_k\in\{0,1\}\)</span> is a <span class="math inline">\(1\)</span>-of-<span class="math inline">\(K\)</span> representation.</p>
+<p>Then this mixture of Gaussians is a king of combining models. Each time, only one <span class="math inline">\(k\)</span> is selected(for <span class="math inline">\(\boldsymbol{z}\)</span> is <span class="math inline">\(1\)</span>-of-<span class="math inline">\(K\)</span> representation). An example of a mixture of Gaussians, and its original curve is like:</p>
+<p><img src="./mixture_of_Gaussians.png" /></p>
+<p>And the latent variables <span class="math inline">\(\boldsymbol{z}\)</span> separate the whole distribution into several Gaussian distributions:</p>
+<p><img src="./mixture_of_Gaussians.gif" /></p>
+<p>This is the simplest model of combining models where each expert is a Gaussian model. And during the voting, only one model selected by <span class="math inline">\(\boldsymbol{z}\)</span> makes the final decision.</p>
+<h2 id="distinction">Distinction</h2>
+<p>A combining model method contains several models and predicts by voting or other rules. However, Bayesian model averaging can be used to generate a hypothesis from several candidates.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

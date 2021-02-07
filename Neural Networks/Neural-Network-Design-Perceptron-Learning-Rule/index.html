@@ -176,7 +176,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Learning-Rules-1"><span class="nav-number">1.</span> <span class="nav-text">Learning Rules[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perceptron-Architecture"><span class="nav-number">2.</span> <span class="nav-text">Perceptron Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Single-Neuron-Perceptron"><span class="nav-number">2.1.</span> <span class="nav-text">Single-Neuron Perceptron</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Neuron-Perceptron"><span class="nav-number">2.2.</span> <span class="nav-text">Multiple-Neuron Perceptron</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perceptron-Learning-Rule"><span class="nav-number">3.</span> <span class="nav-text">Perceptron Learning Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructing-Learning-Rules"><span class="nav-number">3.1.</span> <span class="nav-text">Constructing Learning Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Assigning-Some-Initial-Values"><span class="nav-number">3.1.1.</span> <span class="nav-text">Assigning Some Initial Values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Calculating-output"><span class="nav-number">3.1.2.</span> <span class="nav-text">Calculating output</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unified-Learning-Rule"><span class="nav-number">3.2.</span> <span class="nav-text">Unified Learning Rule</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#learning-rules1"><span class="nav-number">1.</span> <span class="nav-text">Learning Rules1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perceptron-architecture"><span class="nav-number">2.</span> <span class="nav-text">Perceptron Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-neuron-perceptron"><span class="nav-number">2.1.</span> <span class="nav-text">Single-Neuron Perceptron</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-neuron-perceptron"><span class="nav-number">2.2.</span> <span class="nav-text">Multiple-Neuron Perceptron</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perceptron-learning-rule"><span class="nav-number">3.</span> <span class="nav-text">Perceptron Learning Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#constructing-learning-rules"><span class="nav-number">3.1.</span> <span class="nav-text">Constructing Learning Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assigning-some-initial-values"><span class="nav-number">3.1.1.</span> <span class="nav-text">Assigning Some Initial Values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#calculating-output"><span class="nav-number">3.1.2.</span> <span class="nav-text">Calculating output</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unified-learning-rule"><span class="nav-number">3.2.</span> <span class="nav-text">Unified Learning Rule</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -330,130 +330,164 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> perceptron learning rule</p>
-<a id="more"></a>
-
-
-<h2 id="Learning-Rules-1"><a href="#Learning-Rules-1" class="headerlink" title="Learning Rules[^1]"></a>Learning Rules[^1]</h2><p>We have built some neural network models in the post <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Introduction/">‘An Introduction to Neural Networks’</a> and as I have mentioned architectures and learning rules are two main aspects in designing a network to solve a problem. But our already owned architectures have not come into play. What we are going to do is to investigate both architecture and learning rules.</p>
+        <p><strong>Keywords:</strong> perceptron learning rule <a id="more"></a></p>
+<h2 id="learning-rules1">Learning Rules<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>We have built some neural network models in the post <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Introduction/">'An Introduction to Neural Networks'</a> and as I have mentioned architectures and learning rules are two main aspects in designing a network to solve a problem. But our already owned architectures have not come into play. What we are going to do is to investigate both architecture and learning rules.</p>
 <p><strong>The learning rule is a procedure to modify weights, bias and other parameters in the model to perform a certain task.</strong> There are generally 3 types of learning rules:</p>
-<ol>
-<li>Supervised Learning<ul>
-<li>There is a training set of the model who contains a number of input data as well as correct output value, like ${\boldsymbol{p}_1,t_1},{\boldsymbol{p}_2,t_2},\cdots,{\boldsymbol{p}_Q,t_Q},$ where $\boldsymbol{p}_i$ (for $i&lt;Q$) is the input to the model and $t_i$(for $i&lt;Q$) is the correct corresponding target(output or label)</li>
-<li>the whole process is:<br><img src="./supervised_learning.jpeg"> </li>
+<ol type="1">
+<li>Supervised Learning</li>
+</ol>
+<ul>
+<li>There is a training set of the model who contains a number of input data as well as correct output value, like <span class="math inline">\(\{\boldsymbol{p}_1,t_1\},\{\boldsymbol{p}_2,t_2\},\cdots,\{\boldsymbol{p}_Q,t_Q\},\)</span> where <span class="math inline">\(\boldsymbol{p}_i\)</span> (for <span class="math inline">\(i&lt;Q\)</span>) is the input to the model and <span class="math inline">\(t_i\)</span>(for <span class="math inline">\(i&lt;Q\)</span>) is the correct corresponding target(output or label)</li>
+<li>the whole process is: <img src="./supervised_learning.jpeg" /></li>
 <li>where target and current output are used to modify the neuron network to make it produce an output closer to the target.</li>
 </ul>
-</li>
-<li>Unsupervised Learning<ul>
-<li>Unlike supervised learning, unsupervised learning doesn’t know the correct output at all, in other words, what the neuron network knows is only the inputs and how to modify the parameters in the model is all by the inputs. This kind of learning is always used to perform clustering operation or vector quantization.<br><img src="./unsupervised_learning.jpeg"> </li>
+<ol start="2" type="1">
+<li>Unsupervised Learning</li>
+</ol>
+<ul>
+<li>Unlike supervised learning, unsupervised learning doesn't know the correct output at all, in other words, what the neuron network knows is only the inputs and how to modify the parameters in the model is all by the inputs. This kind of learning is always used to perform clustering operation or vector quantization. <img src="./unsupervised_learning.jpeg" /></li>
 </ul>
-</li>
-<li>Reinforcement learning <ul>
+<ol start="3" type="1">
+<li>Reinforcement learning</li>
+</ol>
+<ul>
 <li>it is another learning rule which is more like supervised learning and works more like a biological brain.</li>
-<li>there is no correct target as well but there is a grade to measure the performance of the network over some sequence of input.<br><img src="./reinforcement_learning.jpeg"> </li>
+<li>there is no correct target as well but there is a grade to measure the performance of the network over some sequence of input. <img src="./reinforcement_learning.jpeg" /></li>
 </ul>
-</li>
-</ol>
-<h2 id="Perceptron-Architecture"><a href="#Perceptron-Architecture" class="headerlink" title="Perceptron Architecture"></a>Perceptron Architecture</h2><p>Perceptron is an easy model of a neuron, and what we interested in is how to design a learning rule or develop a certain algorithm to make a perceptron possible to classify input signals. Although perceptron is the easiest neuron model, it is a good basis for more complex networks, and still working for now.</p>
-<p>In a perception, it has weights, biases, and transfer functions. These are basic components of a neuron model. However, the transfer function here is specialized as a <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/transfer-functions/">‘hard limit function’</a></p>
-<p>$$<br>f(x) = \begin{cases}<br>0&amp; \text{ if } x&lt;0\<br>1&amp; \text{ if } x\geq 0<br>\end{cases}\tag{1}<br>$$</p>
-<p>and abbreviated notation with a layer of $S$ neuron network is:</p>
-<p><img src="./perceptron.jpeg"></p>
-<p>where $W$ is the weight matrix of $S$ perceptron. And each row of the matrix contains all the weight of a perceptron.</p>
+<h2 id="perceptron-architecture">Perceptron Architecture</h2>
+<p>Perceptron is an easy model of a neuron, and what we interested in is how to design a learning rule or develop a certain algorithm to make a perceptron possible to classify input signals. Although perceptron is the easiest neuron model, it is a good basis for more complex networks, and still working for now.</p>
+<p>In a perception, it has weights, biases, and transfer functions. These are basic components of a neuron model. However, the transfer function here is specialized as a <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/transfer-functions/">'hard limit function'</a></p>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+0&amp; \text{ if } x&lt;0\\
+1&amp; \text{ if } x\geq 0
+\end{cases}\tag{1}
+\]</span></p>
+<p>and abbreviated notation with a layer of <span class="math inline">\(S\)</span> neuron network is:</p>
+<p><img src="./perceptron.jpeg" /></p>
+<p>where <span class="math inline">\(W\)</span> is the weight matrix of <span class="math inline">\(S\)</span> perceptron. And each row of the matrix contains all the weight of a perceptron.</p>
 <p>Two types of perceptron are introduced here, the first one has a single neuron and the second one has several ones. What we are going to investigate is the first one for it is easier to discuss.</p>
-<h3 id="Single-Neuron-Perceptron"><a href="#Single-Neuron-Perceptron" class="headerlink" title="Single-Neuron Perceptron"></a>Single-Neuron Perceptron</h3><p>In some simple models, we can visualize a line or a plane named ‘decision boundary’ which is determined by the input vectors who make the input of its transfer function $n=0$. For instance, in a 2-dimensional linear classification task, we are asked to find a line that can separate the input points into two different classes. This line here acts as a decision boundary and all the points on the line would product $0$ output through the linear model. </p>
-<p>Let’s start to study with one perceptron. </p>
-<p><img src="./2_input_perceptron.jpeg"></p>
-<p>It’s decision boundary is the line:</p>
-<p>$$<br>n=w_{1,1}p_1+w_{1,2}p_2+b=0\tag{2}<br>$$</p>
-<p>For example, when $w_{1,1}=1$, $w_{1,2}=1$ and $b=-1$, we get the decision boundary:</p>
-<p>$$<br>p_1+p_2-1=0\tag{3}<br>$$</p>
-<p><img src="./decision_boundary.png"></p>
-<p>from the figure, we can conclude the weight vector has the following properties:</p>
-<ol>
-<li>$W$ always points to the purple region where $n=w_{1,1}p_1+w_{1,2}p_2+b&gt;0$</li>
-<li>The relation of $W$ and the direction of the decision boundary is orthogonality.</li>
-</ol>
-<p>Can this simple example perform some task? Of course. If we test the input $\boldsymbol{p}_1=\begin{bmatrix}0\\0\end{bmatrix},\boldsymbol{p}_1=\begin{bmatrix}0\\1\end{bmatrix},\boldsymbol{p}_1=\begin{bmatrix}1\\0\end{bmatrix},\boldsymbol{p}_1=\begin{bmatrix}1\\1\end{bmatrix}$ respectively, we could get $a_1=0,a_2=0,a_3=0,a_4=1$. This is the ‘and’ operation in logical calculation.</p>
+<h3 id="single-neuron-perceptron">Single-Neuron Perceptron</h3>
+<p>In some simple models, we can visualize a line or a plane named 'decision boundary' which is determined by the input vectors who make the input of its transfer function <span class="math inline">\(n=0\)</span>. For instance, in a 2-dimensional linear classification task, we are asked to find a line that can separate the input points into two different classes. This line here acts as a decision boundary and all the points on the line would product <span class="math inline">\(0\)</span> output through the linear model.</p>
+<p>Let's start to study with one perceptron.</p>
+<p><img src="./2_input_perceptron.jpeg" /></p>
+<p>It's decision boundary is the line:</p>
+<p><span class="math display">\[
+n=w_{1,1}p_1+w_{1,2}p_2+b=0\tag{2}
+\]</span></p>
+<p>For example, when <span class="math inline">\(w_{1,1}=1\)</span>, <span class="math inline">\(w_{1,2}=1\)</span> and <span class="math inline">\(b=-1\)</span>, we get the decision boundary:</p>
+<p><span class="math display">\[
+p_1+p_2-1=0\tag{3}
+\]</span></p>
+<p><img src="./decision_boundary.png" /></p>
+<p>from the figure, we can conclude the weight vector has the following properties: 1. <span class="math inline">\(W\)</span> always points to the purple region where <span class="math inline">\(n=w_{1,1}p_1+w_{1,2}p_2+b&gt;0\)</span> 2. The relation of <span class="math inline">\(W\)</span> and the direction of the decision boundary is orthogonality.</p>
+<p>Can this simple example perform some task? Of course. If we test the input <span class="math inline">\(\boldsymbol{p}_1=\begin{bmatrix}0\\\\0\end{bmatrix},\boldsymbol{p}_1=\begin{bmatrix}0\\\\1\end{bmatrix},\boldsymbol{p}_1=\begin{bmatrix}1\\\\0\end{bmatrix},\boldsymbol{p}_1=\begin{bmatrix}1\\\\1\end{bmatrix}\)</span> respectively, we could get <span class="math inline">\(a_1=0,a_2=0,a_3=0,a_4=1\)</span>. This is the 'and' operation in logical calculation.</p>
 <table>
 <thead>
-<tr>
-<th align="center"></th>
-<th align="center">input</th>
-<th align="center">output</th>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">input</th>
+<th style="text-align: center;">output</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"></td>
-<td align="center">$\begin{bmatrix}0\0\end{bmatrix}$</td>
-<td align="center">$0$</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix}0\\0\end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">$\begin{bmatrix}0\1\end{bmatrix}$</td>
-<td align="center">$0$</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix}0\\1\end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">$\begin{bmatrix}1\0\end{bmatrix}$</td>
-<td align="center">$0$</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix}1\\0\end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">$\begin{bmatrix}1\1\end{bmatrix}$</td>
-<td align="center">$1$</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix}1\\1\end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
 </tr>
-</tbody></table>
-<h3 id="Multiple-Neuron-Perceptron"><a href="#Multiple-Neuron-Perceptron" class="headerlink" title="Multiple-Neuron Perceptron"></a>Multiple-Neuron Perceptron</h3><p>Multiple neuron perceptron is just a combination of some perceptrons, whose weight matrix $W$ has multiple rows. And the transpose of row $i$ of the $W$ is notated as $_iW$(column form of the $i$th row in $W$) then the $i$th neuron has the decision boundary:</p>
-<p>$$<br>_iW^T\boldsymbol{p}+b_i=0\tag{4}<br>$$</p>
-<p>For the property of hard limit function that the output could just be one of ${0,1}$. And for $S$ neurons, there is at most $2^S$ categories, that is to say to a $S$ neuron perceptron in one layer it is impossible to perform the task which needs it to classify more than $2^S$ classes.</p>
-<h2 id="Perceptron-Learning-Rule"><a href="#Perceptron-Learning-Rule" class="headerlink" title="Perceptron Learning Rule"></a>Perceptron Learning Rule</h2><p>Perceptron learning rule here is a kind of supervised learning rule. Recall some results above:</p>
-<ol>
-<li>supervised learning has both input and corresponding correct target.</li>
-<li>target and output produced by the current model and input give the information to how to modify the model</li>
-<li>$W$ always points to the region where $a=1$</li>
-</ol>
-<h3 id="Constructing-Learning-Rules"><a href="#Constructing-Learning-Rules" class="headerlink" title="Constructing Learning Rules"></a>Constructing Learning Rules</h3><p>With above results we try to construct the rule, and assuming training datas are:</p>
-<p>$$<br>{\begin{bmatrix}1\2\end{bmatrix},1},{\begin{bmatrix}-1\2\end{bmatrix},0},{\begin{bmatrix}0\-1\end{bmatrix},0}\tag{5}<br>$$</p>
-<h4 id="Assigning-Some-Initial-Values"><a href="#Assigning-Some-Initial-Values" class="headerlink" title="Assigning Some Initial Values"></a>Assigning Some Initial Values</h4><p>To modify the model, we need the output which is produced by the weights and input, and for this is supervised learning algorithm we have both input and correct outputs (targets), what we need to do is just assign some values to weights(here we omit the bias). Like:<br>$$<br>_1W=\begin{bmatrix}1.0\-0.8\end{bmatrix}\tag{6}<br>$$</p>
-<h4 id="Calculating-output"><a href="#Calculating-output" class="headerlink" title="Calculating output"></a>Calculating output</h4><p>The output is easy to be calculated:<br>$$<br>a=f(_1W^T\boldsymbol{p}_1)\tag{7}<br>$$</p>
-<p>when $\boldsymbol{p}_1=\begin{bmatrix}1\ 2\end{bmatrix}$, we have:<br>$$<br>n=\begin{bmatrix}1.0 &amp;-0.8\end{bmatrix}\begin{bmatrix}1\2\end{bmatrix}=-0.6\<br>a=f(-0.6)=0\tag{8}<br>$$<br>however the target is $1$ then this is a wrong prediction of current model. What we would do is modify the model.</p>
-<p>As we mentioned above, $\boldsymbol{_1W}$ points to the purple region </p>
-<p><img src="./decision_boundary.png"></p>
-<p>where the output is $1$. So we should modify the direction of $\boldsymbol{_1W}$ close to the direction of $p_1$.</p>
-<p>The intuitive strategy is setting $\boldsymbol{_1W}=p_i$ when the output is $0$ while the target is $1$ and setting $\boldsymbol{_1W}=-p_i$ when the output is $1$ while the target is $0$(where $i$ less than the size of the training set). However, there are only three training data in this example, so there are only three possible decision boundaries, it can not guarantee that there must be a line $\boldsymbol{_1W}=p_i$ that separates the input data correctly.</p>
-<p>Although this strategy does not work, it has a good inspiration:</p>
-<ol>
-<li>if $t=1$ and $a=0$, modify $_1W$ close to $p_i$</li>
-<li>if $t=0$ and $a=1$, modify $_1W$ away from $p_i$ or modify $_1W$ close to $-p_i$ equally</li>
-<li>if $t=a$ do nothing</li>
-</ol>
+</tbody>
+</table>
+<h3 id="multiple-neuron-perceptron">Multiple-Neuron Perceptron</h3>
+<p>Multiple neuron perceptron is just a combination of some perceptrons, whose weight matrix <span class="math inline">\(W\)</span> has multiple rows. And the transpose of row <span class="math inline">\(i\)</span> of the <span class="math inline">\(W\)</span> is notated as <span class="math inline">\(_iW\)</span>(column form of the <span class="math inline">\(i\)</span>th row in <span class="math inline">\(W\)</span>) then the <span class="math inline">\(i\)</span>th neuron has the decision boundary:</p>
+<p><span class="math display">\[
+_iW^T\boldsymbol{p}+b_i=0\tag{4}
+\]</span></p>
+<p>For the property of hard limit function that the output could just be one of <span class="math inline">\(\{0,1\}\)</span>. And for <span class="math inline">\(S\)</span> neurons, there is at most <span class="math inline">\(2^S\)</span> categories, that is to say to a <span class="math inline">\(S\)</span> neuron perceptron in one layer it is impossible to perform the task which needs it to classify more than <span class="math inline">\(2^S\)</span> classes.</p>
+<h2 id="perceptron-learning-rule">Perceptron Learning Rule</h2>
+<p>Perceptron learning rule here is a kind of supervised learning rule. Recall some results above: 1. supervised learning has both input and corresponding correct target. 2. target and output produced by the current model and input give the information to how to modify the model 3. <span class="math inline">\(W\)</span> always points to the region where <span class="math inline">\(a=1\)</span></p>
+<h3 id="constructing-learning-rules">Constructing Learning Rules</h3>
+<p>With above results we try to construct the rule, and assuming training datas are:</p>
+<p><span class="math display">\[
+\{\begin{bmatrix}1\\2\end{bmatrix},1\},\{\begin{bmatrix}-1\\2\end{bmatrix},0\},\{\begin{bmatrix}0\\-1\end{bmatrix},0\}\tag{5}
+\]</span></p>
+<h4 id="assigning-some-initial-values">Assigning Some Initial Values</h4>
+<p>To modify the model, we need the output which is produced by the weights and input, and for this is supervised learning algorithm we have both input and correct outputs (targets), what we need to do is just assign some values to weights(here we omit the bias). Like: <span class="math display">\[
+_1W=\begin{bmatrix}1.0\\-0.8\end{bmatrix}\tag{6}
+\]</span></p>
+<h4 id="calculating-output">Calculating output</h4>
+<p>The output is easy to be calculated: <span class="math display">\[
+a=f(_1W^T\boldsymbol{p}_1)\tag{7}
+\]</span></p>
+<p>when <span class="math inline">\(\boldsymbol{p}_1=\begin{bmatrix}1\\ 2\end{bmatrix}\)</span>, we have: <span class="math display">\[
+n=\begin{bmatrix}1.0 &amp;-0.8\end{bmatrix}\begin{bmatrix}1\\2\end{bmatrix}=-0.6\\
+a=f(-0.6)=0\tag{8}
+\]</span> however the target is <span class="math inline">\(1\)</span> then this is a wrong prediction of current model. What we would do is modify the model.</p>
+<p>As we mentioned above, <span class="math inline">\(\boldsymbol{_1W}\)</span> points to the purple region</p>
+<p><img src="./decision_boundary.png" /></p>
+<p>where the output is <span class="math inline">\(1\)</span>. So we should modify the direction of <span class="math inline">\(\boldsymbol{_1W}\)</span> close to the direction of <span class="math inline">\(p_1\)</span>.</p>
+<p>The intuitive strategy is setting <span class="math inline">\(\boldsymbol{_1W}=p_i\)</span> when the output is <span class="math inline">\(0\)</span> while the target is <span class="math inline">\(1\)</span> and setting <span class="math inline">\(\boldsymbol{_1W}=-p_i\)</span> when the output is <span class="math inline">\(1\)</span> while the target is <span class="math inline">\(0\)</span>(where <span class="math inline">\(i\)</span> less than the size of the training set). However, there are only three training data in this example, so there are only three possible decision boundaries, it can not guarantee that there must be a line <span class="math inline">\(\boldsymbol{_1W}=p_i\)</span> that separates the input data correctly.</p>
+<p>Although this strategy does not work, it has a good inspiration: 1. if <span class="math inline">\(t=1\)</span> and <span class="math inline">\(a=0\)</span>, modify <span class="math inline">\(_1W\)</span> close to <span class="math inline">\(p_i\)</span> 2. if <span class="math inline">\(t=0\)</span> and <span class="math inline">\(a=1\)</span>, modify <span class="math inline">\(_1W\)</span> away from <span class="math inline">\(p_i\)</span> or modify <span class="math inline">\(_1W\)</span> close to <span class="math inline">\(-p_i\)</span> equally 3. if <span class="math inline">\(t=a\)</span> do nothing</p>
 <p>Then we find that the summation of two vectors is closer to each of the two vectors. Then our algorithm becomes:</p>
-<ol>
-<li>if $t=1$ and $a=0$, $_1W^{\text{new}}= _1W^{\text{old}}+p_i$</li>
-<li>if $t=0$ and $a=1$, $_1W^{\text{new}}= _1W^{\text{old}}-p_i$</li>
-<li>if $t=a$ do nothing</li>
+<ol type="1">
+<li>if <span class="math inline">\(t=1\)</span> and <span class="math inline">\(a=0\)</span>, <span class="math inline">\(_1W^{\text{new}}= _1W^{\text{old}}+p_i\)</span></li>
+<li>if <span class="math inline">\(t=0\)</span> and <span class="math inline">\(a=1\)</span>, <span class="math inline">\(_1W^{\text{new}}= _1W^{\text{old}}-p_i\)</span></li>
+<li>if <span class="math inline">\(t=a\)</span> do nothing</li>
 </ol>
-<h3 id="Unified-Learning-Rule"><a href="#Unified-Learning-Rule" class="headerlink" title="Unified Learning Rule"></a>Unified Learning Rule</h3><p>The target and output product information together to modify the model. Here we introduce the most simple but useful information - error:</p>
-<p>$$<br>e_i=t_i-a_i\tag{9}<br>$$</p>
-<p>so, our algorithm is </p>
-<ol>
-<li>if $t=1$ and $a=0$ where $e=1-0=1$: $_1W^{\text{new}}= _1W^{\text{old}}+p_i$</li>
-<li>if $t=0$ and $a=1$ where $e=0-1=-1$: $_1W^{\text{new}}= _1W^{\text{old}}-p_i$</li>
-<li>if $t=a$ where $e=t-a=0$: do nothing</li>
+<h3 id="unified-learning-rule">Unified Learning Rule</h3>
+<p>The target and output product information together to modify the model. Here we introduce the most simple but useful information - error:</p>
+<p><span class="math display">\[
+e_i=t_i-a_i\tag{9}
+\]</span></p>
+<p>so, our algorithm is</p>
+<ol type="1">
+<li>if <span class="math inline">\(t=1\)</span> and <span class="math inline">\(a=0\)</span> where <span class="math inline">\(e=1-0=1\)</span>: <span class="math inline">\(_1W^{\text{new}}= _1W^{\text{old}}+p_i\)</span></li>
+<li>if <span class="math inline">\(t=0\)</span> and <span class="math inline">\(a=1\)</span> where <span class="math inline">\(e=0-1=-1\)</span>: <span class="math inline">\(_1W^{\text{new}}= _1W^{\text{old}}-p_i\)</span></li>
+<li>if <span class="math inline">\(t=a\)</span> where <span class="math inline">\(e=t-a=0\)</span>: do nothing</li>
 </ol>
-<p>and it’s not hard to notice that $e$ has the same sign with $p_i$. Then the algorithm can be simplified as:</p>
-<p>$$<br>_1W^{\text{new}}=_1W^{\text{old}}+e\cdot p_i=_1W^{\text{old}}+(t_i-a_i)\cdot p_i\tag{10}<br>$$</p>
+<p>and it's not hard to notice that <span class="math inline">\(e\)</span> has the same sign with <span class="math inline">\(p_i\)</span>. Then the algorithm can be simplified as:</p>
+<p><span class="math display">\[
+_1W^{\text{new}}=_1W^{\text{old}}+e\cdot p_i=_1W^{\text{old}}+(t_i-a_i)\cdot p_i\tag{10}
+\]</span></p>
 <p>This can be easily extend to bias:</p>
-<p>$$<br>b^{\text{new}}=b^{\text{old}}+e\cdot 1=b^{\text{old}}+(t_i-a_i)\tag{11}<br>$$</p>
+<p><span class="math display">\[
+b^{\text{new}}=b^{\text{old}}+e\cdot 1=b^{\text{old}}+(t_i-a_i)\tag{11}
+\]</span></p>
 <p>and to the multiple neurons perceptron networks the algorithm in matrix form is:</p>
-<p>$$<br>W^{\text{new}}=W^{\text{old}}+\boldsymbol{e}\cdot \boldsymbol{p_i}\<br>\boldsymbol{b}^{\text{new}}=\boldsymbol{b}^{\text{old}}+\boldsymbol{e}_i\cdot \boldsymbol{1}\tag{12}<br>$$</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
+<p><span class="math display">\[
+W^{\text{new}}=W^{\text{old}}+\boldsymbol{e}\cdot \boldsymbol{p_i}\\
+\boldsymbol{b}^{\text{new}}=\boldsymbol{b}^{\text{old}}+\boldsymbol{e}_i\cdot \boldsymbol{1}\tag{12}
+\]</span></p>
+<h2 id="conclusion">Conclusion</h2>
+<ol type="1">
 <li>Perceptron is still working today</li>
 <li>The learning rule of the perceptron is a good example of having a close look at the learning rules of neuron networks</li>
 <li>Perceptron has some connection with other machine learning algorithms like linear classification</li>
 <li>A single perceptron has a lot of limits but multiple layers perceptrons are powerful</li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

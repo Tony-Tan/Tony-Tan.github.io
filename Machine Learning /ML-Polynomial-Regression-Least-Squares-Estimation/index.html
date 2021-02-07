@@ -174,7 +174,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Extending-Linear-Regression-with-Features-1"><span class="nav-number">1.</span> <span class="nav-text">Extending Linear Regression with Features[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Polynomial-Regression"><span class="nav-number">2.</span> <span class="nav-text">Polynomial Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-for-polynomial-regression"><span class="nav-number">2.1.</span> <span class="nav-text">Code for polynomial regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#extending-linear-regression-with-features1"><span class="nav-number">1.</span> <span class="nav-text">Extending Linear Regression with Features1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#polynomial-regression"><span class="nav-number">2.</span> <span class="nav-text">Polynomial Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#code-for-polynomial-regression"><span class="nav-number">2.1.</span> <span class="nav-text">Code for polynomial regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -328,35 +328,65 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> polynomial regression</p>
-<a id="more"></a>
-
-<h2 id="Extending-Linear-Regression-with-Features-1"><a href="#Extending-Linear-Regression-with-Features-1" class="headerlink" title="Extending Linear Regression with Features[^1]"></a>Extending Linear Regression with Features[^1]</h2><p>The original linear regression is in the form:</p>
-<p>$$<br>\begin{aligned}<br>  y(\boldsymbol{x})&amp;= b + \boldsymbol{w}^T \boldsymbol{x}\<br>  &amp;=w_01 + w_1x_1+ w_2x_2+\cdots + w_{m+1}x_{m+1}<br>\end{aligned}\tag{1}<br>$$</p>
-<p>where the input vector $\boldsymbol{x}$ and parameter $\boldsymbol{w}$ are $m$-dimension vectors whose first components are $1$ and bias $w_0=b$ respectively. This equation is linear for both the input vector and parameter vector. Then an idea come to us, if we set $x_i=\phi_i(\boldsymbol{x})$ then equation (1) convert to:</p>
-<p>$$<br>\begin{aligned}<br>  y(\boldsymbol{x})&amp;= b + \boldsymbol{w}^T \boldsymbol{\phi}(\boldsymbol{x})\<br>  &amp;=w_01 + w_1\phi_1(\boldsymbol{x})+\cdots + w_{m+1}\phi_{m+1}(\boldsymbol{x})<br>\end{aligned}\tag{2}<br>$$</p>
-<p>where $\phi(\boldsymbol{x})=\begin{bmatrix}\phi_1(\boldsymbol{x})\\phi_2(\boldsymbol{x})\ \vdots\\phi_m(\boldsymbol{x})\end{bmatrix}$ and $\boldsymbol{w}=\begin{bmatrix}w_1\w_2\ \vdots\ w_m\end{bmatrix}$ the function with input $\boldsymbol{x}$, $\boldsymbol{\phi}(\cdot)$ is called feature.</p>
+        <p><strong>Keywords:</strong> polynomial regression <a id="more"></a></p>
+<h2 id="extending-linear-regression-with-features1">Extending Linear Regression with Features<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>The original linear regression is in the form:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  y(\boldsymbol{x})&amp;= b + \boldsymbol{w}^T \boldsymbol{x}\\
+  &amp;=w_01 + w_1x_1+ w_2x_2+\cdots + w_{m+1}x_{m+1}
+\end{aligned}\tag{1}
+\]</span></p>
+<p>where the input vector <span class="math inline">\(\boldsymbol{x}\)</span> and parameter <span class="math inline">\(\boldsymbol{w}\)</span> are <span class="math inline">\(m\)</span>-dimension vectors whose first components are <span class="math inline">\(1\)</span> and bias <span class="math inline">\(w_0=b\)</span> respectively. This equation is linear for both the input vector and parameter vector. Then an idea come to us, if we set <span class="math inline">\(x_i=\phi_i(\boldsymbol{x})\)</span> then equation (1) convert to:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  y(\boldsymbol{x})&amp;= b + \boldsymbol{w}^T \boldsymbol{\phi}(\boldsymbol{x})\\
+  &amp;=w_01 + w_1\phi_1(\boldsymbol{x})+\cdots + w_{m+1}\phi_{m+1}(\boldsymbol{x})
+\end{aligned}\tag{2}
+\]</span></p>
+<p>where <span class="math inline">\(\phi(\boldsymbol{x})=\begin{bmatrix}\phi_1(\boldsymbol{x})\\\phi_2(\boldsymbol{x})\\ \vdots\\\phi_m(\boldsymbol{x})\end{bmatrix}\)</span> and <span class="math inline">\(\boldsymbol{w}=\begin{bmatrix}w_1\\w_2\\ \vdots\\ w_m\end{bmatrix}\)</span> the function with input <span class="math inline">\(\boldsymbol{x}\)</span>, <span class="math inline">\(\boldsymbol{\phi}(\cdot)\)</span> is called feature.</p>
 <p>This feature function was used widely, especially in reducing dimensions of original input(such as in image processing) and increasing the flexibility of the predictor(such as in extending linear regression to polynomial regression).</p>
-<h2 id="Polynomial-Regression"><a href="#Polynomial-Regression" class="headerlink" title="Polynomial Regression"></a>Polynomial Regression</h2><p>When we set the feature as:</p>
-<p>$$<br>\phi(x) = \begin{bmatrix}x\x^2\end{bmatrix}\tag{3}<br>$$</p>
+<h2 id="polynomial-regression">Polynomial Regression</h2>
+<p>When we set the feature as:</p>
+<p><span class="math display">\[
+\phi(x) = \begin{bmatrix}x\\x^2\end{bmatrix}\tag{3}
+\]</span></p>
 <p>the linear regression converts to:</p>
-<p>$$<br>y(\boldsymbol{x})=b+ w_1x+w_2x^2\tag{4}<br>$$</p>
-<p>However, the estimation of the parameter $\boldsymbol{w}$ is not changed by the extension of the feature function. Because in the least-squares or other optimization algorithms the variables or random variables are $\boldsymbol{w}$, and we do not care about the change of input space. And when we using the algorithm described in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Regression-Least-Squares-Estimation/">‘least squares estimation’</a>:</p>
-<p>$$<br>\boldsymbol{w}=(X^TX)^{-1}X^T\boldsymbol{y}\tag{5}<br>$$</p>
+<p><span class="math display">\[
+y(\boldsymbol{x})=b+ w_1x+w_2x^2\tag{4}
+\]</span></p>
+<p>However, the estimation of the parameter <span class="math inline">\(\boldsymbol{w}\)</span> is not changed by the extension of the feature function. Because in the least-squares or other optimization algorithms the variables or random variables are <span class="math inline">\(\boldsymbol{w}\)</span>, and we do not care about the change of input space. And when we using the algorithm described in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Regression-Least-Squares-Estimation/">'least squares estimation'</a>:</p>
+<p><span class="math display">\[
+\boldsymbol{w}=(X^TX)^{-1}X^T\boldsymbol{y}\tag{5}
+\]</span></p>
 <p>to estimate the parameter, we got:</p>
-<p>$$<br>\boldsymbol{w}=(\Phi^T\Phi)^{-1}\Phi^T\boldsymbol{y}\tag{6}<br>$$</p>
-<p>where<br>$$<br>\Phi=\begin{bmatrix}<br>-&amp;\phi(\boldsymbol{x_1})^T&amp;-\<br>&amp;\vdots&amp;\<br>-&amp;\phi(\boldsymbol{x_m})^T&amp;-\end{bmatrix}\tag{7}<br>$$</p>
-<h3 id="Code-for-polynomial-regression"><a href="#Code-for-polynomial-regression" class="headerlink" title="Code for polynomial regression"></a>Code for polynomial regression</h3><p>To the same task in the <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘least squares estimation’</a>, regression of the weights of the newborn baby with days is like:</p>
-<p><img src="./newborn_baby_weights.png"></p>
+<p><span class="math display">\[
+\boldsymbol{w}=(\Phi^T\Phi)^{-1}\Phi^T\boldsymbol{y}\tag{6}
+\]</span></p>
+<p>where <span class="math display">\[
+\Phi=\begin{bmatrix}
+-&amp;\phi(\boldsymbol{x_1})^T&amp;-\\
+&amp;\vdots&amp;\\
+-&amp;\phi(\boldsymbol{x_m})^T&amp;-\end{bmatrix}\tag{7}
+\]</span></p>
+<h3 id="code-for-polynomial-regression">Code for polynomial regression</h3>
+<p>To the same task in the <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'least squares estimation'</a>, regression of the weights of the newborn baby with days is like:</p>
+<p><img src="./newborn_baby_weights.png" /></p>
 <p>The linear regression result of a male baby is :</p>
-<p><img src="./linear_regression_male.png"></p>
-<p>And code of the least square polynomial regression with power $d$ is </p>
+<p><img src="./linear_regression_male.png" /></p>
+<p>And code of the least square polynomial regression with power <span class="math inline">\(d\)</span> is</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fit_polynomial</span>(<span class="params">self, x, y, d</span>):</span></span><br><span class="line">    x_org = np.array(x).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="comment"># add a column which is all 1s to calculate bias</span></span><br><span class="line">    x = np.c_[np.ones(x.size).reshape(<span class="number">-1</span>, <span class="number">1</span>), x_org]</span><br><span class="line">    x_org_d = x_org</span><br><span class="line">    <span class="comment"># building polynomial with highest power d</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, d):</span><br><span class="line">        x_org_d = x_org_d * x_org</span><br><span class="line">        x = np.c_[x, x_org_d]</span><br><span class="line">    y = np.array(y).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">    w = np.linalg.inv(x.transpose().dot(x)).dot(x.transpose()).dot(y)</span><br><span class="line">    <span class="keyword">return</span> w</span><br></pre></td></tr></table></figure>
-<p>The entire project can be found The entire project can be found <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/ML">https://github.com/Tony-Tan/ML</a> and please star me. </p>
+<p>The entire project can be found The entire project can be found <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/ML">https://github.com/Tony-Tan/ML</a> and please star me.</p>
 <p>And the result of the regression is:</p>
-<p><img src="./polynomial_fit.png"></p>
+<p><img src="./polynomial_fit.png" /></p>
 <p>The blue regression line looks pretty well comparing to the right line.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

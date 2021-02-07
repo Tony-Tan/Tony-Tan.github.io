@@ -172,7 +172,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ADALINE-LMS-and-Widrow-Hoff-learning-1"><span class="nav-number">1.</span> <span class="nav-text">ADALINE, LMS, and Widrow-Hoff learning[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ADALINE-Network"><span class="nav-number">2.</span> <span class="nav-text">ADALINE Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mean-Square-Error"><span class="nav-number">3.</span> <span class="nav-text">Mean Square Error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LMS-Algorithm"><span class="nav-number">4.</span> <span class="nav-text">LMS Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-of-Convergence"><span class="nav-number">5.</span> <span class="nav-text">Analysis of Convergence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#adaline-lms-and-widrow-hoff-learning1"><span class="nav-number">1.</span> <span class="nav-text">ADALINE, LMS, and Widrow-Hoff learning1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adaline-network"><span class="nav-number">2.</span> <span class="nav-text">ADALINE Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mean-square-error"><span class="nav-number">3.</span> <span class="nav-text">Mean Square Error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lms-algorithm"><span class="nav-number">4.</span> <span class="nav-text">LMS Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-convergence"><span class="nav-number">5.</span> <span class="nav-text">Analysis of Convergence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -326,120 +326,219 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> Widrow-Hoff learning, ADALINE, Adaptive LInear NEuron, LMS, performance learning</p>
-<a id="more"></a>
-
-<h2 id="ADALINE-LMS-and-Widrow-Hoff-learning-1"><a href="#ADALINE-LMS-and-Widrow-Hoff-learning-1" class="headerlink" title="ADALINE, LMS, and Widrow-Hoff learning[^1]"></a>ADALINE, LMS, and Widrow-Hoff learning[^1]</h2><p>Performance learning had been discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">‘Performance Surfaces and Optimum Points’</a>. But we have not used it in any neural network. In this post, we talk about an important application of performance learning. And this new neural network was invented by Frank Widrow and his gradate student Marcian Hoff in 1960 when it was almost at the same time as Perceptron which had been discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">‘Perceptron Learning Rule’</a>. It is called Widrow-Hoff Learning. This is an approximate steepest descent algorithm. And the performance index used in the learning rule is mean square error.</p>
-<p>Perceptron was discussed because it is still used in the current task. It’s a kind of basic block of a current neural network as well. However, Widrow-Hoff learning is supposed to be discussed because it is:</p>
-<ol>
+        <p><strong>Keywords:</strong> Widrow-Hoff learning, ADALINE, Adaptive LInear NEuron, LMS, performance learning <a id="more"></a></p>
+<h2 id="adaline-lms-and-widrow-hoff-learning1">ADALINE, LMS, and Widrow-Hoff learning<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Performance learning had been discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">'Performance Surfaces and Optimum Points'</a>. But we have not used it in any neural network. In this post, we talk about an important application of performance learning. And this new neural network was invented by Frank Widrow and his gradate student Marcian Hoff in 1960 when it was almost at the same time as Perceptron which had been discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">'Perceptron Learning Rule'</a>. It is called Widrow-Hoff Learning. This is an approximate steepest descent algorithm. And the performance index used in the learning rule is mean square error.</p>
+<p>Perceptron was discussed because it is still used in the current task. It's a kind of basic block of a current neural network as well. However, Widrow-Hoff learning is supposed to be discussed because it is:</p>
+<ol type="1">
 <li>widely used in many signal processing</li>
 <li>and precursor to the backpropagation algorithm which is a very important aspect of current deep learning research.</li>
 </ol>
-<p>ADALINE (Adaptive LInear NEuron) and a learning rule called LMS(Least Mean Square) algorithm were introduced in the paper <em>‘Adaptive switching circuits’</em>. The only distinction between perceptron and ADALINE is only the transfer function which in perceptron is a hard-limiting but in ADALINE is linear. And they have the same inherent limitation: they can only deal with the linear separable problem. And the learning rule LMS algorithm is more powerful than the perceptron learning rule. The perceptron learning algorithm always gives a decision boundary through a training point(an example of the training set)or near a training point as we have talked in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">‘Perceptron Learning Rule’</a>. And the training point somehow can also be called a pattern in some cases. LMS had great success in signal processing but it did not work well in adapting the algorithm to the multilayer network. By the way, after 1906s Dr. Widrow gave up the research in neural networks and 1980s he went back to the neural network. Backpropagation is a descendant of the LMS algorithm.</p>
-<h2 id="ADALINE-Network"><a href="#ADALINE-Network" class="headerlink" title="ADALINE Network"></a>ADALINE Network</h2><p>It’s an abbreviated notation of ADALINE network is;</p>
-<p><img src="./abbreviated_ADALINE.jpeg"></p>
-<p>It can be notated mathematically as:<br>$$<br>\begin{aligned}<br>  \boldsymbol{a}&amp;=\text{pureline}(W\boldsymbol{p} + \boldsymbol{b})\<br>  &amp;= W\boldsymbol{p}+\boldsymbol{b}<br>\end{aligned}\tag{1}<br>$$</p>
+<p>ADALINE (Adaptive LInear NEuron) and a learning rule called LMS(Least Mean Square) algorithm were introduced in the paper <em>'Adaptive switching circuits'</em>. The only distinction between perceptron and ADALINE is only the transfer function which in perceptron is a hard-limiting but in ADALINE is linear. And they have the same inherent limitation: they can only deal with the linear separable problem. And the learning rule LMS algorithm is more powerful than the perceptron learning rule. The perceptron learning algorithm always gives a decision boundary through a training point(an example of the training set)or near a training point as we have talked in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">'Perceptron Learning Rule'</a>. And the training point somehow can also be called a pattern in some cases. LMS had great success in signal processing but it did not work well in adapting the algorithm to the multilayer network. By the way, after 1906s Dr. Widrow gave up the research in neural networks and 1980s he went back to the neural network. Backpropagation is a descendant of the LMS algorithm.</p>
+<h2 id="adaline-network">ADALINE Network</h2>
+<p>It's an abbreviated notation of ADALINE network is;</p>
+<p><img src="./abbreviated_ADALINE.jpeg" /></p>
+<p>It can be notated mathematically as: <span class="math display">\[
+\begin{aligned}
+  \boldsymbol{a}&amp;=\text{pureline}(W\boldsymbol{p} + \boldsymbol{b})\\
+  &amp;= W\boldsymbol{p}+\boldsymbol{b}
+\end{aligned}\tag{1}
+\]</span></p>
 <p>This is already a simple model, but we would like to use a more simplified model: a neuron with 2-inputs. Its abbreviated notation is:</p>
-<p><img src="./abbreviated_2inputs.jpeg"></p>
+<p><img src="./abbreviated_2inputs.jpeg" /></p>
 <p>whose mathematical notation is:</p>
-<p>$$<br>\begin{aligned}<br>  \boldsymbol{a}&amp;= W\boldsymbol{p}+\boldsymbol{b}\<br>  &amp;=w_{1,1}p_1+w_{1,2}p_2+b<br>\end{aligned}\tag{2}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \boldsymbol{a}&amp;= W\boldsymbol{p}+\boldsymbol{b}\\
+  &amp;=w_{1,1}p_1+w_{1,2}p_2+b
+\end{aligned}\tag{2}
+\]</span></p>
 <p>and decision boundary of this 2-input neuron is:</p>
-<p><img src="./decision_boundary.png"></p>
-<p>$\boldsymbol{w}$ is the vector consisting of the weights in neuron. And it always point to the region where $w_{1,1}p_1+w_{1,2}p_2+b&gt;0$</p>
-<p>This is the simplest ADALINE neural network architecture, and then we would like to investigate ‘how to modify its parameter’ - its learning rule.</p>
-<h2 id="Mean-Square-Error"><a href="#Mean-Square-Error" class="headerlink" title="Mean Square Error"></a>Mean Square Error</h2><p>LMS is a kind of supervised learning and it needs a training set:</p>
-<p>$$<br>{\boldsymbol{p}_1,t_1},{\boldsymbol{p}_2,t_2},\cdots,{\boldsymbol{p}_Q,t_Q}\tag{3}<br>$$</p>
-<p>And we used the information of the interaction between the output of the neural network of a certain input $\boldsymbol{p}_i$ and its corresponding target $t_i$</p>
+<p><img src="./decision_boundary.png" /></p>
+<p><span class="math inline">\(\boldsymbol{w}\)</span> is the vector consisting of the weights in neuron. And it always point to the region where <span class="math inline">\(w_{1,1}p_1+w_{1,2}p_2+b&gt;0\)</span></p>
+<p>This is the simplest ADALINE neural network architecture, and then we would like to investigate 'how to modify its parameter' - its learning rule.</p>
+<h2 id="mean-square-error">Mean Square Error</h2>
+<p>LMS is a kind of supervised learning and it needs a training set:</p>
+<p><span class="math display">\[
+\{\boldsymbol{p}_1,t_1\},\{\boldsymbol{p}_2,t_2\},\cdots,\{\boldsymbol{p}_Q,t_Q\}\tag{3}
+\]</span></p>
+<p>And we used the information of the interaction between the output of the neural network of a certain input <span class="math inline">\(\boldsymbol{p}_i\)</span> and its corresponding target <span class="math inline">\(t_i\)</span></p>
 <p>The information used in LMS is the mean square error(MSE), which is the difference between output and target. This is the performance index of the ADALINE neural network.</p>
 <p>To make the calculating process more beautiful, we lump the parameters up including bias into:</p>
-<p>$$<br>\boldsymbol{x}=\begin{bmatrix}<br>  _1\boldsymbol{w}\<br>  b<br>\end{bmatrix}\tag{4}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{x}=\begin{bmatrix}
+  _1\boldsymbol{w}\\
+  b
+\end{bmatrix}\tag{4}
+\]</span></p>
 <p>and input lump up respectely:</p>
-<p>$$<br>\boldsymbol{z}=\begin{bmatrix}<br>  \boldsymbol{p}\<br>  1<br>\end{bmatrix}\tag{5}<br>$$</p>
-<p>$\boldsymbol{x}$ is used to refer to as parameter for make it sucessive with the posts about performance optimization(<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">‘Performance Surfaces and Optimum Points’</a>)<br>and equation(1) became:</p>
-<p>$$<br>a=W\boldsymbol{p}+\boldsymbol{b}=\boldsymbol{x}^T\boldsymbol{z}\tag{6}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{z}=\begin{bmatrix}
+  \boldsymbol{p}\\
+  1
+\end{bmatrix}\tag{5}
+\]</span></p>
+<p><span class="math inline">\(\boldsymbol{x}\)</span> is used to refer to as parameter for make it sucessive with the posts about performance optimization(<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">'Performance Surfaces and Optimum Points'</a>) and equation(1) became:</p>
+<p><span class="math display">\[
+a=W\boldsymbol{p}+\boldsymbol{b}=\boldsymbol{x}^T\boldsymbol{z}\tag{6}
+\]</span></p>
 <p>Expression for the ADALINE network mean square error:</p>
-<p>$$<br>F(x)=\mathbb {E}[e^2]=\mathbb {E}[(t-a)^2]=\mathbb {E} [(t-\boldsymbol{x}^T\boldsymbol{z})^2]\tag{7}<br>$$</p>
-<p>where the symbol $\mathbb{E}$ is the expectation who is generalized definition – time average for the deterministic signal. Average is also called mean and the mean of the square of error so it is called <strong>MSE</strong>.</p>
-<p>$$<br>\mathbb{E}[(t-\boldsymbol{x}^T\boldsymbol{z})^2]=\mathbb{E}[t^2]-2\boldsymbol{x}^T\mathbb{E}[t\boldsymbol{z}]+\boldsymbol{x}^T\mathbb{E}[\boldsymbol{z}^T\boldsymbol{z}]\boldsymbol{x}\tag{8}<br>$$</p>
-<p>where $\boldsymbol{x}$ and $t$ is not a random variable so its expectation is itself. And equation(8) can be simplified as</p>
-<p>$$<br>F(\boldsymbol{x})=C-2\boldsymbol{x}^T\boldsymbol{h}+\boldsymbol{x}^TR\boldsymbol{x}\tag{9}<br>$$</p>
+<p><span class="math display">\[
+F(x)=\mathbb {E}[e^2]=\mathbb {E}[(t-a)^2]=\mathbb {E} [(t-\boldsymbol{x}^T\boldsymbol{z})^2]\tag{7}
+\]</span></p>
+<p>where the symbol <span class="math inline">\(\mathbb{E}\)</span> is the expectation who is generalized definition -- time average for the deterministic signal. Average is also called mean and the mean of the square of error so it is called <strong>MSE</strong>.</p>
+<p><span class="math display">\[
+\mathbb{E}[(t-\boldsymbol{x}^T\boldsymbol{z})^2]=\mathbb{E}[t^2]-2\boldsymbol{x}^T\mathbb{E}[t\boldsymbol{z}]+\boldsymbol{x}^T\mathbb{E}[\boldsymbol{z}^T\boldsymbol{z}]\boldsymbol{x}\tag{8}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{x}\)</span> and <span class="math inline">\(t\)</span> is not a random variable so its expectation is itself. And equation(8) can be simplified as</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=C-2\boldsymbol{x}^T\boldsymbol{h}+\boldsymbol{x}^TR\boldsymbol{x}\tag{9}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>$\boldsymbol{h}=t\boldsymbol{z}$ in statistical view, this is cross-correlation between input and output.</li>
-<li>$R=\mathbb{E}[\boldsymbol{z}\boldsymbol{z}^T]$ is input correlation matrix whose diagonal iters are mean square value of input.</li>
-<li>$C=\mathbb{E}[t^2]$ is a constant.</li>
+<li><span class="math inline">\(\boldsymbol{h}=t\boldsymbol{z}\)</span> in statistical view, this is cross-correlation between input and output.</li>
+<li><span class="math inline">\(R=\mathbb{E}[\boldsymbol{z}\boldsymbol{z}^T]\)</span> is input correlation matrix whose diagonal iters are mean square value of input.</li>
+<li><span class="math inline">\(C=\mathbb{E}[t^2]\)</span> is a constant.</li>
 </ul>
-<p>equation(9) is a <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Quadratic-Funtions/">‘quadratic function’</a>. and we can rewrite it in the form:</p>
-<p>$$<br>F(\boldsymbol{x}=C+ \boldsymbol{d}^T\boldsymbol{x}+\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x})\tag{10}<br>$$</p>
+<p>equation(9) is a <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Quadratic-Funtions/">'quadratic function'</a>. and we can rewrite it in the form:</p>
+<p><span class="math display">\[
+F(\boldsymbol{x}=C+ \boldsymbol{d}^T\boldsymbol{x}+\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x})\tag{10}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>$C=C$</li>
-<li>$\boldsymbol{d}^T=2\boldsymbol{h}^T$</li>
-<li>$A=2R=2\mathbb{E}[\boldsymbol{z}\boldsymbol{z}^T]$ is positive definite or positive semidefinite matrix. So this means square error function could have:<ol>
-<li>a strong minimum if $R$ is positive definite and could also have a weak minimum or </li>
-<li>no minimum if $R$ is positive semidefinite.</li>
-</ol>
-</li>
+<li><span class="math inline">\(C=C\)</span></li>
+<li><span class="math inline">\(\boldsymbol{d}^T=2\boldsymbol{h}^T\)</span></li>
+<li><span class="math inline">\(A=2R=2\mathbb{E}[\boldsymbol{z}\boldsymbol{z}^T]\)</span> is positive definite or positive semidefinite matrix. So this means square error function could have:
+<ol type="1">
+<li>a strong minimum if <span class="math inline">\(R\)</span> is positive definite and could also have a weak minimum or</li>
+<li>no minimum if <span class="math inline">\(R\)</span> is positive semidefinite.</li>
+</ol></li>
 </ul>
-<p>Then the stationary point could be at the point:<br>$$<br>\nabla F(\boldsymbol{x})=-2\boldsymbol{h}+2R\boldsymbol{x}=0\tag{11}<br>$$</p>
+<p>Then the stationary point could be at the point: <span class="math display">\[
+\nabla F(\boldsymbol{x})=-2\boldsymbol{h}+2R\boldsymbol{x}=0\tag{11}
+\]</span></p>
 <p>And finally we get the minimum point of MSE:</p>
-<p>$$<br>\boldsymbol{x}^{\star}=R^{-1}\boldsymbol{h}\tag{12}<br>$$</p>
-<p>because $R$ is comprised of inputs, so inputs decides the matrix $R$ and $R$ decides the minimum of MSE $\boldsymbol{x}^{\star}$. <strong>This means when we have no information of the Hessian matrix of the performance index, our inputs are used to comprise the approximation of the Hessian matrix.</strong></p>
-<h2 id="LMS-Algorithm"><a href="#LMS-Algorithm" class="headerlink" title="LMS Algorithm"></a>LMS Algorithm</h2><p>LMS is the short for least mean square. And it is the algorithm for searching the minimum of the performance index.</p>
-<p>When $\boldsymbol{h}$ and $R$ are known and stationary points can be found directly. If $R^{-1}$ is impossible to calculate we can use <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘steepest descent algorithm’</a>. However, the most common cause is both $\boldsymbol{h}$ and $R$ are unknown or are not convenient to be calculated. We would use approximate steepest descent in which <strong>we use an estimated gradient</strong> for this case. </p>
+<p><span class="math display">\[
+\boldsymbol{x}^{\star}=R^{-1}\boldsymbol{h}\tag{12}
+\]</span></p>
+<p>because <span class="math inline">\(R\)</span> is comprised of inputs, so inputs decides the matrix <span class="math inline">\(R\)</span> and <span class="math inline">\(R\)</span> decides the minimum of MSE <span class="math inline">\(\boldsymbol{x}^{\star}\)</span>. <strong>This means when we have no information of the Hessian matrix of the performance index, our inputs are used to comprise the approximation of the Hessian matrix.</strong></p>
+<h2 id="lms-algorithm">LMS Algorithm</h2>
+<p>LMS is the short for least mean square. And it is the algorithm for searching the minimum of the performance index.</p>
+<p>When <span class="math inline">\(\boldsymbol{h}\)</span> and <span class="math inline">\(R\)</span> are known and stationary points can be found directly. If <span class="math inline">\(R^{-1}\)</span> is impossible to calculate we can use <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">'steepest descent algorithm'</a>. However, the most common cause is both <span class="math inline">\(\boldsymbol{h}\)</span> and <span class="math inline">\(R\)</span> are unknown or are not convenient to be calculated. We would use approximate steepest descent in which <strong>we use an estimated gradient</strong> for this case.</p>
 <p>And we also instead <strong>expectation of square error</strong> with <strong>a squared error</strong>:</p>
-<p>$$<br>\hat{F}(\boldsymbol{x})=(t(k)-a(k)^2)=e^2(k)\tag{13}<br>$$</p>
+<p><span class="math display">\[
+\hat{F}(\boldsymbol{x})=(t(k)-a(k)^2)=e^2(k)\tag{13}
+\]</span></p>
 <p>and the approximation of gradient is:</p>
-<p>$$<br>\hat{\nabla}F=\nabla e^2(k)\tag{14}<br>$$</p>
-<p>This is the key point of the algorithm and it is also known as <strong>‘sstochastic gradient’</strong>. And when this approximation is used in gradient descent algorithm it is referred to as </p>
+<p><span class="math display">\[
+\hat{\nabla}F=\nabla e^2(k)\tag{14}
+\]</span></p>
+<p>This is the key point of the algorithm and it is also known as <strong>'sstochastic gradient'</strong>. And when this approximation is used in gradient descent algorithm it is referred to as</p>
 <ul>
-<li>on-line learning </li>
+<li>on-line learning</li>
 <li>incremental learning</li>
 </ul>
 <p>which means parameters are updated as each input is presented.</p>
-<p>In the $\nabla e^2(k)$, the first $R$ components are the parts decided by the weights. So we have:</p>
-<p>$$<br>[\nabla e^2(k)]<em>j=\frac{\partial e^2(k)}{\partial w</em>{1,j}}=2 e(k)\frac{\partial e(k)}{\partial w_{1,j}}\tag{15}<br>$$</p>
-<p>for $j=1,2,\cdots, R$ and similarly</p>
-<p>$$<br>[\nabla e^2(k)]_{j+1}=\frac{\partial e^2(k)}{\partial b}=2 e(k)\frac{\partial e(k)}{b}\tag{16}<br>$$</p>
-<p>now we consider $\frac{\partial e(k)}{\partial w_{1,j}}$ whose error is the difference between  the output of ADALINE neuron with $R$ weights and target:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{\partial e(k)}{\partial w_{1,j}}&amp;=\frac{\partial[t(k)-a(k)]}{\partial w_{1,j}}\<br>  &amp;=\frac{\partial}{\partial w_{1,j}}[t(k)-(<em>1W^T\boldsymbol{p}(k)+b)]\<br>  &amp;=\frac{\partial}{\partial w</em>{1,j}}[t(k)-(\sum_{i=1}^Rw_{1,i}p_i(k)+b)]<br>  &amp;=-p_j(k)<br>\end{aligned}\tag{17}<br>$$</p>
-<p>and similarly:<br>$$<br>\frac{\partial e(k)}{b} = -1\tag{18}<br>$$</p>
-<p>and $\boldsymbol{z}$ is conprised of $p_j{k}$ and $1$ as we mentioned above, so the equation(14) can be rewritten as:</p>
-<p>$$<br>\hat{\nabla}F=\nabla e^2(k)=-2e(k)\boldsymbol{z}(k)\tag{19}<br>$$</p>
+<p>In the <span class="math inline">\(\nabla e^2(k)\)</span>, the first <span class="math inline">\(R\)</span> components are the parts decided by the weights. So we have:</p>
+<p><span class="math display">\[
+[\nabla e^2(k)]_j=\frac{\partial e^2(k)}{\partial w_{1,j}}=2 e(k)\frac{\partial e(k)}{\partial w_{1,j}}\tag{15}
+\]</span></p>
+<p>for <span class="math inline">\(j=1,2,\cdots, R\)</span> and similarly</p>
+<p><span class="math display">\[
+[\nabla e^2(k)]_{j+1}=\frac{\partial e^2(k)}{\partial b}=2 e(k)\frac{\partial e(k)}{b}\tag{16}
+\]</span></p>
+<p>now we consider <span class="math inline">\(\frac{\partial e(k)}{\partial w_{1,j}}\)</span> whose error is the difference between the output of ADALINE neuron with <span class="math inline">\(R\)</span> weights and target:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{\partial e(k)}{\partial w_{1,j}}&amp;=\frac{\partial[t(k)-a(k)]}{\partial w_{1,j}}\\
+  &amp;=\frac{\partial}{\partial w_{1,j}}[t(k)-(_1W^T\boldsymbol{p}(k)+b)]\\
+  &amp;=\frac{\partial}{\partial w_{1,j}}[t(k)-(\sum_{i=1}^Rw_{1,i}p_i(k)+b)]
+  &amp;=-p_j(k)
+\end{aligned}\tag{17}
+\]</span></p>
+<p>and similarly: <span class="math display">\[
+\frac{\partial e(k)}{b} = -1\tag{18}
+\]</span></p>
+<p>and <span class="math inline">\(\boldsymbol{z}\)</span> is conprised of <span class="math inline">\(p_j{k}\)</span> and <span class="math inline">\(1\)</span> as we mentioned above, so the equation(14) can be rewritten as:</p>
+<p><span class="math display">\[
+\hat{\nabla}F=\nabla e^2(k)=-2e(k)\boldsymbol{z}(k)\tag{19}
+\]</span></p>
 <p>equation(19) gives us a beautiful form of the approximation of the gradient of squared error who is also an approximation of mean squared error.</p>
-<p>Then we take approximation of $\nabla F$ into steepest descent algorithm:</p>
-<p>$$<br>\boldsymbol{x}<em>{k+1}=\boldsymbol{x}</em>{k}-\alpha  \hat{\nabla} F(\boldsymbol{x})\bigg |_{\boldsymbol{x}=\boldsymbol{x}_k^{\star}}\tag{20}<br>$$</p>
-<p>and take $\hat{\nabla} F = -2e(k)\boldsymbol{z}(k)$ into equation(20):</p>
-<p>$$<br>\boldsymbol{x}<em>{k+1}=\boldsymbol{x}</em>{k}+2\alpha e(k)\boldsymbol{z}(k)\tag{21}<br>$$</p>
+<p>Then we take approximation of <span class="math inline">\(\nabla F\)</span> into steepest descent algorithm:</p>
+<p><span class="math display">\[
+\boldsymbol{x}_{k+1}=\boldsymbol{x}_{k}-\alpha  \hat{\nabla} F(\boldsymbol{x})\bigg |_{\boldsymbol{x}=\boldsymbol{x}_k^{\star}}\tag{20}
+\]</span></p>
+<p>and take <span class="math inline">\(\hat{\nabla} F = -2e(k)\boldsymbol{z}(k)\)</span> into equation(20):</p>
+<p><span class="math display">\[
+\boldsymbol{x}_{k+1}=\boldsymbol{x}_{k}+2\alpha e(k)\boldsymbol{z}(k)\tag{21}
+\]</span></p>
 <p>This is an LMS algorithm which is also known as the delta rule and Widrow-Hoff Learning algorithm. To multiple neurons neural network, we have a matrix form:</p>
-<p>$$<br>W(k+1)=W(k)+2\alpha \boldsymbol{e}(k) \boldsymbol{p}^T(k)\tag{22}<br>$$</p>
-<h2 id="Analysis-of-Convergence"><a href="#Analysis-of-Convergence" class="headerlink" title="Analysis of Convergence"></a>Analysis of Convergence</h2><p>We have analyzed the convergence of the steepest descent algorithm, when</p>
-<p>$$<br>\alpha&lt;\frac{2}{\lambda_{\text{max}}}\tag{23}<br>$$</p>
-<p>and to LMS, $\boldsymbol{x}(k)$ is a function of $\boldsymbol{z}(k-1),\cdots \boldsymbol{z}(0)$ and we assume  $\boldsymbol{z}(k-1),\cdots \boldsymbol{z}(0)$ are statistical independent and $\boldsymbol{x}(k)$ is independent to $\boldsymbol{z}(k)$ statistically.</p>
-<p>Because what we have used is an approximation of the steepest descent algorithm which guarantees to converge to $\boldsymbol{x}^{\star}=R^{-1}\boldsymbol{h}$ for equation(9) and what we should do is to proof LMS converge to $\boldsymbol{x}^{\star}=R^{-1}\boldsymbol{h}$ as well.</p>
+<p><span class="math display">\[
+W(k+1)=W(k)+2\alpha \boldsymbol{e}(k) \boldsymbol{p}^T(k)\tag{22}
+\]</span></p>
+<h2 id="analysis-of-convergence">Analysis of Convergence</h2>
+<p>We have analyzed the convergence of the steepest descent algorithm, when</p>
+<p><span class="math display">\[
+\alpha&lt;\frac{2}{\lambda_{\text{max}}}\tag{23}
+\]</span></p>
+<p>and to LMS, <span class="math inline">\(\boldsymbol{x}(k)\)</span> is a function of <span class="math inline">\(\boldsymbol{z}(k-1),\cdots \boldsymbol{z}(0)\)</span> and we assume <span class="math inline">\(\boldsymbol{z}(k-1),\cdots \boldsymbol{z}(0)\)</span> are statistical independent and <span class="math inline">\(\boldsymbol{x}(k)\)</span> is independent to <span class="math inline">\(\boldsymbol{z}(k)\)</span> statistically.</p>
+<p>Because what we have used is an approximation of the steepest descent algorithm which guarantees to converge to <span class="math inline">\(\boldsymbol{x}^{\star}=R^{-1}\boldsymbol{h}\)</span> for equation(9) and what we should do is to proof LMS converge to <span class="math inline">\(\boldsymbol{x}^{\star}=R^{-1}\boldsymbol{h}\)</span> as well.</p>
 <p>The update procedure of LMS is:</p>
-<p>$$<br>\boldsymbol{x}<em>{k+1}=\boldsymbol{x}</em>{k}+2\alpha e(k)\boldsymbol{z}(k)\tag{24}<br>$$ </p>
+<p><span class="math display">\[
+\boldsymbol{x}_{k+1}=\boldsymbol{x}_{k}+2\alpha e(k)\boldsymbol{z}(k)\tag{24}
+\]</span></p>
 <p>The expectation of both side of equation(24):</p>
-<p>$$<br>\mathbb{E}[\boldsymbol{x}<em>{k+1}]=\mathbb{E}[\boldsymbol{x}</em>{k}]+2\alpha \mathbb{E}[e(k)\boldsymbol{z}(k)]\tag{25}<br>$$</p>
-<p>substitude $t(k)-\boldsymbol{x}_k^T\boldsymbol{z}(k)$ for the error $e(k)$ and get:</p>
-<p>$$<br>\mathbb{E}[\boldsymbol{x}<em>{k+1}]=\mathbb{E}[\boldsymbol{x}</em>{k}]+2\alpha \mathbb{E}[(t(k)-\boldsymbol{x}_k^T\boldsymbol{z}(k))\boldsymbol{z}(k)]<br>\tag{26}<br>$$</p>
-<p>substitude $\boldsymbol{z}^T(k)\boldsymbol{x}_k$ for<br>$\boldsymbol{x}^T_k\boldsymbol{z}(k)$ and rearrange terms to:</p>
-<p>$$<br>\mathbb{E}[\boldsymbol{x}<em>{k+1}]=\mathbb{E}[\boldsymbol{x}</em>{k}]+2\alpha {\mathbb{E}[t(k)\boldsymbol{z}(k)]-\mathbb{E}[\boldsymbol{z}(k)\boldsymbol{z}^T(k)\boldsymbol{x}_k]}<br>\tag{27}<br>$$</p>
-<p>because $\boldsymbol{x}_k$ is independent of $\boldsymbol{z}(k)$:</p>
-<p>$$<br>\mathbb{E}[\boldsymbol{x}<em>{k+1}]=\mathbb{E}[\boldsymbol{x}</em>{k}]+2\alpha {\boldsymbol{h}-R\mathbb{E}[\boldsymbol{x}_k]}<br>\tag{28}<br>$$</p>
+<p><span class="math display">\[
+\mathbb{E}[\boldsymbol{x}_{k+1}]=\mathbb{E}[\boldsymbol{x}_{k}]+2\alpha \mathbb{E}[e(k)\boldsymbol{z}(k)]\tag{25}
+\]</span></p>
+<p>substitude <span class="math inline">\(t(k)-\boldsymbol{x}_k^T\boldsymbol{z}(k)\)</span> for the error <span class="math inline">\(e(k)\)</span> and get:</p>
+<p><span class="math display">\[
+\mathbb{E}[\boldsymbol{x}_{k+1}]=\mathbb{E}[\boldsymbol{x}_{k}]+2\alpha \mathbb{E}[(t(k)-\boldsymbol{x}_k^T\boldsymbol{z}(k))\boldsymbol{z}(k)]
+\tag{26}
+\]</span></p>
+<p>substitude <span class="math inline">\(\boldsymbol{z}^T(k)\boldsymbol{x}_k\)</span> for <span class="math inline">\(\boldsymbol{x}^T_k\boldsymbol{z}(k)\)</span> and rearrange terms to:</p>
+<p><span class="math display">\[
+\mathbb{E}[\boldsymbol{x}_{k+1}]=\mathbb{E}[\boldsymbol{x}_{k}]+2\alpha \{\mathbb{E}[t(k)\boldsymbol{z}(k)]-\mathbb{E}[\boldsymbol{z}(k)\boldsymbol{z}^T(k)\boldsymbol{x}_k]\}
+\tag{27}
+\]</span></p>
+<p>because <span class="math inline">\(\boldsymbol{x}_k\)</span> is independent of <span class="math inline">\(\boldsymbol{z}(k)\)</span>:</p>
+<p><span class="math display">\[
+\mathbb{E}[\boldsymbol{x}_{k+1}]=\mathbb{E}[\boldsymbol{x}_{k}]+2\alpha \{\boldsymbol{h}-R\mathbb{E}[\boldsymbol{x}_k]\}
+\tag{28}
+\]</span></p>
 <p>and this can also be written as:</p>
-<p>$$<br>\mathbb{E}[\boldsymbol{x}<em>{k+1}]=[I-2\alpha R]\mathbb{E}[\boldsymbol{x}</em>{k}]+2\alpha \boldsymbol{h}<br>\tag{29}<br>$$</p>
-<p>this is also a dynamic system and to make it stable, eigenvalues of $I-2\alpha R$ should be greater than $-1$ and less than $1$. And this form of the matrix has the same eigenvectors of $R$ and its eigenvalues are $1-2\alpha \lambda_i$ so:</p>
-<p>$$<br>\begin{aligned}<br>  1&gt;1-2\alpha\lambda_i&gt;&amp;-1\<br>  0&lt;\alpha&lt;&amp;\frac{1}{\lambda_i}<br>\end{aligned}\tag{30}<br>$$</p>
+<p><span class="math display">\[
+\mathbb{E}[\boldsymbol{x}_{k+1}]=[I-2\alpha R]\mathbb{E}[\boldsymbol{x}_{k}]+2\alpha \boldsymbol{h}
+\tag{29}
+\]</span></p>
+<p>this is also a dynamic system and to make it stable, eigenvalues of <span class="math inline">\(I-2\alpha R\)</span> should be greater than <span class="math inline">\(-1\)</span> and less than <span class="math inline">\(1\)</span>. And this form of the matrix has the same eigenvectors of <span class="math inline">\(R\)</span> and its eigenvalues are <span class="math inline">\(1-2\alpha \lambda_i\)</span> so:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  1&gt;1-2\alpha\lambda_i&gt;&amp;-1\\
+  0&lt;\alpha&lt;&amp;\frac{1}{\lambda_i}
+\end{aligned}\tag{30}
+\]</span></p>
 <p>equation(30) is equivalent to:</p>
-<p>$$<br>  \alpha&lt;\frac{1}{\lambda_\text{max}}\tag{31}<br>$$</p>
-<p>Because of $A=2R$ so equation (31) gives the same condition as <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘steepest descent algorithm’</a></p>
+<p><span class="math display">\[
+  \alpha&lt;\frac{1}{\lambda_\text{max}}\tag{31}
+\]</span></p>
+<p>Because of <span class="math inline">\(A=2R\)</span> so equation (31) gives the same condition as <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">'steepest descent algorithm'</a></p>
 <p>Under this condition, when the system become satable, we would have:</p>
-<p>$$<br>\mathbb{E}[\boldsymbol{x}<em>{\text{ss}}]=[I-2\alpha R]\mathbb{E}[\boldsymbol{x}</em>{\text{ss}}] +2 \alpha \boldsymbol{h} \tag{32}<br>$$</p>
+<p><span class="math display">\[
+\mathbb{E}[\boldsymbol{x}_{\text{ss}}]=[I-2\alpha R]\mathbb{E}[\boldsymbol{x}_{\text{ss}}] +2 \alpha \boldsymbol{h} \tag{32}
+\]</span></p>
 <p>or</p>
-<p>$$<br>\mathbb{E}[\boldsymbol{x}_{\text{ss}}]=R^{-1}\boldsymbol{h}=\boldsymbol{x}^{\star} \tag{33}<br>$$</p>
+<p><span class="math display">\[
+\mathbb{E}[\boldsymbol{x}_{\text{ss}}]=R^{-1}\boldsymbol{h}=\boldsymbol{x}^{\star} \tag{33}
+\]</span></p>
 <p>Equation(33) shows that LMS solution which is obtained by one by one input from time to time would finally give a convergence solution as the one whose Hessian matrix is known.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]:  Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

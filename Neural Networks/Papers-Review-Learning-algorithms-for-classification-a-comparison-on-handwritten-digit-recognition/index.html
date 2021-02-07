@@ -176,7 +176,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Works"><span class="nav-number">1.</span> <span class="nav-text">Basic Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inspiration"><span class="nav-number">2.</span> <span class="nav-text">Inspiration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contribution"><span class="nav-number">3.</span> <span class="nav-text">Contribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment-and-Result"><span class="nav-number">4.</span> <span class="nav-text">Experiment and Result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Personal-Summary"><span class="nav-number">5.</span> <span class="nav-text">Personal Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-works"><span class="nav-number">1.</span> <span class="nav-text">Basic Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inspiration"><span class="nav-number">2.</span> <span class="nav-text">Inspiration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contribution"><span class="nav-number">3.</span> <span class="nav-text">Contribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#experiment-and-result"><span class="nav-number">4.</span> <span class="nav-text">Experiment and Result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#personal-summary"><span class="nav-number">5.</span> <span class="nav-text">Personal Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -332,16 +332,20 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>Keywords:</strong> LeNet, Convolutional Neural Networks, Handwritten Digit Recognition</p>
 <a id="more"></a>
-<p>All the figures in this post come from ‘Learning algorithms for classification-a comparison on handwritten digit recognition’[^1]</p>
-<h2 id="Basic-Works"><a href="#Basic-Works" class="headerlink" title="Basic Works"></a>Basic Works</h2><ol>
-<li>Convolutional network[^2]</li>
+<p>All the figures in this post come from 'Learning algorithms for classification-a comparison on handwritten digit recognition'<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<h2 id="basic-works">Basic Works</h2>
+<ol type="1">
+<li>Convolutional network<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 </ol>
-<h2 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h2><ol>
+<h2 id="inspiration">Inspiration</h2>
+<ol type="1">
 <li>Raw accuracy, training time, recognition time and memory requirements should be considered in classification.</li>
-<li>From experiments and comparison, the results can illuminate which one is better<ol>
-<li>Selected competitors(Baseline)<ul>
+<li>From experiments and comparison, the results can illuminate which one is better
+<ol type="1">
+<li>Selected competitors(Baseline)
+<ul>
 <li>Linear Classifier</li>
-<li>Nearest Neighbor Classifier </li>
+<li>Nearest Neighbor Classifier</li>
 <li>Large Fully Connected Multi-Layer Neural Network</li>
 <li>LeNet(1,4,5)</li>
 <li>Boosted LeNet 4</li>
@@ -349,75 +353,80 @@
 <li>LeNet 4 with K-Nearest Neighbors</li>
 <li>Local Learning with LeNet 4</li>
 <li>Optimal Margin Classifier(OMC)</li>
-</ul>
-</li>
+</ul></li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ol>
+<h2 id="contribution">Contribution</h2>
+<ol type="1">
 <li>Listing some data set that was used in recognition</li>
-<li>Details in comparison:<ol>
-<li>large fully connected multi-layer neural network  <ul>
-<li>It is over-parameterized but still works well - some build-in “self-regularization” mechanism. This is due to the nature of the error surface, gradient descent training invariably goes through a phase where the weights are small. Small weights cause the sigmoid(activation function) to operate in the quasi-linear region, making the network essentially equivalent to a low-capacity, single-layer network. (need more empirical evidence)</li>
-</ul>
-</li>
-<li>LeNet 1<ul>
+<li>Details in comparison:
+<ol type="1">
+<li>large fully connected multi-layer neural network
+<ul>
+<li>It is over-parameterized but still works well - some build-in "self-regularization" mechanism. This is due to the nature of the error surface, gradient descent training invariably goes through a phase where the weights are small. Small weights cause the sigmoid(activation function) to operate in the quasi-linear region, making the network essentially equivalent to a low-capacity, single-layer network. (need more empirical evidence)</li>
+</ul></li>
+<li>LeNet 1
+<ul>
 <li>Convolutional neural network</li>
-<li>first few layers:<ul>
-<li>local ‘receptive field’</li>
-<li>the output of the convolution is called ‘feature map’ </li>
+<li>first few layers:
+<ul>
+<li>local 'receptive field'</li>
+<li>the output of the convolution is called 'feature map'</li>
 <li>followed by a squashing function</li>
-</ul>
-</li>
-<li>share a single weight vector(weight sharing technique)<ul>
+</ul></li>
+<li>share a single weight vector(weight sharing technique)
+<ul>
 <li>reduce the number of free parameters</li>
 <li>shift-invariance</li>
 <li>need multiple feature maps, extracting different features types from the same image</li>
 <li>weights are trained by gradient descent</li>
-</ul>
-</li>
-<li>local, convolutional feature maps in hidden layers<ul>
+</ul></li>
+<li>local, convolutional feature maps in hidden layers
+<ul>
 <li>increasing complexity and abstraction</li>
 <li>higher-level features require less precise coding of their location</li>
 <li>local averaging and subsampling is used to reducing the resolution of the feature map</li>
 <li>invariance to distortions</li>
-<li>the resulting architecture is a ‘bi-pyramid’<br><img src="./3.png"></li>
-</ul>
-</li>
+<li>the resulting architecture is a 'bi-pyramid' <img src="./3.png" /></li>
+</ul></li>
 <li>1.7% error in the MNIST test</li>
-</ul>
-<ol start="3">
+</ul></li>
 <li>LeNet 4</li>
 </ol>
 <ul>
 <li>expanded version of LeNet 1 input(28x28 to 32x32)</li>
-<li>1.1% error in MNIST test </li>
+<li>1.1% error in MNIST test</li>
 </ul>
-<ol start="4">
+<ol start="4" type="1">
 <li>LeNet 5</li>
 </ol>
 <ul>
 <li>more feature maps</li>
 <li>a large fully-connected layer</li>
-<li>a distributed representation to encode the categories at the output layer rather than “1 of N” </li>
+<li>a distributed representation to encode the categories at the output layer rather than "1 of N"</li>
 <li>0.9% error in the MNIST test</li>
 </ul>
-<ol start="5">
+<ol start="5" type="1">
 <li>Boosted LeNet 4</li>
 </ol>
 <ul>
 <li>insufficient data to train 3 models</li>
 <li>affine transformation and line-thickness variation to augment the training set</li>
-<li>0.7% error in the MNIST test   </li>
-</ul>
-</li>
+<li>0.7% error in the MNIST test</li>
+</ul></li>
 </ol>
-</li>
+<h2 id="experiment-and-result">Experiment and Result</h2>
+<p><img src="./6.png" /> <img src="./7.png" /> <img src="./8.png" /> <img src="./9.png" /> <img src="./10.png" /></p>
+<h2 id="personal-summary">Personal Summary</h2>
+<p>This paper is another paper of LeCun after he trained the convolutional neural network by BP in 1990. And the experiment is the kernel in this paper. And some techniques mentioned in this paper are still employed today, such as training data augment. In 1995, LeCun had tried to improve the CNNs by different activation functions, different numbers of feature maps in each layer, different training data, and different combining methods. And he concluded as the training databases growing the CNNs will become more striking.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>LeCun, Yann, L. D. Jackel, Léon Bottou, Corinna Cortes, John S. Denker, Harris Drucker, Isabelle Guyon et al. "Learning algorithms for classification: A comparison on handwritten digit recognition." Neural networks: the statistical mechanics perspective 261 (1995): 276.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>LeCun, Yann, Bernhard E. Boser, John S. Denker, Donnie Henderson, Richard E. Howard, Wayne E. Hubbard, and Lawrence D. Jackel. "Handwritten digit recognition with a back-propagation network." In Advances in neural information processing systems, pp. 396-404. 1990.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<h2 id="Experiment-and-Result"><a href="#Experiment-and-Result" class="headerlink" title="Experiment and Result"></a>Experiment and Result</h2><p><img src="./6.png"><br><img src="./7.png"><br><img src="./8.png"><br><img src="./9.png"><br><img src="./10.png"></p>
-<h2 id="Personal-Summary"><a href="#Personal-Summary" class="headerlink" title="Personal Summary"></a>Personal Summary</h2><p>This paper is another paper of LeCun after he trained the convolutional neural network by BP in 1990. And the experiment is the kernel in this paper. And some techniques mentioned in this paper are still employed today, such as training data augment. In 1995, LeCun had tried to improve the CNNs by different activation functions, different numbers of feature maps in each layer, different training data, and different combining methods. And he concluded as the training databases growing the CNNs will become more striking.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: LeCun, Yann, L. D. Jackel, Léon Bottou, Corinna Cortes, John S. Denker, Harris Drucker, Isabelle Guyon et al. “Learning algorithms for classification: A comparison on handwritten digit recognition.” Neural networks: the statistical mechanics perspective 261 (1995): 276.</p>
-<p>[^2]: LeCun, Yann, Bernhard E. Boser, John S. Denker, Donnie Henderson, Richard E. Howard, Wayne E. Hubbard, and Lawrence D. Jackel. “Handwritten digit recognition with a back-propagation network.” In Advances in neural information processing systems, pp. 396-404. 1990.</p>
+</section>
 
     </div>
 

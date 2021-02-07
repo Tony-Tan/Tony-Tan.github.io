@@ -171,7 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Linear-Regression"><span class="nav-number">1.</span> <span class="nav-text">What is Linear Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#An-Example"><span class="nav-number">2.</span> <span class="nav-text">An Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9CLinear%E2%80%9D"><span class="nav-number">3.</span> <span class="nav-text">“Linear”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9CRegression%E2%80%9D"><span class="nav-number">4.</span> <span class="nav-text">“Regression”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-and-Statistical-Learning"><span class="nav-number">4.1.</span> <span class="nav-text">Machine Learning and Statistical Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-linear-regression"><span class="nav-number">5.</span> <span class="nav-text">What is linear regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Linear-Regression"><span class="nav-number">6.</span> <span class="nav-text">Why Linear Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-Questions-of-the-Example"><span class="nav-number">7.</span> <span class="nav-text">Some Questions of the Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Probabilistic-View"><span class="nav-number">8.</span> <span class="nav-text">A Probabilistic View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">9.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-linear-regression"><span class="nav-number">1.</span> <span class="nav-text">What is Linear Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#an-example"><span class="nav-number">2.</span> <span class="nav-text">An Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear"><span class="nav-number">3.</span> <span class="nav-text">&quot;Linear&quot;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regression"><span class="nav-number">4.</span> <span class="nav-text">&quot;Regression&quot;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#machine-learning-and-statistical-learning"><span class="nav-number">4.1.</span> <span class="nav-text">Machine Learning and Statistical Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-linear-regression-1"><span class="nav-number">5.</span> <span class="nav-text">What is linear regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why-linear-regression"><span class="nav-number">6.</span> <span class="nav-text">Why Linear Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-questions-of-the-example"><span class="nav-number">7.</span> <span class="nav-text">Some Questions of the Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-probabilistic-view"><span class="nav-number">8.</span> <span class="nav-text">A Probabilistic View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">9.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -325,46 +325,68 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> linear regression</p>
-<a id="more"></a>
-
-<h2 id="What-is-Linear-Regression"><a href="#What-is-Linear-Regression" class="headerlink" title="What is Linear Regression"></a>What is Linear Regression</h2><p>Linear regression is a basic idea in statistical or machine learning, especially in supervises learning. The linear regression is a statistical model whose structure is based on the linear combination, and it is usually used to predict some quantitative responses to some inputs(predictors). </p>
-<h2 id="An-Example"><a href="#An-Example" class="headerlink" title="An Example"></a>An Example</h2><p>This example is taken from ISL(James2013)[^1], It is about the sale between different kinds of advertisements. I downloaded the data set from <a target="_blank" rel="noopener" href="http://faculty.marshall.usc.edu/gareth-james/ISL/data.html">http://faculty.marshall.usc.edu/gareth-james/ISL/data.html</a>. It’s a CSV file, including 200 rows.<br>Here I draw 3 pictures using ‘matplotlib’ to make the data more visible. They are ‘TV’,’Radio’,’Newspaper’ to ‘Sales’ respectively.</p>
-<p><img src="./total.png"></p>
+        <p><strong>Keywords:</strong> linear regression <a id="more"></a></p>
+<h2 id="what-is-linear-regression">What is Linear Regression</h2>
+<p>Linear regression is a basic idea in statistical or machine learning, especially in supervises learning. The linear regression is a statistical model whose structure is based on the linear combination, and it is usually used to predict some quantitative responses to some inputs(predictors).</p>
+<h2 id="an-example">An Example</h2>
+<p>This example is taken from ISL(James2013)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, It is about the sale between different kinds of advertisements. I downloaded the data set from <a target="_blank" rel="noopener" href="http://faculty.marshall.usc.edu/gareth-james/ISL/data.html">http://faculty.marshall.usc.edu/gareth-james/ISL/data.html</a>. It's a CSV file, including 200 rows. Here I draw 3 pictures using 'matplotlib' to make the data more visible. They are 'TV','Radio','Newspaper' to 'Sales' respectively.</p>
+<p><img src="./total.png" /></p>
 <p>From these figures, we can find TV and Sales looks like having a stronger relationship than radio and sales. However, the Newspaper and Sales looks like independent.</p>
 <p>This naive example is too simple for it has only 3 predictors, but in the real task, it contains more than 3. So, it would be a bad idea to check all their relations by visualizing them in pictures, which may also have several gigabyte data that can not show on a single screen. Then to solve this problem, we should take the statistical methods to investigate the relation in the data and predict what the responses are to a certain predictor.</p>
-<h2 id="“Linear”"><a href="#“Linear”" class="headerlink" title="“Linear”"></a>“Linear”</h2><p>Linear is a property of the operation $f(\cdot)$, who have these two properties:</p>
-<ol>
-<li>$f(ax)=af(x)$</li>
-<li>$f(x+y)=f(x)+f(y)$</li>
+<h2 id="linear">"Linear"</h2>
+<p>Linear is a property of the operation <span class="math inline">\(f(\cdot)\)</span>, who have these two properties:</p>
+<ol type="1">
+<li><span class="math inline">\(f(ax)=af(x)\)</span></li>
+<li><span class="math inline">\(f(x+y)=f(x)+f(y)\)</span></li>
 </ol>
-<p>where $a$ is a constant. Then we say $f(\cdot)$ is linear.</p>
+<p>where <span class="math inline">\(a\)</span> is a constant. Then we say <span class="math inline">\(f(\cdot)\)</span> is linear.</p>
 <p>All the operations that have the properties above can be called linear, and all linear operation can be represented by a matrix. And if a linear operation can be drawn in a 2-D or 3-D space, it is a line or a plane. In higher dimensions more than 3, it is called a hyperplane. Maybe that why it is named linear, I guess.</p>
-<h2 id="“Regression”"><a href="#“Regression”" class="headerlink" title="“Regression”"></a>“Regression”</h2><p>In statistical or machine learning, regression is a crucial part of the whole field. However, the other part is the classification. If we took a view of the output data type, the distinction between them would be more notable. That is the output of regression is continuous on the real number line, while the output of classification is discrete.</p>
-<h3 id="Machine-Learning-and-Statistical-Learning"><a href="#Machine-Learning-and-Statistical-Learning" class="headerlink" title="Machine Learning and Statistical Learning"></a>Machine Learning and Statistical Learning</h3><p>Machine learning and statistical learning are similar but have some distinctions. In machine learning, regression and classification are always used to predict the output of the new incoming input. In contrast, Statistical learning, use regression and classification to model the data and find the inner and hidden relations among the huge records. In a word, the model of data, no matter it is regression or classification or what else, is used to analyze the mechanism behind the data.</p>
-<h2 id="What-is-linear-regression"><a href="#What-is-linear-regression" class="headerlink" title="What is linear regression"></a>What is linear regression</h2><p>Linear regression is a regression model, and the operation of the total parameters are linear, like:</p>
-<p>$$<br>f(\boldsymbol{x})=w_1x_1+w_2x_2+w_3x_3\tag{1}<br>$$</p>
-<p>where the $w_n$ where $n=1,2,3$ are the parameters of the model, the $f(\boldsymbol{x})$ can be written as $t$ (or $\boldsymbol{t}$ when the output is vector). And $f(\boldsymbol{w})$ is linear:</p>
-<p>$$<br>\begin{aligned}<br>f(a\cdot\boldsymbol{w})&amp;=aw_1x_1+aw_2x_2+aw_3x_3=a\cdot f(\boldsymbol{w}) \<br>f(\boldsymbol{w}+\boldsymbol{v})&amp;=(w_1+v_1)x_1+(w_2+v_2)x_2+(w_3+v_3)x_3\<br>&amp;=w_1x_1+v_1x_1+w_2x_2+v_2x_2+w_3x_3+v_3x_3\<br>&amp;=f(\boldsymbol{w})+f(\boldsymbol{v})<br>\end{aligned}\tag{2}<br>$$</p>
-<p>where $a$ is a constant, and $\boldsymbol{v}$ has the same dimensions with $\boldsymbol{w}$</p>
+<h2 id="regression">"Regression"</h2>
+<p>In statistical or machine learning, regression is a crucial part of the whole field. However, the other part is the classification. If we took a view of the output data type, the distinction between them would be more notable. That is the output of regression is continuous on the real number line, while the output of classification is discrete.</p>
+<h3 id="machine-learning-and-statistical-learning">Machine Learning and Statistical Learning</h3>
+<p>Machine learning and statistical learning are similar but have some distinctions. In machine learning, regression and classification are always used to predict the output of the new incoming input. In contrast, Statistical learning, use regression and classification to model the data and find the inner and hidden relations among the huge records. In a word, the model of data, no matter it is regression or classification or what else, is used to analyze the mechanism behind the data.</p>
+<h2 id="what-is-linear-regression-1">What is linear regression</h2>
+<p>Linear regression is a regression model, and the operation of the total parameters are linear, like:</p>
+<p><span class="math display">\[
+f(\boldsymbol{x})=w_1x_1+w_2x_2+w_3x_3\tag{1}
+\]</span></p>
+<p>where the <span class="math inline">\(w_n\)</span> where <span class="math inline">\(n=1,2,3\)</span> are the parameters of the model, the <span class="math inline">\(f(\boldsymbol{x})\)</span> can be written as <span class="math inline">\(t\)</span> (or <span class="math inline">\(\boldsymbol{t}\)</span> when the output is vector). And <span class="math inline">\(f(\boldsymbol{w})\)</span> is linear:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(a\cdot\boldsymbol{w})&amp;=aw_1x_1+aw_2x_2+aw_3x_3=a\cdot f(\boldsymbol{w}) \\
+f(\boldsymbol{w}+\boldsymbol{v})&amp;=(w_1+v_1)x_1+(w_2+v_2)x_2+(w_3+v_3)x_3\\
+&amp;=w_1x_1+v_1x_1+w_2x_2+v_2x_2+w_3x_3+v_3x_3\\
+&amp;=f(\boldsymbol{w})+f(\boldsymbol{v})
+\end{aligned}\tag{2}
+\]</span></p>
+<p>where <span class="math inline">\(a\)</span> is a constant, and <span class="math inline">\(\boldsymbol{v}\)</span> has the same dimensions with <span class="math inline">\(\boldsymbol{w}\)</span></p>
 <p>Q.E.D</p>
-<p>There is also a kind of idea that the linear property is not just for $\boldsymbol{w}$ but also for $\boldsymbol{x}$ which are the input. In the first view,</p>
-<p>$$<br>t=f(\boldsymbol{x})=w_1\log(x_1)+w_2\sin(x_2)\tag{3}<br>$$</p>
-<p>is a case of linear regression problem. But from the second point of view, it doesn’t. However, this is not a unsolvable contradiction. If we use:</p>
-<p>$$<br>y_1= \log(x_1)\<br>y_2= \sin(x_2)\tag{4}<br>$$</p>
-<p>to replace the $\log$ and $\sin$ in equation (3), we get again:</p>
-<p>$$<br>t=f(\boldsymbol{y})=w_1y_1+w_2y_2\tag{5}<br>$$</p>
-<p>a linear operation, where $\boldsymbol{y}=\begin{bmatrix}y_1;y_2\end{bmatrix}^T$.</p>
-<p>The step, equation(4), is called <strong>feature extraction</strong>, $\boldsymbol{y}$ is called features, and both $\log$ and $\sin$ is called <strong>basis function</strong></p>
-<h2 id="Why-Linear-Regression"><a href="#Why-Linear-Regression" class="headerlink" title="Why Linear Regression"></a>Why Linear Regression</h2><p>Linear regression has been used more than 200 years or even more, but why it’s always being our first class of statistical learning or machine learning? Here we got 3 practical elements of linear regression, which is essential for the whole subject:</p>
-<ol>
+<p>There is also a kind of idea that the linear property is not just for <span class="math inline">\(\boldsymbol{w}\)</span> but also for <span class="math inline">\(\boldsymbol{x}\)</span> which are the input. In the first view,</p>
+<p><span class="math display">\[
+t=f(\boldsymbol{x})=w_1\log(x_1)+w_2\sin(x_2)\tag{3}
+\]</span></p>
+<p>is a case of linear regression problem. But from the second point of view, it doesn't. However, this is not a unsolvable contradiction. If we use:</p>
+<p><span class="math display">\[
+y_1= \log(x_1)\\
+y_2= \sin(x_2)\tag{4}
+\]</span></p>
+<p>to replace the <span class="math inline">\(\log\)</span> and <span class="math inline">\(\sin\)</span> in equation (3), we get again:</p>
+<p><span class="math display">\[
+t=f(\boldsymbol{y})=w_1y_1+w_2y_2\tag{5}
+\]</span></p>
+<p>a linear operation, where <span class="math inline">\(\boldsymbol{y}=\begin{bmatrix}y_1\;y_2\end{bmatrix}^T\)</span>.</p>
+<p>The step, equation(4), is called <strong>feature extraction</strong>, <span class="math inline">\(\boldsymbol{y}\)</span> is called features, and both <span class="math inline">\(\log\)</span> and <span class="math inline">\(\sin\)</span> is called <strong>basis function</strong></p>
+<h2 id="why-linear-regression">Why Linear Regression</h2>
+<p>Linear regression has been used more than 200 years or even more, but why it's always being our first class of statistical learning or machine learning? Here we got 3 practical elements of linear regression, which is essential for the whole subject:</p>
+<ol type="1">
 <li>It is still working in some areas, even though a more complicated model has been built, it could not be replaced totally.</li>
 <li>It is a good jump-off point to the other feasible, adorable models, for who may be an extension or generation of naive linear regression</li>
 <li>Linear regression is easy, so it is possible to be analyzed through mathematics.</li>
 </ol>
 <p>This is why linear regression is always our first class to learn models. And by now, this works pretty well.</p>
-<h2 id="Some-Questions-of-the-Example"><a href="#Some-Questions-of-the-Example" class="headerlink" title="Some Questions of the Example"></a>Some Questions of the Example</h2><p>Back to our example above, our goal is to solve the problem which is how to get more sales with less budget of advertisement. If the linear regression were used, the following questions([^1]) would be confirmed firstly:</p>
-<ol>
+<h2 id="some-questions-of-the-example">Some Questions of the Example</h2>
+<p>Back to our example above, our goal is to solve the problem which is how to get more sales with less budget of advertisement. If the linear regression were used, the following questions(<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>) would be confirmed firstly:</p>
+<ol type="1">
 <li>Is there a relationship between the budget and sales</li>
 <li>Is the relationship strong? And how strong it is.</li>
 <li>Among the media, which contribute to sales?</li>
@@ -374,9 +396,17 @@
 <li>Is there synergy among the media?</li>
 </ol>
 <p>After these 7 questions being answered, the problem is almost solved. And in the following blog posts, linear regression will give us all the answers.</p>
-<h2 id="A-Probabilistic-View"><a href="#A-Probabilistic-View" class="headerlink" title="A Probabilistic View"></a>A Probabilistic View</h2><p>Machine learning or statistical learning can be solved from two different views - Bayesian and Frequentist. They both worked well for some different instances, but they also have their limitations. The Bayesian view of the linear regression will be talked about as well.</p>
-<p>Bayesian statisticians thought the input $\boldsymbol{x}$, the output $t$ and the parameter $\boldsymbol{w}$ are all random variables, while the frequentist does not think so. Bayesian statisticians predict the unknown input $\boldsymbol{x}_0$ by calculating the $\mathbb{P}(t_0|\boldsymbol{x}_0)$, and then sampling from the random variable with the distribution $\mathbb{P}(t_0|\boldsymbol{x}_0)$. To achieve this goal, we must build the $\mathbb{P}(t|\boldsymbol{x})$ at first, that is the modeling progress, or we can call it learning progress.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.</p>
+<h2 id="a-probabilistic-view">A Probabilistic View</h2>
+<p>Machine learning or statistical learning can be solved from two different views - Bayesian and Frequentist. They both worked well for some different instances, but they also have their limitations. The Bayesian view of the linear regression will be talked about as well.</p>
+<p>Bayesian statisticians thought the input <span class="math inline">\(\boldsymbol{x}\)</span>, the output <span class="math inline">\(t\)</span> and the parameter <span class="math inline">\(\boldsymbol{w}\)</span> are all random variables, while the frequentist does not think so. Bayesian statisticians predict the unknown input <span class="math inline">\(\boldsymbol{x}_0\)</span> by calculating the <span class="math inline">\(\mathbb{P}(t_0|\boldsymbol{x}_0)\)</span>, and then sampling from the random variable with the distribution <span class="math inline">\(\mathbb{P}(t_0|\boldsymbol{x}_0)\)</span>. To achieve this goal, we must build the <span class="math inline">\(\mathbb{P}(t|\boldsymbol{x})\)</span> at first, that is the modeling progress, or we can call it learning progress.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

@@ -171,7 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Measure-the-efficiency-of-the-operation"><span class="nav-number">1.</span> <span class="nav-text">Measure the efficiency of the operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-a-Polynomial"><span class="nav-number">2.</span> <span class="nav-text">Evaluating a Polynomial</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-1"><span class="nav-number">2.1.</span> <span class="nav-text">Method 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-2"><span class="nav-number">2.2.</span> <span class="nav-text">Method 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-3-Nested-Multiplication"><span class="nav-number">2.3.</span> <span class="nav-text">Method 3(Nested Multiplication)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpolation-Calculations"><span class="nav-number">3.</span> <span class="nav-text">Interpolation Calculations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#measure-the-efficiency-of-the-operation"><span class="nav-number">1.</span> <span class="nav-text">Measure the efficiency of the operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluating-a-polynomial"><span class="nav-number">2.</span> <span class="nav-text">Evaluating a Polynomial</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#method-1"><span class="nav-number">2.1.</span> <span class="nav-text">Method 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#method-2"><span class="nav-number">2.2.</span> <span class="nav-text">Method 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#method-3nested-multiplication"><span class="nav-number">2.3.</span> <span class="nav-text">Method 3(Nested Multiplication)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interpolation-calculations"><span class="nav-number">3.</span> <span class="nav-text">Interpolation Calculations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -327,74 +327,99 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>Keywords:</strong> evaluating polynomials, nested multiplication</p>
 <a id="more"></a>
-
-<p>It had been said that the more basic the operations are, the more we can stand to gain by doing it efficiently. Addition and multiplication may be the most basic operations to us all, and so is their combination, the polynomials. Many functions, however, complicated they are, can be approximated by a polynomial. For instance: $\sin(x),x\in[-\pi,\pi]$ can be approximated by</p>
-<p>$$<br>0.987862x-0.155271x^3+0.00564312x^5 \tag{0.1}<br>$$</p>
+<p>It had been said that the more basic the operations are, the more we can stand to gain by doing it efficiently. Addition and multiplication may be the most basic operations to us all, and so is their combination, the polynomials. Many functions, however, complicated they are, can be approximated by a polynomial. For instance: <span class="math inline">\(\sin(x),x\in[-\pi,\pi]\)</span> can be approximated by</p>
+<p><span class="math display">\[
+0.987862x-0.155271x^3+0.00564312x^5 \tag{0.1}
+\]</span></p>
 <p>their curves are like these:</p>
-<ol>
-<li>$g(x)=0.987862x-0.155271x^3+0.00564312x^5$</li>
+<ol type="1">
+<li><span class="math inline">\(g(x)=0.987862x-0.155271x^3+0.00564312x^5\)</span></li>
 </ol>
-<p><img src="./geogebra-export.png"></p>
-<ol start="2">
-<li>$f(x)=\sin(x)$</li>
+<p><img src="./geogebra-export.png" /></p>
+<ol start="2" type="1">
+<li><span class="math inline">\(f(x)=\sin(x)\)</span></li>
 </ol>
-<p><img src="./geogebra-export2.png"></p>
-<ol start="3">
-<li>$f(x)=\sin(x)$ and $g(x)=0.987862x-0.155271x^3+0.00564312x^5$</li>
+<p><img src="./geogebra-export2.png" /></p>
+<ol start="3" type="1">
+<li><span class="math inline">\(f(x)=\sin(x)\)</span> and <span class="math inline">\(g(x)=0.987862x-0.155271x^3+0.00564312x^5\)</span></li>
 </ol>
-<p><img src="./geogebra-export3.png"></p>
+<p><img src="./geogebra-export3.png" /></p>
 <p>All figures above show how sophisticated polynomials are approximated. However, How to get this polynomial is not the things we will concern in the class, and what we should worry about is how to compute the formula (1) more efficiently.</p>
-<h2 id="Measure-the-efficiency-of-the-operation"><a href="#Measure-the-efficiency-of-the-operation" class="headerlink" title="Measure the efficiency of the operation"></a>Measure the efficiency of the operation</h2><p>We, now, change our polynomial (1) to a general one which contains entries of all distinct integer exponents:</p>
-<p>$$<br>P(x)=2x^4+3x^3-3x^2+5x-1\tag{0.2}<br>$$</p>
-<p>What we gonna do is to find the best way to evaluate polynomial (2) at $x=\frac{1}{2}$. Assuming that, the coefficients of the polynomial and the number $\frac{1}{2}$ are always stored in memory or even registers, which is to say that we will not take the transportation time into account.</p>
+<h2 id="measure-the-efficiency-of-the-operation">Measure the efficiency of the operation</h2>
+<p>We, now, change our polynomial (1) to a general one which contains entries of all distinct integer exponents:</p>
+<p><span class="math display">\[
+P(x)=2x^4+3x^3-3x^2+5x-1\tag{0.2}
+\]</span></p>
+<p>What we gonna do is to find the best way to evaluate polynomial (2) at <span class="math inline">\(x=\frac{1}{2}\)</span>. Assuming that, the coefficients of the polynomial and the number <span class="math inline">\(\frac{1}{2}\)</span> are always stored in memory or even registers, which is to say that we will not take the transportation time into account.</p>
 <p>However, How to measure the efficiency of evaluating is a new problem coming to our faces, however, I got two ways to solve this problem:</p>
-<ol>
-<li><p>The first one is to count the ticks of the entire process, which is in the view of time. For instance, if our algorithm has taken 10 seconds, and the state-of-art algorithm have taken 11 seconds, Our algorithm would be the best for now.</p>
-</li>
-<li><p>The second is to count the total quantity of the operations of the algorithm, such as, if our algorithm has had 10 multiplications and 5 additions, while the state-of-art algorithm has had 11 multiplications and 5 additions, our algorithm would be better.</p>
-</li>
+<ol type="1">
+<li><p>The first one is to count the ticks of the entire process, which is in the view of time. For instance, if our algorithm has taken 10 seconds, and the state-of-art algorithm have taken 11 seconds, Our algorithm would be the best for now.</p></li>
+<li><p>The second is to count the total quantity of the operations of the algorithm, such as, if our algorithm has had 10 multiplications and 5 additions, while the state-of-art algorithm has had 11 multiplications and 5 additions, our algorithm would be better.</p></li>
 </ol>
 <p>In this section, we will measure the efficiency of the algorithm through the second way, count the quantity of the operations.</p>
-<h2 id="Evaluating-a-Polynomial"><a href="#Evaluating-a-Polynomial" class="headerlink" title="Evaluating a Polynomial"></a>Evaluating a Polynomial</h2><p>Now, we go back to our main problem of finding out the best way to evaluate:</p>
-<p>$$<br>P(x)=2x^4+3x^3-3x^2+5x-1\tag{0.3}<br>$$</p>
-<h3 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h3><p>In a usual way, we will calculate</p>
-<p>$$<br>\begin{aligned}<br>P(\frac{1}{2})=&amp;2\times \frac{1}{2}\times \frac{1}{2}\times \frac{1}{2}\times \frac{1}{2}\&amp;+3\times \frac{1}{2}\times \frac{1}{2}\times \frac{1}{2}\&amp;-3\times \frac{1}{2}\times \frac{1}{2}\&amp;+5\times \frac{1}{2}\&amp;-1<br>\end{aligned}\tag{0.4}<br>$$</p>
-<p>There are $4+3+2+1=10$ multiplications and $1+1+1+1=4$ additions(the subtraction here is regarded as the same as addition).</p>
+<h2 id="evaluating-a-polynomial">Evaluating a Polynomial</h2>
+<p>Now, we go back to our main problem of finding out the best way to evaluate:</p>
+<p><span class="math display">\[
+P(x)=2x^4+3x^3-3x^2+5x-1\tag{0.3}
+\]</span></p>
+<h3 id="method-1">Method 1</h3>
+<p>In a usual way, we will calculate</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(\frac{1}{2})=&amp;2\times \frac{1}{2}\times \frac{1}{2}\times \frac{1}{2}\times \frac{1}{2}\\&amp;+3\times \frac{1}{2}\times \frac{1}{2}\times \frac{1}{2}\\&amp;-3\times \frac{1}{2}\times \frac{1}{2}\\&amp;+5\times \frac{1}{2}\\&amp;-1
+\end{aligned}\tag{0.4}
+\]</span></p>
+<p>There are <span class="math inline">\(4+3+2+1=10\)</span> multiplications and <span class="math inline">\(1+1+1+1=4\)</span> additions(the subtraction here is regarded as the same as addition).</p>
 <p>Method one has 10 multiplications and 4 additions.</p>
-<h3 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h3><p>Smart readers may have found that we have done ‘$\frac{1}{2}\times \frac{1}{2}$’ more times than necessary, while, some result can be stored in the memory instead of computing again and again, which will save many resources of computation. So the method becomes:</p>
-<p>$$<br>\begin{aligned}<br>\frac{1}{2}\times\frac{1}{2}&amp;=(\frac{1}{2})^2\<br>\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2}&amp;=(\frac{1}{2})^2\times\frac{1}{2}=(\frac{1}{2})^3\<br>\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2}&amp;=(\frac{1}{2})^3\times\frac{1}{2}=(\frac{1}{2})^4<br>\end{aligned}\tag{0.5}<br>$$</p>
-<p>That is to say $(\frac{1}{2})^2$ has one multiplication, and $(\frac{1}{2})^3$ has two multiplications, while the $(\frac{1}{2})^3$ has two multiplications as well. So there totally are $2+2+2+1=7$ multiplications and 4 additions(the subtraction here is regarded as the same as an addition).</p>
+<h3 id="method-2">Method 2</h3>
+<p>Smart readers may have found that we have done '<span class="math inline">\(\frac{1}{2}\times \frac{1}{2}\)</span>' more times than necessary, while, some result can be stored in the memory instead of computing again and again, which will save many resources of computation. So the method becomes:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{1}{2}\times\frac{1}{2}&amp;=(\frac{1}{2})^2\\
+\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2}&amp;=(\frac{1}{2})^2\times\frac{1}{2}=(\frac{1}{2})^3\\
+\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2}&amp;=(\frac{1}{2})^3\times\frac{1}{2}=(\frac{1}{2})^4
+\end{aligned}\tag{0.5}
+\]</span></p>
+<p>That is to say <span class="math inline">\((\frac{1}{2})^2\)</span> has one multiplication, and <span class="math inline">\((\frac{1}{2})^3\)</span> has two multiplications, while the <span class="math inline">\((\frac{1}{2})^3\)</span> has two multiplications as well. So there totally are <span class="math inline">\(2+2+2+1=7\)</span> multiplications and 4 additions(the subtraction here is regarded as the same as an addition).</p>
 <p>Method two has 7 multiplications and 4 additions.</p>
-<h3 id="Method-3-Nested-Multiplication"><a href="#Method-3-Nested-Multiplication" class="headerlink" title="Method 3(Nested Multiplication)"></a>Method 3(Nested Multiplication)</h3><p>Rewrite the polynomial as:</p>
-<p>$$<br>\begin{aligned}<br>P(x)&amp;=-1+x(5-3x+3x^2+2x^3)\<br>&amp;=-1+x(5+x(-3+3x+2x^2))\<br>&amp;=-1+x(5+x(-3+x(3+2x)))\<br>&amp;=-1+x\times(5+x\times(-3+x\times(3+x\times 2)))<br>\end{aligned}\tag{0.6}<br>$$</p>
-<p>When $x=\frac{1}{2}$, we evaluate the polynomial from the inside out:</p>
-<ol>
-<li><p>$\frac{1}{2}\times 2$ , add $+3\to 4$</p>
-</li>
-<li><p>$\frac{1}{2}\times 4$ , add $-3\to -1$</p>
-</li>
-<li><p>$\frac{1}{2}\times (-1)$ , add $+5\to \frac{9}{2}$</p>
-</li>
-<li><p>$\frac{1}{2}\times \frac{9}{2}$ , add $-1\to \frac{5}{4}$</p>
-</li>
+<h3 id="method-3nested-multiplication">Method 3(Nested Multiplication)</h3>
+<p>Rewrite the polynomial as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(x)&amp;=-1+x(5-3x+3x^2+2x^3)\\
+&amp;=-1+x(5+x(-3+3x+2x^2))\\
+&amp;=-1+x(5+x(-3+x(3+2x)))\\
+&amp;=-1+x\times(5+x\times(-3+x\times(3+x\times 2)))
+\end{aligned}\tag{0.6}
+\]</span></p>
+<p>When <span class="math inline">\(x=\frac{1}{2}\)</span>, we evaluate the polynomial from the inside out:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\frac{1}{2}\times 2\)</span> , add <span class="math inline">\(+3\to 4\)</span></p></li>
+<li><p><span class="math inline">\(\frac{1}{2}\times 4\)</span> , add <span class="math inline">\(-3\to -1\)</span></p></li>
+<li><p><span class="math inline">\(\frac{1}{2}\times (-1)\)</span> , add <span class="math inline">\(+5\to \frac{9}{2}\)</span></p></li>
+<li><p><span class="math inline">\(\frac{1}{2}\times \frac{9}{2}\)</span> , add <span class="math inline">\(-1\to \frac{5}{4}\)</span></p></li>
 </ol>
-<p>This method is called <strong><em>nested multiplication</em></strong> or <strong><em>Horner’s method</em></strong>, in which there are 4 multiplications and 4 additions. A general degree $d$ polynomial can be evaluated in $d$ multiplications and $d$ additions.</p>
-<p>The example of polynomial evaluation is characteristic of the entire topic of computational methods for scientific computing. While the standard form for a polynomial $c_1+c_2x+c_3x^2+c_4x^3+c_5x^4$ can be written in nested form as:</p>
-<p>$$<br>c_1+x(c_2+x(c_3+x(c_4+x(c_5))))\tag{0.7}<br>$$</p>
-<h2 id="Interpolation-Calculations"><a href="#Interpolation-Calculations" class="headerlink" title="Interpolation Calculations"></a>Interpolation Calculations</h2><p>In chapter 3 we will require the form：</p>
-<p>$$<br>c_1+(x-r_1)(c_2+(x-r_2)(c_3+(x-r_3)(c_4+(x-r_4)(c_5))))\tag{0.8}<br>$$</p>
-<p>where we call $r_1,r_2,r_3$ and $r_4$ the <strong><em>base points</em></strong>. when we set $r_1=r_2=r_3=r_4=0$, formula (0.8) is recovered to formula (0.7).</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Polynomial can be evaluated in a very efficient way through nested multiplication. But, what is more important for us in this subject are these:</p>
-<ol>
-<li><p>Computers are very fast at doing very simple things.</p>
-</li>
-<li><p>It’s important to do even simple tasks as efficiently as possible.</p>
-</li>
-<li><p>The best way may not be the obvious way.</p>
-</li>
+<p>This method is called <strong><em>nested multiplication</em></strong> or <strong><em>Horner's method</em></strong>, in which there are 4 multiplications and 4 additions. A general degree <span class="math inline">\(d\)</span> polynomial can be evaluated in <span class="math inline">\(d\)</span> multiplications and <span class="math inline">\(d\)</span> additions.</p>
+<p>The example of polynomial evaluation is characteristic of the entire topic of computational methods for scientific computing. While the standard form for a polynomial <span class="math inline">\(c_1+c_2x+c_3x^2+c_4x^3+c_5x^4\)</span> can be written in nested form as:</p>
+<p><span class="math display">\[
+c_1+x(c_2+x(c_3+x(c_4+x(c_5))))\tag{0.7}
+\]</span></p>
+<h2 id="interpolation-calculations">Interpolation Calculations</h2>
+<p>In chapter 3 we will require the form：</p>
+<p><span class="math display">\[
+c_1+(x-r_1)(c_2+(x-r_2)(c_3+(x-r_3)(c_4+(x-r_4)(c_5))))\tag{0.8}
+\]</span></p>
+<p>where we call <span class="math inline">\(r_1,r_2,r_3\)</span> and <span class="math inline">\(r_4\)</span> the <strong><em>base points</em></strong>. when we set <span class="math inline">\(r_1=r_2=r_3=r_4=0\)</span>, formula (0.8) is recovered to formula (0.7).</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Polynomial can be evaluated in a very efficient way through nested multiplication. But, what is more important for us in this subject are these:</p>
+<ol type="1">
+<li><p>Computers are very fast at doing very simple things.</p></li>
+<li><p>It's important to do even simple tasks as efficiently as possible.</p></li>
+<li><p>The best way may not be the obvious way.</p></li>
 </ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li>Sauer, T., Columbus, B., New, I., San, Y., Upper, F., River, S., … Tokyo, T. (n.d.). Numerical Analysis. Retrieved from <a target="_blank" rel="noopener" href="http://www.pearsoned.com/legal/permissions.htm">http://www.pearsoned.com/legal/permissions.htm</a>.</li>
+<h2 id="reference">Reference</h2>
+<ol type="1">
+<li>Sauer, T., Columbus, B., New, I., San, Y., Upper, F., River, S., … Tokyo, T. (n.d.). Numerical Analysis. Retrieved from http://www.pearsoned.com/legal/permissions.htm.</li>
 </ol>
 
     </div>

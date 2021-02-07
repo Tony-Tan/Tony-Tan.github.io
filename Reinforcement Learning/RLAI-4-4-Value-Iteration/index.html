@@ -169,7 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Value-Iteration"><span class="nav-number">1.</span> <span class="nav-text">Value Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Value-Iteration-and-Bellman-Equation"><span class="nav-number">2.</span> <span class="nav-text">Value Iteration and Bellman Equation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-of-Value-Iteration"><span class="nav-number">3.</span> <span class="nav-text">Code of Value Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration"><span class="nav-number">1.</span> <span class="nav-text">Value Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-and-bellman-equation"><span class="nav-number">2.</span> <span class="nav-text">Value Iteration and Bellman Equation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-of-value-iteration"><span class="nav-number">3.</span> <span class="nav-text">Code of Value Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -319,36 +319,57 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p>In the iteration of policy evaluation and policy improvement, the policy evaluation itself has another iteration, which is employed to calculate a optimal value function of current policy. And this iteration in policy evaluation give us an inspriation to a new method.</p>
-<h2 id="Value-Iteration"><a href="#Value-Iteration" class="headerlink" title="Value Iteration"></a>Value Iteration</h2><p>The drawback of policy iteration is that each iteration involves policy evaluation and the policy evaluation need multiple sweeps through the state set. However, according our example, gridword, in the post <a href="TODO">‘Policy Evaluation’</a> we find the greedy policy does not change after the $k$ steps of the iteration of policy evaluation and the iteration stoped at step $m$ and $k&lt;&lt;m$. Then, the policy interation $k+1,k+2,\cdots,m$ does not involve the policy. So we would like to truncate the iteration of policy evaluation without lossing convergence guarantees of policy iteration.</p>
-<p>The easiest and extreme condition is that each policy evaluation contains only one iteration. And it’s called value iteration. The initial policy is a random policy:</p>
-<p>$$<br> \pi_0\underbrace{\xrightarrow{E}v_{\pi_0}\xrightarrow{I}\pi_1}<em>{\text{value iteration 0}}<br>  \underbrace{\xrightarrow{E}v</em>{\pi_1}\xrightarrow{I}\pi_2}<em>{\text{value iteration 1}}\cdots<br>  \underbrace{\xrightarrow{I}\pi</em><em>\xrightarrow{E}v_{\pi_</em>}}_{\text{value iteration *}}\tag{1}<br>$$</p>
-<p>In each operation ‘$\xrightarrow{E}$’, there is only one iteration. Let’s go into step $k$ of value iteration:</p>
-<ol>
-<li>policy evaluation(policy $\pi_k$:’$\xrightarrow{E}$’)</li>
+        <p><strong>Abstract:</strong> <a id="more"></a> In the iteration of policy evaluation and policy improvement, the policy evaluation itself has another iteration, which is employed to calculate a optimal value function of current policy. And this iteration in policy evaluation give us an inspriation to a new method.</p>
+<h2 id="value-iteration">Value Iteration</h2>
+<p>The drawback of policy iteration is that each iteration involves policy evaluation and the policy evaluation need multiple sweeps through the state set. However, according our example, gridword, in the post <a href="TODO">'Policy Evaluation'</a> we find the greedy policy does not change after the <span class="math inline">\(k\)</span> steps of the iteration of policy evaluation and the iteration stoped at step <span class="math inline">\(m\)</span> and <span class="math inline">\(k&lt;&lt;m\)</span>. Then, the policy interation <span class="math inline">\(k+1,k+2,\cdots,m\)</span> does not involve the policy. So we would like to truncate the iteration of policy evaluation without lossing convergence guarantees of policy iteration.</p>
+<p>The easiest and extreme condition is that each policy evaluation contains only one iteration. And it's called value iteration. The initial policy is a random policy:</p>
+<p><span class="math display">\[
+ \pi_0\underbrace{\xrightarrow{E}v_{\pi_0}\xrightarrow{I}\pi_1}_{\text{value iteration 0}}
+  \underbrace{\xrightarrow{E}v_{\pi_1}\xrightarrow{I}\pi_2}_{\text{value iteration 1}}\cdots
+  \underbrace{\xrightarrow{I}\pi_*\xrightarrow{E}v_{\pi_*}}_{\text{value iteration *}}\tag{1}
+\]</span></p>
+<p>In each operation '<span class="math inline">\(\xrightarrow{E}\)</span>', there is only one iteration. Let's go into step <span class="math inline">\(k\)</span> of value iteration:</p>
+<ol type="1">
+<li>policy evaluation(policy <span class="math inline">\(\pi_k\)</span>:'<span class="math inline">\(\xrightarrow{E}\)</span>')</li>
 </ol>
-<p>$$<br>v_{\pi_k}=\mathbb{E}[R_{t_1}+\gamma v_{\pi_{k-1}}(S_{t+1})|S_t=s ,A_t=a]\tag{2}<br>$$</p>
-<ol start="2">
-<li>policy improvement(value function $v_{\pi_k}$: ‘$\xrightarrow{I}$’)</li>
+<p><span class="math display">\[
+v_{\pi_k}=\mathbb{E}[R_{t_1}+\gamma v_{\pi_{k-1}}(S_{t+1})|S_t=s ,A_t=a]\tag{2}
+\]</span></p>
+<ol start="2" type="1">
+<li>policy improvement(value function <span class="math inline">\(v_{\pi_k}\)</span>: '<span class="math inline">\(\xrightarrow{I}\)</span>')</li>
 </ol>
-<p>$$<br>\begin{aligned}<br>  \pi_{k+1}(s)&amp;=\mathop{argmax}<em>a v</em>{\pi_k}\<br>  &amp;=\mathop{argmax}<em>a \mathbb{E}[R</em>{t_1}+\gamma v_{\pi_{k-1}}(S_{t+1})|S_t=s ,A_t=a]\tag{3}<br>\end{aligned}</p>
+$$
+<span class="math display">\[\begin{aligned}
+  \pi_{k+1}(s)&amp;=\mathop{argmax}_a v_{\pi_k}\\
+  &amp;=\mathop{argmax}_a \mathbb{E}[R_{t_1}+\gamma v_{\pi_{k-1}}(S_{t+1})|S_t=s ,A_t=a]\tag{3}
+\end{aligned}\]</span>
 <p>$$</p>
-<ol start="3">
+<ol start="3" type="1">
 <li>if we combine step 1 and step 2 we get:</li>
 </ol>
-<p>$$<br>\begin{aligned}<br>  v_{\pi_k}&amp;=\mathop{max}<em>a v</em>{\pi_{k-1}}\<br>  &amp;=\mathop{max}<em>a \mathbb{E}[R</em>{t_1}+\gamma v_{\pi_{k-1}}(S_{t+1})|S_t=s ,A_t=a]<br>\end{aligned}\tag{4}<br>$$</p>
-<p>Then we update the interation (1) to:<br>$$<br>v_{\pi_0}\xrightarrow{M}v_{\pi_1}\xrightarrow{M}v_{\pi_2}\xrightarrow{M}\cdots \xrightarrow{M}v_{\pi_*}\tag{5}<br>$$<br>And it can also be written as:<br>$$<br>v_{0}\xrightarrow{M}v_{1}\xrightarrow{M}v_{2}\xrightarrow{M}\cdots \xrightarrow{M}v_{*}\tag{6}<br>$$ </p>
-<p>This is value iteration, and it converge to $v_*$ under the same conditions that guarantee the existance of $v_*$.</p>
-<h2 id="Value-Iteration-and-Bellman-Equation"><a href="#Value-Iteration-and-Bellman-Equation" class="headerlink" title="Value Iteration and Bellman Equation"></a>Value Iteration and Bellman Equation</h2><p>Another way to understand value iteration is through Bellman optimal equation. And equation (4) are the same with Bellman Optimal equation. However, it’s, now, an update rule. It is also a combine of following backup diagram:</p>
-<p><img src="./vi.jpeg"></p>
+<p><span class="math display">\[
+\begin{aligned}
+  v_{\pi_k}&amp;=\mathop{max}_a v_{\pi_{k-1}}\\
+  &amp;=\mathop{max}_a \mathbb{E}[R_{t_1}+\gamma v_{\pi_{k-1}}(S_{t+1})|S_t=s ,A_t=a]
+\end{aligned}\tag{4}
+\]</span></p>
+<p>Then we update the interation (1) to: <span class="math display">\[
+v_{\pi_0}\xrightarrow{M}v_{\pi_1}\xrightarrow{M}v_{\pi_2}\xrightarrow{M}\cdots \xrightarrow{M}v_{\pi_*}\tag{5}
+\]</span> And it can also be written as: <span class="math display">\[
+v_{0}\xrightarrow{M}v_{1}\xrightarrow{M}v_{2}\xrightarrow{M}\cdots \xrightarrow{M}v_{*}\tag{6}
+\]</span></p>
+<p>This is value iteration, and it converge to <span class="math inline">\(v_*\)</span> under the same conditions that guarantee the existance of <span class="math inline">\(v_*\)</span>.</p>
+<h2 id="value-iteration-and-bellman-equation">Value Iteration and Bellman Equation</h2>
+<p>Another way to understand value iteration is through Bellman optimal equation. And equation (4) are the same with Bellman Optimal equation. However, it's, now, an update rule. It is also a combine of following backup diagram:</p>
+<p><img src="./vi.jpeg" /></p>
 <p>Value iteration method is much faster than policy iteration. And the general framework of truncated policy evaluation is:</p>
-<p>$$<br>v_1\xrightarrow{\text{e}}v_2\xrightarrow{\text{e}}\cdots v_i\xrightarrow{\text{max}}v_{i+1}\xrightarrow{\text{e}}v_{i+2}\cdots v_j\xrightarrow{\text{max}}v_{j+1}\cdots<br>$$</p>
-<p>where $j&gt;i$. These interation looks like the ‘max’ operation is inserted into the evaluation iteration randomly. And this is just another description of policy iteration whose policy evaluation is truncated randomly.</p>
-<h2 id="Code-of-Value-Iteration"><a href="#Code-of-Value-Iteration" class="headerlink" title="Code of Value Iteration"></a>Code of Value Iteration</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<p><span class="math display">\[
+v_1\xrightarrow{\text{e}}v_2\xrightarrow{\text{e}}\cdots v_i\xrightarrow{\text{max}}v_{i+1}\xrightarrow{\text{e}}v_{i+2}\cdots v_j\xrightarrow{\text{max}}v_{j+1}\cdots
+\]</span></p>
+<p>where <span class="math inline">\(j&gt;i\)</span>. These interation looks like the 'max' operation is inserted into the evaluation iteration randomly. And this is just another description of policy iteration whose policy evaluation is truncated randomly.</p>
+<h2 id="code-of-value-iteration">Code of Value Iteration</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="references">References</h2>
 
     </div>
 

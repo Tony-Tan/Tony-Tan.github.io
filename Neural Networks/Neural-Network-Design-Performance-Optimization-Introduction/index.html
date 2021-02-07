@@ -170,7 +170,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-Optimization-1"><span class="nav-number">1.</span> <span class="nav-text">Performance Optimization[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#performance-optimization1"><span class="nav-number">1.</span> <span class="nav-text">Performance Optimization1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -324,31 +324,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> performance optimization</p>
-<a id="more"></a>
-
-<h2 id="Performance-Optimization-1"><a href="#Performance-Optimization-1" class="headerlink" title="Performance Optimization[^1]"></a>Performance Optimization[^1]</h2><p>Taylor series had been used for analyzing the performance surface in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Introduction/">‘An Introduction to Performance Optimization’</a>. And then we would use it again to locate the optimum points of a certain performance index. This short post is a brief introduction to performance optimization and the contents of three categories of optimization algorithms:</p>
-<ol>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘Steepest Descent’</a></li>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Newton-Method/">“Newton’s Method”</a></li>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Conjugate-Gradient/">‘Conjugate Gradient’</a></li>
-</ol>
+        <p><strong>Keywords:</strong> performance optimization <a id="more"></a></p>
+<h2 id="performance-optimization1">Performance Optimization<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Taylor series had been used for analyzing the performance surface in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Introduction/">'An Introduction to Performance Optimization'</a>. And then we would use it again to locate the optimum points of a certain performance index. This short post is a brief introduction to performance optimization and the contents of three categories of optimization algorithms: 1. <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">'Steepest Descent'</a> 2. <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Newton-Method/">"Newton's Method"</a> 3. <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Conjugate-Gradient/">'Conjugate Gradient'</a></p>
 <p>After the investigation of performance, to locate the optimum points of a certain performance index as a problem came to us. Recall the analysis of the performance index, which is a function of the parameters of the model. These equations mostly could not be solved analytically. So, to find an approximative solution, searching for the whole solution space is a straightforward strategy. However, no algorithms or computers can search a whole parameter space even which has only 1 dimension to locate minimum points of the surface. So in the searching, we need a map.</p>
-<p>These algorithms we discussed here are developed hundreds of years ago. And the basic principles of optimization were discovered during the $17^{\text{th}}$ century. And some of them were brought up by Kepler, Fermat, Newton, and Leibniz. However, in calculating computers are more powerful than paper and pencils. So, these optimization algorithms had been rediscovered and became a major branch of mathematics. Thank for the brilliant scientists for their contribution to human beings:</p>
-<p><img src="./scientist.jpeg"></p>
-<p>All the algorithms we are going to talk about are iterative. Their general framework is:</p>
-<ol>
-<li>start from some initial guess $\boldsymbol{x}_0$</li>
-<li>update our guess in stages:<ul>
-<li>$\boldsymbol{x}_{k+1}=\boldsymbol{x}_k+\alpha_k \boldsymbol{p}_k$</li>
-<li>or $\Delta \boldsymbol{x}<em>k=\boldsymbol{x}</em>{k+1}-\boldsymbol{x}_k=\alpha_k \boldsymbol{p}_k$</li>
-</ul>
-</li>
-<li>check the terminational condition, decide to go back to step 2 or to terminate the algorithm.</li>
-</ol>
-<p>In the algorithms, $\boldsymbol{p}_k$ is the search direction that works like the compass of Captain Jack Sparrow. It can lead you to what you want. $\alpha_k$ is the step length which means how far we should go along the current direction of $\boldsymbol{p}_k$. $\boldsymbol{x}_0$ is a guessed initial position of the algorithm, and it is also important in some view like if we could initial our start position close to the destination, we cloud to get there in a short time.</p>
+<p>These algorithms we discussed here are developed hundreds of years ago. And the basic principles of optimization were discovered during the <span class="math inline">\(17^{\text{th}}\)</span> century. And some of them were brought up by Kepler, Fermat, Newton, and Leibniz. However, in calculating computers are more powerful than paper and pencils. So, these optimization algorithms had been rediscovered and became a major branch of mathematics. Thank for the brilliant scientists for their contribution to human beings:</p>
+<p><img src="./scientist.jpeg" /></p>
+<p>All the algorithms we are going to talk about are iterative. Their general framework is: 1. start from some initial guess <span class="math inline">\(\boldsymbol{x}_0\)</span> 2. update our guess in stages: - <span class="math inline">\(\boldsymbol{x}_{k+1}=\boldsymbol{x}_k+\alpha_k \boldsymbol{p}_k\)</span> - or <span class="math inline">\(\Delta \boldsymbol{x}_k=\boldsymbol{x}_{k+1}-\boldsymbol{x}_k=\alpha_k \boldsymbol{p}_k\)</span> 3. check the terminational condition, decide to go back to step 2 or to terminate the algorithm.</p>
+<p>In the algorithms, <span class="math inline">\(\boldsymbol{p}_k\)</span> is the search direction that works like the compass of Captain Jack Sparrow. It can lead you to what you want. <span class="math inline">\(\alpha_k\)</span> is the step length which means how far we should go along the current direction of <span class="math inline">\(\boldsymbol{p}_k\)</span>. <span class="math inline">\(\boldsymbol{x}_0\)</span> is a guessed initial position of the algorithm, and it is also important in some view like if we could initial our start position close to the destination, we cloud to get there in a short time.</p>
 <p>These three elements are the basis of three categories of optimization algorithms. How to decide the direction we are going to search, how long we should go along a direction and how to initiate the first point gave us research aspects.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

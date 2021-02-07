@@ -32,7 +32,7 @@
 <meta property="og:description" content="Abstract:">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-23T16:14:42.000Z">
-<meta property="article:modified_time" content="2020-11-08T02:39:37.000Z">
+<meta property="article:modified_time" content="2021-02-07T06:15:08.463Z">
 <meta property="article:author" content="Anthony Tan">
 <meta property="article:tag" content="tag">
 <meta name="twitter:card" content="summary">
@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#On-policy-and-Off-policy"><span class="nav-number">1.</span> <span class="nav-text">On-policy and Off-policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-of-first-visit-MC-control"><span class="nav-number">2.</span> <span class="nav-text">Code of first-visit MC control</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#on-policy-and-off-policy"><span class="nav-number">1.</span> <span class="nav-text">On-policy and Off-policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-of-first-visit-mc-control"><span class="nav-number">2.</span> <span class="nav-text">Code of first-visit MC control</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -281,7 +281,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-08 10:39:37" itemprop="dateModified" datetime="2020-11-08T10:39:37+08:00">2020-11-08</time>
+        <time title="Modified: 2021-02-07 14:15:08" itemprop="dateModified" datetime="2021-02-07T14:15:08+08:00">2021-02-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,39 +317,50 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p>Last post <a href="TODO">‘Monte Carlo Control’</a>, we come up with the method called MCES which is short for Monte Carlo with Exploring Start. It removes the assumption, infinity steps of the Monte Carlo estimation in GPI. Now, we try to remove the other assumption - exploring starts.</p>
-<h2 id="On-policy-and-Off-policy"><a href="#On-policy-and-Off-policy" class="headerlink" title="On-policy and Off-policy"></a>On-policy and Off-policy</h2><p>The reason we start with exploration in MC estimation is to guarantee that every stat-action pair could be visited during the learning process. In some systems, only the optimal action of current state will be done basing on some greedy policy. So the decision of which action would be taken is all by the policy. It inspired us that we could replace the greedy policy with some other policies which could produce exploration. </p>
-<p>Two approaches of policy we consider here:</p>
-<ol>
-<li>on-policy: evaluate and improve the policy to make decision</li>
-<li>off-policy: evaluate and improve the policy that is different from that used to generate action.</li>
-</ol>
-<p>So far, most of methods we have talked about is on-policy method like MCSE that we discussed in the post <a href="TODO">‘Monte Carlo Control’</a>. In this post, our aim is to get ride of eploring starts, and the on-policy method without exploring starts would be discussed first because the off-policy methods contains exploration naturely during the process.</p>
+        <p><strong>Abstract:</strong> <a id="more"></a> Last post <a href="TODO">'Monte Carlo Control'</a>, we come up with the method called MCES which is short for Monte Carlo with Exploring Start. It removes the assumption, infinity steps of the Monte Carlo estimation in GPI. Now, we try to remove the other assumption - exploring starts.</p>
+<h2 id="on-policy-and-off-policy">On-policy and Off-policy</h2>
+<p>The reason we start with exploration in MC estimation is to guarantee that every stat-action pair could be visited during the learning process. In some systems, only the optimal action of current state will be done basing on some greedy policy. So the decision of which action would be taken is all by the policy. It inspired us that we could replace the greedy policy with some other policies which could produce exploration.</p>
+<p>Two approaches of policy we consider here: 1. on-policy: evaluate and improve the policy to make decision 2. off-policy: evaluate and improve the policy that is different from that used to generate action.</p>
+<p>So far, most of methods we have talked about is on-policy method like MCSE that we discussed in the post <a href="TODO">'Monte Carlo Control'</a>. In this post, our aim is to get ride of eploring starts, and the on-policy method without exploring starts would be discussed first because the off-policy methods contains exploration naturely during the process.</p>
 <p>This modification of policy of on-policy method is making the policy soft, which means no more greedy:</p>
-<p>$$<br>\pi(a|s)&gt;0\tag{1}<br>$$</p>
-<p>for all $s\in \mathcal{S}$ and all $a\in\mathcal{A}(s)$. Under this situation, the policy would be shifted closer and closer to a deterministic optimal policy. $\epsilon$-greedy(<a href="TODO">‘Action-value methods’</a>) is a kind of soft policy that all actions could be selected by probability $\frac{\epsilon}{|\mathcal{A}(s)|}$ but the greedy action with a probability $1-\epsilon+\frac{\epsilon}{|\mathcal{A}(s)|}$</p>
-<p>$\epsilon$-soft policies is a generation of equation (1) who under the condition:</p>
-<p>$$<br>\pi(a|s)\geq \frac{\epsilon}{|\mathcal{A}(s)|}\tag{2}<br>$$</p>
-<p>for all $s\in \mathcal{S}$ and all $a\in\mathcal{A}(s)$. $\epsilon$-greedy is the closest one to greedy among $\epsilon$-soft policies. Now let’s go back to the mission.</p>
-<p>The overall idea is still GPI:</p>
-<ol>
-<li>first-visit MC</li>
-<li>without assumption of exploring starts</li>
-<li>policy is improve to $\epsilon$-greedy for future exploration.</li>
-</ol>
-<p>This GPI methods of MC could work mainly relies on the property of GPI that it does not need a greedy policy but an improved policy(<a href="TODO">‘…incomplete steps of policy evaluation or policy improvement also converge to the point of intersection.’ from Generalized Policy Iteration</a>)</p>
-<p>Incomplete step of policy improvement could still make the GPI converge to optimal, so we need to make sure that $\epsilon$-greedy policy $\pi’$ is better than any other $\epsilon$-soft policy $\pi$ of a state(the ‘better’ has been defined in the post <a href="TODO">‘Policy Improvement’</a>) </p>
-<p>proof:<br>$$<br>\begin{aligned}<br>  q_{\pi}(s,\pi’(s))=&amp;\sum_a\pi’(a|s)q_{\pi}(s,a)\<br>  =&amp;\frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)+(1-\epsilon)\mathop{max}<em>a q</em>{\pi}(s,a)\<br>  \geq &amp; \frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)\<br>  &amp;+(1-\epsilon)\sum_a\frac{\pi(a|s)-\frac{\epsilon}{|\mathcal{A}(s)|}}{1-\epsilon} q_{\pi}(s,a)\<br>  =&amp; \frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)-\frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)\<br>  &amp;+\sum_a\pi(a|s)q_{\pi}(s,a)\<br>  =&amp;v_{\pi}(s)<br>\end{aligned}\tag{3}<br>$$</p>
+<p><span class="math display">\[
+\pi(a|s)&gt;0\tag{1}
+\]</span></p>
+<p>for all <span class="math inline">\(s\in \mathcal{S}\)</span> and all <span class="math inline">\(a\in\mathcal{A}(s)\)</span>. Under this situation, the policy would be shifted closer and closer to a deterministic optimal policy. <span class="math inline">\(\epsilon\)</span>-greedy(<a href="TODO">'Action-value methods'</a>) is a kind of soft policy that all actions could be selected by probability <span class="math inline">\(\frac{\epsilon}{|\mathcal{A}(s)|}\)</span> but the greedy action with a probability <span class="math inline">\(1-\epsilon+\frac{\epsilon}{|\mathcal{A}(s)|}\)</span></p>
+<p><span class="math inline">\(\epsilon\)</span>-soft policies is a generation of equation (1) who under the condition:</p>
+<p><span class="math display">\[
+\pi(a|s)\geq \frac{\epsilon}{|\mathcal{A}(s)|}\tag{2}
+\]</span></p>
+<p>for all <span class="math inline">\(s\in \mathcal{S}\)</span> and all <span class="math inline">\(a\in\mathcal{A}(s)\)</span>. <span class="math inline">\(\epsilon\)</span>-greedy is the closest one to greedy among <span class="math inline">\(\epsilon\)</span>-soft policies. Now let's go back to the mission.</p>
+<p>The overall idea is still GPI: 1. first-visit MC 2. without assumption of exploring starts 3. policy is improve to <span class="math inline">\(\epsilon\)</span>-greedy for future exploration.</p>
+<p>This GPI methods of MC could work mainly relies on the property of GPI that it does not need a greedy policy but an improved policy(<a href="TODO">'...incomplete steps of policy evaluation or policy improvement also converge to the point of intersection.' from Generalized Policy Iteration</a>)</p>
+<p>Incomplete step of policy improvement could still make the GPI converge to optimal, so we need to make sure that <span class="math inline">\(\epsilon\)</span>-greedy policy <span class="math inline">\(\pi&#39;\)</span> is better than any other <span class="math inline">\(\epsilon\)</span>-soft policy <span class="math inline">\(\pi\)</span> of a state(the 'better' has been defined in the post <a href="TODO">'Policy Improvement'</a>)</p>
+<p>proof:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  q_{\pi}(s,\pi&#39;(s))=&amp;\sum_a\pi&#39;(a|s)q_{\pi}(s,a)\\
+  =&amp;\frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)+(1-\epsilon)\mathop{max}_a q_{\pi}(s,a)\\
+  \geq &amp; \frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)\\
+  &amp;+(1-\epsilon)\sum_a\frac{\pi(a|s)-\frac{\epsilon}{|\mathcal{A}(s)|}}{1-\epsilon} q_{\pi}(s,a)\\
+  =&amp; \frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)-\frac{\epsilon}{|\mathcal{A}(s)|}\sum_a q_{\pi}(s,a)\\
+  &amp;+\sum_a\pi(a|s)q_{\pi}(s,a)\\
+  =&amp;v_{\pi}(s)
+\end{aligned}\tag{3}
+\]</span></p>
 <p>the third row of equation(3) is based on the fact:</p>
-<p>$$<br>\sum_a\frac{\pi(a|s)-\frac{\epsilon}{|\mathcal{A}(s)|}}{1-\epsilon}=1\tag{4}<br>$$</p>
-<p>and each iterm $\frac{\pi(a|s)-\frac{\epsilon}{|\mathcal{A}(s)|}}{1-\epsilon}\geq 0$ so the weighted average must be less or equal to the maximum iterm. And by the policy improvement theorem:</p>
-<p>$$<br>\pi’\geq \pi\tag{5}<br>$$</p>
-<p>for all $s\in \mathcal{S}$ and they are equal if and only if they both are equal to the optimal policy. Up to now, we have proved that the $\epsilon$-greedy policy after improvement is better than original policy. The whole analysis is independent of how the action-value function are dtermined at each stage. </p>
-<p>Now, we finnaly eliminit exploring starts of GPI process whose evaluation step is based on MC methods by $\epsilon$-soft policy.</p>
-<h2 id="Code-of-first-visit-MC-control"><a href="#Code-of-first-visit-MC-control" class="headerlink" title="Code of first-visit MC control"></a>Code of first-visit MC control</h2><p>Blackjack</p>
+<p><span class="math display">\[
+\sum_a\frac{\pi(a|s)-\frac{\epsilon}{|\mathcal{A}(s)|}}{1-\epsilon}=1\tag{4}
+\]</span></p>
+<p>and each iterm <span class="math inline">\(\frac{\pi(a|s)-\frac{\epsilon}{|\mathcal{A}(s)|}}{1-\epsilon}\geq 0\)</span> so the weighted average must be less or equal to the maximum iterm. And by the policy improvement theorem:</p>
+<p><span class="math display">\[
+\pi&#39;\geq \pi\tag{5}
+\]</span></p>
+<p>for all <span class="math inline">\(s\in \mathcal{S}\)</span> and they are equal if and only if they both are equal to the optimal policy. Up to now, we have proved that the <span class="math inline">\(\epsilon\)</span>-greedy policy after improvement is better than original policy. The whole analysis is independent of how the action-value function are dtermined at each stage.</p>
+<p>Now, we finnaly eliminit exploring starts of GPI process whose evaluation step is based on MC methods by <span class="math inline">\(\epsilon\)</span>-soft policy.</p>
+<h2 id="code-of-first-visit-mc-control">Code of first-visit MC control</h2>
+<p>Blackjack</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
     </div>
 
     

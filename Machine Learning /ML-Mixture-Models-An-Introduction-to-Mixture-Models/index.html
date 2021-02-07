@@ -174,7 +174,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#From-Supervised-to-Unsupervised-Learning-1"><span class="nav-number">1.</span> <span class="nav-text">From Supervised to Unsupervised Learning[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#from-supervised-to-unsupervised-learning1"><span class="nav-number">1.</span> <span class="nav-text">From Supervised to Unsupervised Learning1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -328,37 +328,56 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> mixture models</p>
-<a id="more"></a>
-
-<h2 id="From-Supervised-to-Unsupervised-Learning-1"><a href="#From-Supervised-to-Unsupervised-Learning-1" class="headerlink" title="From Supervised to Unsupervised Learning[^1]"></a>From Supervised to Unsupervised Learning[^1]</h2><p>We have discussed many machine learning algorithms, including linear regression, linear classification, neural network models and e.t.c, till now. However, most of them are supervised learning, which means a teacher is leading the models to bias to a certain task. To these problems our major attention was on the probability distribution of parameters given inputs, outputs, and models:</p>
-<p>$$<br>p(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{y},M)\tag{1}<br>$$</p>
-<p>where $\boldsymbol{\theta}$ is a vector of the parameters in the model $M$ and $\boldsymbol{x}$, $\boldsymbol{y}$ are inputs vector and output vector respectively. As what Bayesian equation told us, to maximize equation (1) we can use an indirect method, through which the maximum likelihood is always employed. And the probability </p>
-<p>$$<br>p(\boldsymbol{y}|\boldsymbol{x},\boldsymbol{\theta},M)\tag{2}<br>$$</p>
+        <p><strong>Keywords:</strong> mixture models <a id="more"></a></p>
+<h2 id="from-supervised-to-unsupervised-learning1">From Supervised to Unsupervised Learning<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>We have discussed many machine learning algorithms, including linear regression, linear classification, neural network models and e.t.c, till now. However, most of them are supervised learning, which means a teacher is leading the models to bias to a certain task. To these problems our major attention was on the probability distribution of parameters given inputs, outputs, and models:</p>
+<p><span class="math display">\[
+p(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{y},M)\tag{1}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{\theta}\)</span> is a vector of the parameters in the model <span class="math inline">\(M\)</span> and <span class="math inline">\(\boldsymbol{x}\)</span>, <span class="math inline">\(\boldsymbol{y}\)</span> are inputs vector and output vector respectively. As what Bayesian equation told us, to maximize equation (1) we can use an indirect method, through which the maximum likelihood is always employed. And the probability</p>
+<p><span class="math display">\[
+p(\boldsymbol{y}|\boldsymbol{x},\boldsymbol{\theta},M)\tag{2}
+\]</span></p>
 <p>is the key component of the method. More details about the maximum likelihood method can be found <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Regression-Maximum-Likelihood-Estimation/">Maximum Likelihood Estimation</a>.</p>
-<p>In today’s discussion, another probability will come to our’s mind. If we have no information about the class of the data points from the training set, it is to say we have no teacher in the training stage. What we would have to concern, now, is just:</p>
-<p>$$<br>p(\boldsymbol{x})\tag{3}<br>$$</p>
-<p>Our task, now, could be no more called classification nor regression. It is referred to as ‘cluster’ which is a progress of identifying which group the data point belongs to. What we have here is just a set of training points $\boldsymbol{x}$ and the probability<br>$p(\boldsymbol{x})$. Although this probability is over one random variable, it can be arbitrarily complex. And sometimes, bringing in another random variable as assistance and combining them could get a more tractable distribution. That is to say, a joint distribution of observed variable $\boldsymbol{x}$ and another created random variable $\boldsymbol{z}$ could be more clear than the original distribution of $\boldsymbol{x}$. And sometimes under this combination, the conditional distribution of $\boldsymbol{x}$ given $\boldsymbol{z}$ is very clear, too.</p>
-<p>Let’s have look at a very simple example. $\boldsymbol{x}$ has a distribution:</p>
-<p>$$<br>a\cdot\exp(-\frac{(x-\mu_1)^2}{\delta_1})+b\cdot\exp(-\frac{(x-\mu_2)^2}{\delta_2})\tag{4}<br>$$</p>
-<p>where $a$ and $b$ are coeficients and $\mu_1$, $\mu_2$ are mean of the Gaussian distributions and $\delta_1$ and $\delta_2$ are variance.<br>It looks like:</p>
-<p><img src="./2Gaussian.png"></p>
-<p>The random variable of equation (4) is just $x$. However, now, we introduc anthor random varible $z\in {0,1}$ as a helper, in which $z$ has a uniform distribution. Then the distribution (4) can be rewritten in a joint form:</p>
-<p>$$<br>p(x,z)=z\cdot a\cdot\exp(-\frac{(x-\mu_1)^2}{\delta_1})+(1-z)\cdot b\cdot\exp(-\frac{(x-\mu_2)^2}{\delta_2})\tag{5}<br>$$</p>
-<p>for $\boldsymbol{z}$ is discrete random variable vector who has a uniform distribution so $p(z=0)=p(z=1)=0.5$ and the conditional distribution is $p(x|z=1)$ is </p>
-<p>$$<br>a\cdot\exp(-\frac{(x-\mu_1)^2}{\delta_1})\tag{6}<br>$$<br>looks like:<br><img src="./2Gaussian_1.png"></p>
-<p>And the conditional distribution is $p(x|z=0)$ is<br>$$<br>b\cdot\exp(-\frac{(x-\mu_2)^2}{\delta_2})\tag{7}<br>$$<br>looks like:<br><img src="./2Gaussian_2.png"></p>
-<p>And the margin distribution of $x$ is still equation (4) </p>
-<p><img src="./2Gaussian_mixture.png"></p>
+<p>In today's discussion, another probability will come to our's mind. If we have no information about the class of the data points from the training set, it is to say we have no teacher in the training stage. What we would have to concern, now, is just:</p>
+<p><span class="math display">\[
+p(\boldsymbol{x})\tag{3}
+\]</span></p>
+<p>Our task, now, could be no more called classification nor regression. It is referred to as 'cluster' which is a progress of identifying which group the data point belongs to. What we have here is just a set of training points <span class="math inline">\(\boldsymbol{x}\)</span> and the probability <span class="math inline">\(p(\boldsymbol{x})\)</span>. Although this probability is over one random variable, it can be arbitrarily complex. And sometimes, bringing in another random variable as assistance and combining them could get a more tractable distribution. That is to say, a joint distribution of observed variable <span class="math inline">\(\boldsymbol{x}\)</span> and another created random variable <span class="math inline">\(\boldsymbol{z}\)</span> could be more clear than the original distribution of <span class="math inline">\(\boldsymbol{x}\)</span>. And sometimes under this combination, the conditional distribution of <span class="math inline">\(\boldsymbol{x}\)</span> given <span class="math inline">\(\boldsymbol{z}\)</span> is very clear, too.</p>
+<p>Let's have look at a very simple example. <span class="math inline">\(\boldsymbol{x}\)</span> has a distribution:</p>
+<p><span class="math display">\[
+a\cdot\exp(-\frac{(x-\mu_1)^2}{\delta_1})+b\cdot\exp(-\frac{(x-\mu_2)^2}{\delta_2})\tag{4}
+\]</span></p>
+<p>where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are coeficients and <span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span> are mean of the Gaussian distributions and <span class="math inline">\(\delta_1\)</span> and <span class="math inline">\(\delta_2\)</span> are variance. It looks like:</p>
+<p><img src="./2Gaussian.png" /></p>
+<p>The random variable of equation (4) is just <span class="math inline">\(x\)</span>. However, now, we introduc anthor random varible <span class="math inline">\(z\in \{0,1\}\)</span> as a helper, in which <span class="math inline">\(z\)</span> has a uniform distribution. Then the distribution (4) can be rewritten in a joint form:</p>
+<p><span class="math display">\[
+p(x,z)=z\cdot a\cdot\exp(-\frac{(x-\mu_1)^2}{\delta_1})+(1-z)\cdot b\cdot\exp(-\frac{(x-\mu_2)^2}{\delta_2})\tag{5}
+\]</span></p>
+<p>for <span class="math inline">\(\boldsymbol{z}\)</span> is discrete random variable vector who has a uniform distribution so <span class="math inline">\(p(z=0)=p(z=1)=0.5\)</span> and the conditional distribution is <span class="math inline">\(p(x|z=1)\)</span> is</p>
+<p><span class="math display">\[
+a\cdot\exp(-\frac{(x-\mu_1)^2}{\delta_1})\tag{6}
+\]</span> looks like: <img src="./2Gaussian_1.png" /></p>
+<p>And the conditional distribution is <span class="math inline">\(p(x|z=0)\)</span> is <span class="math display">\[
+b\cdot\exp(-\frac{(x-\mu_2)^2}{\delta_2})\tag{7}
+\]</span> looks like: <img src="./2Gaussian_2.png" /></p>
+<p>And the margin distribution of <span class="math inline">\(x\)</span> is still equation (4)</p>
+<p><img src="./2Gaussian_mixture.png" /></p>
 <p>and its 3D vision is:</p>
-<p><img src="./mixture.gif"></p>
-<p>So the conditional distribution of $x$ given $z$ is just a single-variable Gaussian model, which is much simple to deal with. And so is the margin $p(x)$ by sum up all $z$ (the rule of computing the margin distribution). Here the created random variable $z$ is called a <strong>latent variable</strong>. It can be considered as an assistant input. However, it can also be considered as a kind of parameter of the model(we will discuss the details later). And the example above is the simplest Gaussian mixture which is wildly used in machine learning, statistics, and other fields. Here $z$, the <strong>latent variable</strong>, is a <strong>discrete random variable</strong>, and the <strong>continuous latent variable</strong> will be introduced later as well.</p>
+<p><img src="./mixture.gif" /></p>
+<p>So the conditional distribution of <span class="math inline">\(x\)</span> given <span class="math inline">\(z\)</span> is just a single-variable Gaussian model, which is much simple to deal with. And so is the margin <span class="math inline">\(p(x)\)</span> by sum up all <span class="math inline">\(z\)</span> (the rule of computing the margin distribution). Here the created random variable <span class="math inline">\(z\)</span> is called a <strong>latent variable</strong>. It can be considered as an assistant input. However, it can also be considered as a kind of parameter of the model(we will discuss the details later). And the example above is the simplest Gaussian mixture which is wildly used in machine learning, statistics, and other fields. Here <span class="math inline">\(z\)</span>, the <strong>latent variable</strong>, is a <strong>discrete random variable</strong>, and the <strong>continuous latent variable</strong> will be introduced later as well.</p>
 <p>Mixture distribution can be used to cluster data and what we are going to study are:</p>
-<ol>
+<ol type="1">
 <li>Nonprobabilistic version: <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-K-means-Clustering/">K-means algorithm</a></li>
 <li>Discrete latent variable and a relative algorithm which is known as <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-EM-Algorithm-for-Gaussian-Mixtures/">EM algorithm</a></li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

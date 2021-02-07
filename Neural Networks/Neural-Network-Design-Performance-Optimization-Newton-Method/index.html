@@ -24,12 +24,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"brainbomb.org","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Keywords: Newton’s method">
+<meta name="description" content="Keywords: Newton&#39;s method">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Newton&#39;s Method">
 <meta property="og:url" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Optimization-Newton-Method/index.html">
 <meta property="og:site_name" content="Brain Bomb">
-<meta property="og:description" content="Keywords: Newton’s method">
+<meta property="og:description" content="Keywords: Newton&#39;s method">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Optimization-Newton-Method/quadratic_nm.gif">
 <meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Optimization-Newton-Method/contour_plot.gif">
@@ -178,7 +178,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Newton%E2%80%99s-Method-1"><span class="nav-number">1.</span> <span class="nav-text">Newton’s Method[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">2.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#newtons-method1"><span class="nav-number">1.</span> <span class="nav-text">Newton&#39;s Method1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">2.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -332,63 +332,115 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> Newton’s method</p>
-<a id="more"></a>
-
-
-<h2 id="Newton’s-Method-1"><a href="#Newton’s-Method-1" class="headerlink" title="Newton’s Method[^1]"></a>Newton’s Method[^1]</h2><p>Taylor series gives us the conditions for minimum points base on both first-order items and the second-order item. And first-order item approximation of a performance index function produced a powerful algorithm in locating the minimum points in the whole parameter space which we call it <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘steepest descent algorithm’</a>. Now we want to have an insight into the second-order approximation of a function to find out whether there is an algorithm can also work as a guider to the minimum points. The approximation of $F(\boldsymbol{x}_{k+1})$ is:</p>
-<p>$$<br>\begin{aligned}<br>    F(\boldsymbol{x}_{k+1})&amp;=F(\boldsymbol{x}_k+\Delta \boldsymbol{x}_k)\<br>    &amp;\approx F(\boldsymbol{x}_k)+\boldsymbol{g}^T_k\Delta \boldsymbol{x}_k+\frac{1}{2}\Delta \boldsymbol{x}^T_kA_k\Delta \boldsymbol{x}_k<br>\end{aligned}<br>\tag{1}<br>$$</p>
+        <p><strong>Keywords:</strong> Newton's method <a id="more"></a></p>
+<h2 id="newtons-method1">Newton's Method<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Taylor series gives us the conditions for minimum points base on both first-order items and the second-order item. And first-order item approximation of a performance index function produced a powerful algorithm in locating the minimum points in the whole parameter space which we call it <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">'steepest descent algorithm'</a>. Now we want to have an insight into the second-order approximation of a function to find out whether there is an algorithm can also work as a guider to the minimum points. The approximation of <span class="math inline">\(F(\boldsymbol{x}_{k+1})\)</span> is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    F(\boldsymbol{x}_{k+1})&amp;=F(\boldsymbol{x}_k+\Delta \boldsymbol{x}_k)\\
+    &amp;\approx F(\boldsymbol{x}_k)+\boldsymbol{g}^T_k\Delta \boldsymbol{x}_k+\frac{1}{2}\Delta \boldsymbol{x}^T_kA_k\Delta \boldsymbol{x}_k
+\end{aligned}
+\tag{1}
+\]</span></p>
 <p>The main principle of the Taylor approximation that can help us locate the minimum points is that the stationary point of the function is close to the stationary point of the approximation. So the closer approximation is to the function, the closer the stationary point of approximation is to the stationary point of the function. The gradient of equation(1) is a special form of a gradient of a quadratic function:</p>
-<p>$$<br>\nabla F(\boldsymbol{x}_{k+1})=A_k\boldsymbol{x}_k+\boldsymbol{g}_k\tag{2}<br>$$</p>
-<p>To get the stationary points, we set equation(2) equal to $0$:</p>
-<p>$$<br>\begin{aligned}<br>    A_k\Delta \boldsymbol{x}_k+\boldsymbol{g}_k&amp;=0\<br>    \Delta \boldsymbol{x}_k&amp;=-A_k^{-1}\boldsymbol{g}_k<br>\end{aligned}<br>\tag{3}<br>$$</p>
-<p>then as the iterative algorithm framework said, we update $\boldsymbol{x}_k$ which is also known as Newton’s Method:</p>
-<p>$$<br>\boldsymbol{x}_{k+1}=\boldsymbol{x}_k+\Delta \boldsymbol{x}_k=\boldsymbol{x}_k-A_k^{-1}\boldsymbol{g}_k\tag{4}<br>$$</p>
+<p><span class="math display">\[
+\nabla F(\boldsymbol{x}_{k+1})=A_k\boldsymbol{x}_k+\boldsymbol{g}_k\tag{2}
+\]</span></p>
+<p>To get the stationary points, we set equation(2) equal to <span class="math inline">\(0\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    A_k\Delta \boldsymbol{x}_k+\boldsymbol{g}_k&amp;=0\\
+    \Delta \boldsymbol{x}_k&amp;=-A_k^{-1}\boldsymbol{g}_k   
+\end{aligned}
+\tag{3}
+\]</span></p>
+<p>then as the iterative algorithm framework said, we update <span class="math inline">\(\boldsymbol{x}_k\)</span> which is also known as Newton's Method:</p>
+<p><span class="math display">\[
+\boldsymbol{x}_{k+1}=\boldsymbol{x}_k+\Delta \boldsymbol{x}_k=\boldsymbol{x}_k-A_k^{-1}\boldsymbol{g}_k\tag{4}
+\]</span></p>
 <p>Now it is the time to look at an example:</p>
-<p>$$<br>F(\boldsymbol{x})=x^2_1+25x_2^2\tag{5}<br>$$</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=x^2_1+25x_2^2\tag{5}
+\]</span></p>
 <p>the gradient of equation(5) is:</p>
-<p>$$<br>\nabla F(\boldsymbol{x})=<br>\begin{bmatrix}<br>    \frac{\partial}{\partial x_1}F(\boldsymbol{x})\<br>    \frac{\partial}{\partial x_2}F(\boldsymbol{x})<br>\end{bmatrix}=<br>\begin{bmatrix}<br>    2x_1\<br>    50x_2<br>\end{bmatrix}\tag{6}<br>$$</p>
+<p><span class="math display">\[
+\nabla F(\boldsymbol{x})=
+\begin{bmatrix}
+    \frac{\partial}{\partial x_1}F(\boldsymbol{x})\\
+    \frac{\partial}{\partial x_2}F(\boldsymbol{x})
+\end{bmatrix}=
+\begin{bmatrix}
+    2x_1\\
+    50x_2
+\end{bmatrix}\tag{6}
+\]</span></p>
 <p>the Hessian matrix is:</p>
-<p>$$<br>\nabla F(\boldsymbol{x})=<br>\begin{bmatrix}<br>    \frac{\partial^2}{\partial^2 x_1}F(\boldsymbol{x})&amp; \frac{\partial^2}{\partial x_1 \partial x_2}F(\boldsymbol{x})\<br>     \frac{\partial^2}{\partial x_2\partial x_1}F(\boldsymbol{x})&amp;\frac{\partial^2}{\partial^2 x_2}F(\boldsymbol{x})<br>\end{bmatrix}=<br>\begin{bmatrix}<br>    2&amp;0\<br>    0&amp;50<br>\end{bmatrix}\tag{7}<br>$$</p>
-<p>then we update $\boldsymbol{x}$ as equation(4) and with the intial point $\boldsymbol{x}_0=\begin{bmatrix}1\1\end{bmatrix}$</p>
-<p>$$<br>\begin{aligned}<br>  \boldsymbol{x}_1&amp;=\boldsymbol{x}_0-A_k^{-1}\boldsymbol{g}_k\<br>  &amp;=\begin{bmatrix}1\1\end{bmatrix}-\begin{bmatrix}0.5&amp;0\0&amp;0.02\end{bmatrix}\begin{bmatrix}2\50\end{bmatrix}\<br>  &amp;=\begin{bmatrix}0\0\end{bmatrix}<br>\end{aligned}<br>\tag{8}<br>$$</p>
-<p>Then we test $\boldsymbol{x}_{1}=\begin{bmatrix}0\0\end{bmatrix}$ with terminational condition. And then we stop this algorithm.</p>
-<p><img src="./quadratic_nm.gif"></p>
-<p>This one-step algorithm is not a coincidence. This method will always find the minimum of a quadratic function in 1 step. This is because the second-order approximation of the quadratic function is just itself in another form. So they have the same minimum and the stationary points of a quadratic function can be calculated analytically. However, when $F(x)$ is not quadratic the method may:</p>
-<ol>
+<p><span class="math display">\[
+\nabla F(\boldsymbol{x})=
+\begin{bmatrix}
+    \frac{\partial^2}{\partial^2 x_1}F(\boldsymbol{x})&amp; \frac{\partial^2}{\partial x_1 \partial x_2}F(\boldsymbol{x})\\
+     \frac{\partial^2}{\partial x_2\partial x_1}F(\boldsymbol{x})&amp;\frac{\partial^2}{\partial^2 x_2}F(\boldsymbol{x})
+\end{bmatrix}=
+\begin{bmatrix}
+    2&amp;0\\
+    0&amp;50
+\end{bmatrix}\tag{7}
+\]</span></p>
+<p>then we update <span class="math inline">\(\boldsymbol{x}\)</span> as equation(4) and with the intial point <span class="math inline">\(\boldsymbol{x}_0=\begin{bmatrix}1\\1\end{bmatrix}\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  \boldsymbol{x}_1&amp;=\boldsymbol{x}_0-A_k^{-1}\boldsymbol{g}_k\\
+  &amp;=\begin{bmatrix}1\\1\end{bmatrix}-\begin{bmatrix}0.5&amp;0\\0&amp;0.02\end{bmatrix}\begin{bmatrix}2\\50\end{bmatrix}\\
+  &amp;=\begin{bmatrix}0\\0\end{bmatrix}  
+\end{aligned}
+\tag{8}
+\]</span></p>
+<p>Then we test <span class="math inline">\(\boldsymbol{x}_{1}=\begin{bmatrix}0\\0\end{bmatrix}\)</span> with terminational condition. And then we stop this algorithm.</p>
+<p><img src="./quadratic_nm.gif" /></p>
+<p>This one-step algorithm is not a coincidence. This method will always find the minimum of a quadratic function in 1 step. This is because the second-order approximation of the quadratic function is just itself in another form. So they have the same minimum and the stationary points of a quadratic function can be calculated analytically. However, when <span class="math inline">\(F(x)\)</span> is not quadratic the method may:</p>
+<ol type="1">
 <li>not generally converge in 1 step and</li>
 <li>be not sure whether the algorithm could converge or not which is dependent on both the function and the initial guess.</li>
 </ol>
-<p>Let’s consider a function which is not qudratic:</p>
-<p>$$<br>F(\boldsymbol{x})=(x_2-x_1)^4 + 8x_1x_2-x_1+x_2+3\tag{9}<br>$$<br><img src="./contour_plot.gif"></p>
+<p>Let's consider a function which is not qudratic:</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=(x_2-x_1)^4 + 8x_1x_2-x_1+x_2+3\tag{9}
+\]</span> <img src="./contour_plot.gif" /></p>
 <p>There are a local minimum, a global minimum, and a saddle point.</p>
-<p>With the initial point $\boldsymbol{x}_0=\begin{bmatrix}1.5\0\end{bmatrix}$</p>
-<p><img src="./initial_x_0.png"></p>
-<p>Then we keep updating the position $\boldsymbol{x}_k$ with the equation(4) and we have:</p>
-<p><img src="./initial_1_5_0.gif"></p>
+<p>With the initial point <span class="math inline">\(\boldsymbol{x}_0=\begin{bmatrix}1.5\\0\end{bmatrix}\)</span></p>
+<p><img src="./initial_x_0.png" /></p>
+<p>Then we keep updating the position <span class="math inline">\(\boldsymbol{x}_k\)</span> with the equation(4) and we have:</p>
+<p><img src="./initial_1_5_0.gif" /></p>
 <p>The right side of the figure is the process of second-order Taylor approximation.</p>
-<p><img src="./initial_1_5_0_app.gif"></p>
-<p>if we initial the process at the point $\boldsymbol{x}_0=\begin{bmatrix}0.75\0.75\end{bmatrix}$. It will be looked like:</p>
-<p><img src="./initial_0_75.gif"></p>
+<p><img src="./initial_1_5_0_app.gif" /></p>
+<p>if we initial the process at the point <span class="math inline">\(\boldsymbol{x}_0=\begin{bmatrix}0.75\\0.75\end{bmatrix}\)</span>. It will be looked like:</p>
+<p><img src="./initial_0_75.gif" /></p>
 <p>The right side of the figure is the process of second-order Taylor approximation.</p>
-<p><img src="./initial_0_75_app.gif"></p>
+<p><img src="./initial_0_75_app.gif" /></p>
 <p>and it converges to the saddle point.</p>
-<p>Newton’s method converges quickly in many applications. The analytic function can be accurately approximated by quadratic in a small neighborhood of a strong minimum. And Newton’s method can not distinguish local minimum, global minimum and saddle points because to a quadratic function it has only one global minimum. When we use a quadratic function approximation, we consider the quadratic function only and forget the other parts of the original function where it is not able to be approximated by the quadratic function away. So what we can see through a quadratic approximate is only a small region where there is only one minimum or saddle point. And so we can not distinguish which kind of stationary points it is. And Newton’s method can produce very unpredictable results, too.</p>
-<p>If the initial point is $\boldsymbol{x}_0=\begin{bmatrix}1.15\0.75\end{bmatrix}$ of the example above, it is far from minimum but it finally converges to the minimum point </p>
-<p><img src="./initial_1_15_0_75.gif"></p>
+<p>Newton's method converges quickly in many applications. The analytic function can be accurately approximated by quadratic in a small neighborhood of a strong minimum. And Newton's method can not distinguish local minimum, global minimum and saddle points because to a quadratic function it has only one global minimum. When we use a quadratic function approximation, we consider the quadratic function only and forget the other parts of the original function where it is not able to be approximated by the quadratic function away. So what we can see through a quadratic approximate is only a small region where there is only one minimum or saddle point. And so we can not distinguish which kind of stationary points it is. And Newton's method can produce very unpredictable results, too.</p>
+<p>If the initial point is <span class="math inline">\(\boldsymbol{x}_0=\begin{bmatrix}1.15\\0.75\end{bmatrix}\)</span> of the example above, it is far from minimum but it finally converges to the minimum point</p>
+<p><img src="./initial_1_15_0_75.gif" /></p>
 <p>The right side of the figure is the process of second-order Taylor approximation.</p>
-<p><img src="./initial_1_15_0_75_app.gif"></p>
-<p>while the intial point $\boldsymbol{x}_0=\begin{bmatrix}0.75\0.75\end{bmatrix}$ which is more close to the minimum converge to the saddle points.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Newton’s method is:</p>
-<ol>
+<p><img src="./initial_1_15_0_75_app.gif" /></p>
+<p>while the intial point <span class="math inline">\(\boldsymbol{x}_0=\begin{bmatrix}0.75\\0.75\end{bmatrix}\)</span> which is more close to the minimum converge to the saddle points.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Newton's method is:</p>
+<ol type="1">
 <li>faster than steepest descent</li>
 <li>quite complex</li>
 <li>possible oscillate or diverge (steepest descent is guaranteed to converge when the learning rate is suitable)</li>
-<li>and there is a variation of Newton’s method suited to neural networks.</li>
+<li>and there is a variation of Newton's method suited to neural networks.</li>
 <li>the computation and storage of the Hessian matrix and its inverse could easily exhaust our computational resource</li>
-<li>Newton’s method degenerates to steepest descent method when $A_k=A_k^{-1}=I$</li>
+<li>Newton's method degenerates to steepest descent method when <span class="math inline">\(A_k=A_k^{-1}=I\)</span></li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

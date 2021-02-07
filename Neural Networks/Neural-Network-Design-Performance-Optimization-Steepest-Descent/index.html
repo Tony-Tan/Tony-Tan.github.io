@@ -176,7 +176,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Direction-Based-Algorithm-and-a-Variation-1"><span class="nav-number">1.</span> <span class="nav-text">Direction Based Algorithm and a Variation[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steepest-Descent"><span class="nav-number">2.</span> <span class="nav-text">Steepest Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stable-Learning-Rates"><span class="nav-number">3.</span> <span class="nav-text">Stable Learning Rates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimizing-along-a-Line"><span class="nav-number">4.</span> <span class="nav-text">Minimizing along a Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#direction-based-algorithm-and-a-variation1"><span class="nav-number">1.</span> <span class="nav-text">Direction Based Algorithm and a Variation1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steepest-descent"><span class="nav-number">2.</span> <span class="nav-text">Steepest Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stable-learning-rates"><span class="nav-number">3.</span> <span class="nav-text">Stable Learning Rates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimizing-along-a-line"><span class="nav-number">4.</span> <span class="nav-text">Minimizing along a Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -330,113 +330,204 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> steepest descent</p>
-<a id="more"></a>
-
-<h2 id="Direction-Based-Algorithm-and-a-Variation-1"><a href="#Direction-Based-Algorithm-and-a-Variation-1" class="headerlink" title="Direction Based Algorithm and a Variation[^1]"></a>Direction Based Algorithm and a Variation[^1]</h2><p><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Introduction/">‘An Introduction to Performance Optimization’</a> had given us a brief introduction to the optimization algorithm. And this post describes a typical direction($\boldsymbol{p}_k$) based algorithm and its variation gives an algorithm which is a step-length($\alpha_k$) based algorithm.</p>
-<h2 id="Steepest-Descent"><a href="#Steepest-Descent" class="headerlink" title="Steepest Descent"></a>Steepest Descent</h2><p>To find the minimum points of a performance index by an iterative algorithm, we want to decrease the value of performance index step by step which looks like going down from the mountain. And the key point of this algorithm is every step is going down. Every iteration makes the performance index decrease:</p>
-<p>$$<br>F(\boldsymbol{x}<em>{k+1})&lt;F(\boldsymbol{x}</em>{k})\tag{1}<br>$$</p>
-<p>Our mission is to find the direction $\boldsymbol{p}_k$ with a relatively short step length $\alpha_k$ which leads us downhill.</p>
+        <p><strong>Keywords:</strong> steepest descent <a id="more"></a></p>
+<h2 id="direction-based-algorithm-and-a-variation1">Direction Based Algorithm and a Variation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Introduction/">'An Introduction to Performance Optimization'</a> had given us a brief introduction to the optimization algorithm. And this post describes a typical direction(<span class="math inline">\(\boldsymbol{p}_k\)</span>) based algorithm and its variation gives an algorithm which is a step-length(<span class="math inline">\(\alpha_k\)</span>) based algorithm.</p>
+<h2 id="steepest-descent">Steepest Descent</h2>
+<p>To find the minimum points of a performance index by an iterative algorithm, we want to decrease the value of performance index step by step which looks like going down from the mountain. And the key point of this algorithm is every step is going down. Every iteration makes the performance index decrease:</p>
+<p><span class="math display">\[
+F(\boldsymbol{x}_{k+1})&lt;F(\boldsymbol{x}_{k})\tag{1}
+\]</span></p>
+<p>Our mission is to find the direction <span class="math inline">\(\boldsymbol{p}_k\)</span> with a relatively short step length <span class="math inline">\(\alpha_k\)</span> which leads us downhill.</p>
 <p>The first-order Taylor series of an iterative step is:</p>
-<p>$$<br>F(\boldsymbol{x}<em>{k+1})=F(\boldsymbol{x}</em>{k}+\Delta \boldsymbol{x}<em>k)\approx F(\boldsymbol{x}</em>{k})+\boldsymbol{g}^T\Delta\boldsymbol{x}_k\tag{2}<br>$$</p>
-<p>where $\boldsymbol{g}_k$ is the gradient at position $\boldsymbol{x}$ of the performance index $F(\boldsymbol{x})$ which means:</p>
-<p>$$<br>\boldsymbol{g}<em>k = \nabla F(\boldsymbol{x})\bigg |</em>{\boldsymbol{x}=\boldsymbol{x}_k}\tag{3}<br>$$</p>
-<p>From equation(1) and equation(2) for the purpose $F(\boldsymbol{x}<em>{k+1})&lt;F(\boldsymbol{x}</em>{k})$, we need:</p>
-<p>$$<br>\boldsymbol{g}^T\Delta\boldsymbol{x}_k&lt;0\tag{4}<br>$$ </p>
-<p>( $\Delta\boldsymbol{x}_k$ , the change of $\boldsymbol{x}_k$, can also be represented by  step length $\alpha_k$ and direction $\boldsymbol{p}$, then the equation(4) has a equivalent form:</p>
-<p>$$<br>\alpha_k\boldsymbol{g}^T\Delta\boldsymbol{p}_k&lt;0\tag{5}<br>$$</p>
-<p>In the previous article, we have seen how to find the greatest value of $\boldsymbol{g}^T\Delta\boldsymbol{p}_k$ then we can find the smallest value of $\boldsymbol{g}^T\Delta\boldsymbol{p}_k$ in the same way. Then we got the smallest value this item is:</p>
-<p>$$<br>-\boldsymbol{g}^T\boldsymbol{g}\tag{6}<br>$$ </p>
+<p><span class="math display">\[
+F(\boldsymbol{x}_{k+1})=F(\boldsymbol{x}_{k}+\Delta \boldsymbol{x}_k)\approx F(\boldsymbol{x}_{k})+\boldsymbol{g}^T\Delta\boldsymbol{x}_k\tag{2}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{g}_k\)</span> is the gradient at position <span class="math inline">\(\boldsymbol{x}\)</span> of the performance index <span class="math inline">\(F(\boldsymbol{x})\)</span> which means:</p>
+<p><span class="math display">\[
+\boldsymbol{g}_k = \nabla F(\boldsymbol{x})\bigg |_{\boldsymbol{x}=\boldsymbol{x}_k}\tag{3}
+\]</span></p>
+<p>From equation(1) and equation(2) for the purpose <span class="math inline">\(F(\boldsymbol{x}_{k+1})&lt;F(\boldsymbol{x}_{k})\)</span>, we need:</p>
+<p><span class="math display">\[
+\boldsymbol{g}^T\Delta\boldsymbol{x}_k&lt;0\tag{4}
+\]</span></p>
+<p>( <span class="math inline">\(\Delta\boldsymbol{x}_k\)</span> , the change of <span class="math inline">\(\boldsymbol{x}_k\)</span>, can also be represented by step length <span class="math inline">\(\alpha_k\)</span> and direction <span class="math inline">\(\boldsymbol{p}\)</span>, then the equation(4) has a equivalent form:</p>
+<p><span class="math display">\[
+\alpha_k\boldsymbol{g}^T\Delta\boldsymbol{p}_k&lt;0\tag{5}
+\]</span></p>
+<p>In the previous article, we have seen how to find the greatest value of <span class="math inline">\(\boldsymbol{g}^T\Delta\boldsymbol{p}_k\)</span> then we can find the smallest value of <span class="math inline">\(\boldsymbol{g}^T\Delta\boldsymbol{p}_k\)</span> in the same way. Then we got the smallest value this item is:</p>
+<p><span class="math display">\[
+-\boldsymbol{g}^T\boldsymbol{g}\tag{6}
+\]</span></p>
 <p>which means that the deepest direction we would search is:</p>
-<p>$$<br>\Delta\boldsymbol{p}_k=-\boldsymbol{g}\tag{7}<br>$$</p>
-<p>According the iterative optimization algorithm frame work<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Introduction/">‘An Introduction to Performance Optimization’</a>, the second step is :</p>
-<p>$$<br>\boldsymbol{x}<em>{k+1}=\boldsymbol{x}</em>{k}-\alpha_k\boldsymbol{g}_k\tag{8}<br>$$</p>
-<p>The step length is also called learning rate. And the choice of $\alpha_k$ can be:</p>
-<ol>
-<li>Minimizing $F(\boldsymbol{x})$ with $\alpha_k$ by minimizing along the line: $\boldsymbol{x}_k-\alpha_k\boldsymbol{g}_k$</li>
-<li>Fixed $\alpha_k$, such as $\alpha_k=0.002$</li>
-<li>Predetermined, like $\alpha_k=\frac{1}{k}$</li>
+<p><span class="math display">\[
+\Delta\boldsymbol{p}_k=-\boldsymbol{g}\tag{7}
+\]</span></p>
+<p>According the iterative optimization algorithm frame work<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Introduction/">'An Introduction to Performance Optimization'</a>, the second step is :</p>
+<p><span class="math display">\[
+\boldsymbol{x}_{k+1}=\boldsymbol{x}_{k}-\alpha_k\boldsymbol{g}_k\tag{8}
+\]</span></p>
+<p>The step length is also called learning rate. And the choice of <span class="math inline">\(\alpha_k\)</span> can be:</p>
+<ol type="1">
+<li>Minimizing <span class="math inline">\(F(\boldsymbol{x})\)</span> with <span class="math inline">\(\alpha_k\)</span> by minimizing along the line: <span class="math inline">\(\boldsymbol{x}_k-\alpha_k\boldsymbol{g}_k\)</span></li>
+<li>Fixed <span class="math inline">\(\alpha_k\)</span>, such as <span class="math inline">\(\alpha_k=0.002\)</span></li>
+<li>Predetermined, like <span class="math inline">\(\alpha_k=\frac{1}{k}\)</span></li>
 </ol>
-<p>An example:<br>$$<br>F(\boldsymbol{x})=x_1^2+25x_2^2\tag{9}<br>$$</p>
-<ol>
-<li>start at point $x=\begin{bmatrix}0.5\0.5\end{bmatrix}$ </li>
-<li>gradient of $F(\boldsymbol{x})$ is $\nabla F(\boldsymbol{x})=\begin{bmatrix}\frac{\partial F}{\partial x_1}\\frac{\partial F}{\partial x_2}\end{bmatrix}=\begin{bmatrix}2x_1\50x_2\end{bmatrix}$</li>
-<li>$\boldsymbol{g}<em>0=\nabla F(\boldsymbol{x})\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}_0}=\begin{bmatrix}1\25\end{bmatrix}$</li>
-<li>set $\alpha = 0.01$ </li>
-<li>update: $\boldsymbol{x}_1=\boldsymbol{x}_0-0.01\boldsymbol{g}_0=\begin{bmatrix}0.5\0.5\end{bmatrix}-0.01\begin{bmatrix}1\25\end{bmatrix}=\begin{bmatrix}0.49\0.25\end{bmatrix}$</li>
-<li>update: $\boldsymbol{x}_2=\boldsymbol{x}_1-0.01\boldsymbol{g}_1=\begin{bmatrix}0.49\0.25\end{bmatrix}-0.01\begin{bmatrix}0.98\12.5\end{bmatrix}=\begin{bmatrix}0.4802\0.125\end{bmatrix}$</li>
+<p>An example: <span class="math display">\[
+F(\boldsymbol{x})=x_1^2+25x_2^2\tag{9}
+\]</span></p>
+<ol type="1">
+<li>start at point <span class="math inline">\(x=\begin{bmatrix}0.5\\0.5\end{bmatrix}\)</span></li>
+<li>gradient of <span class="math inline">\(F(\boldsymbol{x})\)</span> is <span class="math inline">\(\nabla F(\boldsymbol{x})=\begin{bmatrix}\frac{\partial F}{\partial x_1}\\\frac{\partial F}{\partial x_2}\end{bmatrix}=\begin{bmatrix}2x_1\\50x_2\end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\boldsymbol{g}_0=\nabla F(\boldsymbol{x})\bigg|_{\boldsymbol{x}=\boldsymbol{x}_0}=\begin{bmatrix}1\\25\end{bmatrix}\)</span></li>
+<li>set <span class="math inline">\(\alpha = 0.01\)</span></li>
+<li>update: <span class="math inline">\(\boldsymbol{x}_1=\boldsymbol{x}_0-0.01\boldsymbol{g}_0=\begin{bmatrix}0.5\\0.5\end{bmatrix}-0.01\begin{bmatrix}1\\25\end{bmatrix}=\begin{bmatrix}0.49\\0.25\end{bmatrix}\)</span></li>
+<li>update: <span class="math inline">\(\boldsymbol{x}_2=\boldsymbol{x}_1-0.01\boldsymbol{g}_1=\begin{bmatrix}0.49\\0.25\end{bmatrix}-0.01\begin{bmatrix}0.98\\12.5\end{bmatrix}=\begin{bmatrix}0.4802\\0.125\end{bmatrix}\)</span></li>
 <li>go on updating until the smallest point is achieved.</li>
 </ol>
-<p>The whole trajectory looks like:<br><img src="./contour_plot.png"></p>
-<p>and the learning rate, step length is a constant in this algorithm, however, we can test 2 different values and watch their behavior. When we set $\alpha=0.01$, we have:</p>
-<p><img src="./lr_001.gif"></p>
-<p>and when we set $\alpha=0.02$, we have:<br><img src="./lr_002.gif"></p>
+<p>The whole trajectory looks like: <img src="./contour_plot.png" /></p>
+<p>and the learning rate, step length is a constant in this algorithm, however, we can test 2 different values and watch their behavior. When we set <span class="math inline">\(\alpha=0.01\)</span>, we have:</p>
+<p><img src="./lr_001.gif" /></p>
+<p>and when we set <span class="math inline">\(\alpha=0.02\)</span>, we have: <img src="./lr_002.gif" /></p>
 <p>The gif illustrates these:</p>
-<ol>
+<ol type="1">
 <li>At first several steps, descent speed is faster than later steps</li>
 <li>A greater learning rate seems to have a higher speed</li>
 <li>This algorithm can converge to the minimum point.</li>
 </ol>
-<p>The second point gives us a new idea, what will the algorithms do when we have a relatively bigger learning rate. To be on the safe side we select a not so big learning rate $\alpha=0.05$, we have:</p>
-<p><img src="./diverge.gif"></p>
+<p>The second point gives us a new idea, what will the algorithms do when we have a relatively bigger learning rate. To be on the safe side we select a not so big learning rate <span class="math inline">\(\alpha=0.05\)</span>, we have:</p>
+<p><img src="./diverge.gif" /></p>
 <p>this algorithm diverges, which means it would never stop at the minimum and get farther and farther as steps going on. So we have to take care of the value of learning rate, a small learning rate can slow down the algorithm but a big one can break up the algorithm.</p>
-<h2 id="Stable-Learning-Rates"><a href="#Stable-Learning-Rates" class="headerlink" title="Stable Learning Rates"></a>Stable Learning Rates</h2><p>To have a fast speed and converge to the minimu, we need to study the learning rate $\alpha$. To simplify the problem, we start with supposing the performance index is a quadratic funtion:<br>$$<br>F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x}+\boldsymbol{d}^T\boldsymbol{x}+c\tag{10}<br>$$</p>
+<h2 id="stable-learning-rates">Stable Learning Rates</h2>
+<p>To have a fast speed and converge to the minimu, we need to study the learning rate <span class="math inline">\(\alpha\)</span>. To simplify the problem, we start with supposing the performance index is a quadratic funtion: <span class="math display">\[
+F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x}+\boldsymbol{d}^T\boldsymbol{x}+c\tag{10}
+\]</span></p>
 <p>and we have already known its gradient is:</p>
-<p>$$<br>\nabla F(\boldsymbol{x})=A \boldsymbol{x}+\boldsymbol{d}\tag{11}<br>$$</p>
+<p><span class="math display">\[
+\nabla F(\boldsymbol{x})=A \boldsymbol{x}+\boldsymbol{d}\tag{11}
+\]</span></p>
 <p>we take equation(11) into update step equation(8), we have:</p>
-<p>$$<br>\boldsymbol{x}_{k+1}=\boldsymbol{x}_k-\alpha\boldsymbol{g}_k=\boldsymbol{x}_k-\alpha(A \boldsymbol{x}_k+\boldsymbol{d})\tag{12}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{x}_{k+1}=\boldsymbol{x}_k-\alpha\boldsymbol{g}_k=\boldsymbol{x}_k-\alpha(A \boldsymbol{x}_k+\boldsymbol{d})\tag{12}
+\]</span></p>
 <p>or an equivelant form:</p>
-<p>$$<br>\boldsymbol{x}_{k+1}=(I-\alpha A)\boldsymbol{x}_k- \alpha\boldsymbol{d}\tag{13}<br>$$</p>
-<p>In the linear algebra course or other courses, this equation is called ‘linear dynamic system’. To make the system stable, the eigenvalues of $I-\alpha A$ are less than one in magnitude. And $I-\alpha A$  has the same eigenvectors with $A$. Let $[\lambda_1,\lambda_2,\cdots,\lambda_n]$ be the eigenvalues of $A$ and let $[\boldsymbol{z}_1,\boldsymbol{z}_2,\cdots,\boldsymbol{z}_n]$ be the eigenvectors of $A$</p>
-<p>$$<br>[I-\alpha A]\boldsymbol{z}_i=\boldsymbol{z}_i-\alpha A\boldsymbol{z}_i=\boldsymbol{z}_i-\alpha \lambda_i\boldsymbol{z}_i=(1-\alpha\lambda_i)\boldsymbol{z}_i\tag{14}<br>$$</p>
-<p>$I-\alpha A$ has the same eigenvectors with $A$ and has the eigenvalues: $[1-\alpha\lambda_1,1-\alpha\lambda_2,\cdots,1-\alpha\lambda_n]$</p>
-<p>Concerning the equation(13) and eigenvalues of $I-\alpha A$ to stabilize the system which here is the steepest descent algorithm, we need:</p>
-<p>$$<br>\begin{aligned}<br>    &amp;|1-\alpha \lambda_i|&amp;&lt;1\<br>-1&amp;&lt;1-\alpha \lambda_i&amp;&lt;1\<br>-2&amp;&lt;-\alpha \lambda_i&amp;&lt;0\<br>\end{aligned}\tag{15}<br>$$</p>
-<p>for $\alpha&gt;0$</p>
-<p>$$<br>\begin{aligned}<br>\frac{2}{\alpha}&amp;&gt; \lambda_i&amp;&gt;0\<br>\end{aligned}\tag{16}<br>$$</p>
-<p>frome equation(16), we finally have<br>$$<br>\frac{2}{\lambda_i}&gt;\alpha\tag{17}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{x}_{k+1}=(I-\alpha A)\boldsymbol{x}_k- \alpha\boldsymbol{d}\tag{13}
+\]</span></p>
+<p>In the linear algebra course or other courses, this equation is called 'linear dynamic system'. To make the system stable, the eigenvalues of <span class="math inline">\(I-\alpha A\)</span> are less than one in magnitude. And <span class="math inline">\(I-\alpha A\)</span> has the same eigenvectors with <span class="math inline">\(A\)</span>. Let <span class="math inline">\([\lambda_1,\lambda_2,\cdots,\lambda_n]\)</span> be the eigenvalues of <span class="math inline">\(A\)</span> and let <span class="math inline">\([\boldsymbol{z}_1,\boldsymbol{z}_2,\cdots,\boldsymbol{z}_n]\)</span> be the eigenvectors of <span class="math inline">\(A\)</span></p>
+<p><span class="math display">\[
+[I-\alpha A]\boldsymbol{z}_i=\boldsymbol{z}_i-\alpha A\boldsymbol{z}_i=\boldsymbol{z}_i-\alpha \lambda_i\boldsymbol{z}_i=(1-\alpha\lambda_i)\boldsymbol{z}_i\tag{14}
+\]</span></p>
+<p><span class="math inline">\(I-\alpha A\)</span> has the same eigenvectors with <span class="math inline">\(A\)</span> and has the eigenvalues: <span class="math inline">\([1-\alpha\lambda_1,1-\alpha\lambda_2,\cdots,1-\alpha\lambda_n]\)</span></p>
+<p>Concerning the equation(13) and eigenvalues of <span class="math inline">\(I-\alpha A\)</span> to stabilize the system which here is the steepest descent algorithm, we need:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp;|1-\alpha \lambda_i|&amp;&lt;1\\
+-1&amp;&lt;1-\alpha \lambda_i&amp;&lt;1\\
+-2&amp;&lt;-\alpha \lambda_i&amp;&lt;0\\
+\end{aligned}\tag{15}
+\]</span></p>
+<p>for <span class="math inline">\(\alpha&gt;0\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{2}{\alpha}&amp;&gt; \lambda_i&amp;&gt;0\\
+\end{aligned}\tag{16}
+\]</span></p>
+<p>frome equation(16), we finally have <span class="math display">\[
+\frac{2}{\lambda_i}&gt;\alpha\tag{17}
+\]</span></p>
 <p>which implies:</p>
-<p>$$<br>\frac{2}{\lambda_{\text{max}}}&gt;\alpha\tag{18}<br>$$</p>
-<p>This gives us the maximum stable learning rate is inversely proportional to the maximum curvature(direction along with eigenvector according to the maximum eigenvalue $\lambda_\text{max}$) of the quadratic function.</p>
-<p>Let’s go back to the example, the Hessian matrix of the equation(9) is:<br>$$<br>A=\begin{bmatrix}<br>    2&amp;0\0&amp;50<br>\end{bmatrix}\tag{19}<br>$$</p>
-<p>its eigenvectors and eigenvalues are:<br>$$<br>{\lambda_1=2,\boldsymbol{z}_1=\begin{bmatrix}1\0\end{bmatrix}},{\lambda_2=50,\boldsymbol{z}_2=\begin{bmatrix}0\1\end{bmatrix}}\tag{20}<br>$$</p>
-<p>taking $\lambda_\text{max}=\lambda_2=50$ into equation(18), we get:<br>$$<br>\alpha_\text{max}&lt;\frac{2}{50}=0.04\tag{21}<br>$$</p>
-<p>so, let’s check the behavior of the algorithm when  $\alpha=0.039$ and $\alpha=0.041$:</p>
-<ol>
-<li>set  $\alpha=0.039$ we have:<img src="./lr_039.gif"></li>
-<li>set  $\alpha=0.041$ we have:<img src="./lr_041.gif"></li>
+<p><span class="math display">\[
+\frac{2}{\lambda_{\text{max}}}&gt;\alpha\tag{18}
+\]</span></p>
+<p>This gives us the maximum stable learning rate is inversely proportional to the maximum curvature(direction along with eigenvector according to the maximum eigenvalue <span class="math inline">\(\lambda_\text{max}\)</span>) of the quadratic function.</p>
+<p>Let's go back to the example, the Hessian matrix of the equation(9) is: <span class="math display">\[
+A=\begin{bmatrix}
+    2&amp;0\\0&amp;50
+\end{bmatrix}\tag{19}
+\]</span></p>
+<p>its eigenvectors and eigenvalues are: <span class="math display">\[
+\{\lambda_1=2,\boldsymbol{z}_1=\begin{bmatrix}1\\0\end{bmatrix}\},\{\lambda_2=50,\boldsymbol{z}_2=\begin{bmatrix}0\\1\end{bmatrix}\}\tag{20}
+\]</span></p>
+<p>taking <span class="math inline">\(\lambda_\text{max}=\lambda_2=50\)</span> into equation(18), we get: <span class="math display">\[
+\alpha_\text{max}&lt;\frac{2}{50}=0.04\tag{21}
+\]</span></p>
+<p>so, let's check the behavior of the algorithm when <span class="math inline">\(\alpha=0.039\)</span> and <span class="math inline">\(\alpha=0.041\)</span>:</p>
+<ol type="1">
+<li>set <span class="math inline">\(\alpha=0.039\)</span> we have:<img src="./lr_039.gif" /></li>
+<li>set <span class="math inline">\(\alpha=0.041\)</span> we have:<img src="./lr_041.gif" /></li>
 </ol>
 <p>Up to now, both concepts and implement have been built to prove the correctness of the algorithm. And we also have the following tips:</p>
-<ol>
+<ol type="1">
 <li>The algorithm tends to converge most quickly in the direction of the eigenvector corresponding to the largest eigenvalue</li>
 <li>The algorithm tends to converge most slowly in the direction of the eigenvector corresponding to the smallest eigenvalue</li>
-<li>Do not overshoot the minimum point for the too-long step(learning rate $\alpha$)</li>
-<li>If the distinction between $\lambda_\text{min}$ and $\lambda_\text{max}$, the algorithm tends to converge slowly.</li>
+<li>Do not overshoot the minimum point for the too-long step(learning rate <span class="math inline">\(\alpha\)</span>)</li>
+<li>If the distinction between <span class="math inline">\(\lambda_\text{min}\)</span> and <span class="math inline">\(\lambda_\text{max}\)</span>, the algorithm tends to converge slowly.</li>
 </ol>
-<h2 id="Minimizing-along-a-Line"><a href="#Minimizing-along-a-Line" class="headerlink" title="Minimizing along a Line"></a>Minimizing along a Line</h2><p>The section above gives us the upper bound of $\alpha$, but we have three kinds of strategies of selecting a $\alpha$ and the first one is “Minimizing $F(\boldsymbol{x})$ with $\alpha_k$ by minimizing along the line: $\boldsymbol{x}_k-\alpha_k\boldsymbol{g}_k$”. What shall we do with this kind of $\alpha$?</p>
+<h2 id="minimizing-along-a-line">Minimizing along a Line</h2>
+<p>The section above gives us the upper bound of <span class="math inline">\(\alpha\)</span>, but we have three kinds of strategies of selecting a <span class="math inline">\(\alpha\)</span> and the first one is "Minimizing <span class="math inline">\(F(\boldsymbol{x})\)</span> with <span class="math inline">\(\alpha_k\)</span> by minimizing along the line: <span class="math inline">\(\boldsymbol{x}_k-\alpha_k\boldsymbol{g}_k\)</span>". What shall we do with this kind of <span class="math inline">\(\alpha\)</span>?</p>
 <p>To arbitrary functions, the stationary point along a direction can be calculated by:</p>
-<p>$$<br>\begin{aligned}<br>    &amp;\frac{dF}{d\alpha_k}(\boldsymbol{x}<em>k+\alpha_k\boldsymbol{p}_k)\<br>    &amp;=\nabla F(\boldsymbol{x})^T\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}_k}\boldsymbol{p}<em>k+\alpha_k\boldsymbol{p}_k^T\nabla F^2(\boldsymbol{x})^T\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}_k}\boldsymbol{p}_k\<br>    &amp;=0<br>\end{aligned}\tag{22}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp;\frac{dF}{d\alpha_k}(\boldsymbol{x}_k+\alpha_k\boldsymbol{p}_k)\\
+    &amp;=\nabla F(\boldsymbol{x})^T\bigg|_{\boldsymbol{x}=\boldsymbol{x}_k}\boldsymbol{p}_k+\alpha_k\boldsymbol{p}_k^T\nabla F^2(\boldsymbol{x})^T\bigg|_{\boldsymbol{x}=\boldsymbol{x}_k}\boldsymbol{p}_k\\
+    &amp;=0
+\end{aligned}\tag{22}
+\]</span></p>
 <p>and then</p>
-<p>$$<br>\alpha=-\frac{\nabla F(\boldsymbol{x})^T\bigg|_{\boldsymbol{x}=\boldsymbol{x}<em>k}\boldsymbol{p}_k}{\boldsymbol{p}_k^T\nabla F^2(\boldsymbol{x})\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}_k}\boldsymbol{p}_k}=-\frac{\boldsymbol{g}^T_k\boldsymbol{p}_k}{\boldsymbol{p}_k^TA_k\boldsymbol{p}_k}\tag{23}<br>$$</p>
-<p>where: $A_k$ is the Hessian matrix of old guess $\boldsymbol{x}_k$:</p>
-<p>$$<br>A_k=\nabla^2F(\boldsymbol{x})\bigg|_{\boldsymbol{x}=\boldsymbol{x}_k}\tag{24}<br>$$</p>
-<p>Here we look at an example:<br>$$<br>F(x)=\frac{1}{2}\boldsymbol{x}^T\begin{bmatrix}<br>    2&amp;1\1&amp;2<br>\end{bmatrix}\boldsymbol{x}\tag{25}<br>$$</p>
-<p>with the initial guess<br>$$<br>\boldsymbol{x}_0=\begin{bmatrix}0.8\-0.25\end{bmatrix}\tag{26}<br>$$ </p>
+<p><span class="math display">\[
+\alpha=-\frac{\nabla F(\boldsymbol{x})^T\bigg|_{\boldsymbol{x}=\boldsymbol{x}_k}\boldsymbol{p}_k}{\boldsymbol{p}_k^T\nabla F^2(\boldsymbol{x})\bigg|_{\boldsymbol{x}=\boldsymbol{x}_k}\boldsymbol{p}_k}=-\frac{\boldsymbol{g}^T_k\boldsymbol{p}_k}{\boldsymbol{p}_k^TA_k\boldsymbol{p}_k}\tag{23}
+\]</span></p>
+<p>where: <span class="math inline">\(A_k\)</span> is the Hessian matrix of old guess <span class="math inline">\(\boldsymbol{x}_k\)</span>:</p>
+<p><span class="math display">\[
+A_k=\nabla^2F(\boldsymbol{x})\bigg|_{\boldsymbol{x}=\boldsymbol{x}_k}\tag{24}
+\]</span></p>
+<p>Here we look at an example: <span class="math display">\[
+F(x)=\frac{1}{2}\boldsymbol{x}^T\begin{bmatrix}
+    2&amp;1\\1&amp;2
+\end{bmatrix}\boldsymbol{x}\tag{25}
+\]</span></p>
+<p>with the initial guess <span class="math display">\[
+\boldsymbol{x}_0=\begin{bmatrix}0.8\\-0.25\end{bmatrix}\tag{26}
+\]</span></p>
 <p>the gradient of the function is</p>
-<p>$$<br>\nabla F(\boldsymbol{x})=\begin{bmatrix}2x_1+x_2\x_1+2x_2\end{bmatrix}\tag{27}<br>$$</p>
+<p><span class="math display">\[
+\nabla F(\boldsymbol{x})=\begin{bmatrix}2x_1+x_2\\x_1+2x_2\end{bmatrix}\tag{27}
+\]</span></p>
 <p>the initial direction of the algorithm is</p>
-<p>$$<br>\boldsymbol{p}_0=-\boldsymbol{g}<em>0=-\nabla F(\boldsymbol{x})\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}_k}=\begin{bmatrix}-1.35\-0.3\end{bmatrix}\tag{28}<br>$$</p>
-<p>and take equation(28) and $A=\begin{bmatrix}2&amp;1\1&amp;2\end{bmatrix}$into equation(23):<br>$$<br>\alpha_0=\frac{\begin{bmatrix}1.35&amp;0.3\end{bmatrix}\begin{bmatrix}2&amp;1\1&amp;2\end{bmatrix}}{\begin{bmatrix}1.35&amp;0.3\end{bmatrix}\begin{bmatrix}2&amp;1\1&amp;2\end{bmatrix}\begin{bmatrix}1.35\0.3\end{bmatrix}}=0.413\tag{29}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{p}_0=-\boldsymbol{g}_0=-\nabla F(\boldsymbol{x})\bigg|_{\boldsymbol{x}=\boldsymbol{x}_k}=\begin{bmatrix}-1.35\\-0.3\end{bmatrix}\tag{28}
+\]</span></p>
+<p>and take equation(28) and <span class="math inline">\(A=\begin{bmatrix}2&amp;1\\1&amp;2\end{bmatrix}\)</span>into equation(23): <span class="math display">\[
+\alpha_0=\frac{\begin{bmatrix}1.35&amp;0.3\end{bmatrix}\begin{bmatrix}2&amp;1\\1&amp;2\end{bmatrix}}{\begin{bmatrix}1.35&amp;0.3\end{bmatrix}\begin{bmatrix}2&amp;1\\1&amp;2\end{bmatrix}\begin{bmatrix}1.35\\0.3\end{bmatrix}}=0.413\tag{29}
+\]</span></p>
 <p>and take all these data into equation(8):</p>
-<p>$$<br>\boldsymbol{x}_1=\boldsymbol{x}_0-\alpha_0\boldsymbol{g}_0=\begin{bmatrix}0.8\-0.25\end{bmatrix}-0.413\begin{bmatrix}1.35\0.3\end{bmatrix}=\begin{bmatrix}0.24\-0.37\end{bmatrix}\tag{30}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{x}_1=\boldsymbol{x}_0-\alpha_0\boldsymbol{g}_0=\begin{bmatrix}0.8\\-0.25\end{bmatrix}-0.413\begin{bmatrix}1.35\\0.3\end{bmatrix}=\begin{bmatrix}0.24\\-0.37\end{bmatrix}\tag{30}
+\]</span></p>
 <p>What is going on is repeating the steps: equation(26) to equation(30) until some terminative conditions are achieved. It works like:</p>
-<p><img src="./lr_mal.gif"></p>
+<p><img src="./lr_mal.gif" /></p>
 <p>All the new directions in the steps are othogonal to their last direction:</p>
-<p>$$<br>\boldsymbol{p}_{k+1}^T\boldsymbol{p}<em>k=\boldsymbol{g}</em>{k+1}^T\boldsymbol{p}_k=0\tag{31}<br>$$</p>
-<p>what we need now is to proof is $\boldsymbol{g}_{k+1}^T\boldsymbol{p}_k=0$, with the chain rule of equation(22):</p>
-<p>$$<br>\begin{aligned}<br>    \frac{dF}{d\alpha_k}(\boldsymbol{x}<em>{k+1})&amp;=\frac{dF}{d\alpha_k}(\boldsymbol{x}_k+\alpha_k\boldsymbol{p}_k)\<br>    &amp;=\nabla F(\boldsymbol{x})^T\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}<em>{k+1}}\frac{d}{d\alpha_k}(\boldsymbol{x}_k+\alpha_k\boldsymbol{p}_k)\<br>    &amp;=\nabla F(\boldsymbol{x})^T\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}_{k+1}}\boldsymbol{p}_k\<br>    &amp;=0<br>\end{aligned}\tag{32}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{p}_{k+1}^T\boldsymbol{p}_k=\boldsymbol{g}_{k+1}^T\boldsymbol{p}_k=0\tag{31}
+\]</span></p>
+<p>what we need now is to proof is <span class="math inline">\(\boldsymbol{g}_{k+1}^T\boldsymbol{p}_k=0\)</span>, with the chain rule of equation(22):</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \frac{dF}{d\alpha_k}(\boldsymbol{x}_{k+1})&amp;=\frac{dF}{d\alpha_k}(\boldsymbol{x}_k+\alpha_k\boldsymbol{p}_k)\\
+    &amp;=\nabla F(\boldsymbol{x})^T\bigg|_{\boldsymbol{x}=\boldsymbol{x}_{k+1}}\frac{d}{d\alpha_k}(\boldsymbol{x}_k+\alpha_k\boldsymbol{p}_k)\\
+    &amp;=\nabla F(\boldsymbol{x})^T\bigg|_{\boldsymbol{x}=\boldsymbol{x}_{k+1}}\boldsymbol{p}_k\\
+    &amp;=0
+\end{aligned}\tag{32}
+\]</span></p>
 <p>equation(32) gives us: a new direction is always orthogonal to the last step direction at the minimum point of the function along the last step direction. This is also an inspiration for another algorithm called conjugate direction.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

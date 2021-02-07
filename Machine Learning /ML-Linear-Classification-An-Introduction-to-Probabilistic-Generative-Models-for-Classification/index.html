@@ -171,7 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Probabilistic-Generative-Models-1"><span class="nav-number">1.</span> <span class="nav-text">Probabilistic Generative Models[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#From-Bayesian-Formular-to-Logistic-Sigmoid-Function"><span class="nav-number">2.</span> <span class="nav-text">From Bayesian Formular to Logistic Sigmoid Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-Properties-of-Logistic-Sigmoid"><span class="nav-number">3.</span> <span class="nav-text">Some Properties of Logistic Sigmoid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Classes-Problems"><span class="nav-number">4.</span> <span class="nav-text">Multiple Classes Problems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#probabilistic-generative-models1"><span class="nav-number">1.</span> <span class="nav-text">Probabilistic Generative Models1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-bayesian-formular-to-logistic-sigmoid-function"><span class="nav-number">2.</span> <span class="nav-text">From Bayesian Formular to Logistic Sigmoid Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-properties-of-logistic-sigmoid"><span class="nav-number">3.</span> <span class="nav-text">Some Properties of Logistic Sigmoid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-classes-problems"><span class="nav-number">4.</span> <span class="nav-text">Multiple Classes Problems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -325,41 +325,89 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> Generative models</p>
-<a id="more"></a>
-
-<h2 id="Probabilistic-Generative-Models-1"><a href="#Probabilistic-Generative-Models-1" class="headerlink" title="Probabilistic Generative Models[^1]"></a>Probabilistic Generative Models[^1]</h2><p>The generative model used for making decisions contains the inference step and decision step:</p>
-<ol>
-<li>Inference step is using probability or other theory to calculate $\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})$ which means to a given $\boldsymbol{x}$ the probability of $\boldsymbol{x}$ belonging to the class $\mathcal{C}_k$</li>
-<li>Decision step is to make a decision based on $\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})$ which was calculated in step 1</li>
+        <p><strong>Keywords:</strong> Generative models <a id="more"></a></p>
+<h2 id="probabilistic-generative-models1">Probabilistic Generative Models<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>The generative model used for making decisions contains the inference step and decision step:</p>
+<ol type="1">
+<li>Inference step is using probability or other theory to calculate <span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})\)</span> which means to a given <span class="math inline">\(\boldsymbol{x}\)</span> the probability of <span class="math inline">\(\boldsymbol{x}\)</span> belonging to the class <span class="math inline">\(\mathcal{C}_k\)</span></li>
+<li>Decision step is to make a decision based on <span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})\)</span> which was calculated in step 1</li>
 </ol>
 <p>In this post, we just give an introduction and a framework for the probabilistic generative model in classification. And the details of how to estimating the parameters in the model will not be introduced.</p>
-<h2 id="From-Bayesian-Formular-to-Logistic-Sigmoid-Function"><a href="#From-Bayesian-Formular-to-Logistic-Sigmoid-Function" class="headerlink" title="From Bayesian Formular to Logistic Sigmoid Function"></a>From Bayesian Formular to Logistic Sigmoid Function</h2><p>To build $\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})$, we can start from Bayesian formula. To the class $\mathcal{C}_1$ of a two-classes problem, the posterior probability:</p>
-<p>$$<br>\begin{aligned}<br>  \mathbb{P}(\mathcal{C}_1|\boldsymbol{x})&amp;=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)+\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}\<br>  &amp;=\frac{1}{1+\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}}<br>\end{aligned}\tag{1}<br>$$</p>
+<h2 id="from-bayesian-formular-to-logistic-sigmoid-function">From Bayesian Formular to Logistic Sigmoid Function</h2>
+<p>To build <span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})\)</span>, we can start from Bayesian formula. To the class <span class="math inline">\(\mathcal{C}_1\)</span> of a two-classes problem, the posterior probability:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \mathbb{P}(\mathcal{C}_1|\boldsymbol{x})&amp;=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)+\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}\\
+  &amp;=\frac{1}{1+\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}}
+\end{aligned}\tag{1}
+\]</span></p>
 <p>represents a new function:</p>
-<p>$$<br>\begin{aligned}<br>  \mathbb{P}(\mathcal{C}_1|\boldsymbol{x})&amp;=\delta(a)\<br>  &amp;=\frac{1}{1+e^{-a}}<br>\end{aligned}\tag{2}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \mathbb{P}(\mathcal{C}_1|\boldsymbol{x})&amp;=\delta(a)\\
+  &amp;=\frac{1}{1+e^{-a}}
+\end{aligned}\tag{2}
+\]</span></p>
 <p>where:</p>
-<p>$$<br>a=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}\tag{3}<br>$$</p>
-<p>An usual question is why we set $a=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}$ but not $a=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}$. In my opinion, this $a$ just determine the graph of function $\delta(a)$. However, we perfer monotone-increasing function and $\frac{1}{1+e^{-a}}$ is just a monotone-increasing function but $\frac{1}{1+e^{a}}$ is not.</p>
-<p>$\delta(\cdot)$ is called logistic sigmoid function or squashing function, because it maps any number into interval $(0,1)$. The range of the function is just within the range of probability. So it is a good way to represent some kinds of probability, such as the $\mathbb{P}(\mathcal{C}_1|\boldsymbol{x})$. the shape of the logistic sigmoid function is:</p>
-<p><img src="./logistic_sigmoid.png"></p>
-<h2 id="Some-Properties-of-Logistic-Sigmoid"><a href="#Some-Properties-of-Logistic-Sigmoid" class="headerlink" title="Some Properties of Logistic Sigmoid"></a>Some Properties of Logistic Sigmoid</h2><p>For the logistic sigmoid function is symmetrical, then:</p>
-<p>$$<br>1-\delta(a)=\frac{e^{-a}}{1+e^{-a}}=\frac{1}{e^a+1}\tag{4}<br>$$</p>
+<p><span class="math display">\[
+a=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}\tag{3}
+\]</span></p>
+<p>An usual question is why we set <span class="math inline">\(a=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}\)</span> but not <span class="math inline">\(a=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_2)\mathbb{P}(\mathcal{C}_2)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_1)\mathbb{P}(\mathcal{C}_1)}\)</span>. In my opinion, this <span class="math inline">\(a\)</span> just determine the graph of function <span class="math inline">\(\delta(a)\)</span>. However, we perfer monotone-increasing function and <span class="math inline">\(\frac{1}{1+e^{-a}}\)</span> is just a monotone-increasing function but <span class="math inline">\(\frac{1}{1+e^{a}}\)</span> is not.</p>
+<p><span class="math inline">\(\delta(\cdot)\)</span> is called logistic sigmoid function or squashing function, because it maps any number into interval <span class="math inline">\((0,1)\)</span>. The range of the function is just within the range of probability. So it is a good way to represent some kinds of probability, such as the <span class="math inline">\(\mathbb{P}(\mathcal{C}_1|\boldsymbol{x})\)</span>. the shape of the logistic sigmoid function is:</p>
+<p><img src="./logistic_sigmoid.png" /></p>
+<h2 id="some-properties-of-logistic-sigmoid">Some Properties of Logistic Sigmoid</h2>
+<p>For the logistic sigmoid function is symmetrical, then:</p>
+<p><span class="math display">\[
+1-\delta(a)=\frac{e^{-a}}{1+e^{-a}}=\frac{1}{e^a+1}\tag{4}
+\]</span></p>
 <p>and:</p>
-<p>$$<br>\delta(-a)=\frac{1}{1+e^a}\tag{5}<br>$$</p>
+<p><span class="math display">\[
+\delta(-a)=\frac{1}{1+e^a}\tag{5}
+\]</span></p>
 <p>So, we have an important equation:</p>
-<p>$$<br>1-\delta(a)=\delta(-a)\tag{6}<br>$$</p>
-<p>The inverse function of $y=\delta(a)$ is:<br>$$<br>\begin{aligned}<br>  y&amp;=\frac{1}{1+e^{-a}}\<br>  e^{-a}&amp;=\frac{1}{y}-1\<br>  a&amp;=-\mathrm{ln}(\frac{1-y}{y})\<br>  a&amp;=\mathrm{ln}(\frac{y}{1-y})<br>\end{aligned}\tag{7}<br>$$</p>
-<p>The derivative of logistic sigmoid function is:<br>$$<br>\frac{d\delta(a)}{d a}=\frac{e^{-a}}{(1+e^{-a})^2}=(1-\delta(a))\delta(a)\tag{8}<br>$$</p>
-<h2 id="Multiple-Classes-Problems"><a href="#Multiple-Classes-Problems" class="headerlink" title="Multiple Classes Problems"></a>Multiple Classes Problems</h2><p>We, now, extend the logistic sigmoid function into multiple classes condition. And we also start from Bayesian formular:</p>
-<p>$$<br>\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\sum_i\mathbb{P}(\boldsymbol{x}|\mathcal{C}_i)\mathbb{P}(\mathcal{C}_i)}\tag{9}<br>$$</p>
-<p>In this condition,if we set $a_i=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_i)\mathbb{P}(\mathcal{C}_i)}$, the whole fomular will be too complecated. To simplify the equation, we just set:</p>
-<p>$$<br>a_i=\mathrm{ln} \mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)\tag{10}<br>$$</p>
-<p>and we get a function of posterior probability:<br>$$<br>\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})=\frac{e^{a_k}}{\sum_i e^{a_i}}\tag{11}<br>$$<br>And according to the property of probability, we get the value of function:<br>$$<br>y(a)=\frac{e^{a_k}}{\sum_i e^{a_i}}\tag{12}<br>$$<br>belongs to interval $[0,1]$. And it is called sofemax function. Although, according to equation (10), the domain of definition of softmax function is $(-\infty,0]$, $a$ can be any real number. It’s called softmax, because it is a smooth versoin of max function.</p>
-<p>When $a_k\gg a_j$ for $k\neq j$, we have:</p>
-<p>$$<br>\begin{aligned}<br>  \mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)&amp;\simeq1\<br>  \mathbb{P}(\boldsymbol{x}|\mathcal{C}_j)&amp;\simeq0<br>\end{aligned}<br>$$</p>
-<p>So both logistic sigmoid function and softmax function can be used to form generative classifiers, which gives a value to the decision step. Because they can generate a probability representing $\mathbb{P}(\mathcal{C}_j|\boldsymbol{x})$</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<p><span class="math display">\[
+1-\delta(a)=\delta(-a)\tag{6}
+\]</span></p>
+<p>The inverse function of <span class="math inline">\(y=\delta(a)\)</span> is: <span class="math display">\[
+\begin{aligned}
+  y&amp;=\frac{1}{1+e^{-a}}\\
+  e^{-a}&amp;=\frac{1}{y}-1\\
+  a&amp;=-\mathrm{ln}(\frac{1-y}{y})\\
+  a&amp;=\mathrm{ln}(\frac{y}{1-y})
+\end{aligned}\tag{7}
+\]</span></p>
+<p>The derivative of logistic sigmoid function is: <span class="math display">\[
+\frac{d\delta(a)}{d a}=\frac{e^{-a}}{(1+e^{-a})^2}=(1-\delta(a))\delta(a)\tag{8}
+\]</span></p>
+<h2 id="multiple-classes-problems">Multiple Classes Problems</h2>
+<p>We, now, extend the logistic sigmoid function into multiple classes condition. And we also start from Bayesian formular:</p>
+<p><span class="math display">\[
+\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\sum_i\mathbb{P}(\boldsymbol{x}|\mathcal{C}_i)\mathbb{P}(\mathcal{C}_i)}\tag{9}
+\]</span></p>
+<p>In this condition,if we set <span class="math inline">\(a_i=\mathrm{ln}\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_i)\mathbb{P}(\mathcal{C}_i)}\)</span>, the whole fomular will be too complecated. To simplify the equation, we just set:</p>
+<p><span class="math display">\[
+a_i=\mathrm{ln} \mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)\tag{10}
+\]</span></p>
+<p>and we get a function of posterior probability: <span class="math display">\[
+\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})=\frac{e^{a_k}}{\sum_i e^{a_i}}\tag{11}
+\]</span> And according to the property of probability, we get the value of function: <span class="math display">\[
+y(a)=\frac{e^{a_k}}{\sum_i e^{a_i}}\tag{12}
+\]</span> belongs to interval <span class="math inline">\([0,1]\)</span>. And it is called sofemax function. Although, according to equation (10), the domain of definition of softmax function is <span class="math inline">\((-\infty,0]\)</span>, <span class="math inline">\(a\)</span> can be any real number. It's called softmax, because it is a smooth versoin of max function.</p>
+<p>When <span class="math inline">\(a_k\gg a_j\)</span> for <span class="math inline">\(k\neq j\)</span>, we have:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)&amp;\simeq1\\
+  \mathbb{P}(\boldsymbol{x}|\mathcal{C}_j)&amp;\simeq0
+\end{aligned}
+\]</span></p>
+<p>So both logistic sigmoid function and softmax function can be used to form generative classifiers, which gives a value to the decision step. Because they can generate a probability representing <span class="math inline">\(\mathbb{P}(\mathcal{C}_j|\boldsymbol{x})\)</span></p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

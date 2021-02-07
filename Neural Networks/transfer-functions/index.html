@@ -177,7 +177,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Transfer-Functions-1"><span class="nav-number">1.</span> <span class="nav-text">Transfer Functions[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hard-Limit"><span class="nav-number">2.</span> <span class="nav-text">Hard Limit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symmetrical-Hard-Limit"><span class="nav-number">3.</span> <span class="nav-text">Symmetrical Hard Limit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear"><span class="nav-number">4.</span> <span class="nav-text">Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Saturating-Linear"><span class="nav-number">5.</span> <span class="nav-text">Saturating Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symmetric-Saturating-Linear"><span class="nav-number">6.</span> <span class="nav-text">Symmetric Saturating Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-Sigmoid"><span class="nav-number">7.</span> <span class="nav-text">Log-Sigmoid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperbolic-Tangent-Sigmoid"><span class="nav-number">8.</span> <span class="nav-text">Hyperbolic Tangent Sigmoid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Positive-Linear"><span class="nav-number">9.</span> <span class="nav-text">Positive Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Competitive"><span class="nav-number">10.</span> <span class="nav-text">Competitive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">11.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#transfer-functions1"><span class="nav-number">1.</span> <span class="nav-text">Transfer Functions1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hard-limit"><span class="nav-number">2.</span> <span class="nav-text">Hard Limit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetrical-hard-limit"><span class="nav-number">3.</span> <span class="nav-text">Symmetrical Hard Limit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear"><span class="nav-number">4.</span> <span class="nav-text">Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#saturating-linear"><span class="nav-number">5.</span> <span class="nav-text">Saturating Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#symmetric-saturating-linear"><span class="nav-number">6.</span> <span class="nav-text">Symmetric Saturating Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log-sigmoid"><span class="nav-number">7.</span> <span class="nav-text">Log-Sigmoid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hyperbolic-tangent-sigmoid"><span class="nav-number">8.</span> <span class="nav-text">Hyperbolic Tangent Sigmoid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#positive-linear"><span class="nav-number">9.</span> <span class="nav-text">Positive Linear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#competitive"><span class="nav-number">10.</span> <span class="nav-text">Competitive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">11.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -331,21 +331,73 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> transfer function</p>
-<a id="more"></a>
-
-<h2 id="Transfer-Functions-1"><a href="#Transfer-Functions-1" class="headerlink" title="Transfer Functions[^1]"></a>Transfer Functions[^1]</h2><p>As we know, in a neuron there is an operation called threshold operation which acts as a switch, when the conditions it needs are reached it returns a state otherwise it will keep another state. A transfer function is a mathematical model for this mechanism. And this short post is a survey of the transfer functions used in neural network design.</p>
-<h2 id="Hard-Limit"><a href="#Hard-Limit" class="headerlink" title="Hard Limit"></a>Hard Limit</h2><p>$$<br>f(x) = \begin{cases}<br>0&amp; \text{ if } x&lt;0\<br>1&amp; \text{ if } x\geq 0<br>\end{cases}<br>$$<br><img src="./hard_limit.png"></p>
-<h2 id="Symmetrical-Hard-Limit"><a href="#Symmetrical-Hard-Limit" class="headerlink" title="Symmetrical Hard Limit"></a>Symmetrical Hard Limit</h2><p>$$<br>f(x) = \begin{cases}<br>-1&amp; \text{ if } x&lt;0\<br>1&amp; \text{ if } x\geq 0<br>\end{cases}<br>$$<br><img src="./symmetrical_hard_limit.png"></p>
-<h2 id="Linear"><a href="#Linear" class="headerlink" title="Linear"></a>Linear</h2><p>$$<br>f(x)=x<br>$$<br><img src="./linear.png"></p>
-<h2 id="Saturating-Linear"><a href="#Saturating-Linear" class="headerlink" title="Saturating Linear"></a>Saturating Linear</h2><p>$$<br>f(x) = \begin{cases}<br>0&amp; \text{ if } x&lt;0\<br>x&amp;\text{ if } 0\leq x\leq 1\<br>1&amp; \text{ if } x&gt; 1<br>\end{cases}<br>$$<br><img src="./saturating_linear.png"></p>
-<h2 id="Symmetric-Saturating-Linear"><a href="#Symmetric-Saturating-Linear" class="headerlink" title="Symmetric Saturating Linear"></a>Symmetric Saturating Linear</h2><p>$$<br>f(x) = \begin{cases}<br>-1&amp; \text{ if } x&lt;0\<br>x&amp;\text{ if } 0\leq x\leq 1\<br>1&amp; \text{ if } x&gt; 1<br>\end{cases}<br>$$</p>
-<p><img src="./symmetric_saturating_linear.png"></p>
-<h2 id="Log-Sigmoid"><a href="#Log-Sigmoid" class="headerlink" title="Log-Sigmoid"></a>Log-Sigmoid</h2><p>$$<br>f(x)=\frac{1}{1+e^{-x}}<br>$$<br><img src="./log_sigmoid.png"></p>
-<h2 id="Hyperbolic-Tangent-Sigmoid"><a href="#Hyperbolic-Tangent-Sigmoid" class="headerlink" title="Hyperbolic Tangent Sigmoid"></a>Hyperbolic Tangent Sigmoid</h2><p>$$<br>f(x)=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}<br>$$<br><img src="./hyperbolic_tangent_sigmoid.png"></p>
-<h2 id="Positive-Linear"><a href="#Positive-Linear" class="headerlink" title="Positive Linear"></a>Positive Linear</h2><p>$$<br>f(x) = \begin{cases}<br>0&amp; \text{ if } x&lt;0\<br>x&amp; \text{ if } x\geq 0<br>\end{cases}<br>$$<br><img src="./positive_linear.png"></p>
-<h2 id="Competitive"><a href="#Competitive" class="headerlink" title="Competitive"></a>Competitive</h2><p>$$<br>f(x) = \begin{cases}<br>1&amp; \text{ if neuron with max x} \<br>0&amp; \text{ else }<br>\end{cases}<br>$$</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]:  Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+        <p><strong>Keywords:</strong> transfer function <a id="more"></a></p>
+<h2 id="transfer-functions1">Transfer Functions<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>As we know, in a neuron there is an operation called threshold operation which acts as a switch, when the conditions it needs are reached it returns a state otherwise it will keep another state. A transfer function is a mathematical model for this mechanism. And this short post is a survey of the transfer functions used in neural network design.</p>
+<h2 id="hard-limit">Hard Limit</h2>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+0&amp; \text{ if } x&lt;0\\
+1&amp; \text{ if } x\geq 0
+\end{cases}
+\]</span> <img src="./hard_limit.png" /></p>
+<h2 id="symmetrical-hard-limit">Symmetrical Hard Limit</h2>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+-1&amp; \text{ if } x&lt;0\\
+1&amp; \text{ if } x\geq 0
+\end{cases}
+\]</span> <img src="./symmetrical_hard_limit.png" /></p>
+<h2 id="linear">Linear</h2>
+<p><span class="math display">\[
+f(x)=x
+\]</span> <img src="./linear.png" /></p>
+<h2 id="saturating-linear">Saturating Linear</h2>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+0&amp; \text{ if } x&lt;0\\
+x&amp;\text{ if } 0\leq x\leq 1\\
+1&amp; \text{ if } x&gt; 1
+\end{cases}
+\]</span> <img src="./saturating_linear.png" /></p>
+<h2 id="symmetric-saturating-linear">Symmetric Saturating Linear</h2>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+-1&amp; \text{ if } x&lt;0\\
+x&amp;\text{ if } 0\leq x\leq 1\\
+1&amp; \text{ if } x&gt; 1
+\end{cases}
+\]</span></p>
+<p><img src="./symmetric_saturating_linear.png" /></p>
+<h2 id="log-sigmoid">Log-Sigmoid</h2>
+<p><span class="math display">\[
+f(x)=\frac{1}{1+e^{-x}}
+\]</span> <img src="./log_sigmoid.png" /></p>
+<h2 id="hyperbolic-tangent-sigmoid">Hyperbolic Tangent Sigmoid</h2>
+<p><span class="math display">\[
+f(x)=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}
+\]</span> <img src="./hyperbolic_tangent_sigmoid.png" /></p>
+<h2 id="positive-linear">Positive Linear</h2>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+0&amp; \text{ if } x&lt;0\\
+x&amp; \text{ if } x\geq 0
+\end{cases}
+\]</span> <img src="./positive_linear.png" /></p>
+<h2 id="competitive">Competitive</h2>
+<p><span class="math display">\[
+f(x) = \begin{cases}
+1&amp; \text{ if neuron with max x} \\
+0&amp; \text{ else }
+\end{cases}
+\]</span></p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

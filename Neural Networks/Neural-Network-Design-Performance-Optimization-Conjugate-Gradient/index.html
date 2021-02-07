@@ -168,7 +168,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Conjugate-Gradient-1"><span class="nav-number">1.</span> <span class="nav-text">Conjugate Gradient[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#conjugate-gradient1"><span class="nav-number">1.</span> <span class="nav-text">Conjugate Gradient1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -322,53 +322,82 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> conjugate gradient</p>
-<a id="more"></a>
-
-<h2 id="Conjugate-Gradient-1"><a href="#Conjugate-Gradient-1" class="headerlink" title="Conjugate Gradient[^1]"></a>Conjugate Gradient[^1]</h2><p>We have learned <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘steepest descent method’</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Newton-Method/">“Newton’s method”</a>. They have advantages and limits at the same time. The main advantage of Newton’s method is the speed, it converges quickly. And the main advantage of the steepest descent method guarantees to converge to a local minimum. But the limits of Newton’s method is that it needs too much resource of both computation and storage when the number of parameters is large. And the speed of the steepest descent method is too slow. What we are going to research is what we can do to mix them up to a new algorithm who needs fewer resources but has a high speed. In other words, we use first-order derivatives but still have quadratic termination.</p>
-<p>Recall steepest descent method whose search direction at consecutive iterations are orthogonal and for a quadratic function, the trajectory of the method is zig-zag. </p>
+        <p><strong>Keywords:</strong> conjugate gradient <a id="more"></a></p>
+<h2 id="conjugate-gradient1">Conjugate Gradient<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>We have learned <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">'steepest descent method'</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Newton-Method/">"Newton's method"</a>. They have advantages and limits at the same time. The main advantage of Newton's method is the speed, it converges quickly. And the main advantage of the steepest descent method guarantees to converge to a local minimum. But the limits of Newton's method is that it needs too much resource of both computation and storage when the number of parameters is large. And the speed of the steepest descent method is too slow. What we are going to research is what we can do to mix them up to a new algorithm who needs fewer resources but has a high speed. In other words, we use first-order derivatives but still have quadratic termination.</p>
+<p>Recall steepest descent method whose search direction at consecutive iterations are orthogonal and for a quadratic function, the trajectory of the method is zig-zag.</p>
 <p>Our target here is simplifyed to a quadratic function to have a insight into the process of the new method:</p>
-<p>$$<br>F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x}+\boldsymbol{d}\boldsymbol{x}+c\tag{1}<br>$$</p>
-<p>Before we goint to the method, we need recall the linear algebra concept “conjugate” firstly:</p>
-<blockquote>
-<p>A set of vectors ${\boldsymbol{p}_k}$ for $k=1,2,\cdots,n$ are mutually conjugate with respect to a positive definite matrix $A$ if and only if:<br>$$\boldsymbol{p}^T_kA\boldsymbol{p}_j=0\tag{2}$$<br>where $j\neq k$</p>
-</blockquote>
-<p>for the vectors in a conjugate set is linear independent, so if there are $n$ vectors in a conjugate set, they can span a $n$-dimansion space. And to a certain space, there are inifinity numbers of conjugate sets. For instance, eigenvectors of $A$ in equation(1) are ${\boldsymbol{z}_1,\cdots,\boldsymbol{z}_n}$ and eigenvalues are ${\lambda_1,\cdots,\lambda_n}$ and we have:</p>
-<p>$$<br>\boldsymbol{z}_k^TA\boldsymbol{z}_j=\lambda_j\boldsymbol{z}_k^T\boldsymbol{z}_j\tag{3}<br>$$</p>
-<p>when the matrix $A$ is positive definite, eigenvectors are mutually orthogonal. And then equation(3) equal to $0$ when $k\neq j$</p>
-<p><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Quadratic-Funtions/">‘Quadratic function’</a> told us the eigenvectors are principal axes, and searching along these eigenvectors can finally minimize the quadratic function.</p>
-<p>The calculation of a Hessian matrix should be avoided in our new method because that needs too much time to compute and too much space to restore the temporary data. So this trajectory along eigenvectors would not be used. Then an idea comes to us that other conjugate sets may also give a trajectory to the minimum. And mathematicians did proof our guess is correct and searching along $n$ vectors conjugate set ${\boldsymbol{p_1},\dots,\boldsymbol{p}_n}$ of a  matrix $A$ can converge to the minimum in at most $n$ searches.</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x}+\boldsymbol{d}\boldsymbol{x}+c\tag{1}
+\]</span></p>
+<p>Before we goint to the method, we need recall the linear algebra concept "conjugate" firstly: &gt; A set of vectors <span class="math inline">\(\{\boldsymbol{p}_k\}\)</span> for <span class="math inline">\(k=1,2,\cdots,n\)</span> are mutually conjugate with respect to a positive definite matrix <span class="math inline">\(A\)</span> if and only if: &gt; <span class="math display">\[\boldsymbol{p}^T_kA\boldsymbol{p}_j=0\tag{2}\]</span> &gt; where <span class="math inline">\(j\neq k\)</span></p>
+<p>for the vectors in a conjugate set is linear independent, so if there are <span class="math inline">\(n\)</span> vectors in a conjugate set, they can span a <span class="math inline">\(n\)</span>-dimansion space. And to a certain space, there are inifinity numbers of conjugate sets. For instance, eigenvectors of <span class="math inline">\(A\)</span> in equation(1) are <span class="math inline">\(\{\boldsymbol{z}_1,\cdots,\boldsymbol{z}_n\}\)</span> and eigenvalues are <span class="math inline">\(\{\lambda_1,\cdots,\lambda_n\}\)</span> and we have:</p>
+<p><span class="math display">\[
+\boldsymbol{z}_k^TA\boldsymbol{z}_j=\lambda_j\boldsymbol{z}_k^T\boldsymbol{z}_j\tag{3}
+\]</span></p>
+<p>when the matrix <span class="math inline">\(A\)</span> is positive definite, eigenvectors are mutually orthogonal. And then equation(3) equal to <span class="math inline">\(0\)</span> when <span class="math inline">\(k\neq j\)</span></p>
+<p><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Quadratic-Funtions/">'Quadratic function'</a> told us the eigenvectors are principal axes, and searching along these eigenvectors can finally minimize the quadratic function.</p>
+<p>The calculation of a Hessian matrix should be avoided in our new method because that needs too much time to compute and too much space to restore the temporary data. So this trajectory along eigenvectors would not be used. Then an idea comes to us that other conjugate sets may also give a trajectory to the minimum. And mathematicians did proof our guess is correct and searching along <span class="math inline">\(n\)</span> vectors conjugate set <span class="math inline">\(\{\boldsymbol{p_1},\dots,\boldsymbol{p}_n\}\)</span> of a matrix <span class="math inline">\(A\)</span> can converge to the minimum in at most <span class="math inline">\(n\)</span> searches.</p>
 <p>Basing on this theory, what we should do next is find a conjugate set of a matrix without the use of the Hessian matrix. We restate that:</p>
-<p>$$<br>\nabla F(\boldsymbol{x})=\boldsymbol{g}=A\boldsymbol{x}+\boldsymbol{d}\tag{4}<br>$$</p>
-<p>and </p>
-<p>$$<br>\nabla^2 F(\boldsymbol{x})=A\tag{5}<br>$$</p>
-<p>in the steepest descent method, each step we always search along the negative direction of gradient $\boldsymbol{g}$. Then the change between the consecutive step is:</p>
-<p>$$<br>\Delta \boldsymbol{g}<em>k = \boldsymbol{g}</em>{k+1}-\boldsymbol{g}_k\tag{6}<br>$$</p>
+<p><span class="math display">\[
+\nabla F(\boldsymbol{x})=\boldsymbol{g}=A\boldsymbol{x}+\boldsymbol{d}\tag{4}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\nabla^2 F(\boldsymbol{x})=A\tag{5}
+\]</span></p>
+<p>in the steepest descent method, each step we always search along the negative direction of gradient <span class="math inline">\(\boldsymbol{g}\)</span>. Then the change between the consecutive step is:</p>
+<p><span class="math display">\[
+\Delta \boldsymbol{g}_k = \boldsymbol{g}_{k+1}-\boldsymbol{g}_k\tag{6}
+\]</span></p>
 <p>Insert equation(4) into equation(6):</p>
-<p>$$<br>\begin{aligned}<br>   \Delta \boldsymbol{g}<em>k &amp;= \boldsymbol{g}</em>{k+1}-\boldsymbol{g}<em>k\<br>   &amp;=A\boldsymbol{x}</em>{k+1}+\boldsymbol{d} -A\boldsymbol{x}_{k}+\boldsymbol{d}\<br>   &amp;=A\Delta\boldsymbol{x}<br>\end{aligned}<br>\tag{7}<br>$$</p>
-<p>equation(7) is the key point in this new algorithm because this equation replace $A\Delta\boldsymbol{x}$ by $\Delta \boldsymbol{g}<em>k$ to avoid the calculation about matrix $A$. Andfor in the post<a href=""></a> we update the variables in each step by $\boldsymbol{x}</em>{k+1} =\boldsymbol{x}_k +\alpha\boldsymbol{p}_k$ then we have:</p>
-<p>$$<br>\Delta\boldsymbol{x} =\boldsymbol{x}_{k+1} -\boldsymbol{x}_k =\alpha\boldsymbol{p}_k\tag{8}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+   \Delta \boldsymbol{g}_k &amp;= \boldsymbol{g}_{k+1}-\boldsymbol{g}_k\\
+   &amp;=A\boldsymbol{x}_{k+1}+\boldsymbol{d} -A\boldsymbol{x}_{k}+\boldsymbol{d}\\
+   &amp;=A\Delta\boldsymbol{x} 
+\end{aligned}
+\tag{7}
+\]</span></p>
+<p>equation(7) is the key point in this new algorithm because this equation replace <span class="math inline">\(A\Delta\boldsymbol{x}\)</span> by <span class="math inline">\(\Delta \boldsymbol{g}_k\)</span> to avoid the calculation about matrix <span class="math inline">\(A\)</span>. Andfor in the post<a href=""></a> we update the variables in each step by <span class="math inline">\(\boldsymbol{x}_{k+1} =\boldsymbol{x}_k +\alpha\boldsymbol{p}_k\)</span> then we have:</p>
+<p><span class="math display">\[
+\Delta\boldsymbol{x} =\boldsymbol{x}_{k+1} -\boldsymbol{x}_k =\alpha\boldsymbol{p}_k\tag{8}
+\]</span></p>
 <p>equation(2) is also established as:</p>
-<p>$$<br>\alpha\boldsymbol{p}^T_kA\boldsymbol{p}_j=0\tag{9}<br>$$</p>
+<p><span class="math display">\[
+\alpha\boldsymbol{p}^T_kA\boldsymbol{p}_j=0\tag{9}
+\]</span></p>
 <p>and take equation(8) into equation(9):</p>
-<p>$$<br>\alpha\boldsymbol{p}^T_kA\boldsymbol{p}_j=\Delta\boldsymbol{x}^TA\boldsymbol{p}_j=0\tag{10}<br>$$</p>
-<p>Then the key point equation(7) would be used to replace the $\Delta\boldsymbol{x}^TA$ in equation(10):</p>
-<p>$$<br>\Delta\boldsymbol{x}^TA\boldsymbol{p}_j=\boldsymbol{g}^T\boldsymbol{p}_j=0\tag{11}<br>$$</p>
-<p>where $j\neq k$</p>
+<p><span class="math display">\[
+\alpha\boldsymbol{p}^T_kA\boldsymbol{p}_j=\Delta\boldsymbol{x}^TA\boldsymbol{p}_j=0\tag{10}
+\]</span></p>
+<p>Then the key point equation(7) would be used to replace the <span class="math inline">\(\Delta\boldsymbol{x}^TA\)</span> in equation(10):</p>
+<p><span class="math display">\[
+\Delta\boldsymbol{x}^TA\boldsymbol{p}_j=\boldsymbol{g}^T\boldsymbol{p}_j=0\tag{11}
+\]</span></p>
+<p>where <span class="math inline">\(j\neq k\)</span></p>
 <p>Till now, we have all of what we need to build a method acting like a second-order method with just the amount of calculation of first-order method. And the procedure of method is:</p>
+<ol type="1">
+<li>initialize <span class="math inline">\(\boldsymbol{p}_0=-\boldsymbol{g}_0\)</span></li>
+<li>construct a vector, the next direction, <span class="math inline">\(\boldsymbol{p}_k\)</span> orthogonal to <span class="math inline">\(\{\Delta\boldsymbol{g}_0,\Delta\boldsymbol{g}_1,\cdots,\Delta\boldsymbol{g}_{k-1}\}\)</span>(somehow it looks like Gram-Schimidt method)</li>
+<li><span class="math inline">\(\boldsymbol{p}_k=-\boldsymbol{g}_k+\beta_k\boldsymbol{p}_{k-1}\)</span></li>
+<li><span class="math inline">\(\beta_k\)</span> is a scalar and can be calculated in three kinds of ways:
+<ol type="1">
+<li><span class="math inline">\(\beta_k=\frac{\Delta\boldsymbol{g}_{k-1}^T\boldsymbol{g}_k}{\Delta\boldsymbol{g}_{k-1}^T\boldsymbol{p}_{k-1}}\)</span></li>
+<li><span class="math inline">\(\beta_k=\frac{\boldsymbol{g}_{k}^T\boldsymbol{g}_k}{\boldsymbol{g}_{k-1}^T\boldsymbol{p}_{k-1}}\)</span></li>
+<li><span class="math inline">\(\beta_k=\frac{\Delta\boldsymbol{g}_{k-1}^T\boldsymbol{g}_k}{\boldsymbol{g}_{k-1}^T\boldsymbol{g}_{k-1}}\)</span></li>
+</ol></li>
+</ol>
+<p>A simple example: <span class="math display">\[
+F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^T\begin{bmatrix}2&amp;1\\1&amp;2\end{bmatrix}\boldsymbol{x}
+\]</span></p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
 <ol>
-<li>initialize $\boldsymbol{p}_0=-\boldsymbol{g}_0$</li>
-<li>construct a vector, the next direction, $\boldsymbol{p}<em>k$ orthogonal to ${\Delta\boldsymbol{g}_0,\Delta\boldsymbol{g}_1,\cdots,\Delta\boldsymbol{g}</em>{k-1}}$(somehow it looks like Gram-Schimidt method)</li>
-<li>$\boldsymbol{p}<em>k=-\boldsymbol{g}_k+\beta_k\boldsymbol{p}</em>{k-1}$</li>
-<li>$\beta_k$ is a scalar and can be calculated in three kinds of ways:<ol>
-<li>$\beta_k=\frac{\Delta\boldsymbol{g}<em>{k-1}^T\boldsymbol{g}<em>k}{\Delta\boldsymbol{g}</em>{k-1}^T\boldsymbol{p}</em>{k-1}}$</li>
-<li>$\beta_k=\frac{\boldsymbol{g}<em>{k}^T\boldsymbol{g}<em>k}{\boldsymbol{g}</em>{k-1}^T\boldsymbol{p}</em>{k-1}}$</li>
-<li>$\beta_k=\frac{\Delta\boldsymbol{g}<em>{k-1}^T\boldsymbol{g}<em>k}{\boldsymbol{g}</em>{k-1}^T\boldsymbol{g}</em>{k-1}}$</li>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</li>
-</ol>
-<p>A simple example:<br>$$<br>F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^T\begin{bmatrix}2&amp;1\1&amp;2\end{bmatrix}\boldsymbol{x}<br>$$</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+</section>
 
     </div>
 

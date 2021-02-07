@@ -182,7 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Implement-of-Perceptron-1"><span class="nav-number">1.</span> <span class="nav-text">Implement of Perceptron[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generating-of-Sample"><span class="nav-number">2.</span> <span class="nav-text">Generating of Sample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-and-Code"><span class="nav-number">3.</span> <span class="nav-text">Algorithm and Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-set-4"><span class="nav-number">3.1.</span> <span class="nav-text">Training set 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-of-the-Algorithm"><span class="nav-number">4.</span> <span class="nav-text">Analysis of the Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-input-sequence"><span class="nav-number">4.1.</span> <span class="nav-text">Random input sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initial-Weights"><span class="nav-number">4.2.</span> <span class="nav-text">Initial Weights</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Different-Transfer-Functions"><span class="nav-number">4.3.</span> <span class="nav-text">Different Transfer Functions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#implement-of-perceptron1"><span class="nav-number">1.</span> <span class="nav-text">Implement of Perceptron1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generating-of-sample"><span class="nav-number">2.</span> <span class="nav-text">Generating of Sample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-and-code"><span class="nav-number">3.</span> <span class="nav-text">Algorithm and Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#training-set-4"><span class="nav-number">3.1.</span> <span class="nav-text">Training set 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#analysis-of-the-algorithm"><span class="nav-number">4.</span> <span class="nav-text">Analysis of the Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-input-sequence"><span class="nav-number">4.1.</span> <span class="nav-text">Random input sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initial-weights"><span class="nav-number">4.2.</span> <span class="nav-text">Initial Weights</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#different-transfer-functions"><span class="nav-number">4.3.</span> <span class="nav-text">Different Transfer Functions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -336,97 +336,96 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> perceptron, Implement of Perceptron, Analysis of Perceptron</p>
-<a id="more"></a>
-
-<h2 id="Implement-of-Perceptron-1"><a href="#Implement-of-Perceptron-1" class="headerlink" title="Implement of Perceptron[^1]"></a>Implement of Perceptron[^1]</h2><p>Some concepts had been built in the post </p>
-<ul>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Introduction/">An Introduction to Neural Networks</a></li>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Neuron-Model-and-Network-Architecture/">Neuron Model and Network Architecture</a> </li>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">Perceptron Learning Rule</a></li>
-</ul>
-<p>What we need to do next is to implement the algorithm described in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">‘Perceptron Learning Rule’</a> and observe the effect of different parameters, the different training sets, and different transfer functions.</p>
+        <p><strong>Keywords:</strong> perceptron, Implement of Perceptron, Analysis of Perceptron <a id="more"></a></p>
+<h2 id="implement-of-perceptron1">Implement of Perceptron<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Some concepts had been built in the post - <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Introduction/">An Introduction to Neural Networks</a> - <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Neuron-Model-and-Network-Architecture/">Neuron Model and Network Architecture</a> - <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">Perceptron Learning Rule</a></p>
+<p>What we need to do next is to implement the algorithm described in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Perceptron-Learning-Rule/">'Perceptron Learning Rule'</a> and observe the effect of different parameters, the different training sets, and different transfer functions.</p>
 <p>A single neuron perceptron consists of a linear combination and a threshold operation simply. So we note its capacity is close to a linear classification. Then our experiments should be done with samples that are linearly separable.</p>
 <p>Before our experements, the first mission come to us is finding some or designing some training set. That is the data like:</p>
-<p>$$<br>{\begin{bmatrix}1\2\end{bmatrix},1},{\begin{bmatrix}-1\2\end{bmatrix},0},{\begin{bmatrix}0\-1\end{bmatrix},0}<br>$$</p>
+<p><span class="math display">\[
+\{\begin{bmatrix}1\\2\end{bmatrix},1\},\{\begin{bmatrix}-1\\2\end{bmatrix},0\},\{\begin{bmatrix}0\\-1\end{bmatrix},0\}
+\]</span></p>
 <p>containing inputs and corresponding targets. This can be solved by hand, but to generate more than 100 points, it becomes a monotonous job. We need a tool.</p>
-<h2 id="Generating-of-Sample"><a href="#Generating-of-Sample" class="headerlink" title="Generating of Sample"></a>Generating of Sample</h2><p>The tool can be found at <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/2DRandomSampleGenerater">https://github.com/Tony-Tan/2DRandomSampleGenerater</a>. And please star it!</p>
+<h2 id="generating-of-sample">Generating of Sample</h2>
+<p>The tool can be found at <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/2DRandomSampleGenerater">https://github.com/Tony-Tan/2DRandomSampleGenerater</a>. And please star it!</p>
 <p>This script is using an image as an input, and different color in the image means different classes and the regions should be of the closed forms, like:</p>
-<p><img src="https://raw.githubusercontent.com/Tony-Tan/2DRandomSampleGenerater/master/1.png"></p>
-<p>An image of two classes is fed into the script. And a ‘*.csv’ file will be generated. Part of the file is like:</p>
-<p><img src="./csv0.png"><br><img src="./csv1.png"></p>
-<p>where ‘x_1’ and ‘x_2’ are inputs and ‘Label’ is the target. For the scripts can deal with multiple class generation tasks, the label starts with $1$ to $2,3,4,\dots$. So if you want to reassign target, it should be done in your program.</p>
+<p><img src="https://raw.githubusercontent.com/Tony-Tan/2DRandomSampleGenerater/master/1.png" /></p>
+<p>An image of two classes is fed into the script. And a '*.csv' file will be generated. Part of the file is like:</p>
+<p><img src="./csv0.png" /> <img src="./csv1.png" /></p>
+<p>where 'x_1' and 'x_2' are inputs and 'Label' is the target. For the scripts can deal with multiple class generation tasks, the label starts with <span class="math inline">\(1\)</span> to <span class="math inline">\(2,3,4,\dots\)</span>. So if you want to reassign target, it should be done in your program.</p>
 <p>We can also draw a figure of these points and using a different color to identify their classes:</p>
-<p><img src="https://raw.githubusercontent.com/Tony-Tan/2DRandomSampleGenerater/master/Figure_1.png"></p>
+<p><img src="https://raw.githubusercontent.com/Tony-Tan/2DRandomSampleGenerater/master/Figure_1.png" /></p>
 <p>The use of script:</p>
-<p><img src="https://raw.githubusercontent.com/Tony-Tan/2DRandomSampleGenerater/master/samplesScript.gif"></p>
-<h2 id="Algorithm-and-Code"><a href="#Algorithm-and-Code" class="headerlink" title="Algorithm and Code"></a>Algorithm and Code</h2><p>Firstly, we assum we have had a training set which is 2-dimensional linear separable. And our algorithm is:</p>
-<ol>
+<p><img src="https://raw.githubusercontent.com/Tony-Tan/2DRandomSampleGenerater/master/samplesScript.gif" /></p>
+<h2 id="algorithm-and-code">Algorithm and Code</h2>
+<p>Firstly, we assum we have had a training set which is 2-dimensional linear separable. And our algorithm is:</p>
+<ol type="1">
 <li>initial weights and bias randomly</li>
-<li>test inputs one by one, <ul>
-<li>if the output is different from target, go to step 3 </li>
-<li>if the whole training set is correctly classified, stop the algorithm. </li>
+<li>test inputs one by one,</li>
+</ol>
+<ul>
+<li>if the output is different from target, go to step 3</li>
+<li>if the whole training set is correctly classified, stop the algorithm.</li>
 <li>else continue step 2.</li>
 </ul>
-</li>
-<li>update $\boldsymbol{w}=\boldsymbol{w}+l\cdot (t-a)\cdot \boldsymbol{p}$ <ul>
-<li>$\boldsymbol{w}$ is the weights</li>
-<li>$\boldsymbol{p}$ is the input, </li>
-<li>$t$ is target can be one of ${0,1}$, </li>
-<li>$a$ is the output, one of ${0,1}$, </li>
-<li>$l$ is the learning rate, should be $0&lt; l \leq 1$</li>
+<ol start="3" type="1">
+<li>update <span class="math inline">\(\boldsymbol{w}=\boldsymbol{w}+l\cdot (t-a)\cdot \boldsymbol{p}\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\(\boldsymbol{w}\)</span> is the weights</li>
+<li><span class="math inline">\(\boldsymbol{p}\)</span> is the input,</li>
+<li><span class="math inline">\(t\)</span> is target can be one of <span class="math inline">\(\{0,1\}\)</span>,</li>
+<li><span class="math inline">\(a\)</span> is the output, one of <span class="math inline">\(\{0,1\}\)</span>,</li>
+<li><span class="math inline">\(l\)</span> is the learning rate, should be <span class="math inline">\(0&lt; l \leq 1\)</span></li>
 </ul>
-</li>
-<li>update $b=b+l\cdot (t-a)\cdot 1$ <ul>
-<li>$b$ is the bias</li>
-<li>$t$ is target can be one of ${0,1}$, </li>
-<li>$a$ is the output, can be one of ${0,1}$, </li>
-<li>$l$ is the learning rate, should be $0&lt; l \leq 1$</li>
+<ol start="4" type="1">
+<li>update <span class="math inline">\(b=b+l\cdot (t-a)\cdot 1\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\(b\)</span> is the bias</li>
+<li><span class="math inline">\(t\)</span> is target can be one of <span class="math inline">\(\{0,1\}\)</span>,</li>
+<li><span class="math inline">\(a\)</span> is the output, can be one of <span class="math inline">\(\{0,1\}\)</span>,</li>
+<li><span class="math inline">\(l\)</span> is the learning rate, should be <span class="math inline">\(0&lt; l \leq 1\)</span></li>
 </ul>
-</li>
+<ol start="5" type="1">
 <li>go back to 2.</li>
 </ol>
 <p>Whole code can be find: <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/NeuronNetworks/tree/master/simple_perceptron">https://github.com/Tony-Tan/NeuronNetworks/tree/master/simple_perceptron</a>, and the main part of the code is:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convergence_algorithm</span>(<span class="params">self, lr=<span class="number">1.0</span>, max_iteration_num = <span class="number">1000000</span></span>):</span></span><br><span class="line"> <span class="keyword">for</span> epoch <span class="keyword">in</span> range(max_iteration_num):</span><br><span class="line"></span><br><span class="line"> all_inputs_predict_correctly = <span class="literal">True</span></span><br><span class="line"> <span class="keyword">for</span> x, label <span class="keyword">in</span> zip(self.X, self.labels):</span><br><span class="line"> predict_value = self.process(x)</span><br><span class="line"> <span class="keyword">if</span> predict_value == label:</span><br><span class="line"> <span class="keyword">continue</span></span><br><span class="line"> <span class="keyword">else</span>:</span><br><span class="line"> all_inputs_predict_correctly = <span class="literal">False</span></span><br><span class="line"> self.weights += lr*(label - predict_value)* x</span><br><span class="line"> print(str(epoch) + str(<span class="string">&#x27; : &#x27;</span>) + str(self.weights[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> all_inputs_predict_correctly:</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
 <p>Training set 4 is showing below, and it is used as our standard experimental objective, for it is relatively difficult to deal with.</p>
-<h3 id="Training-set-4"><a href="#Training-set-4" class="headerlink" title="Training set 4"></a>Training set 4</h3><p>Points in the training set</p>
-<p><img src="./training_set4.png"><br>Result(after 55449 epochs)<br><img src="./training_set4_result.png"></p>
-<h2 id="Analysis-of-the-Algorithm"><a href="#Analysis-of-the-Algorithm" class="headerlink" title="Analysis of the Algorithm"></a>Analysis of the Algorithm</h2><p>What we concern about the algorithm are its precision and efficiency. Because the convergence of the algorithm had been proofed. So what we are interested in is how to optimize the procedure of the algorithm to make it faster.<br>Epoch is a period when every point in the dataset is used once and only once.</p>
-<h3 id="Random-input-sequence"><a href="#Random-input-sequence" class="headerlink" title="Random input sequence"></a>Random input sequence</h3><p>100 times test, we got the number of epochs of random order of training set that using in the algorithm: and of the original order of training set where the first half part of dataset belongs to one class, and the last half part belongs to another class”</p>
-<p><img src="./training_set_order_comparison_epoch.png"></p>
+<h3 id="training-set-4">Training set 4</h3>
+<p>Points in the training set</p>
+<p><img src="./training_set4.png" /> Result(after 55449 epochs) <img src="./training_set4_result.png" /></p>
+<h2 id="analysis-of-the-algorithm">Analysis of the Algorithm</h2>
+<p>What we concern about the algorithm are its precision and efficiency. Because the convergence of the algorithm had been proofed. So what we are interested in is how to optimize the procedure of the algorithm to make it faster. Epoch is a period when every point in the dataset is used once and only once.</p>
+<h3 id="random-input-sequence">Random input sequence</h3>
+<p>100 times test, we got the number of epochs of random order of training set that using in the algorithm: and of the original order of training set where the first half part of dataset belongs to one class, and the last half part belongs to another class"</p>
+<p><img src="./training_set_order_comparison_epoch.png" /></p>
 <p>The following are the total numbers of modification of original ordered data and random sequence data.</p>
-<p><img src="./training_set_order_comparison_modify.png"></p>
-<h3 id="Initial-Weights"><a href="#Initial-Weights" class="headerlink" title="Initial Weights"></a>Initial Weights</h3><p>Weights can be initialed in multiple ways:</p>
-<ol>
-<li>$\boldsymbol{w}=\boldsymbol{0}$</li>
-<li>$\boldsymbol{w}=\boldsymbol{p}_i$, $\boldsymbol{p}_i$ is randomly selected from the training set.</li>
-<li>$\boldsymbol{w}=\frac{1}{N}\sum_{i=0}^{N}\boldsymbol{p}_i$</li>
-<li>randomly in (-1000,1000) for every element.</li>
-</ol>
-<p>This four different selections’ comparison of epochs they used:<br><img src="./weight_initial_comparison_epoch.png"></p>
+<p><img src="./training_set_order_comparison_modify.png" /></p>
+<h3 id="initial-weights">Initial Weights</h3>
+<p>Weights can be initialed in multiple ways: 1. <span class="math inline">\(\boldsymbol{w}=\boldsymbol{0}\)</span> 2. <span class="math inline">\(\boldsymbol{w}=\boldsymbol{p}_i\)</span>, <span class="math inline">\(\boldsymbol{p}_i\)</span> is randomly selected from the training set. 3. <span class="math inline">\(\boldsymbol{w}=\frac{1}{N}\sum_{i=0}^{N}\boldsymbol{p}_i\)</span> 4. randomly in (-1000,1000) for every element.</p>
+<p>This four different selections' comparison of epochs they used: <img src="./weight_initial_comparison_epoch.png" /></p>
 <p>and total modification they used:</p>
-<p><img src="./weight_initial_comparison_modify.png"></p>
-<h3 id="Different-Transfer-Functions"><a href="#Different-Transfer-Functions" class="headerlink" title="Different Transfer Functions"></a>Different Transfer Functions</h3><p>We test:</p>
-<ol>
-<li>hard limit </li>
-<li>symmetrical hard limit </li>
-<li>positive linear </li>
-<li>hyperbolic tangent sigmoid </li>
-<li>log sigmoid </li>
-<li>symmetric saturating linear </li>
-<li>saturating linear</li>
-<li>linear</li>
-</ol>
-<p>These eight different Transfer Functions’ comparison of epochs they used:<br><img src="./transfer_function_comparison_epoch.png"></p>
-<p>and total modification they used:<br><img src="./transfer_function_comparison_modify.png"></p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
+<p><img src="./weight_initial_comparison_modify.png" /></p>
+<h3 id="different-transfer-functions">Different Transfer Functions</h3>
+<p>We test: 1. hard limit 2. symmetrical hard limit 3. positive linear 4. hyperbolic tangent sigmoid 5. log sigmoid 6. symmetric saturating linear 7. saturating linear 8. linear</p>
+<p>These eight different Transfer Functions' comparison of epochs they used: <img src="./transfer_function_comparison_epoch.png" /></p>
+<p>and total modification they used: <img src="./transfer_function_comparison_modify.png" /></p>
+<h2 id="conclusion">Conclusion</h2>
+<ol type="1">
 <li>The random sequence is far better than original order dataset which distributes different classes of data separately</li>
 <li>Linear transfer function looks good but not so good that can make it as a necessary selection in the one neuron perceptron model</li>
-<li>Initial methods can affect the convergence speed but not too much. Setting weights as one of the input $p_i$ seems good.</li>
+<li>Initial methods can affect the convergence speed but not too much. Setting weights as one of the input <span class="math inline">\(p_i\)</span> seems good.</li>
 <li>The tool to generate samples should be stared<a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/2DRandomSampleGenerater">https://github.com/Tony-Tan/2DRandomSampleGenerater</a></li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Haykin, Simon. Neural Networks and Learning Machines, 3/E. Pearson Education India, 2010.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Haykin, Simon. Neural Networks and Learning Machines, 3/E. Pearson Education India, 2010.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

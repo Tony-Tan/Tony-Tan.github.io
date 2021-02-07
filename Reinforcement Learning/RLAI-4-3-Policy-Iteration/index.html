@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Policy-Iteration"><span class="nav-number">1.</span> <span class="nav-text">Policy Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-of-Policy-Iteration"><span class="nav-number">2.</span> <span class="nav-text">Code of Policy Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#code-of-policy-iteration"><span class="nav-number">1.</span> <span class="nav-text">Code of Policy Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,21 +317,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-
-<p>We have find some intuitive mehtods to get an optimal value function for current policy, and to find the optimal oplicy for current value function. And how about combine them together?</p>
-<h2 id="Policy-Iteration"><a href="#Policy-Iteration" class="headerlink" title="Policy Iteration"></a>Policy Iteration</h2><p>This combination is very easy to understand, because each of these two steps starts when the other has finished:</p>
-<p>$$<br>\pi_0\xrightarrow{E}v_{\pi_0}\xrightarrow{I}\pi_1\xrightarrow{E}v_{\pi_1}\xrightarrow{I}\cdots\pi_<em>\xrightarrow{E}v_{\pi_</em>}\tag{1}<br>$$</p>
-<p>where </p>
-<ol>
-<li>‘$\xrightarrow{E}$’ policy evaluation</li>
-<li>‘$\xrightarrow{I}$’ policy improvement</li>
-</ol>
-<p>Each policy impovement step guarantees a strict improvement over previouse one. For finite MDP has finite number of policies then the process converge. This method is called optimal policy. </p>
-<p>As equation(1) above, $\pi_0$ can be arbitrary choiced value function. This process is much faster than policy evaluation.</p>
-<h2 id="Code-of-Policy-Iteration"><a href="#Code-of-Policy-Iteration" class="headerlink" title="Code of Policy Iteration"></a>Code of Policy Iteration</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+        <p><strong>Abstract:</strong> <a id="more"></a></p>
+<p>We have find some intuitive mehtods to get an optimal value function for current policy, and to find the optimal oplicy for current value function. And how about combine them together? ## Policy Iteration This combination is very easy to understand, because each of these two steps starts when the other has finished:</p>
+<p><span class="math display">\[
+\pi_0\xrightarrow{E}v_{\pi_0}\xrightarrow{I}\pi_1\xrightarrow{E}v_{\pi_1}\xrightarrow{I}\cdots\pi_*\xrightarrow{E}v_{\pi_*}\tag{1}
+\]</span></p>
+<p>where 1. '<span class="math inline">\(\xrightarrow{E}\)</span>' policy evaluation 2. '<span class="math inline">\(\xrightarrow{I}\)</span>' policy improvement</p>
+<p>Each policy impovement step guarantees a strict improvement over previouse one. For finite MDP has finite number of policies then the process converge. This method is called optimal policy.</p>
+<p>As equation(1) above, <span class="math inline">\(\pi_0\)</span> can be arbitrary choiced value function. This process is much faster than policy evaluation.</p>
+<h2 id="code-of-policy-iteration">Code of Policy Iteration</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="references">References</h2>
 
     </div>
 

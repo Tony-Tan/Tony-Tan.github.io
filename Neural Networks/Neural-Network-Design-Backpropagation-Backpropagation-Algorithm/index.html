@@ -172,7 +172,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture-1"><span class="nav-number">1.</span> <span class="nav-text">Architecture[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-Index"><span class="nav-number">2.</span> <span class="nav-text">Performance Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chain-Rule"><span class="nav-number">3.</span> <span class="nav-text">Chain Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Calculus"><span class="nav-number">3.1.</span> <span class="nav-text">Calculus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sensitivity"><span class="nav-number">3.2.</span> <span class="nav-text">Sensitivity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagating-the-Sensitivities"><span class="nav-number">4.</span> <span class="nav-text">Backpropagating the Sensitivities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-BP"><span class="nav-number">5.</span> <span class="nav-text">Summary of BP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#An-example-of-BP-algorithm"><span class="nav-number">6.</span> <span class="nav-text">An example of BP algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#architecture1"><span class="nav-number">1.</span> <span class="nav-text">Architecture1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#performance-index"><span class="nav-number">2.</span> <span class="nav-text">Performance Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chain-rule"><span class="nav-number">3.</span> <span class="nav-text">Chain Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#calculus"><span class="nav-number">3.1.</span> <span class="nav-text">Calculus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sensitivity"><span class="nav-number">3.2.</span> <span class="nav-text">Sensitivity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backpropagating-the-sensitivities"><span class="nav-number">4.</span> <span class="nav-text">Backpropagating the Sensitivities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-of-bp"><span class="nav-number">5.</span> <span class="nav-text">Summary of BP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#an-example-of-bp-algorithm"><span class="nav-number">6.</span> <span class="nav-text">An example of BP algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -326,143 +326,365 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> backpropagation, BP</p>
-<a id="more"></a>
-
-
-<h2 id="Architecture-1"><a href="#Architecture-1" class="headerlink" title="Architecture[^1]"></a>Architecture[^1]</h2><p>We have seen a three-layer network is flexible in approximating functions. If we had a more-than-three-layer network, it could be used to approximate any functions as close as we want. However, another trouble came to us is how to train these networks. This problem almost killed neural networks in the 1970s. Until backpropagation(BP for short) algorithm was found that it is an efficient algorithm in training multiple layers networks.</p>
+        <p><strong>Keywords:</strong> backpropagation, BP <a id="more"></a></p>
+<h2 id="architecture1">Architecture<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>We have seen a three-layer network is flexible in approximating functions. If we had a more-than-three-layer network, it could be used to approximate any functions as close as we want. However, another trouble came to us is how to train these networks. This problem almost killed neural networks in the 1970s. Until backpropagation(BP for short) algorithm was found that it is an efficient algorithm in training multiple layers networks.</p>
 <p>3-layer network is also used in this post for it is the simplest multiple-layer network whose abbreviated notation is:</p>
-<p><img src="./abbreviated_notation.jpeg"></p>
+<p><img src="./abbreviated_notation.jpeg" /></p>
 <p>and a more short way to represent its architecture is:</p>
-<p>$$<br>R - S^1 - S^2 - S^3 \tag{1}<br>$$</p>
+<p><span class="math display">\[
+R - S^1 - S^2 - S^3 \tag{1}
+\]</span></p>
 <p>For the three-layer network has only three layers which is not too large to denote mathematically, then it can be writen as:</p>
-<p>$$<br>\boldsymbol{a}=f^3(W^3\cdot f^2(W^2\cdot f^1(W^1\cdot \boldsymbol{p}+\boldsymbol{b}^1)+\boldsymbol{b}^2)+\boldsymbol{b}^3)\tag{2}<br>$$</p>
-<p>but, it becomes impossible when we have a 10-layer network or 100-layer network. Then we can use some short equations that describe the whole operation of $M$-layer network:</p>
-<p>$$<br>a^{m+1}=f^{m+1}(W^{m+1}\boldsymbol{a}^{m}+\boldsymbol{b}^{m+1})\tag{3}<br>$$</p>
-<p>for $m = 1, 2, 3, \cdots M-1$. $M$ is the number of layers in the neural networks. And:</p>
-<ul>
-<li>$\boldsymbol{a}^0=\boldsymbol{p}$ is its input</li>
-<li>$\boldsymbol{a}=\boldsymbol{a}^M$ is its output</li>
-</ul>
-<h2 id="Performance-Index"><a href="#Performance-Index" class="headerlink" title="Performance Index"></a>Performance Index</h2><p>We have had a network now. And <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">‘performance learning’</a> is a kind of learning rule in learning task. Then we need a definite performance index for the 3-layer network. MSE is used here as the performance index the same as what the LMS algorithm did in post <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Widrow-Hoff-Learning/">‘Widrow-Hoff Learning(Part I)’</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Widrow-Hoff-Learning-P2/">‘Widrow-Hoff Learning(Part II)’</a>. And a set of examples of proper network behavior are needed:</p>
-<p>$$<br>{\boldsymbol{p}_1,\boldsymbol{t}_1},{\boldsymbol{p}_2,\boldsymbol{t}_2},\cdots {\boldsymbol{p}_Q,\boldsymbol{t}_Q}\tag{4}<br>$$</p>
-<p>where $\boldsymbol{p}_1$ is the input and $\boldsymbol{t}_1$ is the corresponding output.</p>
-<p>Recall that in the steepest descent algorithm, we have a definite objective function, minimizing which is the task of the algorithm iteratively. BP is the generation of LMS algorithms, and both of them try to minimize the mean square error. However, the best structure of the network that is the closest to the true data is unknown. So each iteration an approximation of ‘Error’ which was calculated from our observation was used in the algorithm. And what we finally get is a trained neural network that fits the training set but not guarantees fitting the original task. So a good training set which can represent the original task as close as possible is necessary.</p>
-<p>To make it easier to understand from the steepest descent algorithm to LMS and BP, we convert the weights and bias in the neural network form $w$ and $b$ into a vector $\boldsymbol{x}$. Then the performance index is:</p>
-<p>$$<br>F(\boldsymbol{x})=\mathbb E[e^2]=\mathbb E[(t-a)^2]\tag{5}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{a}=f^3(W^3\cdot f^2(W^2\cdot f^1(W^1\cdot \boldsymbol{p}+\boldsymbol{b}^1)+\boldsymbol{b}^2)+\boldsymbol{b}^3)\tag{2}
+\]</span></p>
+<p>but, it becomes impossible when we have a 10-layer network or 100-layer network. Then we can use some short equations that describe the whole operation of <span class="math inline">\(M\)</span>-layer network:</p>
+<p><span class="math display">\[
+a^{m+1}=f^{m+1}(W^{m+1}\boldsymbol{a}^{m}+\boldsymbol{b}^{m+1})\tag{3}
+\]</span></p>
+<p>for <span class="math inline">\(m = 1, 2, 3, \cdots M-1\)</span>. <span class="math inline">\(M\)</span> is the number of layers in the neural networks. And: - <span class="math inline">\(\boldsymbol{a}^0=\boldsymbol{p}\)</span> is its input - <span class="math inline">\(\boldsymbol{a}=\boldsymbol{a}^M\)</span> is its output</p>
+<h2 id="performance-index">Performance Index</h2>
+<p>We have had a network now. And <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">'performance learning'</a> is a kind of learning rule in learning task. Then we need a definite performance index for the 3-layer network. MSE is used here as the performance index the same as what the LMS algorithm did in post <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Widrow-Hoff-Learning/">'Widrow-Hoff Learning(Part I)'</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Widrow-Hoff-Learning-P2/">'Widrow-Hoff Learning(Part II)'</a>. And a set of examples of proper network behavior are needed:</p>
+<p><span class="math display">\[
+\{\boldsymbol{p}_1,\boldsymbol{t}_1\},\{\boldsymbol{p}_2,\boldsymbol{t}_2\},\cdots \{\boldsymbol{p}_Q,\boldsymbol{t}_Q\}\tag{4}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{p}_1\)</span> is the input and <span class="math inline">\(\boldsymbol{t}_1\)</span> is the corresponding output.</p>
+<p>Recall that in the steepest descent algorithm, we have a definite objective function, minimizing which is the task of the algorithm iteratively. BP is the generation of LMS algorithms, and both of them try to minimize the mean square error. However, the best structure of the network that is the closest to the true data is unknown. So each iteration an approximation of 'Error' which was calculated from our observation was used in the algorithm. And what we finally get is a trained neural network that fits the training set but not guarantees fitting the original task. So a good training set which can represent the original task as close as possible is necessary.</p>
+<p>To make it easier to understand from the steepest descent algorithm to LMS and BP, we convert the weights and bias in the neural network form <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span> into a vector <span class="math inline">\(\boldsymbol{x}\)</span>. Then the performance index is:</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=\mathbb E[e^2]=\mathbb E[(t-a)^2]\tag{5}
+\]</span></p>
 <p>When network has multiple outputs this generalizes to:</p>
-<p>$$<br>F(\boldsymbol{x})=\mathbb E[\boldsymbol{e}^T\boldsymbol{e}]=\mathbb E[(\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})]\tag{6}<br>$$</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=\mathbb E[\boldsymbol{e}^T\boldsymbol{e}]=\mathbb E[(\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})]\tag{6}
+\]</span></p>
 <p>During an iteration, in the LMS algorithm, MSE(mean square error) is approximated by SE(square error):</p>
-<p>$$<br>\hat{F}(\boldsymbol{x})=(\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})=\boldsymbol{e}^T\boldsymbol{e}\tag{7}<br>$$</p>
+<p><span class="math display">\[
+\hat{F}(\boldsymbol{x})=(\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})=\boldsymbol{e}^T\boldsymbol{e}\tag{7}
+\]</span></p>
 <p>where the expectations are replaced by the calculation of current input, output, and target.</p>
-<p>Reviewing the <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘steepest descent algorithm’</a>, the approximate MSE which is also called stochastic gradient descent:</p>
-<p>$$<br>\begin{aligned}<br>  w^m_{i,j}(k+1)&amp;=w^m_{i,j}(k)-\alpha \frac{\partial \hat{F}}{\partial w^m_{i,j}}\<br>  b^m_{i}(k+1)&amp;=b^m_{i}(k)-\alpha \frac{\partial \hat{F}}{\partial b^m_{i}}<br>\end{aligned}\tag{8}<br>$$</p>
-<p>where $\alpha$ is the learning rate.</p>
+<p>Reviewing the <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">'steepest descent algorithm'</a>, the approximate MSE which is also called stochastic gradient descent:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  w^m_{i,j}(k+1)&amp;=w^m_{i,j}(k)-\alpha \frac{\partial \hat{F}}{\partial w^m_{i,j}}\\
+  b^m_{i}(k+1)&amp;=b^m_{i}(k)-\alpha \frac{\partial \hat{F}}{\partial b^m_{i}}
+\end{aligned}\tag{8}
+\]</span></p>
+<p>where <span class="math inline">\(\alpha\)</span> is the learning rate.</p>
 <p>However, the steep descent algorithm seems can not work on a multiple-layer network for we can not just calculate the partial derivative in the hidden layer and input layer directly. So we should recall another mathematical tool - <strong>chain rule</strong>.</p>
-<h2 id="Chain-Rule"><a href="#Chain-Rule" class="headerlink" title="Chain Rule"></a>Chain Rule</h2><h3 id="Calculus"><a href="#Calculus" class="headerlink" title="Calculus"></a>Calculus</h3><p>when $f$ is explicit function of $\boldsymbol{n}$ and $\boldsymbol{n}$ is a explicit function of $\boldsymbol{w}$, we can calculate the partial derivative $\frac{\partial f}{\partial w}$ by:</p>
-<p>$$<br>\frac{\partial f}{\partial w}=\frac{\partial f}{\partial n}\frac{\partial n}{\partial w}\tag{9}<br>$$</p>
-<p>The whole process looks like a chain. And let’s look at a simple example: when we have $f(n)=e^n$ and $n=2w$, we have $f(n(w))=e^{2w}$. We can easily calculate the direvative $\frac{\partial f}{\partial w}=\frac{\partial e^2w}{\partial w}=2e^{2w}$. And when chain rule is used, we have:</p>
-<p>$$<br>\frac{\partial f(n(w))}{\partial w}=\frac{\partial e^n}{\partial n}\frac{\partial n}{\partial w}=\frac{\partial e^n}{\partial n}\frac{\partial 2w}{\partial w}=e^n\cdot 2=2e^{2w}\tag{10}<br>$$</p>
+<h2 id="chain-rule">Chain Rule</h2>
+<h3 id="calculus">Calculus</h3>
+<p>when <span class="math inline">\(f\)</span> is explicit function of <span class="math inline">\(\boldsymbol{n}\)</span> and <span class="math inline">\(\boldsymbol{n}\)</span> is a explicit function of <span class="math inline">\(\boldsymbol{w}\)</span>, we can calculate the partial derivative <span class="math inline">\(\frac{\partial f}{\partial w}\)</span> by:</p>
+<p><span class="math display">\[
+\frac{\partial f}{\partial w}=\frac{\partial f}{\partial n}\frac{\partial n}{\partial w}\tag{9}
+\]</span></p>
+<p>The whole process looks like a chain. And let's look at a simple example: when we have <span class="math inline">\(f(n)=e^n\)</span> and <span class="math inline">\(n=2w\)</span>, we have <span class="math inline">\(f(n(w))=e^{2w}\)</span>. We can easily calculate the direvative <span class="math inline">\(\frac{\partial f}{\partial w}=\frac{\partial e^2w}{\partial w}=2e^{2w}\)</span>. And when chain rule is used, we have:</p>
+<p><span class="math display">\[
+\frac{\partial f(n(w))}{\partial w}=\frac{\partial e^n}{\partial n}\frac{\partial n}{\partial w}=\frac{\partial e^n}{\partial n}\frac{\partial 2w}{\partial w}=e^n\cdot 2=2e^{2w}\tag{10}
+\]</span></p>
 <p>that is the same as what we get directly.</p>
 <p>When the chain rule is used in the second part on the right of equation (8), we get the way to calculate the derivative of the weight of hidden layers:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial n^m_i}{\partial w^m_{i,j}}\<br>\frac{\partial \hat{F}}{\partial b^m_{i}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial n^m_i}{\partial b^m_{i}}<br>\end{aligned}\tag{11}<br>$$</p>
-<p>from the abbreviated notation, we know that $n^m_i=\sum^{S^{m-1}}<em>{j=1}w^m</em>{i,j}a^{m-1}_{j}+b^m_i$. Then equation (11) can be writen as:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial \sum^{S^{m-1}}<em>{j=1}w^m</em>{i,j}a^{m-1}<em>{j}+b^m_i}{\partial w^m_{i,j}}=\frac{\partial \hat{F}}{\partial n^m_i}\cdot a^{m-1}_j\<br>\frac{\partial \hat{F}}{\partial b^m</em>{i}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial \sum^{S^{m-1}}<em>{j=1}w^m</em>{i,j}a^{m-1}_{j}+b^m_i}{\partial b^m_{i}}=\frac{\partial \hat{F}}{\partial n^m_i}\cdot 1<br>\end{aligned}\tag{12}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial n^m_i}{\partial w^m_{i,j}}\\
+\frac{\partial \hat{F}}{\partial b^m_{i}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial n^m_i}{\partial b^m_{i}}
+\end{aligned}\tag{11}
+\]</span></p>
+<p>from the abbreviated notation, we know that <span class="math inline">\(n^m_i=\sum^{S^{m-1}}_{j=1}w^m_{i,j}a^{m-1}_{j}+b^m_i\)</span>. Then equation (11) can be writen as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial \sum^{S^{m-1}}_{j=1}w^m_{i,j}a^{m-1}_{j}+b^m_i}{\partial w^m_{i,j}}=\frac{\partial \hat{F}}{\partial n^m_i}\cdot a^{m-1}_j\\
+\frac{\partial \hat{F}}{\partial b^m_{i}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial \sum^{S^{m-1}}_{j=1}w^m_{i,j}a^{m-1}_{j}+b^m_i}{\partial b^m_{i}}=\frac{\partial \hat{F}}{\partial n^m_i}\cdot 1
+\end{aligned}\tag{12}
+\]</span></p>
 <p>Equation (12) could also be simplified by defining a new concept: sensitivity.</p>
-<h3 id="Sensitivity"><a href="#Sensitivity" class="headerlink" title="Sensitivity"></a>Sensitivity</h3><p>We define <strong>sensitivity</strong> as $s^m_i\equiv \frac{\partial \hat{F}}{\partial n^m_{i}}$ that means the sensitivity of $\hat{F}$ to changes in the $i^{\text{th}}$ element of the net input at layer $m$. Then equation (12) can be simplified as:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=s^m_{i}\cdot a^{m-1}<em>j\<br>\frac{\partial \hat{F}}{\partial b^m</em>{i}}&amp;=s^m_{i}\cdot 1 \end{aligned}\tag{13}<br>$$</p>
-<p>Then the steepest descent algorithm is:<br>$$<br>\begin{aligned}<br>  w^m_{i,j}(k+1)&amp;=w^m_{i,j}(k)-\alpha s^m_{i}\cdot a^{m-1}<em>j\<br>  b^m</em>{i}(k+1)&amp;=b^m_{i}(k)-\alpha s^m_{i}\cdot 1<br>\end{aligned}\tag{14}<br>$$</p>
+<h3 id="sensitivity">Sensitivity</h3>
+<p>We define <strong>sensitivity</strong> as <span class="math inline">\(s^m_i\equiv \frac{\partial \hat{F}}{\partial n^m_{i}}\)</span> that means the sensitivity of <span class="math inline">\(\hat{F}\)</span> to changes in the <span class="math inline">\(i^{\text{th}}\)</span> element of the net input at layer <span class="math inline">\(m\)</span>. Then equation (12) can be simplified as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=s^m_{i}\cdot a^{m-1}_j\\
+\frac{\partial \hat{F}}{\partial b^m_{i}}&amp;=s^m_{i}\cdot 1 \end{aligned}\tag{13}
+\]</span></p>
+<p>Then the steepest descent algorithm is: <span class="math display">\[
+\begin{aligned}
+  w^m_{i,j}(k+1)&amp;=w^m_{i,j}(k)-\alpha s^m_{i}\cdot a^{m-1}_j\\
+  b^m_{i}(k+1)&amp;=b^m_{i}(k)-\alpha s^m_{i}\cdot 1
+\end{aligned}\tag{14}
+\]</span></p>
 <p>This can also be written in a matrix form:</p>
-<p>$$<br>\begin{aligned}<br>  W^m(k+1)&amp;=W^m(k)-\alpha \boldsymbol{s}^m(\boldsymbol{a}^{m-1})^T\<br>  \boldsymbol{b}^m(k+1)&amp;=\boldsymbol{b}^m(k)-\alpha \boldsymbol{s}^m\cdot 1<br>\end{aligned}\tag{15}<br>$$</p>
-<p>where:<br>$$<br>\boldsymbol{s}^m=\frac{\partial \hat{F}}{\alpha \boldsymbol{n}^m}=\begin{bmatrix}<br>  \frac{\partial \hat{F}}{\partial n^m_1}\<br>  \frac{\partial \hat{F}}{\partial n^m_2}\<br>  \vdots\<br>  \frac{\partial \hat{F}}{\partial n^m_{S^m}}\<br>\end{bmatrix}\tag{16}<br>$$</p>
-<p>And be careful of the $\boldsymbol{s}$ which means the sensitivity and $S^m$ which means the number of layers $m$</p>
-<h2 id="Backpropagating-the-Sensitivities"><a href="#Backpropagating-the-Sensitivities" class="headerlink" title="Backpropagating the Sensitivities"></a>Backpropagating the Sensitivities</h2><p>Equation (15) is our BP algorithm. But we can not calculate sensitivities yet. We can easily calculate the sensitivities of the last layer which is the same as LMS. And we have an inspiration that is we can use the relation between the latter layer and current layer. So let’s observe the Jacobian matrix which represents the relation between the latter layer linear combination output $\boldsymbol{n}^{m+1}$ and current layer linear combination output  $\boldsymbol{n}^m$:</p>
-<p>$$<br>\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}}=<br>\begin{bmatrix}<br>  \frac{<br>    \partial n^{m+1}<em>1}{\partial n^{m}_1} &amp;<br>    \frac{\partial n^{m+1}_1}{\partial n^{m}_2} &amp;<br>    \cdots &amp; \frac{\partial n^{m+1}_1}{\partial n^{m}</em>{S^m}}\<br>    \frac{\partial n^{m+1}<em>2}{\partial n^{m}_1} &amp;<br>    \frac{\partial n^{m+1}_2}{\partial n^{m}_2} &amp;<br>    \cdots &amp; \frac{\partial n^{m+1}_2}{\partial n^{m}</em>{S^m}}\<br>    \vdots&amp;\vdots&amp;&amp;\vdots\<br>    \frac{\partial n^{m+1}<em>{S^{m+1}}}{\partial n^{m}<em>1} &amp;<br>    \frac{\partial n^{m+1}</em>{S^{m+1}}}{\partial n^{m}<em>2} &amp;<br>    \cdots &amp;<br>    \frac{\partial n^{m+1}</em>{S^{m+1}}}{\partial n^{m}</em>{S^m}}\<br>\end{bmatrix}\tag{17}<br>$$</p>
-<p>And the $(i,j)^{\text{th}}$ element of the matrix is:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{\partial n^{m+1}<em>i}{\partial n^{m}<em>j}&amp;=\frac{\partial (\sum^{S^m}</em>{l=1}w^{m+1}</em>{i,l}a^m_l+b^{m+1}<em>i)}{\partial n^m_j}\<br>  &amp;= w^{m+1}_{i,j}\frac{\partial a^m_j}{\partial n^m_j}\<br>  &amp;= w^{m+1}</em>{i,j}\frac{\partial f^m(n^m_j)}{\partial n^m_j}\<br>  &amp;= w^{m+1}_{i,j}\dot{f}^m(n^m_j)<br>\end{aligned}\tag{18}<br>$$</p>
-<p>where $\sum^{S^m}<em>{l=1}w^{m+1}</em>{i,l}a^m_l+b^{m+1}_i$ is the linear combination output of layer $m+1$ and $a^m$ is the output of layer $m$. And we can define $\dot{f}^m(n^m_j)=\frac{\partial f^m(n^m_j)}{\partial n^m_j}$</p>
+<p><span class="math display">\[
+\begin{aligned}
+  W^m(k+1)&amp;=W^m(k)-\alpha \boldsymbol{s}^m(\boldsymbol{a}^{m-1})^T\\
+  \boldsymbol{b}^m(k+1)&amp;=\boldsymbol{b}^m(k)-\alpha \boldsymbol{s}^m\cdot 1
+\end{aligned}\tag{15}
+\]</span></p>
+<p>where: <span class="math display">\[
+\boldsymbol{s}^m=\frac{\partial \hat{F}}{\alpha \boldsymbol{n}^m}=\begin{bmatrix}
+  \frac{\partial \hat{F}}{\partial n^m_1}\\
+  \frac{\partial \hat{F}}{\partial n^m_2}\\
+  \vdots\\
+  \frac{\partial \hat{F}}{\partial n^m_{S^m}}\\
+\end{bmatrix}\tag{16}
+\]</span></p>
+<p>And be careful of the <span class="math inline">\(\boldsymbol{s}\)</span> which means the sensitivity and <span class="math inline">\(S^m\)</span> which means the number of layers <span class="math inline">\(m\)</span></p>
+<h2 id="backpropagating-the-sensitivities">Backpropagating the Sensitivities</h2>
+<p>Equation (15) is our BP algorithm. But we can not calculate sensitivities yet. We can easily calculate the sensitivities of the last layer which is the same as LMS. And we have an inspiration that is we can use the relation between the latter layer and current layer. So let's observe the Jacobian matrix which represents the relation between the latter layer linear combination output <span class="math inline">\(\boldsymbol{n}^{m+1}\)</span> and current layer linear combination output <span class="math inline">\(\boldsymbol{n}^m\)</span>:</p>
+<p><span class="math display">\[
+\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}}=
+\begin{bmatrix}
+  \frac{
+    \partial n^{m+1}_1}{\partial n^{m}_1} &amp; 
+    \frac{\partial n^{m+1}_1}{\partial n^{m}_2} &amp; 
+    \cdots &amp; \frac{\partial n^{m+1}_1}{\partial n^{m}_{S^m}}\\
+    \frac{\partial n^{m+1}_2}{\partial n^{m}_1} &amp; 
+    \frac{\partial n^{m+1}_2}{\partial n^{m}_2} &amp; 
+    \cdots &amp; \frac{\partial n^{m+1}_2}{\partial n^{m}_{S^m}}\\
+    \vdots&amp;\vdots&amp;&amp;\vdots\\
+    \frac{\partial n^{m+1}_{S^{m+1}}}{\partial n^{m}_1} &amp; 
+    \frac{\partial n^{m+1}_{S^{m+1}}}{\partial n^{m}_2} &amp; 
+    \cdots &amp; 
+    \frac{\partial n^{m+1}_{S^{m+1}}}{\partial n^{m}_{S^m}}\\
+\end{bmatrix}\tag{17}
+\]</span></p>
+<p>And the <span class="math inline">\((i,j)^{\text{th}}\)</span> element of the matrix is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{\partial n^{m+1}_i}{\partial n^{m}_j}&amp;=\frac{\partial (\sum^{S^m}_{l=1}w^{m+1}_{i,l}a^m_l+b^{m+1}_i)}{\partial n^m_j}\\
+  &amp;= w^{m+1}_{i,j}\frac{\partial a^m_j}{\partial n^m_j}\\
+  &amp;= w^{m+1}_{i,j}\frac{\partial f^m(n^m_j)}{\partial n^m_j}\\
+  &amp;= w^{m+1}_{i,j}\dot{f}^m(n^m_j)
+\end{aligned}\tag{18}
+\]</span></p>
+<p>where <span class="math inline">\(\sum^{S^m}_{l=1}w^{m+1}_{i,l}a^m_l+b^{m+1}_i\)</span> is the linear combination output of layer <span class="math inline">\(m+1\)</span> and <span class="math inline">\(a^m\)</span> is the output of layer <span class="math inline">\(m\)</span>. And we can define <span class="math inline">\(\dot{f}^m(n^m_j)=\frac{\partial f^m(n^m_j)}{\partial n^m_j}\)</span></p>
 <p>Therefore the Jacobian matrix can be written as:</p>
-<p>$$<br>\begin{aligned}<br>  &amp;\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}}\<br>  =&amp;W^{m+1}\dot{F}^m(\boldsymbol{n}^m)\<br>  =&amp;\begin{bmatrix}<br>  w^{m+1}<em>{1,1}\dot{f}^m(n^m_1) &amp;<br>    w^{m+1}_{1,2}\dot{f}^m(n^m_2) &amp;<br>    \cdots &amp; w^{m+1}_{1,{S^m}}\dot{f}^m(n^m</em>{S^m})\<br>  w^{m+1}<em>{2,1}\dot{f}^m(n^m_1) &amp;<br>    w^{m+1}_{2,2}\dot{f}^m(n^m_2) &amp;<br>    \cdots &amp; w^{m+1}_{2,{S^m}}\dot{f}^m(n^m</em>{S^m})\<br>    \vdots&amp;\vdots&amp;&amp;\vdots\<br>  w^{m+1}<em>{S^{m+1},1}\dot{f}^m(n^m_1) &amp;<br>    w^{m+1}_{S^{m+1},2}\dot{f}^m(n^m_2) &amp;<br>    \cdots &amp; w^{m+1}_{S^{m+1},{S^m}}\dot{f}^m(n^m</em>{S^m})<br>\end{bmatrix}<br>\end{aligned}<br>\tag{19}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+  &amp;\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}}\\
+  =&amp;W^{m+1}\dot{F}^m(\boldsymbol{n}^m)\\
+  =&amp;\begin{bmatrix}
+  w^{m+1}_{1,1}\dot{f}^m(n^m_1) &amp; 
+    w^{m+1}_{1,2}\dot{f}^m(n^m_2) &amp; 
+    \cdots &amp; w^{m+1}_{1,{S^m}}\dot{f}^m(n^m_{S^m})\\
+  w^{m+1}_{2,1}\dot{f}^m(n^m_1) &amp; 
+    w^{m+1}_{2,2}\dot{f}^m(n^m_2) &amp; 
+    \cdots &amp; w^{m+1}_{2,{S^m}}\dot{f}^m(n^m_{S^m})\\  
+    \vdots&amp;\vdots&amp;&amp;\vdots\\
+  w^{m+1}_{S^{m+1},1}\dot{f}^m(n^m_1) &amp; 
+    w^{m+1}_{S^{m+1},2}\dot{f}^m(n^m_2) &amp; 
+    \cdots &amp; w^{m+1}_{S^{m+1},{S^m}}\dot{f}^m(n^m_{S^m})
+\end{bmatrix}
+\end{aligned}
+\tag{19}
+\]</span></p>
 <p>where we have:</p>
-<p>$$<br>\dot{F}^m(\boldsymbol{n}^m)=<br>\begin{bmatrix}<br>  \dot{f}(n^m_1)&amp;0&amp;\cdots&amp;0\<br>  0&amp;\dot{f}(n^m_2)&amp;\cdots&amp;0\<br>  \vdots&amp;\vdots&amp;\ddots&amp;\vdots\<br>  0&amp;0&amp;\cdots&amp;\dot{f}(n^m_{S^m})<br>\end{bmatrix}\tag{20}<br>$$</p>
+<p><span class="math display">\[
+\dot{F}^m(\boldsymbol{n}^m)=
+\begin{bmatrix}
+  \dot{f}(n^m_1)&amp;0&amp;\cdots&amp;0\\
+  0&amp;\dot{f}(n^m_2)&amp;\cdots&amp;0\\
+  \vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+  0&amp;0&amp;\cdots&amp;\dot{f}(n^m_{S^m})
+\end{bmatrix}\tag{20}
+\]</span></p>
 <p>Then recurrence relation for the sensitivity by using chain rule in matrix form is:</p>
-<p>$$<br>\begin{aligned}<br>  \boldsymbol{s}^m&amp;=\frac{\partial \hat{F}}{\partial n^m}\<br>  &amp;=(\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}})^T\cdot \frac{\partial \hat{F}}{\partial n^{m+1}}\<br>  &amp;=\dot{F}^m(\boldsymbol{n}^m)W^{m+1}\boldsymbol{s}^{m+1}\<br>\end{aligned}\tag{21}<br>$$</p>
-<p>This is why it is called backpropagation, because the sensitivities of layer $m$ is calculated by layer $m+1$ :</p>
-<p>$$<br>S^{M}\to S^{M-1}\to S^{M-2}\to \cdots \to S^{1}\tag{22}<br>$$</p>
-<p>Same to the LMS algorithm, BP is also an approximating algorithm of the steepest descent technique. And the start of BP $\boldsymbol{s}^M_i$ is:</p>
-<p>$$<br>\begin{aligned}<br>  \boldsymbol{s}^M_i&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\<br>  &amp;=\frac{\partial (\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})}{\partial n^m_i}\<br>  &amp;=\frac{\partial \sum_{j=1}^{S^M}(t_j-a_j)^2}{\partial n^M_i}\<br>  &amp;=-2(t_i-a_i)\frac{\partial a_i}{\partial n^M_{i}}<br>\end{aligned}\tag{23}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \boldsymbol{s}^m&amp;=\frac{\partial \hat{F}}{\partial n^m}\\
+  &amp;=(\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}})^T\cdot \frac{\partial \hat{F}}{\partial n^{m+1}}\\
+  &amp;=\dot{F}^m(\boldsymbol{n}^m)W^{m+1}\boldsymbol{s}^{m+1}\\
+\end{aligned}\tag{21}
+\]</span></p>
+<p>This is why it is called backpropagation, because the sensitivities of layer <span class="math inline">\(m\)</span> is calculated by layer <span class="math inline">\(m+1\)</span> :</p>
+<p><span class="math display">\[
+S^{M}\to S^{M-1}\to S^{M-2}\to \cdots \to S^{1}\tag{22}
+\]</span></p>
+<p>Same to the LMS algorithm, BP is also an approximating algorithm of the steepest descent technique. And the start of BP <span class="math inline">\(\boldsymbol{s}^M_i\)</span> is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \boldsymbol{s}^M_i&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\\
+  &amp;=\frac{\partial (\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})}{\partial n^m_i}\\
+  &amp;=\frac{\partial \sum_{j=1}^{S^M}(t_j-a_j)^2}{\partial n^M_i}\\
+  &amp;=-2(t_i-a_i)\frac{\partial a_i}{\partial n^M_{i}}
+\end{aligned}\tag{23}
+\]</span></p>
 <p>and this is easy to understand because it is just a variation of the LMS algorithm. Since</p>
-<p>$$<br>\frac{\partial a_i}{\partial n^M_i}=\frac{\partial f^M(n^M_i)}{\partial n^M_i}=\dot{f}^M(n^M_j)\tag{24}<br>$$</p>
+<p><span class="math display">\[
+\frac{\partial a_i}{\partial n^M_i}=\frac{\partial f^M(n^M_i)}{\partial n^M_i}=\dot{f}^M(n^M_j)\tag{24}
+\]</span></p>
 <p>we can write:</p>
-<p>$$<br>s^M_i=-2(t_i-a_i)\dot{f}^M(n^M_i)\tag{25}<br>$$</p>
+<p><span class="math display">\[
+s^M_i=-2(t_i-a_i)\dot{f}^M(n^M_i)\tag{25}
+\]</span></p>
 <p>and its matrix form is:</p>
-<p>$$<br>\boldsymbol{s}^M_i=-\dot{F}^M(\boldsymbol{n}^M)(\boldsymbol{t}-\boldsymbol{a})\tag{26}<br>$$</p>
-<h2 id="Summary-of-BP"><a href="#Summary-of-BP" class="headerlink" title="Summary of BP"></a>Summary of BP</h2><ol>
-<li>Propagate the input forward through the network<ul>
-<li>$\boldsymbol{a}^0=\boldsymbol{p}$</li>
-<li>$\boldsymbol{a}^{m+1}=f^{m+1}(W^{m+1}\boldsymbol{a}^m+\boldsymbol{b}^{m+1})$ for $m=0,1,2,\cdots, M-1$</li>
-<li>$\boldsymbol{a}=\boldsymbol{a}^M$</li>
-</ul>
-</li>
-<li>Propagate the sensitivities backward through the network:<ul>
-<li>$\boldsymbol{s}^M=-2\dot{F}^M(\boldsymbol{n}^M)(\boldsymbol{t}-\boldsymbol{a})$</li>
-<li>$\boldsymbol{s}^m= \dot{F}^m(\boldsymbol{n}^m)(W^{m+1})^T\boldsymbol{s}^{m+1})$ for $m=M-1,\cdots,2,1$</li>
-</ul>
-</li>
-<li>Finally, the weights and bias are updated using the approximate steepest descent rule:<ul>
-<li>$W^{m}(k+1)=W^{m}(k)-\alpha \boldsymbol{s}^m(\boldsymbol{a}^{m-1})^T$</li>
-<li>$\boldsymbol{b}^{m}(k+1)=\boldsymbol{b}^{m}(k)-\alpha \boldsymbol{s}^m$</li>
-</ul>
-</li>
+<p><span class="math display">\[
+\boldsymbol{s}^M_i=-\dot{F}^M(\boldsymbol{n}^M)(\boldsymbol{t}-\boldsymbol{a})\tag{26}
+\]</span></p>
+<h2 id="summary-of-bp">Summary of BP</h2>
+<ol type="1">
+<li>Propagate the input forward through the network
+<ul>
+<li><span class="math inline">\(\boldsymbol{a}^0=\boldsymbol{p}\)</span></li>
+<li><span class="math inline">\(\boldsymbol{a}^{m+1}=f^{m+1}(W^{m+1}\boldsymbol{a}^m+\boldsymbol{b}^{m+1})\)</span> for <span class="math inline">\(m=0,1,2,\cdots, M-1\)</span></li>
+<li><span class="math inline">\(\boldsymbol{a}=\boldsymbol{a}^M\)</span></li>
+</ul></li>
+<li>Propagate the sensitivities backward through the network:
+<ul>
+<li><span class="math inline">\(\boldsymbol{s}^M=-2\dot{F}^M(\boldsymbol{n}^M)(\boldsymbol{t}-\boldsymbol{a})\)</span></li>
+<li><span class="math inline">\(\boldsymbol{s}^m= \dot{F}^m(\boldsymbol{n}^m)(W^{m+1})^T\boldsymbol{s}^{m+1})\)</span> for <span class="math inline">\(m=M-1,\cdots,2,1\)</span></li>
+</ul></li>
+<li>Finally, the weights and bias are updated using the approximate steepest descent rule:
+<ul>
+<li><span class="math inline">\(W^{m}(k+1)=W^{m}(k)-\alpha \boldsymbol{s}^m(\boldsymbol{a}^{m-1})^T\)</span></li>
+<li><span class="math inline">\(\boldsymbol{b}^{m}(k+1)=\boldsymbol{b}^{m}(k)-\alpha \boldsymbol{s}^m\)</span></li>
+</ul></li>
 </ol>
-<h2 id="An-example-of-BP-algorithm"><a href="#An-example-of-BP-algorithm" class="headerlink" title="An example of BP algorithm"></a>An example of BP algorithm</h2><p>Here we look at a simple example. Considering the function:</p>
-<p>$$<br>g(p)=1+\sin(\frac{\pi}{4}p) \text{ for } -2\leq p\leq 2\tag{27}<br>$$</p>
-<p>Then the sampling process should be done. And we get same function values with some selected inputs $p$’s, for example, we have a set of </p>
-<p>$$<br>p={-2,-1.8,\cdots ,1.8,2.0}\tag{28}<br>$$ </p>
-<p>then we get corresponding function values of $g(p)$ are </p>
-<p>$$<br>\begin{aligned}<br>  {&amp;\<br>  &amp;1+\sin(\frac{\pi}{4}\times(-2)),\<br>  &amp;1+\sin(\frac{\pi}{4}\times(-1.8)),\<br>  &amp;\cdots,\<br>  &amp;1+\sin(\frac{\pi}{4}\times(1.8)),\<br>  &amp;1+\sin(\frac{\pi}{4}\times(2))\<br>  }&amp;<br>\end{aligned}<br>\tag{29}<br>$$ </p>
+<h2 id="an-example-of-bp-algorithm">An example of BP algorithm</h2>
+<p>Here we look at a simple example. Considering the function:</p>
+<p><span class="math display">\[
+g(p)=1+\sin(\frac{\pi}{4}p) \text{ for } -2\leq p\leq 2\tag{27}
+\]</span></p>
+<p>Then the sampling process should be done. And we get same function values with some selected inputs <span class="math inline">\(p\)</span>'s, for example, we have a set of</p>
+<p><span class="math display">\[
+p=\{-2,-1.8,\cdots ,1.8,2.0\}\tag{28}
+\]</span></p>
+<p>then we get corresponding function values of <span class="math inline">\(g(p)\)</span> are</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \{&amp;\\
+  &amp;1+\sin(\frac{\pi}{4}\times(-2)),\\
+  &amp;1+\sin(\frac{\pi}{4}\times(-1.8)),\\
+  &amp;\cdots,\\
+  &amp;1+\sin(\frac{\pi}{4}\times(1.8)),\\
+  &amp;1+\sin(\frac{\pi}{4}\times(2))\\
+  \}&amp;
+\end{aligned}
+\tag{29}
+\]</span></p>
 <p>So, we have had training data, and then we need to choose a network architecture. The following network would be used:</p>
-<p><img src="./abbreviated_notation_example.jpeg"></p>
-<p>This 1-2-1 network is relatively simpler than other networks. And what we should do next is to choose initial values for the network weights and biases. They are usually chosen to be small random values. Here we chose all of these parameters from a uniform distribution over $[-1,1]$.</p>
-<p>And the inputs ${-2.0,-1.8,-1.6,\cdots,1.8,2.0}$ are fed into the 1-2-1 network whose initial weights are:</p>
-<p>$$<br>W^1(0)=\begin{bmatrix}<br>  -0.27\-0.41<br>\end{bmatrix}\<br>\boldsymbol{b}^1(0)=\begin{bmatrix}<br>  -0.48\-0.13<br>\end{bmatrix}\<br>W^2(0)=\begin{bmatrix}<br>  0.09\-0.17<br>\end{bmatrix}\<br>\boldsymbol{b}^2(0)=\begin{bmatrix}<br>  0.48<br>\end{bmatrix}\tag{30}<br>$$</p>
+<p><img src="./abbreviated_notation_example.jpeg" /></p>
+<p>This 1-2-1 network is relatively simpler than other networks. And what we should do next is to choose initial values for the network weights and biases. They are usually chosen to be small random values. Here we chose all of these parameters from a uniform distribution over <span class="math inline">\([-1,1]\)</span>.</p>
+<p>And the inputs <span class="math inline">\(\{-2.0,-1.8,-1.6,\cdots,1.8,2.0\}\)</span> are fed into the 1-2-1 network whose initial weights are:</p>
+<p><span class="math display">\[
+W^1(0)=\begin{bmatrix}
+  -0.27\\-0.41
+\end{bmatrix}\\
+\boldsymbol{b}^1(0)=\begin{bmatrix}
+  -0.48\\-0.13
+\end{bmatrix}\\
+W^2(0)=\begin{bmatrix}
+  0.09\\-0.17
+\end{bmatrix}\\
+\boldsymbol{b}^2(0)=\begin{bmatrix}
+  0.48
+\end{bmatrix}\tag{30}
+\]</span></p>
 <p>and we get the output of the network are:</p>
-<p><img src="./example.png"></p>
-<p>Now let’s start the algorithm step by step:</p>
+<p><img src="./example.png" /></p>
+<p>Now let's start the algorithm step by step: 1. we have the first input <span class="math inline">\(\boldsymbol{a}^0=\boldsymbol{p}=1\)</span> 1. The output of the first layer is then <span class="math display">\[\begin{aligned}
+        \boldsymbol{a}^1&amp;=f(W^1\boldsymbol{a}^0+\boldsymbol{b}^1)\\
+        &amp;=\text{logsig}(\begin{bmatrix}-0.27\\-0.41\end{bmatrix}\begin{bmatrix}1\end{bmatrix}+\begin{bmatrix}-0.48\\-0.13\end{bmatrix})\\
+        &amp;=\text{logsig}(\begin{bmatrix}-0.75\\-0.54\end{bmatrix})\\
+        &amp;=\begin{bmatrix}\frac{1}{1+e^{0.75}}\\\frac{1}{1+e^{0.54}}\end{bmatrix}\\
+        &amp;=\begin{bmatrix}0.321\\0.368\end{bmatrix}
+      \end{aligned}
+      \]</span> 2. The output of the second layer is: <span class="math display">\[
+      \begin{aligned}
+        \boldsymbol{a}^2&amp;=f(W^2\boldsymbol{a}^1+\boldsymbol{b}^2)\\
+        &amp;=\text{logsig}(\begin{bmatrix}0.09&amp;-0.17\end{bmatrix}\begin{bmatrix}0.321\\0.368\end{bmatrix}+\begin{bmatrix}0.48\end{bmatrix})\\
+        &amp;=\text{logsig}(\begin{bmatrix}0.446\end{bmatrix})
+      \end{aligned}
+      \]</span> 2. Because we have generated both the input and target in equation(3), we can calculate the error: <span class="math display">\[
+    \begin{aligned}
+      e=t-a&amp;=\{1+\sin(\frac{\pi}{4}p)\}-a^2\\
+      &amp;=\{1+\sin(\frac{\pi}{4}\times 1)\}-0.446\\
+      &amp;=1.261
+    \end{aligned}
+    \]</span> 3. We then backpropagate the sensitivities during which derivatives of transfer function are needed: <span class="math display">\[
+    \begin{aligned}
+      \dot{f}^1(n)&amp;=\frac{d}{dn}(\frac{1}{1+e^{-n}})\\
+      &amp;=\frac{e^{-n}}{(1+e^{-n})^2}\\
+      &amp;=(1-\frac{1}{1+e^{-n}})(\frac{1}{1+e^{-n}})\\
+      &amp;=(1-a^1)(a^1)
+    \end{aligned}
+    \]</span> and <span class="math display">\[
+      \dot{f}^2(n)=\frac{d}{dn}(n)=1
+    \]</span> 4. Now we have all components which is required for backpropagating 1. The starting point is found in the second layer: <span class="math display">\[
+      \begin{aligned}
+        \boldsymbol{s}^2&amp;=2\dot{F}^2(\boldsymbol{n}^1)(\boldsymbol{t}-\boldsymbol{a})\\
+        &amp;=-2\begin{bmatrix}
+          \dot{f}^2(n^2)
+        \end{bmatrix}(1.261)\\
+        &amp;=-2\begin{bmatrix}
+          1
+        \end{bmatrix}(1.261)\\
+        &amp;=-2.522
+      \end{aligned}
+      \]</span> 2. And the sensitivity of first layer is: <span class="math display">\[
+      \begin{aligned}
+        \boldsymbol{s}^1&amp;=\dot{F}^1(\boldsymbol{n}^1)(W^2)^T\boldsymbol{s}^2\\
+        &amp;=\begin{bmatrix}
+          (1-a^1_1)(a^1_1)&amp;0\\
+          0&amp;(1-a^1_2)(a^1_2)
+        \end{bmatrix}\begin{bmatrix}
+          0.09\\
+          -0.17
+        \end{bmatrix}\begin{bmatrix}
+          -2.522
+        \end{bmatrix}\\
+        &amp;=\begin{bmatrix}
+          (1-0.321)(0.321)&amp;0\\
+          0&amp;(1-0.368)(0.368)
+        \end{bmatrix}\begin{bmatrix}
+          0.09\\
+          -0.17
+        \end{bmatrix}\begin{bmatrix}
+          -2.522
+        \end{bmatrix}\\
+        &amp;=\begin{bmatrix}
+          0.218&amp;0\\
+          0&amp;0.233
+        \end{bmatrix}\begin{bmatrix}
+          -0.227\\
+          0.429
+        \end{bmatrix}\\
+        &amp;=\begin{bmatrix}
+          -0.0495\\
+          0.0997
+        \end{bmatrix}
+      \end{aligned}
+      \]</span> 5. Finally we update the weights. For similicity, we will use a learning rate <span class="math inline">\(\alpha = 0.01\)</span>: <span class="math display">\[
+   \begin{aligned}
+     W^2(1)&amp;=W^2(0)-\alpha\boldsymbol{s}^2(\boldsymbol{a}^1)^T\\
+     &amp;=\begin{bmatrix}0.09&amp;-0.17\end{bmatrix}-0.1\begin{bmatrix}-2.522\end{bmatrix}\begin{bmatrix}0.321&amp;0.368\end{bmatrix}\\
+     &amp;=\begin{bmatrix}0.171&amp;-0.0772\end{bmatrix}
+   \end{aligned}
+   \]</span> <span class="math display">\[
+   \begin{aligned}
+     \boldsymbol{b}^2(1)&amp;=\boldsymbol{b}^2(0)-\alpha\boldsymbol{s}^2\cdot 1\\
+     &amp;=\begin{bmatrix}0.48\end{bmatrix}-0.1\begin{bmatrix}-2.522\end{bmatrix}\\
+     &amp;=\begin{bmatrix}0.732\end{bmatrix}
+   \end{aligned}
+   \]</span> <span class="math display">\[
+   \begin{aligned}
+     W^1(1)&amp;=W^1(0)-\alpha\boldsymbol{s}^1(\boldsymbol{a}^0)^T\\
+     &amp;=\begin{bmatrix}-0.27\\-0.41\end{bmatrix}-0.1\begin{bmatrix}-0.0495\\0.0997\end{bmatrix}\begin{bmatrix}1\end{bmatrix}\\
+     &amp;=\begin{bmatrix}-0.265\\-0.420\end{bmatrix}
+   \end{aligned}
+   \]</span> <span class="math display">\[
+   \begin{aligned}
+     \boldsymbol{b}^1(1)&amp;=\boldsymbol{b}^1(0)-\alpha\boldsymbol{s}^1\cdot 1\\
+     &amp;=\begin{bmatrix}-0.48\\-0.13\end{bmatrix}-0.1\begin{bmatrix}-0.0495\\0.0997\end{bmatrix}\\
+     &amp;=\begin{bmatrix}-0.475\\-0.140\end{bmatrix}
+   \end{aligned}
+   \]</span></p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
 <ol>
-<li>we have the first input $\boldsymbol{a}^0=\boldsymbol{p}=1$<ol>
-<li>The output of the first layer is then<br>$$\begin{aligned}<br>  \boldsymbol{a}^1&amp;=f(W^1\boldsymbol{a}^0+\boldsymbol{b}^1)\<br>  &amp;=\text{logsig}(\begin{bmatrix}-0.27\-0.41\end{bmatrix}\begin{bmatrix}1\end{bmatrix}+\begin{bmatrix}-0.48\-0.13\end{bmatrix})\<br>  &amp;=\text{logsig}(\begin{bmatrix}-0.75\-0.54\end{bmatrix})\<br>  &amp;=\begin{bmatrix}\frac{1}{1+e^{0.75}}\\frac{1}{1+e^{0.54}}\end{bmatrix}\<br>  &amp;=\begin{bmatrix}0.321\0.368\end{bmatrix}<br>\end{aligned}<br>$$</li>
-<li>The output of the second layer is:<br>$$<br>\begin{aligned}<br>  \boldsymbol{a}^2&amp;=f(W^2\boldsymbol{a}^1+\boldsymbol{b}^2)\<br>  &amp;=\text{logsig}(\begin{bmatrix}0.09&amp;-0.17\end{bmatrix}\begin{bmatrix}0.321\0.368\end{bmatrix}+\begin{bmatrix}0.48\end{bmatrix})\<br>  &amp;=\text{logsig}(\begin{bmatrix}0.446\end{bmatrix})<br>\end{aligned}<br>$$ </li>
+<li id="fn1" role="doc-endnote"><p>Demuth, Howard B., Mark H. Beale, Orlando De Jess, and Martin T. Hagan. Neural network design. Martin Hagan, 2014.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</li>
-<li>Because we have generated both the input and target in equation(3), we can calculate the error:<br> $$<br> \begin{aligned}<br>   e=t-a&amp;={1+\sin(\frac{\pi}{4}p)}-a^2\<br>   &amp;={1+\sin(\frac{\pi}{4}\times 1)}-0.446\<br>   &amp;=1.261<br> \end{aligned}<br> $$</li>
-<li>We then backpropagate the sensitivities during which derivatives of transfer function are needed:<br> $$<br> \begin{aligned}<br>   \dot{f}^1(n)&amp;=\frac{d}{dn}(\frac{1}{1+e^{-n}})\<br>   &amp;=\frac{e^{-n}}{(1+e^{-n})^2}\<br>   &amp;=(1-\frac{1}{1+e^{-n}})(\frac{1}{1+e^{-n}})\<br>   &amp;=(1-a^1)(a^1)<br> \end{aligned}<br> $$<br> and<br> $$<br>   \dot{f}^2(n)=\frac{d}{dn}(n)=1<br> $$</li>
-<li>Now we have all components which is required for backpropagating<ol>
-<li>The starting point is found in the second layer:<br>$$<br>\begin{aligned}<br>  \boldsymbol{s}^2&amp;=2\dot{F}^2(\boldsymbol{n}^1)(\boldsymbol{t}-\boldsymbol{a})\<br>  &amp;=-2\begin{bmatrix}<pre><code>\dot&#123;f&#125;^2(n^2)</code></pre>
-  \end{bmatrix}(1.261)\<br>  &amp;=-2\begin{bmatrix}<pre><code>1</code></pre>
-  \end{bmatrix}(1.261)\<br>  &amp;=-2.522<br>\end{aligned}<br>$$ </li>
-<li>And the sensitivity of first layer is:<br>$$<br>\begin{aligned}<br>  \boldsymbol{s}^1&amp;=\dot{F}^1(\boldsymbol{n}^1)(W^2)^T\boldsymbol{s}^2\<br>  &amp;=\begin{bmatrix}<pre><code>(1-a^1_1)(a^1_1)&amp;0\\
-0&amp;(1-a^1_2)(a^1_2)</code></pre>
-  \end{bmatrix}\begin{bmatrix}<pre><code>0.09\\
--0.17</code></pre>
-  \end{bmatrix}\begin{bmatrix}<pre><code>-2.522</code></pre>
-  \end{bmatrix}\<br>  &amp;=\begin{bmatrix}<pre><code>(1-0.321)(0.321)&amp;0\\
-0&amp;(1-0.368)(0.368)</code></pre>
-  \end{bmatrix}\begin{bmatrix}<pre><code>0.09\\
--0.17</code></pre>
-  \end{bmatrix}\begin{bmatrix}<pre><code>-2.522</code></pre>
-  \end{bmatrix}\<br>  &amp;=\begin{bmatrix}<pre><code>0.218&amp;0\\
-0&amp;0.233</code></pre>
-  \end{bmatrix}\begin{bmatrix}<pre><code>-0.227\\
-0.429</code></pre>
-  \end{bmatrix}\<br>  &amp;=\begin{bmatrix}<pre><code>-0.0495\\
-0.0997</code></pre>
-  \end{bmatrix}<br>\end{aligned}<br>$$</li>
-</ol>
-</li>
-<li>Finally we update the weights. For similicity, we will use a learning rate $\alpha = 0.01$:<br>$$<br>\begin{aligned}<br>  W^2(1)&amp;=W^2(0)-\alpha\boldsymbol{s}^2(\boldsymbol{a}^1)^T\<br>  &amp;=\begin{bmatrix}0.09&amp;-0.17\end{bmatrix}-0.1\begin{bmatrix}-2.522\end{bmatrix}\begin{bmatrix}0.321&amp;0.368\end{bmatrix}\<br>  &amp;=\begin{bmatrix}0.171&amp;-0.0772\end{bmatrix}<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>  \boldsymbol{b}^2(1)&amp;=\boldsymbol{b}^2(0)-\alpha\boldsymbol{s}^2\cdot 1\<br>  &amp;=\begin{bmatrix}0.48\end{bmatrix}-0.1\begin{bmatrix}-2.522\end{bmatrix}\<br>  &amp;=\begin{bmatrix}0.732\end{bmatrix}<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>  W^1(1)&amp;=W^1(0)-\alpha\boldsymbol{s}^1(\boldsymbol{a}^0)^T\<br>  &amp;=\begin{bmatrix}-0.27\-0.41\end{bmatrix}-0.1\begin{bmatrix}-0.0495\0.0997\end{bmatrix}\begin{bmatrix}1\end{bmatrix}\<br>  &amp;=\begin{bmatrix}-0.265\-0.420\end{bmatrix}<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>  \boldsymbol{b}^1(1)&amp;=\boldsymbol{b}^1(0)-\alpha\boldsymbol{s}^1\cdot 1\<br>  &amp;=\begin{bmatrix}-0.48\-0.13\end{bmatrix}-0.1\begin{bmatrix}-0.0495\0.0997\end{bmatrix}\<br>  &amp;=\begin{bmatrix}-0.475\-0.140\end{bmatrix}<br>\end{aligned}<br>$$ </li>
-</ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, Howard B., Mark H. Beale, Orlando De Jess, and Martin T. Hagan. Neural network design. Martin Hagan, 2014.</p>
+</section>
 
     </div>
 

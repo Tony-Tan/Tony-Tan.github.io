@@ -174,7 +174,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Works"><span class="nav-number">1.</span> <span class="nav-text">Basic Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inspiration"><span class="nav-number">2.</span> <span class="nav-text">Inspiration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contribution"><span class="nav-number">3.</span> <span class="nav-text">Contribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment"><span class="nav-number">4.</span> <span class="nav-text">Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result"><span class="nav-number">5.</span> <span class="nav-text">Result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Personal-Summary"><span class="nav-number">6.</span> <span class="nav-text">Personal Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-works"><span class="nav-number">1.</span> <span class="nav-text">Basic Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inspiration"><span class="nav-number">2.</span> <span class="nav-text">Inspiration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contribution"><span class="nav-number">3.</span> <span class="nav-text">Contribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#experiment"><span class="nav-number">4.</span> <span class="nav-text">Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#result"><span class="nav-number">5.</span> <span class="nav-text">Result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#personal-summary"><span class="nav-number">6.</span> <span class="nav-text">Personal Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -330,78 +330,98 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>Keywords:</strong> AlexNet, Dropout, ReLU</p>
 <a id="more"></a>
-<p>All the figures and tables in this post come from ‘ImageNet Classification with Deep Convolutional Neural Networks’[^1]</p>
-<h2 id="Basic-Works"><a href="#Basic-Works" class="headerlink" title="Basic Works"></a>Basic Works</h2><ol>
+<p>All the figures and tables in this post come from 'ImageNet Classification with Deep Convolutional Neural Networks'<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<h2 id="basic-works">Basic Works</h2>
+<ol type="1">
 <li>Large training sets are available</li>
 <li>GPU</li>
-<li>Convolutional neural networks, such as ‘Handwritten digit recognition with back-propagation networks’[^2]</li>
+<li>Convolutional neural networks, such as 'Handwritten digit recognition with back-propagation networks'<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 </ol>
-<h2 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h2><ol>
+<h2 id="inspiration">Inspiration</h2>
+<ol type="1">
 <li>Controlling the capacity of CNNs by varying their depth and breadth.</li>
 <li>CNNs can make strong and mostly correct assumptions about the nature of images.</li>
 </ol>
-<h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ol>
-<li><p>Training one of the largest convolutional neural networks to IMageNet ILSVRC-2010</p>
-<ol>
-<li>architecture<br><img src="./2.png"></li>
-</ol>
-</li>
-<li><p>GPU is used</p>
-</li>
-<li><p>Some new feature of CNNs improving its performance</p>
-<ol>
-<li>ReLU Nonlinearity $f(x)= max(0,x)$<ul>
-<li>ReLU is much faster than $\tanh(x)$ or $\frac{1}{1+e^{-x}}$</li>
-<li>Jarrett et al.[^3] had tried different other nonlinear function such as $f(x)=|\tanh(x)|$ to prevent overfitting<br><img src="./1.png"> </li>
-</ul>
-</li>
-<li>Local Response Normalization <ul>
+<h2 id="contribution">Contribution</h2>
+<ol type="1">
+<li>Training one of the largest convolutional neural networks to IMageNet ILSVRC-2010
+<ol type="1">
+<li>architecture <img src="./2.png" /></li>
+</ol></li>
+<li>GPU is used</li>
+<li>Some new feature of CNNs improving its performance
+<ol type="1">
+<li>ReLU Nonlinearity <span class="math inline">\(f(x)= max(0,x)\)</span>
+<ul>
+<li>ReLU is much faster than <span class="math inline">\(\tanh(x)\)</span> or <span class="math inline">\(\frac{1}{1+e^{-x}}\)</span></li>
+<li>Jarrett et al.[^3] had tried different other nonlinear function such as <span class="math inline">\(f(x)=|\tanh(x)|\)</span> to prevent overfitting <img src="./1.png" /></li>
+</ul></li>
+<li>Local Response Normalization
+<ul>
 <li>ReLU does not require input normalization to prevent them from saturating.</li>
-<li>Local response normalization scheme aids generalization:<br>$$<br>b^{i}<em>{x,y}=\frac{a^i</em>{x,y}}{(k+\alpha\sum^{\min(N-1,i+n/2)}<em>{j=\max{0,i-n/2}}(a^j</em>{x,y})^2)^\beta}<br>$$</li>
-<li>where $a^i_{x,y}$ is the activity of a neuron computed by applying kernel $i$ at position $(x,y)$ and the applying the ReLU nonlinearity, the respons-normalized activity $b^i_{x,y}$. And $n$ means ‘adjacent’ kernel maps at the same spatial position and $N$ is the total number of kernels in the layer</li>
-<li>Hyper-parameters whose values are determined using a validation set, and $k=2$, $n=5$, $\alpha = 10^{-4}$ and $\beta =0.75$ is used</li>
+<li>Local response normalization scheme aids generalization: <span class="math display">\[
+b^{i}_{x,y}=\frac{a^i_{x,y}}{(k+\alpha\sum^{\min(N-1,i+n/2)}_{j=\max{0,i-n/2}}(a^j_{x,y})^2)^\beta}
+\]</span></li>
+<li>where <span class="math inline">\(a^i_{x,y}\)</span> is the activity of a neuron computed by applying kernel <span class="math inline">\(i\)</span> at position <span class="math inline">\((x,y)\)</span> and the applying the ReLU nonlinearity, the respons-normalized activity <span class="math inline">\(b^i_{x,y}\)</span>. And <span class="math inline">\(n\)</span> means 'adjacent' kernel maps at the same spatial position and <span class="math inline">\(N\)</span> is the total number of kernels in the layer</li>
+<li>Hyper-parameters whose values are determined using a validation set, and <span class="math inline">\(k=2\)</span>, <span class="math inline">\(n=5\)</span>, <span class="math inline">\(\alpha = 10^{-4}\)</span> and <span class="math inline">\(\beta =0.75\)</span> is used</li>
 <li>normalization is used after ReLU</li>
 <li>13% error without nomarlization and 11% with normalization</li>
-</ul>
-</li>
-<li>Overlapping Pooling<ul>
+</ul></li>
+<li>Overlapping Pooling
+<ul>
 <li>Traditionally neighborhoods summarized by adjacent pooling units do not overlap</li>
-<li>if using $stride = 2$ and $kernel,size=3$ error rates by 0.4%</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>preventing overfitting</p>
-<ol>
-<li>Data augmentation<ul>
+<li>if using <span class="math inline">\(stride = 2\)</span> and <span class="math inline">\(kernel\,size=3\)</span> error rates by 0.4%</li>
+</ul></li>
+</ol></li>
+<li>preventing overfitting
+<ol type="1">
+<li>Data augmentation
+<ul>
 <li>extracting random patches from a bigger image</li>
 <li>horizontal reflections</li>
 <li>in testing, test 5 patches as well as their horizontal reflections and averaging the prediction of all this prediction(softmax output)</li>
-<li>altering the intensities of the RGB channels in training image, PCA first:<br>$$<br>\begin{bmatrix}\boldsymbol{p}_1&amp;\boldsymbol{p}_2&amp;\boldsymbol{p}_3\end{bmatrix}<br>\begin{bmatrix}\alpha_1 \lambda_1\\alpha_2 \lambda_2\\alpha_3 \lambda_3\\end{bmatrix}<br>$$</li>
-<li>where $\boldsymbol{p}_i$ is eigenvector and $\lambda_i$ is eigenvalue and $\alpha_i$ is random variable. And to a particular training image $\alpha_i$ is drawn only once. And when the image will be used again, $\alpha_i$ could be updated</li>
-<li>dropout: select some neurons and set their output $0$ with probability 0.5. This means each time for the input data, they are using a different architecture.</li>
+<li>altering the intensities of the RGB channels in training image, PCA first: <span class="math display">\[
+\begin{bmatrix}\boldsymbol{p}_1&amp;\boldsymbol{p}_2&amp;\boldsymbol{p}_3\end{bmatrix}
+\begin{bmatrix}\alpha_1 \lambda_1\\\alpha_2 \lambda_2\\\alpha_3 \lambda_3\\\end{bmatrix}
+\]</span></li>
+<li>where <span class="math inline">\(\boldsymbol{p}_i\)</span> is eigenvector and <span class="math inline">\(\lambda_i\)</span> is eigenvalue and <span class="math inline">\(\alpha_i\)</span> is random variable. And to a particular training image <span class="math inline">\(\alpha_i\)</span> is drawn only once. And when the image will be used again, <span class="math inline">\(\alpha_i\)</span> could be updated</li>
+<li>dropout: select some neurons and set their output <span class="math inline">\(0\)</span> with probability 0.5. This means each time for the input data, they are using a different architecture.</li>
 <li>dropout is used in the first two full-connected layers in figure 2.</li>
 <li>without dropout the network exhibits substantial overfitting.</li>
-<li>dropout roughly doubles the number of iterations required to converge. </li>
-</ul>
-</li>
+<li>dropout roughly doubles the number of iterations required to converge.</li>
+</ul></li>
+</ol></li>
 </ol>
-</li>
+<h2 id="experiment">Experiment</h2>
+<ol type="1">
+<li>batch size of 128 examples, momentum 0.9, and weight decay of 0.0005: <span class="math display">\[
+\begin{aligned}
+  v_{i+1} &amp;:= 0.9 \cdot v_i - 0.0005\cdot\epsilon\cdot w_i-\epsilon(\frac{\partial L}{\partial w}|_{w_i})_{D_i}\\
+w_{i+1} &amp;:= w_i + v_{i+1}
+\end{aligned}
+\]</span></li>
 </ol>
-<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><ol>
-<li>batch size of 128 examples, momentum 0.9, and weight decay of 0.0005:<br>$$<br>\begin{aligned}<br>v_{i+1} &amp;:= 0.9 \cdot v_i - 0.0005\cdot\epsilon\cdot w_i-\epsilon(\frac{\partial L}{\partial w}|_{w_i})_{D_i}\<br>w_{i+1} &amp;:= w_i + v_{i+1}<br>\end{aligned}<br>$$<ul>
-<li>weight decay is no merely a regularizer, it reduces the model’s training error</li>
-<li>where $i$ is iteration index, $v$ is the momentum variable, $\epsilon$ is the learning rate, $(\frac{\partial L}{\partial w}|_{w_i})_{D_i}$ is the average gradient of batch $D_i$ with respect to $w$, evaluated at $w_i$</li>
+<ul>
+<li>weight decay is no merely a regularizer, it reduces the model's training error</li>
+<li>where <span class="math inline">\(i\)</span> is iteration index, <span class="math inline">\(v\)</span> is the momentum variable, <span class="math inline">\(\epsilon\)</span> is the learning rate, <span class="math inline">\((\frac{\partial L}{\partial w}|_{w_i})_{D_i}\)</span> is the average gradient of batch <span class="math inline">\(D_i\)</span> with respect to <span class="math inline">\(w\)</span>, evaluated at <span class="math inline">\(w_i\)</span></li>
 </ul>
-</li>
+<ol start="2" type="1">
 <li>equal learning rate for each layer.</li>
-<li>when the validation error rate stopped improving, divide the learning rate by $10$.</li>
-<li>learning rate initialized at $0.01$</li>
+<li>when the validation error rate stopped improving, divide the learning rate by <span class="math inline">\(10\)</span>.</li>
+<li>learning rate initialized at <span class="math inline">\(0.01\)</span></li>
 </ol>
-<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><img src="./t1.png"><br><img src="./t2.png"></p>
-<h2 id="Personal-Summary"><a href="#Personal-Summary" class="headerlink" title="Personal Summary"></a>Personal Summary</h2><p>This paper rebirth CNNs in 2012. GPUs are an important helper for training CNNs.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. “Imagenet classification with deep convolutional neural networks.” In Advances in neural information processing systems, pp. 1097-1105. 2012.</p>
-<p>[^2]: LeCun, Yann, Bernhard E. Boser, John S. Denker, Donnie Henderson, Richard E. Howard, Wayne E. Hubbard, and Lawrence D. Jackel. “Handwritten digit recognition with a back-propagation network.” In Advances in neural information processing systems, pp. 396-404. 1990.</p>
+<h2 id="result">Result</h2>
+<p><img src="./t1.png" /> <img src="./t2.png" /></p>
+<h2 id="personal-summary">Personal Summary</h2>
+<p>This paper rebirth CNNs in 2012. GPUs are an important helper for training CNNs.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "Imagenet classification with deep convolutional neural networks." In Advances in neural information processing systems, pp. 1097-1105. 2012.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>LeCun, Yann, Bernhard E. Boser, John S. Denker, Donnie Henderson, Richard E. Howard, Wayne E. Hubbard, and Lawrence D. Jackel. "Handwritten digit recognition with a back-propagation network." In Advances in neural information processing systems, pp. 396-404. 1990.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

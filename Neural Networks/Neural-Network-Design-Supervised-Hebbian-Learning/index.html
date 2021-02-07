@@ -179,7 +179,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hebb-Rule-1"><span class="nav-number">1.</span> <span class="nav-text">Hebb Rule[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%98The-Organization-of-Behavior%E2%80%98"><span class="nav-number">2.</span> <span class="nav-text">‘The Organization of Behavior‘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Associator"><span class="nav-number">3.</span> <span class="nav-text">Linear Associator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-Analysis-1"><span class="nav-number">4.</span> <span class="nav-text">Performance Analysis [^1]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boldsymbol-p-q-are-Orthonormal"><span class="nav-number">4.1.</span> <span class="nav-text">$\boldsymbol{p}_q$ are Orthonormal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boldsymbol-p-q-are-Normal-but-not-Orthogonal"><span class="nav-number">4.2.</span> <span class="nav-text">$\boldsymbol{p}_q$ are Normal but not Orthogonal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-of-Hebb-Learning"><span class="nav-number">5.</span> <span class="nav-text">Application of Hebb Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Some-Variations-of-Hebb-Learning"><span class="nav-number">6.</span> <span class="nav-text">Some Variations of Hebb Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hebb-rule1"><span class="nav-number">1.</span> <span class="nav-text">Hebb Rule1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-organization-of-behavior"><span class="nav-number">2.</span> <span class="nav-text">&#39;The Organization of Behavior&#39;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-associator"><span class="nav-number">3.</span> <span class="nav-text">Linear Associator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#performance-analysis-1"><span class="nav-number">4.</span> <span class="nav-text">Performance Analysis 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#boldsymbolp_q-are-orthonormal"><span class="nav-number">4.1.</span> <span class="nav-text">\(\boldsymbol{p}_q\) are Orthonormal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boldsymbolp_q-are-normal-but-not-orthogonal"><span class="nav-number">4.2.</span> <span class="nav-text">\(\boldsymbol{p}_q\) are Normal but not Orthogonal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application-of-hebb-learning"><span class="nav-number">5.</span> <span class="nav-text">Application of Hebb Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -333,113 +333,184 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> Hebbian Learning, Supervised Hebbian Learning</p>
-<a id="more"></a>
-
-
-
-<h2 id="Hebb-Rule-1"><a href="#Hebb-Rule-1" class="headerlink" title="Hebb Rule[^1]"></a>Hebb Rule[^1]</h2><p>Hebb rule is one of the earliest neural network learning laws. It was published in 1949 by Donald O. Hebb, a Canadian psychologist, in his work ‘<em>The Organization of Behavior</em>‘. In this great book, he proposed a possible mechanism for synaptic modification in the brain. And this rule then was used in training the artificial neural network for pattern recognition.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/en/1/1d/Donald_Hebb.gif"></p>
+        <p><strong>Keywords:</strong> Hebbian Learning, Supervised Hebbian Learning <a id="more"></a></p>
+<h2 id="hebb-rule1">Hebb Rule<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Hebb rule is one of the earliest neural network learning laws. It was published in 1949 by Donald O. Hebb, a Canadian psychologist, in his work '<em>The Organization of Behavior</em>'. In this great book, he proposed a possible mechanism for synaptic modification in the brain. And this rule then was used in training the artificial neural network for pattern recognition.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/1/1d/Donald_Hebb.gif" /></p>
 <p>A lot of linear algebra knowledge is used in this post.</p>
-<h2 id="‘The-Organization-of-Behavior‘"><a href="#‘The-Organization-of-Behavior‘" class="headerlink" title="‘The Organization of Behavior‘"></a>‘<em>The Organization of Behavior</em>‘</h2><p>The main premise of the book is that <strong>behavior could be explained by the action of neuron</strong>. This was a relatively different idea at that time when the dominant concept is the correlation between stimulus and response by psychologists. This could also be considered as a battle between ‘top-down’ philosophy and ‘down-top’ philosophy.</p>
+<h2 id="the-organization-of-behavior">'<em>The Organization of Behavior</em>'</h2>
+<p>The main premise of the book is that <strong>behavior could be explained by the action of neuron</strong>. This was a relatively different idea at that time when the dominant concept is the correlation between stimulus and response by psychologists. This could also be considered as a battle between 'top-down' philosophy and 'down-top' philosophy.</p>
 <blockquote>
-<p>“When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic change takes place in one or both cells such that A’s efficiency, as one of the cells firing B, is increased”</p>
+<p>"When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic change takes place in one or both cells such that A's efficiency, as one of the cells firing B, is increased"</p>
 </blockquote>
 <p>This is a physical mechanism for learning at the cellular level. Dr. Hebb thought if two nerve cells were closed enough and they seemed related that was both of them fired simultaneously in high frequency. Then the connection between them would be strengthened. However, at that time, Dr. Hebb did not give firm evidence of his theory. The subsequent research in the next few years did prove the existence of this strengthening.</p>
-<p>Hebb’s postulate is not completely new, because some similar ideas had been proposed before. However, Dr. Hebb gave a more systematic postulate.</p>
-<h2 id="Linear-Associator"><a href="#Linear-Associator" class="headerlink" title="Linear Associator"></a>Linear Associator</h2><p>The first use of Hebb’s learning rule in artificial neural networks is a linear associator. Here is the simplest example of this neural network to illustrate the concept of Hebb’s postulate. A more complex architecture may drag us into the mire and miss the key points of the learning rule itself.</p>
+<p>Hebb's postulate is not completely new, because some similar ideas had been proposed before. However, Dr. Hebb gave a more systematic postulate.</p>
+<h2 id="linear-associator">Linear Associator</h2>
+<p>The first use of Hebb's learning rule in artificial neural networks is a linear associator. Here is the simplest example of this neural network to illustrate the concept of Hebb's postulate. A more complex architecture may drag us into the mire and miss the key points of the learning rule itself.</p>
 <p>Linear associator was proposed by James Anderson and Teuwo Kohonen in 1972 independently. And its abbreviated notation is:</p>
-<p><img src="./abbreviated_notation.jpeg"></p>
-<p>This architecture consists of a layer of $S$ neurons each of which has $R$ inputs and the transfer functions of them are all linear functions. So the output of this architecture can be simply calculated:</p>
-<p>$$<br>a_i=\sum_{j=1}^{R}w_{ij}p_j\tag{1}<br>$$</p>
-<p>where the $i$th component of the output vector is given by the summation of all inputs weighted by the weights of the connections between the input and the $i$th neuron. Or, it also can be written in a matrix form:</p>
-<p>$$<br>\boldsymbol{a}=\boldsymbol{W}\boldsymbol{p}\tag{2}<br>$$</p>
-<p>Associative memory is to learn $Q$ pairs of prototype input/output vectors:</p>
-<p>$$<br>{\boldsymbol{p}_1,\boldsymbol{t}_1},{\boldsymbol{p}_2,\boldsymbol{t}_2},\cdots,{\boldsymbol{p}_Q,\boldsymbol{t}_Q}\tag{3}<br>$$</p>
-<p>then the associator will output $\boldsymbol{a}=\boldsymbol{t}_i$ for $i=1,2,\cdots Q$ crospending to input $\boldsymbol{p}=\boldsymbol{p}_i$ for $i=1,2,\cdots Q$. And when slight change of input occured(i.e. $\boldsymbol{p}=\boldsymbol{p}_i+\delta$), output should also change slightly( i.e. $\boldsymbol{a}=\boldsymbol{t}_i+\varepsilon$).</p>
-<p>Review Hebb rule:”if neurons on both sides of the synapse are activated simutaneously, the strength of the synapse will encrease”. And considering $\boldsymbol{a}<em>i=\sum</em>{j=1}^{R}\boldsymbol{w}<em>{ij}\boldsymbol{p}<em>j$ where $\boldsymbol{w}</em>{ij}$ is the weight between input $\boldsymbol{p}_j$ and output $\boldsymbol{a}_i$ so the mathematical Hebb rule is:<br>$$<br>w</em>{ij}^{\text{new}} = w_{ij}^{\text{old}} + \alpha f_i(a_{iq}) g_j(p_{jq})\tag{4}<br>$$<br>where:</p>
-<ul>
-<li>$\boldsymbol{q}$: the identification of the neuron</li>
-<li>$\alpha$: learning rate</li>
-</ul>
-<p>This mathematical model uses two function $f$ and $g$ to map raw input and output into suitable values and then multiply them as a increasement to the weight of connection. These two actual functions  are not known for sure, so writing the functions as linear functions is also reasonable. Then we have the simplifyed form of Hebb’s rule:<br>$$<br>w_{ij}^{\text{new}} = w_{ij}^{\text{old}} + \alpha  a_{iq} p_{jq} \tag{5}<br>$$</p>
-<p>A learning rate of $\alpha$ is necessary. Because it can be used to control the process of update of weights.</p>
-<p>The equation(5) does not only represent the Hebb’s rule that the connection would increase when both sides of the synapses are active but also give author increment of connection when both sides of synapses are negative. This is an extension of Hebb’s rule which may have no biological fact to support.</p>
-<p>In this post, we talk about the only supervised learning of Hebb’s rule. However, there is also an unsupervised version of Hebb’s rule which will be investigated in another post.<br>Recall that we have training set:<br>$$<br>{\boldsymbol{p}<em>1,\boldsymbol{t}<em>1},{\boldsymbol{p}_2,\boldsymbol{t}_2},\cdots,{\boldsymbol{p}_Q,\boldsymbol{t}_Q}\tag{6}<br>$$<br>The Hebb’s postulate states the relation between the outputs and the inputs. However, the outputs sometime are not the correct response to inputs in some task. And as we known, in supervised learning task correct outputs which is also called targets are given. So we replace the output of the model $a</em>{iq}$ in equation(5) with the known correct output(target) $t</em>{iq}$, so the supervised learning form of Hebb’s rule is:<br>$$<br>w_{ij}^{\text{new}} = w_{ij}^{\text{old}} + \alpha  t_{iq} p_{jq} \tag{7}<br>$$ </p>
-<p>where:</p>
-<ul>
-<li>$t_{iq}$ is the $i$th element of $q$th target $\boldsymbol{t}_q$</li>
-<li>$p_{jq}$ is the $j$th element of $q$th input $\boldsymbol{p}_q$</li>
-</ul>
+<p><img src="./abbreviated_notation.jpeg" /></p>
+<p>This architecture consists of a layer of <span class="math inline">\(S\)</span> neurons each of which has <span class="math inline">\(R\)</span> inputs and the transfer functions of them are all linear functions. So the output of this architecture can be simply calculated:</p>
+<p><span class="math display">\[
+a_i=\sum_{j=1}^{R}w_{ij}p_j\tag{1}
+\]</span></p>
+<p>where the <span class="math inline">\(i\)</span>th component of the output vector is given by the summation of all inputs weighted by the weights of the connections between the input and the <span class="math inline">\(i\)</span>th neuron. Or, it also can be written in a matrix form:</p>
+<p><span class="math display">\[
+\boldsymbol{a}=\boldsymbol{W}\boldsymbol{p}\tag{2}
+\]</span></p>
+<p>Associative memory is to learn <span class="math inline">\(Q\)</span> pairs of prototype input/output vectors:</p>
+<p><span class="math display">\[
+\{\boldsymbol{p}_1,\boldsymbol{t}_1\},\{\boldsymbol{p}_2,\boldsymbol{t}_2\},\cdots,\{\boldsymbol{p}_Q,\boldsymbol{t}_Q\}\tag{3}
+\]</span></p>
+<p>then the associator will output <span class="math inline">\(\boldsymbol{a}=\boldsymbol{t}_i\)</span> for <span class="math inline">\(i=1,2,\cdots Q\)</span> crospending to input <span class="math inline">\(\boldsymbol{p}=\boldsymbol{p}_i\)</span> for <span class="math inline">\(i=1,2,\cdots Q\)</span>. And when slight change of input occured(i.e. <span class="math inline">\(\boldsymbol{p}=\boldsymbol{p}_i+\delta\)</span>), output should also change slightly( i.e. <span class="math inline">\(\boldsymbol{a}=\boldsymbol{t}_i+\varepsilon\)</span>).</p>
+<p>Review Hebb rule:"if neurons on both sides of the synapse are activated simutaneously, the strength of the synapse will encrease". And considering <span class="math inline">\(\boldsymbol{a}_i=\sum_{j=1}^{R}\boldsymbol{w}_{ij}\boldsymbol{p}_j\)</span> where <span class="math inline">\(\boldsymbol{w}_{ij}\)</span> is the weight between input <span class="math inline">\(\boldsymbol{p}_j\)</span> and output <span class="math inline">\(\boldsymbol{a}_i\)</span> so the mathematical Hebb rule is: <span class="math display">\[
+w_{ij}^{\text{new}} = w_{ij}^{\text{old}} + \alpha f_i(a_{iq}) g_j(p_{jq})\tag{4}
+\]</span> where: - <span class="math inline">\(\boldsymbol{q}\)</span>: the identification of the neuron - <span class="math inline">\(\alpha\)</span>: learning rate</p>
+<p>This mathematical model uses two function <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> to map raw input and output into suitable values and then multiply them as a increasement to the weight of connection. These two actual functions are not known for sure, so writing the functions as linear functions is also reasonable. Then we have the simplifyed form of Hebb's rule: <span class="math display">\[
+w_{ij}^{\text{new}} = w_{ij}^{\text{old}} + \alpha  a_{iq} p_{jq} \tag{5}
+\]</span></p>
+<p>A learning rate of <span class="math inline">\(\alpha\)</span> is necessary. Because it can be used to control the process of update of weights.</p>
+<p>The equation(5) does not only represent the Hebb's rule that the connection would increase when both sides of the synapses are active but also give author increment of connection when both sides of synapses are negative. This is an extension of Hebb's rule which may have no biological fact to support.</p>
+<p>In this post, we talk about the only supervised learning of Hebb's rule. However, there is also an unsupervised version of Hebb's rule which will be investigated in another post. Recall that we have training set: <span class="math display">\[
+\{\boldsymbol{p}_1,\boldsymbol{t}_1\},\{\boldsymbol{p}_2,\boldsymbol{t}_2\},\cdots,\{\boldsymbol{p}_Q,\boldsymbol{t}_Q\}\tag{6}
+\]</span> The Hebb's postulate states the relation between the outputs and the inputs. However, the outputs sometime are not the correct response to inputs in some task. And as we known, in supervised learning task correct outputs which is also called targets are given. So we replace the output of the model <span class="math inline">\(a_{iq}\)</span> in equation(5) with the known correct output(target) <span class="math inline">\(t_{iq}\)</span>, so the supervised learning form of Hebb's rule is: <span class="math display">\[
+w_{ij}^{\text{new}} = w_{ij}^{\text{old}} + \alpha  t_{iq} p_{jq} \tag{7}
+\]</span></p>
+<p>where: - <span class="math inline">\(t_{iq}\)</span> is the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(q\)</span>th target <span class="math inline">\(\boldsymbol{t}_q\)</span> - <span class="math inline">\(p_{jq}\)</span> is the <span class="math inline">\(j\)</span>th element of <span class="math inline">\(q\)</span>th input <span class="math inline">\(\boldsymbol{p}_q\)</span></p>
 <p>of course, it also has matrix form:</p>
-<p>$$<br>\boldsymbol{W}^{\text{new}}=\boldsymbol{W}^{\text{old}}+\alpha\boldsymbol{t}_q\boldsymbol{p}_q^T\tag{8}<br>$$</p>
-<p>If we initial $\boldsymbol{W}=\boldsymbol{0}$ , we would get the final weight matrix for the training set:<br>$$<br>\boldsymbol{W}=\boldsymbol{t}_1\boldsymbol{p}<em>1^T+\boldsymbol{t}_2\boldsymbol{p}_2^T+\cdots+\boldsymbol{t}_Q\boldsymbol{p}_Q^T=\sum</em>{i=1}^{Q}\boldsymbol{t}_i\boldsymbol{p}_i^T\tag{9}<br>$$<br>or in a matrix form:<br>$$<br>\boldsymbol{W}=\begin{bmatrix}<br>\boldsymbol{t}_1,\boldsymbol{t}_2,\cdots,\boldsymbol{t}_Q<br>\end{bmatrix}\begin{bmatrix}<br>\boldsymbol{p}_1^T\<br>\boldsymbol{p}_2^T\<br>\vdots\<br>\boldsymbol{p}_Q^T<br>\end{bmatrix}=\boldsymbol{T}\boldsymbol{P}^T\tag{10}<br>$$</p>
-<h2 id="Performance-Analysis-1"><a href="#Performance-Analysis-1" class="headerlink" title="Performance Analysis [^1]"></a>Performance Analysis [^1]</h2><p>Now let’s go into the inside of <a href="">‘linear associator ‘</a> from a mathematical view. Mathematical analysis or mathematical proof can bring us strong confidence in the following implementation of the Hebb’s rule.</p>
-<h3 id="boldsymbol-p-q-are-Orthonormal"><a href="#boldsymbol-p-q-are-Orthonormal" class="headerlink" title="$\boldsymbol{p}_q$ are Orthonormal"></a>$\boldsymbol{p}_q$ are Orthonormal</h3><p>Firstly, Considering the most special but simple aspect, when all inputs $\boldsymbol{p}<em>q$ are orthonormal which means orthogonal mutually and having unit length. Then with equation(10) the output corresponding to the input $\boldsymbol{P}_q$ can be computed:<br>$$<br>\boldsymbol{a}=\boldsymbol{W}\boldsymbol{p}_k=(\sum^{Q}</em>{q=1}\boldsymbol{t}<em>q\boldsymbol{p}_q^T)\boldsymbol{p}_k=\sum^{Q}</em>{q=1}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)\tag{11}<br>$$<br>for we have supposed that $\boldsymbol{p}_q$ are orthonormal which means:<br>$$<br>\boldsymbol{p}_q^T\boldsymbol{p}_k=\begin{cases}<br>1&amp;\text{ if }q=k\<br>0&amp;\text{ if }q\neq k<br>\end{cases}\tag{12}<br>$$</p>
-<p>from equation(11) and equation(12), we confirm that weights matrix $\boldsymbol{W}$ built through Hebb’s postulate gives the right outputs when inputs are orthonormal and have been used in training(this implies that the generated capacity is not considered here).</p>
-<p>The conclusion is that if input prototype vectors are orthonormal, Hebb’s rule is correct.</p>
-<h3 id="boldsymbol-p-q-are-Normal-but-not-Orthogonal"><a href="#boldsymbol-p-q-are-Normal-but-not-Orthogonal" class="headerlink" title="$\boldsymbol{p}_q$ are Normal but not Orthogonal"></a>$\boldsymbol{p}_q$ are Normal but not Orthogonal</h3><p>More generally case is $\boldsymbol{p}_q$ are not Orthogonal. And before feed them into algorithm, we can convert every prototype vector into unit length without change their directions. Then we have:</p>
-<p>$$<br>\boldsymbol{a}=\boldsymbol{W}\boldsymbol{p}<em>k=(\sum^{Q}</em>{q=1}\boldsymbol{t}<em>q\boldsymbol{p}_q^T)\boldsymbol{p}_k=\sum^{Q}</em>{q=1}\boldsymbol{t}_q(\boldsymbol{p}<em>q^T\boldsymbol{p}_k)=\boldsymbol{t}_k+\sum</em>{q\neq k}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)\tag{13}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{W}^{\text{new}}=\boldsymbol{W}^{\text{old}}+\alpha\boldsymbol{t}_q\boldsymbol{p}_q^T\tag{8}
+\]</span></p>
+<p>If we initial <span class="math inline">\(\boldsymbol{W}=\boldsymbol{0}\)</span> , we would get the final weight matrix for the training set: <span class="math display">\[
+\boldsymbol{W}=\boldsymbol{t}_1\boldsymbol{p}_1^T+\boldsymbol{t}_2\boldsymbol{p}_2^T+\cdots+\boldsymbol{t}_Q\boldsymbol{p}_Q^T=\sum_{i=1}^{Q}\boldsymbol{t}_i\boldsymbol{p}_i^T\tag{9}
+\]</span> or in a matrix form: <span class="math display">\[
+\boldsymbol{W}=\begin{bmatrix}
+\boldsymbol{t}_1,\boldsymbol{t}_2,\cdots,\boldsymbol{t}_Q
+\end{bmatrix}\begin{bmatrix}
+\boldsymbol{p}_1^T\\
+\boldsymbol{p}_2^T\\
+\vdots\\
+\boldsymbol{p}_Q^T
+\end{bmatrix}=\boldsymbol{T}\boldsymbol{P}^T\tag{10}
+\]</span></p>
+<h2 id="performance-analysis-1">Performance Analysis <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
+<p>Now let's go into the inside of <a href="">'linear associator '</a> from a mathematical view. Mathematical analysis or mathematical proof can bring us strong confidence in the following implementation of the Hebb's rule.</p>
+<h3 id="boldsymbolp_q-are-orthonormal"><span class="math inline">\(\boldsymbol{p}_q\)</span> are Orthonormal</h3>
+<p>Firstly, Considering the most special but simple aspect, when all inputs <span class="math inline">\(\boldsymbol{p}_q\)</span> are orthonormal which means orthogonal mutually and having unit length. Then with equation(10) the output corresponding to the input <span class="math inline">\(\boldsymbol{P}_q\)</span> can be computed: <span class="math display">\[
+\boldsymbol{a}=\boldsymbol{W}\boldsymbol{p}_k=(\sum^{Q}_{q=1}\boldsymbol{t}_q\boldsymbol{p}_q^T)\boldsymbol{p}_k=\sum^{Q}_{q=1}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)\tag{11}
+\]</span> for we have supposed that <span class="math inline">\(\boldsymbol{p}_q\)</span> are orthonormal which means: <span class="math display">\[
+\boldsymbol{p}_q^T\boldsymbol{p}_k=\begin{cases}
+1&amp;\text{ if }q=k\\
+0&amp;\text{ if }q\neq k
+\end{cases}\tag{12}
+\]</span></p>
+<p>from equation(11) and equation(12), we confirm that weights matrix <span class="math inline">\(\boldsymbol{W}\)</span> built through Hebb's postulate gives the right outputs when inputs are orthonormal and have been used in training(this implies that the generated capacity is not considered here).</p>
+<p>The conclusion is that if input prototype vectors are orthonormal, Hebb's rule is correct.</p>
+<h3 id="boldsymbolp_q-are-normal-but-not-orthogonal"><span class="math inline">\(\boldsymbol{p}_q\)</span> are Normal but not Orthogonal</h3>
+<p>More generally case is <span class="math inline">\(\boldsymbol{p}_q\)</span> are not Orthogonal. And before feed them into algorithm, we can convert every prototype vector into unit length without change their directions. Then we have:</p>
+<p><span class="math display">\[
+\boldsymbol{a}=\boldsymbol{W}\boldsymbol{p}_k=(\sum^{Q}_{q=1}\boldsymbol{t}_q\boldsymbol{p}_q^T)\boldsymbol{p}_k=\sum^{Q}_{q=1}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)=\boldsymbol{t}_k+\sum_{q\neq k}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)\tag{13}
+\]</span></p>
 <p>For we the vectors are nomarl but not orthogonal:</p>
-<p>$$<br>\boldsymbol{t}_q\boldsymbol{p}_q^T\boldsymbol{p}_k=\begin{cases}<br>  \boldsymbol{t}_q &amp; \text{ when } q = k\<br>  \boldsymbol{t}_q\boldsymbol{p}_q^T\boldsymbol{p}_k &amp; \text{ when } q \nsupseteq k<br>\end{cases}\tag{14}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{t}_q\boldsymbol{p}_q^T\boldsymbol{p}_k=\begin{cases}
+  \boldsymbol{t}_q &amp; \text{ when } q = k\\
+  \boldsymbol{t}_q\boldsymbol{p}_q^T\boldsymbol{p}_k &amp; \text{ when } q \nsupseteq k
+\end{cases}\tag{14}
+\]</span></p>
 <p>then equation(13) can be also written as:</p>
-<p>$$<br>\boldsymbol{a}=\boldsymbol{t}<em>k+\sum</em>{q\neq k}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)\tag{15}<br>$$</p>
-<p>if we want to produce the outputs of linear associator as close as the targets, $\sum_{q\neq k}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)$ should be as small as possible.</p>
+<p><span class="math display">\[
+\boldsymbol{a}=\boldsymbol{t}_k+\sum_{q\neq k}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)\tag{15}
+\]</span></p>
+<p>if we want to produce the outputs of linear associator as close as the targets, <span class="math inline">\(\sum_{q\neq k}\boldsymbol{t}_q(\boldsymbol{p}_q^T\boldsymbol{p}_k)\)</span> should be as small as possible.</p>
 <p>An example, when we have the training set:</p>
-<p>$$<br>{\boldsymbol{p}_1=\begin{bmatrix}0.5\-0.5\0.5\-0.5\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}1\-1\end{bmatrix}},<br>{\boldsymbol{p}_2=\begin{bmatrix}0.5\0.5\-0.5\-0.5\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}1\1\end{bmatrix}}<br>$$</p>
+<p><span class="math display">\[
+\{\boldsymbol{p}_1=\begin{bmatrix}0.5\\-0.5\\0.5\\-0.5\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}1\\-1\end{bmatrix}\},
+\{\boldsymbol{p}_2=\begin{bmatrix}0.5\\0.5\\-0.5\\-0.5\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}1\\1\end{bmatrix}\}
+\]</span></p>
 <p>then the weight matrix can be calculated:</p>
-<p>$$<br>\boldsymbol{W}=\boldsymbol{T}\boldsymbol{P}^T=\begin{bmatrix}<br>  \boldsymbol{t}_1&amp;\boldsymbol{t}_2<br>\end{bmatrix}\begin{bmatrix}<br>  \boldsymbol{p}_1^T\\boldsymbol{p}_2^T<br>\end{bmatrix} = \begin{bmatrix}<br>  1&amp;1\<br>  -1&amp;1<br>\end{bmatrix}\begin{bmatrix}<br>  0.5&amp;-0.5&amp;0.5&amp;-0.5\<br>  0.5&amp;0.5&amp;-0.5&amp;-0.5<br>\end{bmatrix}=\begin{bmatrix}<br>  1&amp;0&amp;0&amp;-1\<br>  0&amp;1&amp;-1&amp;0<br>\end{bmatrix}<br>$$</p>
-<p>we can, now, test these two inputs:</p>
-<ol>
-<li>$\boldsymbol{a}_1=\boldsymbol{W}\boldsymbol{p}_1=\begin{bmatrix}1&amp;0&amp;0&amp;-1\0&amp;1&amp;-1&amp;0\end{bmatrix}\begin{bmatrix}0.5\-0.5\0.5\-0.5\end{bmatrix}=\begin{bmatrix}1\-1\end{bmatrix}=\boldsymbol{t}_1$ Correct!</li>
-<li>$\boldsymbol{a}_2=\boldsymbol{W}\boldsymbol{p}_2=\begin{bmatrix}1&amp;0&amp;0&amp;-1\0&amp;1&amp;-1&amp;0\end{bmatrix}\begin{bmatrix}0.5\0.5\-0.5\-0.5\end{bmatrix}=\begin{bmatrix}1\1\end{bmatrix}=\boldsymbol{t}_2$ Correct!</li>
-</ol>
+<p><span class="math display">\[
+\boldsymbol{W}=\boldsymbol{T}\boldsymbol{P}^T=\begin{bmatrix}
+  \boldsymbol{t}_1&amp;\boldsymbol{t}_2
+\end{bmatrix}\begin{bmatrix}
+  \boldsymbol{p}_1^T\\\boldsymbol{p}_2^T
+\end{bmatrix} = \begin{bmatrix}
+  1&amp;1\\
+  -1&amp;1
+\end{bmatrix}\begin{bmatrix}
+  0.5&amp;-0.5&amp;0.5&amp;-0.5\\
+  0.5&amp;0.5&amp;-0.5&amp;-0.5
+\end{bmatrix}=\begin{bmatrix}
+  1&amp;0&amp;0&amp;-1\\
+  0&amp;1&amp;-1&amp;0
+\end{bmatrix}
+\]</span></p>
+<p>we can, now, test these two inputs: 1. <span class="math inline">\(\boldsymbol{a}_1=\boldsymbol{W}\boldsymbol{p}_1=\begin{bmatrix}1&amp;0&amp;0&amp;-1\\0&amp;1&amp;-1&amp;0\end{bmatrix}\begin{bmatrix}0.5\\-0.5\\0.5\\-0.5\end{bmatrix}=\begin{bmatrix}1\\-1\end{bmatrix}=\boldsymbol{t}_1\)</span> Correct! 2. <span class="math inline">\(\boldsymbol{a}_2=\boldsymbol{W}\boldsymbol{p}_2=\begin{bmatrix}1&amp;0&amp;0&amp;-1\\0&amp;1&amp;-1&amp;0\end{bmatrix}\begin{bmatrix}0.5\\0.5\\-0.5\\-0.5\end{bmatrix}=\begin{bmatrix}1\\1\end{bmatrix}=\boldsymbol{t}_2\)</span> Correct!</p>
 <p>Another example, when we have the training set:</p>
-<p>$$<br>{\boldsymbol{p}_1=\begin{bmatrix}1\-1\-1\end{bmatrix},\text{orange}},<br>{\boldsymbol{p}_2=\begin{bmatrix}1\1\-1\end{bmatrix},\text{apple}}<br>$$</p>
-<p>firstly we convert target ‘apple’ and ‘orange’ into numbers:</p>
-<ul>
-<li>orange $\boldsymbol{t}_1=\begin{bmatrix}-1\end{bmatrix}$</li>
-<li>apple $\boldsymbol{t}_1=\begin{bmatrix}1\end{bmatrix}$</li>
-</ul>
+<p><span class="math display">\[
+\{\boldsymbol{p}_1=\begin{bmatrix}1\\-1\\-1\end{bmatrix},\text{orange}\},
+\{\boldsymbol{p}_2=\begin{bmatrix}1\\1\\-1\end{bmatrix},\text{apple}\}
+\]</span></p>
+<p>firstly we convert target 'apple' and 'orange' into numbers: - orange <span class="math inline">\(\boldsymbol{t}_1=\begin{bmatrix}-1\end{bmatrix}\)</span> - apple <span class="math inline">\(\boldsymbol{t}_1=\begin{bmatrix}1\end{bmatrix}\)</span></p>
 <p>secondly we normalize the input vector that would make them has a unit length:</p>
-<p>$$<br>{\boldsymbol{p}_1=\begin{bmatrix}0.5774\-0.5774\0.5774\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}-1\end{bmatrix}},<br>{\boldsymbol{p}_2=\begin{bmatrix}0.5774\0.5774\-0.5774\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}1\end{bmatrix}}<br>$$</p>
+<p><span class="math display">\[
+\{\boldsymbol{p}_1=\begin{bmatrix}0.5774\\-0.5774\\0.5774\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}-1\end{bmatrix}\},
+\{\boldsymbol{p}_2=\begin{bmatrix}0.5774\\0.5774\\-0.5774\end{bmatrix},\boldsymbol{t}_1=\begin{bmatrix}1\end{bmatrix}\}
+\]</span></p>
 <p>then the weight matrix can be calculated:</p>
-<p>$$<br>\boldsymbol{W}=\boldsymbol{T}\boldsymbol{P}^T=\begin{bmatrix}<br>  \boldsymbol{t}_1&amp;\boldsymbol{t}_2<br>\end{bmatrix}\begin{bmatrix}<br>  \boldsymbol{p}_1^T\\boldsymbol{p}_2^T<br>\end{bmatrix} = \begin{bmatrix}<br>  -1&amp;1<br>\end{bmatrix}\begin{bmatrix}<br>  0.5774&amp;-0.5774&amp;-0.5774\<br>  0.5774&amp;0.5774&amp;-0.5774<br>\end{bmatrix}=\begin{bmatrix}<br>  0&amp;1.1548&amp;0<br>\end{bmatrix}<br>$$</p>
-<p>we can, now, test these two inputs:</p>
-<ol>
-<li>$\boldsymbol{a}_1=\boldsymbol{W}\boldsymbol{p}_1=\begin{bmatrix} 0&amp;1.1548&amp;0\end{bmatrix}\begin{bmatrix}0.5774\-0.5774\-0.5774\end{bmatrix}=\begin{bmatrix}-0.6668\end{bmatrix}=\boldsymbol{t}_1$ Correct!</li>
-<li>$\boldsymbol{a}_2=\boldsymbol{W}\boldsymbol{p}_2=\begin{bmatrix} 0&amp;1.1548&amp;0\end{bmatrix}\begin{bmatrix}0.5774\0.5774\-0.5774\end{bmatrix}=\begin{bmatrix}0.6668\end{bmatrix}$</li>
-</ol>
-<p>$\boldsymbol{a}_1$ is closer to $[-1]$ than $[1]$ so it belongs to $\boldsymbol{t}_1$ And $\boldsymbol{a}_2$ is closer to $[1]$ than $[-1]$ so it belongs to $\boldsymbol{t}_2$. So, the algorithm gives an output close to the correct target. </p>
-<p>There is another kind of algorithm that can deal with the task correctly rather than closely, for instance, the pseudoinverse rule can come up with another $\boldsymbol{W}^{\star}$ which can give the correct answer to the above question.</p>
-<h2 id="Application-of-Hebb-Learning"><a href="#Application-of-Hebb-Learning" class="headerlink" title="Application of Hebb Learning"></a>Application of Hebb Learning</h2><p>An application is proposed here. We have 3 input and outputs:</p>
-<p><img src="./traningset.png"></p>
-<p>They are $5\times 6$ images which have only white and black pixels.</p>
-<p><img src="./0.png"><br><img src="./1.png"><br><img src="./2.png"></p>
-<p>We then read the image and convert the white and black into ${1,-1}$ so the ‘zero’ image change into the matrix:<br>$$<br>\begin{aligned}<br>    {&amp;\<br>&amp;-1,1,1,1,-1,\<br>&amp;1,-1,-1,-1,1,\<br>&amp;1,-1,-1,-1,1,\<br>&amp;1,-1,-1,-1,1,\<br>&amp;1,-1,-1,-1,1,\<br>&amp;-1,1,1,1,-1\<br>}&amp;<br>\end{aligned}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{W}=\boldsymbol{T}\boldsymbol{P}^T=\begin{bmatrix}
+  \boldsymbol{t}_1&amp;\boldsymbol{t}_2
+\end{bmatrix}\begin{bmatrix}
+  \boldsymbol{p}_1^T\\\boldsymbol{p}_2^T
+\end{bmatrix} = \begin{bmatrix}
+  -1&amp;1
+\end{bmatrix}\begin{bmatrix}
+  0.5774&amp;-0.5774&amp;-0.5774\\
+  0.5774&amp;0.5774&amp;-0.5774
+\end{bmatrix}=\begin{bmatrix}
+  0&amp;1.1548&amp;0
+\end{bmatrix}
+\]</span></p>
+<p>we can, now, test these two inputs: 1. <span class="math inline">\(\boldsymbol{a}_1=\boldsymbol{W}\boldsymbol{p}_1=\begin{bmatrix} 0&amp;1.1548&amp;0\end{bmatrix}\begin{bmatrix}0.5774\\-0.5774\\-0.5774\end{bmatrix}=\begin{bmatrix}-0.6668\end{bmatrix}=\boldsymbol{t}_1\)</span> Correct! 2. <span class="math inline">\(\boldsymbol{a}_2=\boldsymbol{W}\boldsymbol{p}_2=\begin{bmatrix} 0&amp;1.1548&amp;0\end{bmatrix}\begin{bmatrix}0.5774\\0.5774\\-0.5774\end{bmatrix}=\begin{bmatrix}0.6668\end{bmatrix}\)</span></p>
+<p><span class="math inline">\(\boldsymbol{a}_1\)</span> is closer to <span class="math inline">\([-1]\)</span> than <span class="math inline">\([1]\)</span> so it belongs to <span class="math inline">\(\boldsymbol{t}_1\)</span> And <span class="math inline">\(\boldsymbol{a}_2\)</span> is closer to <span class="math inline">\([1]\)</span> than <span class="math inline">\([-1]\)</span> so it belongs to <span class="math inline">\(\boldsymbol{t}_2\)</span>. So, the algorithm gives an output close to the correct target.</p>
+<p>There is another kind of algorithm that can deal with the task correctly rather than closely, for instance, the pseudoinverse rule can come up with another <span class="math inline">\(\boldsymbol{W}^{\star}\)</span> which can give the correct answer to the above question.</p>
+<h2 id="application-of-hebb-learning">Application of Hebb Learning</h2>
+<p>An application is proposed here. We have 3 input and outputs:</p>
+<p><img src="./traningset.png" /></p>
+<p>They are <span class="math inline">\(5\times 6\)</span> images which have only white and black pixels.</p>
+<p><img src="./0.png" /> <img src="./1.png" /> <img src="./2.png" /></p>
+<p>We then read the image and convert the white and black into <span class="math inline">\(\{1,-1\}\)</span> so the 'zero' image change into the matrix: <span class="math display">\[
+\begin{aligned}
+    \{&amp;\\
+&amp;-1,1,1,1,-1,\\
+&amp;1,-1,-1,-1,1,\\
+&amp;1,-1,-1,-1,1,\\
+&amp;1,-1,-1,-1,1,\\
+&amp;1,-1,-1,-1,1,\\
+&amp;-1,1,1,1,-1\\
+\}&amp;
+\end{aligned}
+\]</span></p>
 <p>we use the inputs as the target then the neuron network architecture become(transfer function is the hard limit):</p>
-<p><img src="./abbreviated_notation30.jpeg"></p>
+<p><img src="./abbreviated_notation30.jpeg" /></p>
 <p>following the algorithm we summarized above we got the code:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># part of code</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HebbLearning</span>():</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, training_data_path=<span class="string">&#x27;./data/train&#x27;</span>, gamma=<span class="number">0</span>, alpha=<span class="number">0.5</span></span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        initial function</span></span><br><span class="line"><span class="string">        :param training_data_path: the path of training set and their labels.</span></span><br><span class="line"><span class="string">        They should be organized as pictures in &#x27;.png&#x27; form</span></span><br><span class="line"><span class="string">        :param gamma: the punishment coefficients</span></span><br><span class="line"><span class="string">        :param alpha: learning rate</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.gamma = gamma</span><br><span class="line">        self.alpha = alpha</span><br><span class="line">        x = self.load_data(training_data_path)</span><br><span class="line">        self.X = np.array(x)</span><br><span class="line">        self.label = np.array(x)</span><br><span class="line">        self.weights = np.zeros((np.shape(x)[<span class="number">1</span>], np.shape(x)[<span class="number">1</span>]))</span><br><span class="line">        self.test_data = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_data</span>(<span class="params">self, data_path</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        load image data and transfer it into matrix form</span></span><br><span class="line"><span class="string">        :param data_path: the path of data</span></span><br><span class="line"><span class="string">        :return: training set and targets respectively</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        name_list = os.listdir(data_path)</span><br><span class="line">        X = []</span><br><span class="line">        <span class="keyword">for</span> file_name <span class="keyword">in</span> name_list:</span><br><span class="line">            data = cv2.imread(os.path.join(data_path, file_name), <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">if</span> data <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                data = data.reshape(<span class="number">1</span>, <span class="number">-1</span>)[<span class="number">0</span>].astype(np.float64)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):</span><br><span class="line">                <span class="keyword">if</span> data[i] &gt; <span class="number">0</span>:</span><br><span class="line">                    data[i] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    data[i] = <span class="number">-1</span></span><br><span class="line">            data=data/np.linalg.norm(data)</span><br><span class="line">            X.append(data)</span><br><span class="line">        <span class="keyword">return</span> X</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        comput weights using Hebb learning function</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> x, label <span class="keyword">in</span> zip(self.X, self.label):</span><br><span class="line">            self.weights = self.weights + self.alpha * np.dot(label.reshape(<span class="number">-1</span>,<span class="number">1</span>), x.reshape(<span class="number">1</span>,<span class="number">-1</span>)) - self.gamma*self.weights</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">self, input_path=<span class="string">&#x27;./data/test&#x27;</span></span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        test function used to test a given input use the linear associator</span></span><br><span class="line"><span class="string">        :param input_path: test date should be organized as pictures whose names are its label</span></span><br><span class="line"><span class="string">        :return: output label and</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.test_data = self.load_data(input_path)</span><br><span class="line"></span><br><span class="line">        labels_test = []</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> self.test_data:</span><br><span class="line">            output_origin = np.dot(self.weights,x.reshape(<span class="number">-1</span>,<span class="number">1</span>))</span><br><span class="line">            labels_test.append(symmetrical_hard_limit(output_origin))</span><br><span class="line">        <span class="keyword">return</span> np.array(labels_test)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The whole project can be found: <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/NeuronNetworks/tree/master/supervised_Hebb_learning">https://github.com/Tony-Tan/NeuronNetworks/tree/master/supervised_Hebb_learning</a><br>please, Star it!</p>
+<p>The whole project can be found: <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/NeuronNetworks/tree/master/supervised_Hebb_learning">https://github.com/Tony-Tan/NeuronNetworks/tree/master/supervised_Hebb_learning</a> please, Star it!</p>
 <p>The algorithm gives the following result(left: input; right: output):</p>
-<p><img src="./0_repaired.png"></p>
-<p><img src="./1_repaired.png"></p>
-<p><img src="./2_repaired.png"></p>
-<p>It looks like you have associate memory.</p>
-<h2 id="Some-Variations-of-Hebb-Learning"><a href="#Some-Variations-of-Hebb-Learning" class="headerlink" title="Some Variations of Hebb Learning"></a>Some Variations of Hebb Learning</h2><p>Derivate rules of Hebb learning are developed. And they overcome the shortage of Hebb learning algorithm, like:</p>
-<blockquote>
-<p>Elements of $\boldsymbol{W}$ would grow bigger when more prototypes are provided.</p>
-</blockquote>
-<p>To overcome this problem, a lot of ideas came into mind:</p>
+<p><img src="./0_repaired.png" /></p>
+<p><img src="./1_repaired.png" /></p>
+<p><img src="./2_repaired.png" /></p>
+<p>It looks like you have associate memory. ## Some Variations of Hebb Learning Derivate rules of Hebb learning are developed. And they overcome the shortage of Hebb learning algorithm, like: &gt; Elements of <span class="math inline">\(\boldsymbol{W}\)</span> would grow bigger when more prototypes are provided.</p>
+<p>To overcome this problem, a lot of ideas came into mind: 1. Learning rate <span class="math inline">\(\alpha\)</span> can be used to slow down this phenomina 2. Adding a decay term, so the learning rule is changed into a smooth filter: <span class="math inline">\(\boldsymbol{W}^{\text{new}}=\boldsymbol{W}^{\text{old}}+\alpha\boldsymbol{t}_q\boldsymbol{p}_q^T-\gamma\boldsymbol{W}^{\text{old}}\)</span> which can also be written as <span class="math inline">\(\boldsymbol{W}^{\text{new}}=(1-\gamma)\boldsymbol{W}^{\text{old}}+\alpha\boldsymbol{t}_q\boldsymbol{p}_q^T\)</span> where <span class="math inline">\(0&lt;\gamma&lt;1\)</span> 3. Using the residual between output and target to multipy input as the increasement of the weights: <span class="math inline">\(\boldsymbol{W}^{\text{new}}=\boldsymbol{W}^{\text{old}}+\alpha(\boldsymbol{t}_q-\boldsymbol{a}_q)\boldsymbol{p}_q^T\)</span></p>
+<p>The second idea, when <span class="math inline">\(\gamma\to 1\)</span> the algorithm quickly forgets the old weights. but when <span class="math inline">\(\gamma\to 0\)</span> the algorithm goes back to the standard form. This idea of filter would be widely used in the following algorithms. The third method also known as the Widrow-Hoff algorithm, could minimize mean square error as well as minimize the sum of the square error and this algorithm also has another advantage that is the update of the weights step by step whenever the prototype is provided. So it can quickly adapt to the changing environment while some other algorithms do not have this feature.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
 <ol>
-<li>Learning rate $\alpha$ can be used to slow down this phenomina</li>
-<li>Adding a decay term, so the learning rule is changed into a smooth filter: $\boldsymbol{W}^{\text{new}}=\boldsymbol{W}^{\text{old}}+\alpha\boldsymbol{t}_q\boldsymbol{p}_q^T-\gamma\boldsymbol{W}^{\text{old}}$ which can also be written as $\boldsymbol{W}^{\text{new}}=(1-\gamma)\boldsymbol{W}^{\text{old}}+\alpha\boldsymbol{t}_q\boldsymbol{p}_q^T$  where $0&lt;\gamma&lt;1$</li>
-<li>Using the residual between output and target to multipy input as the increasement of the weights: $\boldsymbol{W}^{\text{new}}=\boldsymbol{W}^{\text{old}}+\alpha(\boldsymbol{t}_q-\boldsymbol{a}_q)\boldsymbol{p}_q^T$</li>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>The second idea, when $\gamma\to 1$ the algorithm quickly forgets the old weights. but when $\gamma\to 0$ the algorithm goes back to the standard form. This idea of filter would be widely used in the following algorithms.<br>The third method also known as the Widrow-Hoff algorithm, could minimize mean square error as well as minimize the sum of the square error and this algorithm also has another advantage that is the update of the weights step by step whenever the prototype is provided. So it can quickly adapt to the changing environment while some other algorithms do not have this feature.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+</section>
 
     </div>
 

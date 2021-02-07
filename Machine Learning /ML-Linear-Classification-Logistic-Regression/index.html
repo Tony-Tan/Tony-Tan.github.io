@@ -177,7 +177,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Idea-of-logistic-regression-1"><span class="nav-number">1.</span> <span class="nav-text">Idea of logistic regression[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-Regression-of-Linear-Classification"><span class="nav-number">2.</span> <span class="nav-text">Logistic Regression of Linear Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Estimating-the-Parameters-in-Logistic-Regression"><span class="nav-number">3.</span> <span class="nav-text">Estimating the Parameters in Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-for-logistic-regression"><span class="nav-number">4.</span> <span class="nav-text">Code for logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiment-1"><span class="nav-number">4.1.</span> <span class="nav-text">Experiment 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiment-2"><span class="nav-number">4.2.</span> <span class="nav-text">Experiment 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiment-3"><span class="nav-number">4.3.</span> <span class="nav-text">Experiment 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Several-Traps-in-Logistic-Regression"><span class="nav-number">5.</span> <span class="nav-text">Several Traps in Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#idea-of-logistic-regression1"><span class="nav-number">1.</span> <span class="nav-text">Idea of logistic regression1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression-of-linear-classification"><span class="nav-number">2.</span> <span class="nav-text">Logistic Regression of Linear Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#estimating-the-parameters-in-logistic-regression"><span class="nav-number">3.</span> <span class="nav-text">Estimating the Parameters in Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-for-logistic-regression"><span class="nav-number">4.</span> <span class="nav-text">Code for logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#experiment-1"><span class="nav-number">4.1.</span> <span class="nav-text">Experiment 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#experiment-2"><span class="nav-number">4.2.</span> <span class="nav-text">Experiment 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#experiment-3"><span class="nav-number">4.3.</span> <span class="nav-text">Experiment 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#several-traps-in-logistic-regression"><span class="nav-number">5.</span> <span class="nav-text">Several Traps in Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -331,60 +331,128 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> logistic regression, cross-entropy</p>
-<a id="more"></a>
-
-<h2 id="Idea-of-logistic-regression-1"><a href="#Idea-of-logistic-regression-1" class="headerlink" title="Idea of logistic regression[^1]"></a>Idea of logistic regression[^1]</h2><p>Logistic sigmoid function(logistic function for short) had been introduced in post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-An-Introduction-to-Probabilistic-Generative-Models-for-Classification/">‘An Introduction to Probabilistic Generative Models for Linear Classification’</a>. It has an elegant form:</p>
-<p>$$<br>\delta(a)=\frac{1}{1+e^{-a}}\tag{1}<br>$$</p>
-<p>and when $a=0$, $\delta(a)=\frac{1}{2}$ and this is just the half of the range of logistic function. This gives us a strong implication that we can set $a$ equals to some functions $y(\boldsymbol{x})$, and then </p>
-<p>$$<br>a=y(\boldsymbol{x})=0\tag{2}<br>$$</p>
-<p>becomes a decision boundary. Here the logistic function plays the same role as the threshold function described in the post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-From-Regreesion-To-Classification/">‘From Linear Regression to Linear Classification’</a> </p>
-<h2 id="Logistic-Regression-of-Linear-Classification"><a href="#Logistic-Regression-of-Linear-Classification" class="headerlink" title="Logistic Regression of Linear Classification"></a>Logistic Regression of Linear Classification</h2><p>The easiest function is a constant which corresponds to a 1-deminsional input. However, the dicision boundary of 1-deminsional input is a degenerated line, namely, a point. So we consider a little complex function - a 2-deminsional input vector $[x_1;x_2]^T$ and the function $y(\boldsymbol{x})$ is:</p>
-<p>$$<br>y(\boldsymbol{x})=w_0+w_1x_1+w_2x_2=\boldsymbol{w}^T\boldsymbol{x}=<br>\begin{bmatrix}w_0&amp;w_1&amp;w_2\end{bmatrix}<br>\begin{bmatrix}<br>  1\<br>  x_1\<br>  x_2<br>\end{bmatrix}\tag{3}<br>$$</p>
+        <p><strong>Keywords:</strong> logistic regression, cross-entropy <a id="more"></a></p>
+<h2 id="idea-of-logistic-regression1">Idea of logistic regression<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Logistic sigmoid function(logistic function for short) had been introduced in post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-An-Introduction-to-Probabilistic-Generative-Models-for-Classification/">'An Introduction to Probabilistic Generative Models for Linear Classification'</a>. It has an elegant form:</p>
+<p><span class="math display">\[
+\delta(a)=\frac{1}{1+e^{-a}}\tag{1}
+\]</span></p>
+<p>and when <span class="math inline">\(a=0\)</span>, <span class="math inline">\(\delta(a)=\frac{1}{2}\)</span> and this is just the half of the range of logistic function. This gives us a strong implication that we can set <span class="math inline">\(a\)</span> equals to some functions <span class="math inline">\(y(\boldsymbol{x})\)</span>, and then</p>
+<p><span class="math display">\[
+a=y(\boldsymbol{x})=0\tag{2}
+\]</span></p>
+<p>becomes a decision boundary. Here the logistic function plays the same role as the threshold function described in the post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-From-Regreesion-To-Classification/">'From Linear Regression to Linear Classification'</a></p>
+<h2 id="logistic-regression-of-linear-classification">Logistic Regression of Linear Classification</h2>
+<p>The easiest function is a constant which corresponds to a 1-deminsional input. However, the dicision boundary of 1-deminsional input is a degenerated line, namely, a point. So we consider a little complex function - a 2-deminsional input vector <span class="math inline">\([x_1\;x_2]^T\)</span> and the function <span class="math inline">\(y(\boldsymbol{x})\)</span> is:</p>
+<p><span class="math display">\[
+y(\boldsymbol{x})=w_0+w_1x_1+w_2x_2=\boldsymbol{w}^T\boldsymbol{x}=
+\begin{bmatrix}w_0&amp;w_1&amp;w_2\end{bmatrix}
+\begin{bmatrix}
+  1\\
+  x_1\\
+  x_2
+\end{bmatrix}\tag{3}
+\]</span></p>
 <p>Then we substitute this into equation (1), we got our linear logsitic regression function:</p>
-<p>$$<br>y(\boldsymbol{x})=\delta(\boldsymbol{w}^T\boldsymbol{x})=\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}\tag{4}<br>$$</p>
-<p>The output of the function (4) is just 1-dimensional and its range is $0$ to $1$. So it can be used to represent a probability of the input belongs to $\mathcal{C}_1$ whose label is $1$ or $\mathcal{C}_0$ whose label is $0$ in the training set. In this form, we can just deal with a two-class mission because we have only one decision boundary.</p>
-<h2 id="Estimating-the-Parameters-in-Logistic-Regression"><a href="#Estimating-the-Parameters-in-Logistic-Regression" class="headerlink" title="Estimating the Parameters in Logistic Regression"></a>Estimating the Parameters in Logistic Regression</h2><p>Although logistic regression is called regression, it acts as a classifier. Our mission, now, is to estimate the parameters in equation(4).</p>
-<p>Recalling that the output of equation(4) is $\mathbb{P}(\mathcal{C}_1|\boldsymbol{x},M)$ where $M$ is the model we selected. And the model sometimes can be represented by its parameters.  And the mission should you chose to accept it, is to build probability $\mathbb{P}(\boldsymbol{w}|\boldsymbol{x},t)$ where $\boldsymbol{x}$ is the input vector and $t\in{0,1}$ is the corresponding label and condition $\boldsymbol{x}$ is always been omitted. $t$ is one of $\mathcal{C}_1$ or $\mathcal{C}_2$, so the Bayesian relation of $\mathbb{P}(\boldsymbol{w}|t)$ is:</p>
-<p>$$<br>\mathbb{P}(\boldsymbol{w}|t)=\frac{\mathbb{P}(t|\boldsymbol{w})\mathbb{P}(\boldsymbol{w})}{\mathbb{P}(t)}=\frac{\mathbb{P}(\mathcal{C}_i|\boldsymbol{w})\mathbb{P}(\boldsymbol{w})}{\mathbb{P}(t)}=\frac{\mathbb{P}(\mathcal{C}_i|\boldsymbol{x},M)\mathbb{P}(\boldsymbol{w})}{\mathbb{P}(t)}\tag{5}<br>$$</p>
+<p><span class="math display">\[
+y(\boldsymbol{x})=\delta(\boldsymbol{w}^T\boldsymbol{x})=\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}\tag{4}
+\]</span></p>
+<p>The output of the function (4) is just 1-dimensional and its range is <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>. So it can be used to represent a probability of the input belongs to <span class="math inline">\(\mathcal{C}_1\)</span> whose label is <span class="math inline">\(1\)</span> or <span class="math inline">\(\mathcal{C}_0\)</span> whose label is <span class="math inline">\(0\)</span> in the training set. In this form, we can just deal with a two-class mission because we have only one decision boundary.</p>
+<h2 id="estimating-the-parameters-in-logistic-regression">Estimating the Parameters in Logistic Regression</h2>
+<p>Although logistic regression is called regression, it acts as a classifier. Our mission, now, is to estimate the parameters in equation(4).</p>
+<p>Recalling that the output of equation(4) is <span class="math inline">\(\mathbb{P}(\mathcal{C}_1|\boldsymbol{x},M)\)</span> where <span class="math inline">\(M\)</span> is the model we selected. And the model sometimes can be represented by its parameters. And the mission should you chose to accept it, is to build probability <span class="math inline">\(\mathbb{P}(\boldsymbol{w}|\boldsymbol{x},t)\)</span> where <span class="math inline">\(\boldsymbol{x}\)</span> is the input vector and <span class="math inline">\(t\in\{0,1\}\)</span> is the corresponding label and condition <span class="math inline">\(\boldsymbol{x}\)</span> is always been omitted. <span class="math inline">\(t\)</span> is one of <span class="math inline">\(\mathcal{C}_1\)</span> or <span class="math inline">\(\mathcal{C}_2\)</span>, so the Bayesian relation of <span class="math inline">\(\mathbb{P}(\boldsymbol{w}|t)\)</span> is:</p>
+<p><span class="math display">\[
+\mathbb{P}(\boldsymbol{w}|t)=\frac{\mathbb{P}(t|\boldsymbol{w})\mathbb{P}(\boldsymbol{w})}{\mathbb{P}(t)}=\frac{\mathbb{P}(\mathcal{C}_i|\boldsymbol{w})\mathbb{P}(\boldsymbol{w})}{\mathbb{P}(t)}=\frac{\mathbb{P}(\mathcal{C}_i|\boldsymbol{x},M)\mathbb{P}(\boldsymbol{w})}{\mathbb{P}(t)}\tag{5}
+\]</span></p>
 <p>Then the maximise likelihood function is employed to estimate the parameters. And the likelihood is just:</p>
-<p>$$<br>\mathbb{P}(\mathcal{C}_1|\boldsymbol{x},M)=\delta(\boldsymbol{w}^T\boldsymbol{x})=\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}\tag{6}<br>$$</p>
+<p><span class="math display">\[
+\mathbb{P}(\mathcal{C}_1|\boldsymbol{x},M)=\delta(\boldsymbol{w}^T\boldsymbol{x})=\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}\tag{6}
+\]</span></p>
 <p>when we have had the training set:</p>
-<p>$$<br>{\boldsymbol{x}_1,t_1},{\boldsymbol{x}_2,t_2},\cdots,{\boldsymbol{x}_N,t_N}\tag{7}<br>$$</p>
+<p><span class="math display">\[
+\{\boldsymbol{x}_1,t_1\},\{\boldsymbol{x}_2,t_2\},\cdots,\{\boldsymbol{x}_N,t_N\}\tag{7}
+\]</span></p>
 <p>The likelihood becomes:</p>
-<p>$$<br>\Pi_{t_i\in \mathcal{C}_1}\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\Pi_{t_i\in \mathcal{C}_0}(1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})\tag{8}<br>$$</p>
-<p>In the second part, when $\boldsymbol{x}$ belongs to $\mathcal{C}_0$ the label is $0$. The output of this class should approach to $0$, so minimising $\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}$ equals to maximising $1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}$. For equation(8) is not convenient to optimise, we can use the property that $t_n\in{0,1}$ and we have:</p>
-<p>$$<br>\begin{aligned}<br>  &amp;\Pi_{t_i\in \mathcal{C}_1}\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\Pi_{t_i\in \mathcal{C}_0}(1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})\<br>  =&amp;\Pi_i^N(\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})^{t_i}(1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})^{1-t_i}<br>\end{aligned}<br>\tag{9}<br>$$</p>
-<p>From now on, we turn to an optimization problem.  Maximizing equation(9) equals to minimize its minus logarithm(we use $y_i$ retpresent $\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}$):</p>
-<p>$$<br>\begin{aligned}<br>  E&amp;=-\mathrm{ln};\Pi^N_{i=1}y_i^{t_i}(1-y_i)^{1-t_i}\<br>  &amp;=-\sum^N_{i=1}(t_i\mathrm{ln}y_i+(1-t_i)\mathrm{ln}(1-y_i))<br>\end{aligned}<br>\tag{10}<br>$$</p>
+<p><span class="math display">\[
+\Pi_{t_i\in \mathcal{C}_1}\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\Pi_{t_i\in \mathcal{C}_0}(1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})\tag{8}
+\]</span></p>
+<p>In the second part, when <span class="math inline">\(\boldsymbol{x}\)</span> belongs to <span class="math inline">\(\mathcal{C}_0\)</span> the label is <span class="math inline">\(0\)</span>. The output of this class should approach to <span class="math inline">\(0\)</span>, so minimising <span class="math inline">\(\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\)</span> equals to maximising <span class="math inline">\(1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\)</span>. For equation(8) is not convenient to optimise, we can use the property that <span class="math inline">\(t_n\in{0,1}\)</span> and we have:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  &amp;\Pi_{t_i\in \mathcal{C}_1}\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\Pi_{t_i\in \mathcal{C}_0}(1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})\\
+  =&amp;\Pi_i^N(\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})^{t_i}(1-\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})^{1-t_i}
+\end{aligned}
+\tag{9}
+\]</span></p>
+<p>From now on, we turn to an optimization problem. Maximizing equation(9) equals to minimize its minus logarithm(we use <span class="math inline">\(y_i\)</span> retpresent <span class="math inline">\(\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\)</span>):</p>
+<p><span class="math display">\[
+\begin{aligned}
+  E&amp;=-\mathrm{ln}\;\Pi^N_{i=1}y_i^{t_i}(1-y_i)^{1-t_i}\\
+  &amp;=-\sum^N_{i=1}(t_i\mathrm{ln}y_i+(1-t_i)\mathrm{ln}(1-y_i))
+\end{aligned}
+\tag{10}
+\]</span></p>
 <p>Equation(10) is called <strong>cross-entropy</strong>, which is a very important concept in information theory and is called cross-entropy error in machine learning which is also a very useful function.</p>
-<p>For there is no closed-form solution, <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘steepest descent algorithm’</a> is employed. And what we need to calculate firstly is the derivative of equation(10). For we want to get the derivative of $\boldsymbol{w}$ who is in the function $y_i(\boldsymbol{x})$, the chain rule is necessary:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{dE}{dw}&amp;=-\frac{d}{dw}\sum^N_{i=1}(t_i\mathrm{ln}y_i+(1-t_i)\mathrm{ln}(1-y_i))\<br>  &amp;=-\sum^N_{i=1}\frac{d}{dw}t_i\mathrm{ln}y_i+\frac{d}{dw}(1-t_i)\mathrm{ln}(1-y_i)\<br>  &amp;=-\sum^N_{i=1}t_i\frac{y_i’}{y_i}+(1-t_i)\frac{-y’_i}{1-y_i}<br>\end{aligned}<br>\tag{11}<br>$$</p>
-<p>and for </p>
-<p>$$<br>\begin{aligned}<br>  y_i’&amp;=\frac{d}{dw}\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\<br>  &amp;=\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{(1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}})^2}<br>\end{aligned}\tag{12}<br>$$</p>
+<p>For there is no closed-form solution, <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">'steepest descent algorithm'</a> is employed. And what we need to calculate firstly is the derivative of equation(10). For we want to get the derivative of <span class="math inline">\(\boldsymbol{w}\)</span> who is in the function <span class="math inline">\(y_i(\boldsymbol{x})\)</span>, the chain rule is necessary:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{dE}{dw}&amp;=-\frac{d}{dw}\sum^N_{i=1}(t_i\mathrm{ln}y_i+(1-t_i)\mathrm{ln}(1-y_i))\\
+  &amp;=-\sum^N_{i=1}\frac{d}{dw}t_i\mathrm{ln}y_i+\frac{d}{dw}(1-t_i)\mathrm{ln}(1-y_i)\\
+  &amp;=-\sum^N_{i=1}t_i\frac{y_i&#39;}{y_i}+(1-t_i)\frac{-y&#39;_i}{1-y_i}
+\end{aligned}
+\tag{11}
+\]</span></p>
+<p>and for</p>
+<p><span class="math display">\[
+\begin{aligned}
+  y_i&#39;&amp;=\frac{d}{dw}\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\\
+  &amp;=\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{(1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}})^2}
+\end{aligned}\tag{12}
+\]</span></p>
 <p>Substitute equation (12) into equation (11), we have:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{dE}{dw}&amp;=-\sum_{i=1}^Nt_i\frac{\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{(1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}})^2}}{\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}}-(1-t_i)\frac{\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{(1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}})^2}}{\frac{e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}}\<br>  &amp;=-\sum_{i=1}^Nt_i\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}-(1-t_i)\frac{\boldsymbol{x}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\<br>  &amp;=-\sum_{i=1}^N(t_i\frac{e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}-(1-t_i)\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})\boldsymbol{x}\<br>  &amp;=-\sum_{i=1}^N(t_i(1-y_i)-(1-t_i)y_i)\boldsymbol{x}\<br>  &amp;=-\sum_{i=1}^N(t_i-y_i)\boldsymbol{x}<br>\end{aligned}\tag{13}<br>$$</p>
-<p>Then we can update $\boldsymbol{w}$ :</p>
-<p>$$<br>\boldsymbol{w} = \boldsymbol{w} - \mathrm{learning; rate} \times (-\frac{1}{N}\sum_{i=1}^N(t_i-y_i)\boldsymbol{x})\tag{14}<br>$$</p>
-<h2 id="Code-for-logistic-regression"><a href="#Code-for-logistic-regression" class="headerlink" title="Code for logistic regression"></a>Code for logistic regression</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogisticRegression</span>():</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">logistic_sigmoid</span>(<span class="params">self, a</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.</span>/(<span class="number">1.0</span> + np.exp(-a))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, x, y, e_threshold, lr=<span class="number">1</span></span>):</span></span><br><span class="line">        x = np.array(x)/<span class="number">320.</span><span class="number">-1</span></span><br><span class="line">        <span class="comment"># augment the input</span></span><br><span class="line">        x_dim = x.shape[<span class="number">0</span>]</span><br><span class="line">        x = np.c_[np.ones(x_dim), x]</span><br><span class="line">        <span class="comment"># initial parameters in 0.01 to 1</span></span><br><span class="line">        w = np.random.randint(<span class="number">1</span>, <span class="number">100</span>, x.shape[<span class="number">1</span>])/<span class="number">100.</span></span><br><span class="line">        number_of_points = np.size(y)</span><br><span class="line">        <span class="keyword">for</span> dummy <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">            y_output = self.logistic_sigmoid(w.dot(x.transpose()))</span><br><span class="line">            <span class="comment"># gradient calculation</span></span><br><span class="line">            e_gradient = np.zeros(x.shape[<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(number_of_points):</span><br><span class="line">                e_gradient += (y_output[i]-y[i])*x[i]</span><br><span class="line">            e_gradient = e_gradient / number_of_points</span><br><span class="line">            <span class="comment"># update parameter</span></span><br><span class="line">            w += -e_gradient*lr</span><br><span class="line">            e = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(number_of_points):</span><br><span class="line">                e += -(y[i] * np.log(y_output[i]) + (<span class="number">1</span> - y[i]) * np.log(<span class="number">1</span> - y_output[i]))</span><br><span class="line">            e /= number_of_points</span><br><span class="line">            <span class="keyword">if</span> e &lt;= e_threshold:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> w</span><br></pre></td></tr></table></figure>
-<p>The entire project can be found The entire project can be found <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/ML">https://github.com/Tony-Tan/ML</a> and please star me. </p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{dE}{dw}&amp;=-\sum_{i=1}^Nt_i\frac{\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{(1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}})^2}}{\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}}-(1-t_i)\frac{\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{(1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}})^2}}{\frac{e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}}\\
+  &amp;=-\sum_{i=1}^Nt_i\frac{\boldsymbol{x}e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}-(1-t_i)\frac{\boldsymbol{x}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}\\
+  &amp;=-\sum_{i=1}^N(t_i\frac{e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}}-(1-t_i)\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x_i}}})\boldsymbol{x}\\
+  &amp;=-\sum_{i=1}^N(t_i(1-y_i)-(1-t_i)y_i)\boldsymbol{x}\\
+  &amp;=-\sum_{i=1}^N(t_i-y_i)\boldsymbol{x}
+\end{aligned}\tag{13}
+\]</span></p>
+<p>Then we can update <span class="math inline">\(\boldsymbol{w}\)</span> :</p>
+<p><span class="math display">\[
+\boldsymbol{w} = \boldsymbol{w} - \mathrm{learning\; rate} \times (-\frac{1}{N}\sum_{i=1}^N(t_i-y_i)\boldsymbol{x})\tag{14}
+\]</span></p>
+<h2 id="code-for-logistic-regression">Code for logistic regression</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogisticRegression</span>():</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">logistic_sigmoid</span>(<span class="params">self, a</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.</span>/(<span class="number">1.0</span> + np.exp(-a))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, x, y, e_threshold, lr=<span class="number">1</span></span>):</span></span><br><span class="line">        x = np.array(x)/<span class="number">320.</span><span class="number">-1</span></span><br><span class="line">        <span class="comment"># augment the input</span></span><br><span class="line">        x_dim = x.shape[<span class="number">0</span>]</span><br><span class="line">        x = np.c_[np.ones(x_dim), x]</span><br><span class="line">        <span class="comment"># initial parameters in 0.01 to 1</span></span><br><span class="line">        w = np.random.randint(<span class="number">1</span>, <span class="number">100</span>, x.shape[<span class="number">1</span>])/<span class="number">100.</span></span><br><span class="line">        number_of_points = np.size(y)</span><br><span class="line">        <span class="keyword">for</span> dummy <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">            y_output = self.logistic_sigmoid(w.dot(x.transpose()))</span><br><span class="line">            <span class="comment"># gradient calculation</span></span><br><span class="line">            e_gradient = np.zeros(x.shape[<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(number_of_points):</span><br><span class="line">                e_gradient += (y_output[i]-y[i])*x[i]</span><br><span class="line">            e_gradient = e_gradient / number_of_points</span><br><span class="line">            <span class="comment"># update parameter</span></span><br><span class="line">            w += -e_gradient*lr</span><br><span class="line">            e = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(number_of_points):</span><br><span class="line">                e += -(y[i] * np.log(y_output[i]) + (<span class="number">1</span> - y[i]) * np.log(<span class="number">1</span> - y_output[i]))</span><br><span class="line">            e /= number_of_points</span><br><span class="line">            <span class="keyword">if</span> e &lt;= e_threshold:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> w</span><br></pre></td></tr></table></figure>
+<p>The entire project can be found The entire project can be found <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/ML">https://github.com/Tony-Tan/ML</a> and please star me.</p>
 <p>Two hyperparameters are the learning rate and the stop condition. When the error is lower than the stop value, the algorithm stops.</p>
-<h3 id="Experiment-1"><a href="#Experiment-1" class="headerlink" title="Experiment 1"></a>Experiment 1</h3><p><img src="./1.gif"></p>
+<h3 id="experiment-1">Experiment 1</h3>
+<p><img src="./1.gif" /></p>
 <p>with the learning rate 1, and different learning rates lead to different convergence rate:</p>
-<p><img src="./1.png"></p>
-<h3 id="Experiment-2"><a href="#Experiment-2" class="headerlink" title="Experiment 2"></a>Experiment 2</h3><p><img src="./2.gif"></p>
+<p><img src="./1.png" /></p>
+<h3 id="experiment-2">Experiment 2</h3>
+<p><img src="./2.gif" /></p>
 <p>with the learning rate 1, and different learning rates lead to different convergence rate:</p>
-<p><img src="./2.png"></p>
-<h3 id="Experiment-3"><a href="#Experiment-3" class="headerlink" title="Experiment 3"></a>Experiment 3</h3><p><img src="./3.gif"></p>
+<p><img src="./2.png" /></p>
+<h3 id="experiment-3">Experiment 3</h3>
+<p><img src="./3.gif" /></p>
 <p>with the learning rate 1, and different learning rates lead to different convergence rate:</p>
-<p><img src="./3.png"></p>
-<h2 id="Several-Traps-in-Logistic-Regression"><a href="#Several-Traps-in-Logistic-Regression" class="headerlink" title="Several Traps in Logistic Regression"></a>Several Traps in Logistic Regression</h2><ol>
+<p><img src="./3.png" /></p>
+<h2 id="several-traps-in-logistic-regression">Several Traps in Logistic Regression</h2>
+<ol type="1">
 <li>Input value should be nomarlized and centered at 0</li>
-<li>Learning rate is chosen corroding to equation (14) but not $-\sum_{i=1}^N(t_i-y_i)\boldsymbol{x}$  because the uncertain coefficient $N$ </li>
-<li>parameter vector $\boldsymbol{w}$ identifies the direction, so its margin can be arbitrary large. and to a large $\boldsymbol{w}$ , $y_i(\boldsymbol{x})$ is very close to 1 or 0, but it can never be 1 or 0. So there is no optimization position, and the equation(13) can never be $0$ which means the algorithm can never stop by himself</li>
-<li>Considering $\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}$, when the margin of $\boldsymbol{w}$ grows, we can write it in a combination of margin $M$ and direction vector $\boldsymbol{w}_d$: $\frac{1}{1+e^{-M(\boldsymbol{w_d}^T\boldsymbol{x}})}$. And the function $\frac{1}{1+e^{-M(x)}}$ varies according $M$ is like(when $M$ grows the logistic function is more like Heaviside step function):<br><img src="./logistic.gif"> </li>
+<li>Learning rate is chosen corroding to equation (14) but not <span class="math inline">\(-\sum_{i=1}^N(t_i-y_i)\boldsymbol{x}\)</span> because the uncertain coefficient <span class="math inline">\(N\)</span></li>
+<li>parameter vector <span class="math inline">\(\boldsymbol{w}\)</span> identifies the direction, so its margin can be arbitrary large. and to a large <span class="math inline">\(\boldsymbol{w}\)</span> , <span class="math inline">\(y_i(\boldsymbol{x})\)</span> is very close to 1 or 0, but it can never be 1 or 0. So there is no optimization position, and the equation(13) can never be <span class="math inline">\(0\)</span> which means the algorithm can never stop by himself</li>
+<li>Considering <span class="math inline">\(\frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}\)</span>, when the margin of <span class="math inline">\(\boldsymbol{w}\)</span> grows, we can write it in a combination of margin <span class="math inline">\(M\)</span> and direction vector <span class="math inline">\(\boldsymbol{w}_d\)</span>: <span class="math inline">\(\frac{1}{1+e^{-M(\boldsymbol{w_d}^T\boldsymbol{x}})}\)</span>. And the function <span class="math inline">\(\frac{1}{1+e^{-M(x)}}\)</span> varies according <span class="math inline">\(M\)</span> is like(when <span class="math inline">\(M\)</span> grows the logistic function is more like Heaviside step function): <img src="./logistic.gif" /></li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

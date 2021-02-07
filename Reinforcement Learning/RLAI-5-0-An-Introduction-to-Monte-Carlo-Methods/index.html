@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Monte-Carlo-Methods"><span class="nav-number">1.</span> <span class="nav-text">Monte Carlo Methods</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#monte-carlo-methods"><span class="nav-number">1.</span> <span class="nav-text">Monte Carlo Methods</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,19 +317,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p>Multi-armed bandit and MDP problems we have talked so far are all solved basing on the knowledge of environment.</p>
-<ol>
-<li><a href="TODO">‘the 10-armed Testbed’</a></li>
-<li><a href="TODO">‘Gradient Bandit Algorithms’</a></li>
-<li><a href="TODO">‘Policy Iteration’</a></li>
-<li><a href="TODO">‘Value Iteration’</a></li>
-</ol>
+        <p><strong>Abstract:</strong> <a id="more"></a> Multi-armed bandit and MDP problems we have talked so far are all solved basing on the knowledge of environment. 1. <a href="TODO">'the 10-armed Testbed'</a> 2. <a href="TODO">'Gradient Bandit Algorithms'</a> 3. <a href="TODO">'Policy Iteration'</a> 4. <a href="TODO">'Value Iteration'</a></p>
 <p>And those solution are more like mathematical methods, for instance, the k-armed bandit are solved by statistics and DP method looks like an application of probability theory. None of them is a learning algorithm. Learning algorithm is a kind of algorithm that is developed basing on experience. And the Monte Carlo methods we are going to talk are learning agorithms and are widely used in MDP tasks.</p>
-<h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Monte Carlo(MC for short) methods is a kind of learning agorithm for estimating value functions without assumption of complete knowledge of environment. The experience could be actual sample sequence of experiment or simulated interaction. The dynamics $p(s’,r|s,a)$ is not necessary, either. As a result of unkonwn dynamics, the stat transition model is not know, either. Because in the MDP problems, the transition model is decided by:</p>
-<p>$$<br>p(s’|s,a)=\sum_{r}p(s’,r|s,a)<br>$$</p>
-<p>and this has been discussed in the post <a href="">‘The Agent-Environment interface’</a></p>
+<h2 id="monte-carlo-methods">Monte Carlo Methods</h2>
+<p>Monte Carlo(MC for short) methods is a kind of learning agorithm for estimating value functions without assumption of complete knowledge of environment. The experience could be actual sample sequence of experiment or simulated interaction. The dynamics <span class="math inline">\(p(s&#39;,r|s,a)\)</span> is not necessary, either. As a result of unkonwn dynamics, the stat transition model is not know, either. Because in the MDP problems, the transition model is decided by:</p>
+<p><span class="math display">\[
+p(s&#39;|s,a)=\sum_{r}p(s&#39;,r|s,a)
+\]</span></p>
+<p>and this has been discussed in the post <a href="">'The Agent-Environment interface'</a></p>
 <p>In many cases, it is more likely to get same samples than the explicit form of transition probability distribution. Monte Carlo is a class of algorithms that use average to approximate expectation as we will see in the following posts. And MC methods are availible only for episode tasks whose returns are explicit, and the process is episode-by-episode incremental but not step-by-step. Unlike bandit problems, the tasks MC deal with, are not stationary which means that the state from step to step is decide by action. So in the bandit problem we concern about the value of actions and in MC tasks we concern about the value of state-action pairs.</p>
 
     </div>

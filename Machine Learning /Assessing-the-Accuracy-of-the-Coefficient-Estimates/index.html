@@ -175,7 +175,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Are-you-sure-about-your-decision-is-correct"><span class="nav-number">1.</span> <span class="nav-text">Are you sure about your decision is correct?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assumptions"><span class="nav-number">2.</span> <span class="nav-text">Assumptions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-f-x"><span class="nav-number">2.1.</span> <span class="nav-text">Linear $f(x)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relationship-between-Population-Regression-Line-and-Least-Squares-Lines"><span class="nav-number">2.2.</span> <span class="nav-text">Relationship between Population Regression Line and Least Squares Lines</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Standard-Error"><span class="nav-number">3.</span> <span class="nav-text">Standard Error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-Standard-Error-SE-to-Solve-the-Question"><span class="nav-number">4.</span> <span class="nav-text">Use Standard Error(SE) to Solve the Question</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CHow-sure-about-the-estimation-of-w-1-and-w-0-%E2%80%9D"><span class="nav-number">4.1.</span> <span class="nav-text">“How sure about the estimation of $w_1$ and $w_0$?”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CIs-there-a-relationship-between-x-and-y-%E2%80%9D"><span class="nav-number">4.2.</span> <span class="nav-text">“Is there a relationship between $x$ and $y$?”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t-statistic"><span class="nav-number">4.3.</span> <span class="nav-text">t-statistic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p-value"><span class="nav-number">4.4.</span> <span class="nav-text">p-value</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#are-you-sure-about-your-decision-is-correct"><span class="nav-number">1.</span> <span class="nav-text">Are you sure about your decision is correct?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assumptions"><span class="nav-number">2.</span> <span class="nav-text">Assumptions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-fx"><span class="nav-number">2.1.</span> <span class="nav-text">Linear \(f(x)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relationship-between-population-regression-line-and-least-squares-lines"><span class="nav-number">2.2.</span> <span class="nav-text">Relationship between Population Regression Line and Least Squares Lines</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#standard-error"><span class="nav-number">3.</span> <span class="nav-text">Standard Error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#use-standard-errorse-to-solve-the-question"><span class="nav-number">4.</span> <span class="nav-text">Use Standard Error(SE) to Solve the Question</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-sure-about-the-estimation-of-w_1-and-w_0"><span class="nav-number">4.1.</span> <span class="nav-text">&quot;How sure about the estimation of \(w_1\) and \(w_0\)?&quot;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#is-there-a-relationship-between-x-and-y"><span class="nav-number">4.2.</span> <span class="nav-text">&quot;Is there a relationship between \(x\) and \(y\)?&quot;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t-statistic"><span class="nav-number">4.3.</span> <span class="nav-text">t-statistic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p-value"><span class="nav-number">4.4.</span> <span class="nav-text">p-value</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -331,119 +331,182 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>Keywords:</strong> least squared error, linear regression</p>
 <a id="more"></a>
-
 <p>How correct we believe the parameters of the model are always concerned by us. To have more confidence in using methods talked previously, we would like to make a reliable framework, under which the method is always feasible.</p>
-<h2 id="Are-you-sure-about-your-decision-is-correct"><a href="#Are-you-sure-about-your-decision-is-correct" class="headerlink" title="Are you sure about your decision is correct?"></a>Are you sure about your decision is correct?</h2><p>We have introduced a naive method to solve the linear regression problem: the relation between the budget of TV and the result of the sale.[^1] And, the probability which has been used in the problem is a subject of uncertain problem, so the answer to such sort of problems are also unsure. Then we have to list shreds of evidence to support our result and answer the unfriendly questions, like this:</p>
+<h2 id="are-you-sure-about-your-decision-is-correct">Are you sure about your decision is correct?</h2>
+<p>We have introduced a naive method to solve the linear regression problem: the relation between the budget of TV and the result of the sale.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> And, the probability which has been used in the problem is a subject of uncertain problem, so the answer to such sort of problems are also unsure. Then we have to list shreds of evidence to support our result and answer the unfriendly questions, like this:</p>
 <ul>
-<li>“Are you sure about your decision is correct?”</li>
-<li>“95.89%”</li>
+<li>"Are you sure about your decision is correct?"</li>
+<li>"95.89%"</li>
 </ul>
-<p>How to get the percentage “95.89%” and how to build evidence to support this number are what we are going to talk about, today.</p>
-<h2 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h2><p>Before we starting our long mathematical article, a fundamental assumption should be accepted. Both the data we will deal with and all sorts of problems we will come up with have a common model:</p>
-<p>$$<br>y=f(x)+\varepsilon\tag{1}<br>$$</p>
-<p>where, $y$ is produced by an unknown system $f(x)+\varepsilon$, but $y$ can be observed. And $f()$ and $x$ are both unknown or known incompletely. And $\varepsilon$ is a random variable, who has mean zero, and it can have any distribution, while the normal distribution is usually used because of its simplicity.</p>
-<p>Why does this weird equation become our essential condition? The philosophy behind this is our belief in mathematic. We have faith in that the world runs on mathematics that is the function $f(x)$ who drives everything around us. However, it exists in an unknown form, we may never know what it is. But we can use some model to approach it as close as we want. This is the basic idea of statistics. On the other hand, the $\varepsilon$ is the mistake we made during the whole procedure, a very easy example is to measure the length of a pen, and your tool, the ruler, maybe not precise. or you write down the wrong number of the result. These kinds of mistakes are always there, we can never get rid of them. So we use a random variable $\varepsilon$ to make the model more practical.</p>
-<p>A small conclusion: $f(x)$ is the rule behind the world, and it is unknown. $\varepsilon$ is the error made during our observation or recording and it is regarded as a mean zero random variable.</p>
-<h3 id="Linear-f-x"><a href="#Linear-f-x" class="headerlink" title="Linear $f(x)$"></a>Linear $f(x)$</h3><p>In <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>, we have solved the problem through a very popular method(almost every course of machine learning put this topic at their beginning), but we would like to go deeper, the first question we come across is how to analysis the estimate of the parameter.</p>
+<p>How to get the percentage "95.89%" and how to build evidence to support this number are what we are going to talk about, today.</p>
+<h2 id="assumptions">Assumptions</h2>
+<p>Before we starting our long mathematical article, a fundamental assumption should be accepted. Both the data we will deal with and all sorts of problems we will come up with have a common model:</p>
+<p><span class="math display">\[
+y=f(x)+\varepsilon\tag{1}
+\]</span></p>
+<p>where, <span class="math inline">\(y\)</span> is produced by an unknown system <span class="math inline">\(f(x)+\varepsilon\)</span>, but <span class="math inline">\(y\)</span> can be observed. And <span class="math inline">\(f()\)</span> and <span class="math inline">\(x\)</span> are both unknown or known incompletely. And <span class="math inline">\(\varepsilon\)</span> is a random variable, who has mean zero, and it can have any distribution, while the normal distribution is usually used because of its simplicity.</p>
+<p>Why does this weird equation become our essential condition? The philosophy behind this is our belief in mathematic. We have faith in that the world runs on mathematics that is the function <span class="math inline">\(f(x)\)</span> who drives everything around us. However, it exists in an unknown form, we may never know what it is. But we can use some model to approach it as close as we want. This is the basic idea of statistics. On the other hand, the <span class="math inline">\(\varepsilon\)</span> is the mistake we made during the whole procedure, a very easy example is to measure the length of a pen, and your tool, the ruler, maybe not precise. or you write down the wrong number of the result. These kinds of mistakes are always there, we can never get rid of them. So we use a random variable <span class="math inline">\(\varepsilon\)</span> to make the model more practical.</p>
+<p>A small conclusion: <span class="math inline">\(f(x)\)</span> is the rule behind the world, and it is unknown. <span class="math inline">\(\varepsilon\)</span> is the error made during our observation or recording and it is regarded as a mean zero random variable.</p>
+<h3 id="linear-fx">Linear <span class="math inline">\(f(x)\)</span></h3>
+<p>In <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'Simple Linear Regression'</a>, we have solved the problem through a very popular method(almost every course of machine learning put this topic at their beginning), but we would like to go deeper, the first question we come across is how to analysis the estimate of the parameter.</p>
 <p>Take our linear regression equation into equation(1), and we get model:</p>
-<p>$$<br>y=w_1x+w_0+\varepsilon\tag{2}<br>$$</p>
+<p><span class="math display">\[
+y=w_1x+w_0+\varepsilon\tag{2}
+\]</span></p>
 <p>The parameters have their names:</p>
 <ul>
-<li>$w_0$ is the intercept, which means when we set $x=0$ we get $y=w_0$</li>
-<li>$w_1$ is called slop, and it represents an average increase of $y$ when a one-unit increase in $x$</li>
+<li><span class="math inline">\(w_0\)</span> is the intercept, which means when we set <span class="math inline">\(x=0\)</span> we get <span class="math inline">\(y=w_0\)</span></li>
+<li><span class="math inline">\(w_1\)</span> is called slop, and it represents an average increase of <span class="math inline">\(y\)</span> when a one-unit increase in <span class="math inline">\(x\)</span></li>
 </ul>
-<p>however, $\varepsilon$ doesn’t have a special name, it catches all noise in the model, for example:</p>
-<ol>
-<li>the original $f(x)$ behind the data may be not linear</li>
+<p>however, <span class="math inline">\(\varepsilon\)</span> doesn't have a special name, it catches all noise in the model, for example:</p>
+<ol type="1">
+<li>the original <span class="math inline">\(f(x)\)</span> behind the data may be not linear</li>
 <li>measurement may have errors</li>
 </ol>
-<p>$\varepsilon$ plays an important part in linear regression, and then we have the second assumption:</p>
+<p><span class="math inline">\(\varepsilon\)</span> plays an important part in linear regression, and then we have the second assumption:</p>
 <blockquote>
-<p>$\varepsilon$ is independent of $x$</p>
+<p><span class="math inline">\(\varepsilon\)</span> is independent of <span class="math inline">\(x\)</span></p>
 </blockquote>
-<p>However, this assumption is distinctly incorrect in the “TV-Sales” problem. We can just recognize that in the linear regression figure:</p>
-<p><img src="./LinearRegression.png"></p>
-<p>If we consider the error as the distance between sample points and lines, we can easily find that the error increases, as $X$ (TV)increasing. However, we still believe this assumption is reasonable. Because, under this assumption, our regression analysis is easier.</p>
-<p>If equation (2) is the exact model of our observation, the line $f(\cdot)$ would be called the ‘population regression line’. As we said this equation is not always known, we can only use a regression line to approach it. Among those regression lines, the least-squares line is one of the best linear approaches to the true relationship.</p>
-<h3 id="Relationship-between-Population-Regression-Line-and-Least-Squares-Lines"><a href="#Relationship-between-Population-Regression-Line-and-Least-Squares-Lines" class="headerlink" title="Relationship between Population Regression Line and Least Squares Lines"></a>Relationship between Population Regression Line and Least Squares Lines</h3><p>Now we take<br>$$<br>Y=2.3x+1+\varepsilon \tag{3}<br>$$<br>as our population regression line, in which $\varepsilon$ has a mean 0 Gaussian distribution. And then 5 samples are generated, each of them contains 20 points($x$ is a random variable, however, we can make it fixed without loss of generality). And each sample is used to fit a line by the least square method. We draw all of them in a single figure, the red line(Generator) is the population regression line and the dushed line is the 5 least-squares line:</p>
-<p><img src="./regression_5lines.png"></p>
-<p>This procedure can do again and again, and the least-squares line is just the same as the population regression line is impossible(for it can be modeled by a contiuous random variable, its probability is $0$). But the expectations of $\hat{w_0}$ and $\hat{w_1}$ will be equal to $1$ and $2.3$ if we can draw infinite samples. In another world:</p>
-<p>$$<br>\begin{aligned}<br>\mathbb{E}(\hat{w_0})\stackrel{\text{number of samples}\to \infty}{=}w_0\<br>\mathbb{E}(\hat{w_1})\stackrel{\text{number of samples}\to \infty}{=}w_1<br>\end{aligned}\tag{4}<br>$$</p>
+<p>However, this assumption is distinctly incorrect in the "TV-Sales" problem. We can just recognize that in the linear regression figure:</p>
+<p><img src="./LinearRegression.png" /></p>
+<p>If we consider the error as the distance between sample points and lines, we can easily find that the error increases, as <span class="math inline">\(X\)</span> (TV)increasing. However, we still believe this assumption is reasonable. Because, under this assumption, our regression analysis is easier.</p>
+<p>If equation (2) is the exact model of our observation, the line <span class="math inline">\(f(\cdot)\)</span> would be called the 'population regression line'. As we said this equation is not always known, we can only use a regression line to approach it. Among those regression lines, the least-squares line is one of the best linear approaches to the true relationship.</p>
+<h3 id="relationship-between-population-regression-line-and-least-squares-lines">Relationship between Population Regression Line and Least Squares Lines</h3>
+<p>Now we take <span class="math display">\[
+Y=2.3x+1+\varepsilon \tag{3}
+\]</span> as our population regression line, in which <span class="math inline">\(\varepsilon\)</span> has a mean 0 Gaussian distribution. And then 5 samples are generated, each of them contains 20 points(<span class="math inline">\(x\)</span> is a random variable, however, we can make it fixed without loss of generality). And each sample is used to fit a line by the least square method. We draw all of them in a single figure, the red line(Generator) is the population regression line and the dushed line is the 5 least-squares line:</p>
+<p><img src="./regression_5lines.png" /></p>
+<p>This procedure can do again and again, and the least-squares line is just the same as the population regression line is impossible(for it can be modeled by a contiuous random variable, its probability is <span class="math inline">\(0\)</span>). But the expectations of <span class="math inline">\(\hat{w_0}\)</span> and <span class="math inline">\(\hat{w_1}\)</span> will be equal to <span class="math inline">\(1\)</span> and <span class="math inline">\(2.3\)</span> if we can draw infinite samples. In another world:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{E}(\hat{w_0})\stackrel{\text{number of samples}\to \infty}{=}w_0\\
+\mathbb{E}(\hat{w_1})\stackrel{\text{number of samples}\to \infty}{=}w_1
+\end{aligned}\tag{4}
+\]</span></p>
 <p>This is true because the least square line gives an <strong>unbias estimate</strong> to the sample. And <strong>bias</strong> and <strong>unbias</strong> is an interesting topic in statistics.</p>
-<p>For short, if the expectation of the parameter is equal to the original coefficient$(w_0,w_1)$ in equation(2), it is called unbias. Unbias does not mean the estimation is better than the one which is bias, but it has some good properties that the unbias one does not.</p>
-<h2 id="Standard-Error"><a href="#Standard-Error" class="headerlink" title="Standard Error"></a>Standard Error</h2><p>The standard error is one of the most useful statistics in parameter estimating. Variance is an essential numerical feature of a random variable, a distribution, and maybe a set of data. Standard deviation is the square root of variance. And the standard deviation of a sample is called a standard error instead. If we want to estimate $\mu$ which is the mean of $y$, we can estimate $\mu$ through $\hat{\mu}=\frac{1}{n}\sum^ny_i$. And then we analyze the variance of $\mu$. That is:</p>
-<p>$$<br>\text{var}(\hat{\mu})=\text{SE}(\hat{\mu})^2=\frac{\delta^2}{n}\tag{5}<br>$$</p>
-<p>where $delta$ is the standart deviation of each point of the sample. This is a little confusing, we go back to equantion(3) where $x_i$ is random varible has identity distribution with$x$, and $y_i$’s randomness comes from $\varepsilon$ but not $x_i$, that means $y_i$ has Gaussian destribution with mean $w_1X_i+w_0$. The $\delta$ now is the square root of the variance. For now, we consider all the points in the sample is independent, so:</p>
-<p>$$<br>\begin{aligned}<br>\text{var}(\hat{\mu})&amp;=\text{var}(\frac{1}{n}\sum^n y_i)\<br>&amp;=\frac{1}{n^2}\text{var}(\sum^ny_i)\<br>&amp;=\frac{1}{n^2}\sum^n\text{var}(y_i)\<br>&amp;=\frac{n\delta^2}{n^2}=\frac{\delta^2}{n}<br>\end{aligned}\tag{6}<br>$$</p>
+<p>For short, if the expectation of the parameter is equal to the original coefficient<span class="math inline">\((w_0,w_1)\)</span> in equation(2), it is called unbias. Unbias does not mean the estimation is better than the one which is bias, but it has some good properties that the unbias one does not.</p>
+<h2 id="standard-error">Standard Error</h2>
+<p>The standard error is one of the most useful statistics in parameter estimating. Variance is an essential numerical feature of a random variable, a distribution, and maybe a set of data. Standard deviation is the square root of variance. And the standard deviation of a sample is called a standard error instead. If we want to estimate <span class="math inline">\(\mu\)</span> which is the mean of <span class="math inline">\(y\)</span>, we can estimate <span class="math inline">\(\mu\)</span> through <span class="math inline">\(\hat{\mu}=\frac{1}{n}\sum^ny_i\)</span>. And then we analyze the variance of <span class="math inline">\(\mu\)</span>. That is:</p>
+<p><span class="math display">\[
+\text{var}(\hat{\mu})=\text{SE}(\hat{\mu})^2=\frac{\delta^2}{n}\tag{5}
+\]</span></p>
+<p>where <span class="math inline">\(delta\)</span> is the standart deviation of each point of the sample. This is a little confusing, we go back to equantion(3) where <span class="math inline">\(x_i\)</span> is random varible has identity distribution with<span class="math inline">\(x\)</span>, and <span class="math inline">\(y_i\)</span>'s randomness comes from <span class="math inline">\(\varepsilon\)</span> but not <span class="math inline">\(x_i\)</span>, that means <span class="math inline">\(y_i\)</span> has Gaussian destribution with mean <span class="math inline">\(w_1X_i+w_0\)</span>. The <span class="math inline">\(\delta\)</span> now is the square root of the variance. For now, we consider all the points in the sample is independent, so:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{var}(\hat{\mu})&amp;=\text{var}(\frac{1}{n}\sum^n y_i)\\
+&amp;=\frac{1}{n^2}\text{var}(\sum^ny_i)\\
+&amp;=\frac{1}{n^2}\sum^n\text{var}(y_i)\\
+&amp;=\frac{n\delta^2}{n^2}=\frac{\delta^2}{n}
+\end{aligned}\tag{6}
+\]</span></p>
 <p>Equation(5) is a very famouse equation, and we can get the following conclusion from this simple equation:</p>
-<ol>
-<li>as $n$ increasing, $\text{var}(\hat{\mu})$ decreases. So $\hat{\mu}$ becomes more and more certain.</li>
-<li>$\text{var}(\hat{\mu})$ and $\text{SE}(\hat{\mu})^2$ is a good measure of how far $\hat{\mu}$ is to the actual $\mu$</li>
+<ol type="1">
+<li>as <span class="math inline">\(n\)</span> increasing, <span class="math inline">\(\text{var}(\hat{\mu})\)</span> decreases. So <span class="math inline">\(\hat{\mu}\)</span> becomes more and more certain.</li>
+<li><span class="math inline">\(\text{var}(\hat{\mu})\)</span> and <span class="math inline">\(\text{SE}(\hat{\mu})^2\)</span> is a good measure of how far <span class="math inline">\(\hat{\mu}\)</span> is to the actual <span class="math inline">\(\mu\)</span></li>
 </ol>
 <p><strong>One sentence about SE: smaller SE, less uncertainness.</strong></p>
 <p>There is a hint here, we should sperate a sample point and a realization of it. A sample point is a random variable who has the same distribution as the population. And this is why we can use a sample to estimate parameters of population distribution. SE plays an indispensable part in the following sections.</p>
-<h2 id="Use-Standard-Error-SE-to-Solve-the-Question"><a href="#Use-Standard-Error-SE-to-Solve-the-Question" class="headerlink" title="Use Standard Error(SE) to Solve the Question"></a>Use Standard Error(SE) to Solve the Question</h2><h3 id="“How-sure-about-the-estimation-of-w-1-and-w-0-”"><a href="#“How-sure-about-the-estimation-of-w-1-and-w-0-”" class="headerlink" title="“How sure about the estimation of $w_1$ and $w_0$?”"></a>“How sure about the estimation of $w_1$ and $w_0$?”</h3><p>Then we go back to the little example in last section about the mean of $y$. This $y$ can just be the $y$ in equation(3) and as well as equation(2). Least square gave us a solution of equation(2) in the post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>, by:</p>
-<p>$$<br>\begin{aligned}<br>\hat{w_0}&amp;=\bar{y}-\hat{w_1}\bar{x}\<br>\hat{w_1}&amp;=\frac{\sum_{i=1}^nx_i(y_i-\bar{y})}{\sum_{i=1}^nx_i(x_i-\bar{x})}=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})(x_i-\bar{x})}<br>\end{aligned}\tag{7}<br>$$</p>
-<p>where $\bar{y}$ has the same meaning with $\hat{\mu}$(Notation: $\bar{Y}$ is the mean of population, and $\bar{y}$ is the mean of sample, but here we consider them as the same thing). Take equation(7) into equation(6), we could get $\text{SE}$ of $w_0$ and $w_1$:</p>
-<p>$$<br>\begin{aligned}<br>\text{SE}(\hat{w_0})^2&amp;=\delta^2[\frac{1}{n}+\frac{\bar{x}^2}{\sum^{n}<em>{i=1}(x_i-\bar{x})^2}]\<br>\text{SE}(\hat{w_1})^2&amp;=\frac{\delta^2}{\sum^{n}</em>{i=1}(x_i-\bar{x})^2}<br>\end{aligned}\tag{8}<br>$$</p>
-<p>and $\delta^2=\text{var}(\varepsilon)$. This process is little complecated, however, in the multi-variables case, this can be derived more easily. In equation(8), these features can be found:</p>
-<ol>
-<li>When $\bar{x}=0$, $\text{SE}(\hat{w_0})^2$ has the same value as variance of $y$ $\text{SE}(\hat{w_0})^2=\frac{\delta^2}{n}$</li>
-<li>When $\sum^{n}_{i=1}(x_i-\bar{x})^2$ going bigger, square of $\text{SE}$ of $w_0$ and $w_1$ go smaller and both $w_0$ and $w_1$ become more certain.</li>
+<h2 id="use-standard-errorse-to-solve-the-question">Use Standard Error(SE) to Solve the Question</h2>
+<h3 id="how-sure-about-the-estimation-of-w_1-and-w_0">"How sure about the estimation of <span class="math inline">\(w_1\)</span> and <span class="math inline">\(w_0\)</span>?"</h3>
+<p>Then we go back to the little example in last section about the mean of <span class="math inline">\(y\)</span>. This <span class="math inline">\(y\)</span> can just be the <span class="math inline">\(y\)</span> in equation(3) and as well as equation(2). Least square gave us a solution of equation(2) in the post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'Simple Linear Regression'</a>, by:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{w_0}&amp;=\bar{y}-\hat{w_1}\bar{x}\\
+\hat{w_1}&amp;=\frac{\sum_{i=1}^nx_i(y_i-\bar{y})}{\sum_{i=1}^nx_i(x_i-\bar{x})}=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})(x_i-\bar{x})}
+\end{aligned}\tag{7}
+\]</span></p>
+<p>where <span class="math inline">\(\bar{y}\)</span> has the same meaning with <span class="math inline">\(\hat{\mu}\)</span>(Notation: <span class="math inline">\(\bar{Y}\)</span> is the mean of population, and <span class="math inline">\(\bar{y}\)</span> is the mean of sample, but here we consider them as the same thing). Take equation(7) into equation(6), we could get <span class="math inline">\(\text{SE}\)</span> of <span class="math inline">\(w_0\)</span> and <span class="math inline">\(w_1\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{SE}(\hat{w_0})^2&amp;=\delta^2[\frac{1}{n}+\frac{\bar{x}^2}{\sum^{n}_{i=1}(x_i-\bar{x})^2}]\\
+\text{SE}(\hat{w_1})^2&amp;=\frac{\delta^2}{\sum^{n}_{i=1}(x_i-\bar{x})^2}
+\end{aligned}\tag{8}
+\]</span></p>
+<p>and <span class="math inline">\(\delta^2=\text{var}(\varepsilon)\)</span>. This process is little complecated, however, in the multi-variables case, this can be derived more easily. In equation(8), these features can be found:</p>
+<ol type="1">
+<li>When <span class="math inline">\(\bar{x}=0\)</span>, <span class="math inline">\(\text{SE}(\hat{w_0})^2\)</span> has the same value as variance of <span class="math inline">\(y\)</span> <span class="math inline">\(\text{SE}(\hat{w_0})^2=\frac{\delta^2}{n}\)</span></li>
+<li>When <span class="math inline">\(\sum^{n}_{i=1}(x_i-\bar{x})^2\)</span> going bigger, square of <span class="math inline">\(\text{SE}\)</span> of <span class="math inline">\(w_0\)</span> and <span class="math inline">\(w_1\)</span> go smaller and both <span class="math inline">\(w_0\)</span> and <span class="math inline">\(w_1\)</span> become more certain.</li>
 </ol>
-<p>Both $\text{SE}$’s contain $\delta^2$ and $\delta^2$ is a key numeral property of population distribution, so we would like to estimate $\delta^2$ from sample. And this estimate is known as the <strong>residual standard error</strong>, and is given by the formula:</p>
-<p>$$<br>\text{RSE}=\sqrt{\text{RSS}/(n-2)}\tag{9}<br>$$</p>
-<p>For $\delta^2$ is alway unknown, and is estimated from the data, $\text{SE}$ should be writen as $\hat{\text{SE}}$, but for simplicity of notation we will write $\text{SE}$.</p>
-<p>According confidence interval of $w_0$ and $w_1$, there is $95%$ chance that the interval:</p>
-<p>$$<br>[\hat{w_0}-2\text{SE}(w_0),\hat{w_0}+2\text{SE}(w_0)]<br>$$</p>
-<p>$$<br>[\hat{w_1}-2\text{SE}(w_1),\hat{w_1}+2\text{SE}(w_1)]<br>$$</p>
-<p>will contain $w_0$ and $w_1$(where $95%$ is not a precise probability for the interval of $\pm2\text{SE}$)</p>
-<p>The question “Are you sure about your decision is correct?” can be answered now. In the interval $\hat{w_1}\pm2\text{SE}$, we have $95%$ probability to catch the actual $w_1$</p>
-<h3 id="“Is-there-a-relationship-between-x-and-y-”"><a href="#“Is-there-a-relationship-between-x-and-y-”" class="headerlink" title="“Is there a relationship between $x$ and $y$?”"></a>“Is there a relationship between $x$ and $y$?”</h3><p>To answer his question, we introduce the ‘hypothesis test’ into our post. And then, we have two hypotheses:</p>
-<p>$$<br>H_0\text{: There is no relationship between} x \text{ and } y<br>$$</p>
+<p>Both <span class="math inline">\(\text{SE}\)</span>'s contain <span class="math inline">\(\delta^2\)</span> and <span class="math inline">\(\delta^2\)</span> is a key numeral property of population distribution, so we would like to estimate <span class="math inline">\(\delta^2\)</span> from sample. And this estimate is known as the <strong>residual standard error</strong>, and is given by the formula:</p>
+<p><span class="math display">\[
+\text{RSE}=\sqrt{\text{RSS}/(n-2)}\tag{9}
+\]</span></p>
+<p>For <span class="math inline">\(\delta^2\)</span> is alway unknown, and is estimated from the data, <span class="math inline">\(\text{SE}\)</span> should be writen as <span class="math inline">\(\hat{\text{SE}}\)</span>, but for simplicity of notation we will write <span class="math inline">\(\text{SE}\)</span>.</p>
+<p>According confidence interval of <span class="math inline">\(w_0\)</span> and <span class="math inline">\(w_1\)</span>, there is <span class="math inline">\(95\%\)</span> chance that the interval:</p>
+<p><span class="math display">\[
+[\hat{w_0}-2\text{SE}(w_0),\hat{w_0}+2\text{SE}(w_0)]
+\]</span></p>
+<p><span class="math display">\[
+[\hat{w_1}-2\text{SE}(w_1),\hat{w_1}+2\text{SE}(w_1)]
+\]</span></p>
+<p>will contain <span class="math inline">\(w_0\)</span> and <span class="math inline">\(w_1\)</span>(where <span class="math inline">\(95\%\)</span> is not a precise probability for the interval of <span class="math inline">\(\pm2\text{SE}\)</span>)</p>
+<p>The question "Are you sure about your decision is correct?" can be answered now. In the interval <span class="math inline">\(\hat{w_1}\pm2\text{SE}\)</span>, we have <span class="math inline">\(95\%\)</span> probability to catch the actual <span class="math inline">\(w_1\)</span></p>
+<h3 id="is-there-a-relationship-between-x-and-y">"Is there a relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>?"</h3>
+<p>To answer his question, we introduce the 'hypothesis test' into our post. And then, we have two hypotheses:</p>
+<p><span class="math display">\[
+H_0\text{: There is no relationship between} x \text{ and } y 
+\]</span></p>
 <p>versus the alternative hypothesis:</p>
-<p>$$<br>H_a\text{: There is relationship between} x \text{ and } y<br>$$</p>
-<p>And the equivalent mathematical conclusion is “ whether  $w_1$ is far from $0$ or not”, because according equation(2), when $w_1=0$ we have:</p>
-<p>$$<br>y=w_0+\varepsilon\tag{10}<br>$$</p>
-<p>and $y$ is a random variable with mean $w_0$. And it has no relationship with $x$ at all.</p>
-<p>We are not sure about what the actual value of $w_1$ and we can just measure the uncertain $w_1$ by $\hat{w_1}$ and its $\text{SE}(\hat{w_1})$. From this view, if $\hat{w_1}$ if far away from $0$ for some kind of distance of $\text{SE}$. We can have some confidence about weather $\hat{w_1}$ is 0. Genernally, $\hat{w_1}$ and $\text{SE}{\hat{w_1}}$ have the combination as the table:</p>
+<p><span class="math display">\[
+H_a\text{: There is relationship between} x \text{ and } y 
+\]</span></p>
+<p>And the equivalent mathematical conclusion is " whether <span class="math inline">\(w_1\)</span> is far from <span class="math inline">\(0\)</span> or not", because according equation(2), when <span class="math inline">\(w_1=0\)</span> we have:</p>
+<p><span class="math display">\[
+y=w_0+\varepsilon\tag{10}
+\]</span></p>
+<p>and <span class="math inline">\(y\)</span> is a random variable with mean <span class="math inline">\(w_0\)</span>. And it has no relationship with <span class="math inline">\(x\)</span> at all.</p>
+<p>We are not sure about what the actual value of <span class="math inline">\(w_1\)</span> and we can just measure the uncertain <span class="math inline">\(w_1\)</span> by <span class="math inline">\(\hat{w_1}\)</span> and its <span class="math inline">\(\text{SE}(\hat{w_1})\)</span>. From this view, if <span class="math inline">\(\hat{w_1}\)</span> if far away from <span class="math inline">\(0\)</span> for some kind of distance of <span class="math inline">\(\text{SE}\)</span>. We can have some confidence about weather <span class="math inline">\(\hat{w_1}\)</span> is 0. Genernally, <span class="math inline">\(\hat{w_1}\)</span> and <span class="math inline">\(\text{SE}{\hat{w_1}}\)</span> have the combination as the table:</p>
 <table>
 <thead>
-<tr>
-<th align="center"></th>
-<th align="center">$\hat{w_1}$ is close to $0$</th>
-<th align="center">$\hat{w_1}$ is far from $0$</th>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\hat{w_1}\)</span> is close to <span class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hat{w_1}\)</span> is far from <span class="math inline">\(0\)</span></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$\text{SE}(\hat{w_1})$ is large</td>
-<td align="center">more likely is $0$</td>
-<td align="center">likely to be 0 or not</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\text{SE}(\hat{w_1})\)</span> is large</td>
+<td style="text-align: center;">more likely is <span class="math inline">\(0\)</span></td>
+<td style="text-align: center;">likely to be 0 or not</td>
 </tr>
-<tr>
-<td align="center">$\text{SE}(\hat{w_1})$ is tiny</td>
-<td align="center">likely to be 0 or not</td>
-<td align="center">less likely to be 0</td>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\text{SE}(\hat{w_1})\)</span> is tiny</td>
+<td style="text-align: center;">likely to be 0 or not</td>
+<td style="text-align: center;">less likely to be 0</td>
 </tr>
-</tbody></table>
-<p>In the figures, we assume $w_1$ has a mean $\hat{w_1}$ bell-ship distribution whose variance is somehow determined by $\text{SE}(\hat{w_1})$</p>
-<p><img src="./comparison2.png"></p>
-<p>This is the first column of the table. When $\hat(w_1)=0.1$ a tiny $\text{SE}$(the origin line) can make sure $w_1$ has a very high probability to not equal to 0.</p>
-<p>In contrast, This is the second column of the table. When $\hat(w_1)=1$ a large $\text{SE}$(the red line) can do nothing to guarantee $w_1$ is not 0.<br><img src="./comparison1.png"></p>
-<h3 id="t-statistic"><a href="#t-statistic" class="headerlink" title="t-statistic"></a>t-statistic</h3><p>Then $\hat{w_1}$ and $\text{SE}$ should be combined to a new form to indicate the chance of the $w_1=0$, for this, we present you “<strong>t-statistic</strong>“<br>$$<br>t=\frac{\hat{w_1}-0}{\text{SE}(\hat{w_1})}\tag{11}<br>$$</p>
-<p>This is called a <strong>t-statistic</strong> because $t$ has a $t$-distribution with $n-2$ degrees of freedom. Equation(11) can be described as “there is $t$ numbers of $\text{SE}(w_1)$ destance from $\hat{w_1}$ to 0”, and it is reliable distance for it is a relative distance but not an absolute one</p>
-<p>The bigger the $t$ is, the more unlikely $\hat{w_1}=0$ is.</p>
-<h3 id="p-value"><a href="#p-value" class="headerlink" title="p-value"></a>p-value</h3><p>Another generated measurement about this is called a ‘<strong>p-value</strong>‘, who is a famous guy in Statistics. Here it is the value of probability that the value who is larger than $|t|$. In the figure below, it represents the size of the area of the shadow:</p>
-<p><img src="./p-value.png"></p>
+</tbody>
+</table>
+<p>In the figures, we assume <span class="math inline">\(w_1\)</span> has a mean <span class="math inline">\(\hat{w_1}\)</span> bell-ship distribution whose variance is somehow determined by <span class="math inline">\(\text{SE}(\hat{w_1})\)</span></p>
+<p><img src="./comparison2.png" /></p>
+<p>This is the first column of the table. When <span class="math inline">\(\hat(w_1)=0.1\)</span> a tiny <span class="math inline">\(\text{SE}\)</span>(the origin line) can make sure <span class="math inline">\(w_1\)</span> has a very high probability to not equal to 0.</p>
+<p>In contrast, This is the second column of the table. When <span class="math inline">\(\hat(w_1)=1\)</span> a large <span class="math inline">\(\text{SE}\)</span>(the red line) can do nothing to guarantee <span class="math inline">\(w_1\)</span> is not 0. <img src="./comparison1.png" /></p>
+<h3 id="t-statistic">t-statistic</h3>
+<p>Then <span class="math inline">\(\hat{w_1}\)</span> and <span class="math inline">\(\text{SE}\)</span> should be combined to a new form to indicate the chance of the <span class="math inline">\(w_1=0\)</span>, for this, we present you "<strong>t-statistic</strong>" <span class="math display">\[
+t=\frac{\hat{w_1}-0}{\text{SE}(\hat{w_1})}\tag{11}
+\]</span></p>
+<p>This is called a <strong>t-statistic</strong> because <span class="math inline">\(t\)</span> has a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n-2\)</span> degrees of freedom. Equation(11) can be described as "there is <span class="math inline">\(t\)</span> numbers of <span class="math inline">\(\text{SE}(w_1)\)</span> destance from <span class="math inline">\(\hat{w_1}\)</span> to 0", and it is reliable distance for it is a relative distance but not an absolute one</p>
+<p>The bigger the <span class="math inline">\(t\)</span> is, the more unlikely <span class="math inline">\(\hat{w_1}=0\)</span> is.</p>
+<h3 id="p-value">p-value</h3>
+<p>Another generated measurement about this is called a '<strong>p-value</strong>', who is a famous guy in Statistics. Here it is the value of probability that the value who is larger than <span class="math inline">\(|t|\)</span>. In the figure below, it represents the size of the area of the shadow:</p>
+<p><img src="./p-value.png" /></p>
 <p>and it can be also denoted as:</p>
-<p>$$<br>\text{p-value}=\mathbb{P}({\hat{w_1}\leq-|t|}\cup{\hat{w_1}\geq|t|})<br>$$</p>
-<p>According to the realtionship between $t$ and how far from $\hat{w_1}$ to $0$, we have:</p>
+<p><span class="math display">\[
+\text{p-value}=\mathbb{P}(\{\hat{w_1}\leq-|t|\}\cup\{\hat{w_1}\geq|t|\})
+\]</span></p>
+<p>According to the realtionship between <span class="math inline">\(t\)</span> and how far from <span class="math inline">\(\hat{w_1}\)</span> to <span class="math inline">\(0\)</span>, we have:</p>
 <ul>
-<li>The bigger $t$, the more distance from $\hat{w_1}$ to $0$</li>
-<li>The smaller $\text{p-value}$, the more distance from $\hat{w_1}$ to $0$</li>
-<li>the more distance from $\hat{w_1}$ to $0$, the strong relationship between $X$ and $y$</li>
+<li>The bigger <span class="math inline">\(t\)</span>, the more distance from <span class="math inline">\(\hat{w_1}\)</span> to <span class="math inline">\(0\)</span></li>
+<li>The smaller <span class="math inline">\(\text{p-value}\)</span>, the more distance from <span class="math inline">\(\hat{w_1}\)</span> to <span class="math inline">\(0\)</span></li>
+<li>the more distance from <span class="math inline">\(\hat{w_1}\)</span> to <span class="math inline">\(0\)</span>, the strong relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span></li>
 </ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

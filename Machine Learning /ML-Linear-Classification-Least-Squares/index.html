@@ -174,7 +174,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Least-Squares-for-Classification-1"><span class="nav-number">1.</span> <span class="nav-text">Least Squares for Classification[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-and-Result"><span class="nav-number">2.</span> <span class="nav-text">Code and Result</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problems-of-Least-Squares"><span class="nav-number">2.1.</span> <span class="nav-text">Problems of Least Squares</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#least-squares-for-classification1"><span class="nav-number">1.</span> <span class="nav-text">Least Squares for Classification1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-and-result"><span class="nav-number">2.</span> <span class="nav-text">Code and Result</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problems-of-least-squares"><span class="nav-number">2.1.</span> <span class="nav-text">Problems of Least Squares</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -328,57 +328,96 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> least squares</p>
-<a id="more"></a>
-
-<h2 id="Least-Squares-for-Classification-1"><a href="#Least-Squares-for-Classification-1" class="headerlink" title="Least Squares for Classification[^1]"></a>Least Squares for Classification[^1]</h2><p>Least-squares for linear regression had been talked in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>. And in this post, we want to find out whether this powerful algorithm can be used in classification.</p>
-<p>Recalling the distinction between the properties of classification and regression, two points need to be emphasized again(<a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-From-Regreesion-To-Classification/">‘From Linear Regression to Linear Classification’</a>):</p>
-<ol>
+        <p><strong>Keywords:</strong> least squares <a id="more"></a></p>
+<h2 id="least-squares-for-classification1">Least Squares for Classification<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Least-squares for linear regression had been talked in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'Simple Linear Regression'</a>. And in this post, we want to find out whether this powerful algorithm can be used in classification.</p>
+<p>Recalling the distinction between the properties of classification and regression, two points need to be emphasized again(<a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-From-Regreesion-To-Classification/">'From Linear Regression to Linear Classification'</a>):</p>
+<ol type="1">
 <li>the targets of regression are continuous but the targets of classification are discrete.</li>
-<li>the output of classification hypothesis could be $\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})$ generatively or the output is just a class label $\mathcal{C}_k$  discriminatively.</li>
+<li>the output of classification hypothesis could be <span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})\)</span> generatively or the output is just a class label <span class="math inline">\(\mathcal{C}_k\)</span> discriminatively.</li>
 </ol>
 <p>The generative model would be talked in other posts. And we focus on discriminative models in these posts which means our hypothesis directly gives which class the input belongs to.</p>
 <p>We want to use least-squares methods that had been designed and proved for linear regression. And what we could do to extend the least-squares method in classification is to:</p>
-<ol>
+<ol type="1">
 <li>modify the type of output</li>
 <li>design a discriminative model</li>
 </ol>
-<p>Modifying the type of output is to convert the class label into a number, and assuming the number is also continuous is necessary. And when we use 1-of-K label scheme, we could build the model with $K$ linear functions:</p>
-<p>$$<br>\begin{aligned}<br>  y_1(\boldsymbol{x})&amp;=\boldsymbol{w}^T_1\boldsymbol{x}\<br>  y_2(\boldsymbol{x})&amp;=\boldsymbol{w}^T_2\boldsymbol{x}\<br>  \vdots&amp;\<br>  y_K(\boldsymbol{x})&amp;=\boldsymbol{w}^T_K\boldsymbol{x}\<br>\end{aligned}\tag{1}<br>$$</p>
-<p>where $\boldsymbol{x}=\begin{bmatrix}1\x_1\x_2\\vdots\x_n\end{bmatrix}$ and $\boldsymbol{w}_i=\begin{bmatrix}w_0\w_1\w_2\\vdots\w_n\end{bmatrix}$ for $i=1,2,\cdots,K$. And $y_i$ is the $i$th component of 1-of-K output for $i=1,2,\cdots,K$. Clearly, the output of each $y_i(\boldsymbol{x})$ could not be just 0 or 1. And we set the largest value to be 1 and others 0.</p>
-<p>We had discussed the linear regression with the least-squares in a ‘single-target’ regression problem. And that idea can also be employed in the multiple targets regression. And these $K$ weight vectors $\boldsymbol{w}_i$ can be calculated simultaneously. We can rewrite the equation (1) into the matrix form:</p>
-<p>$$<br>\boldsymbol{y}(\boldsymbol{x})=W^T\boldsymbol{x}\tag{2}<br>$$</p>
-<p>where the $i$th column of $W$ is $\boldsymbol{w}_i$</p>
+<p>Modifying the type of output is to convert the class label into a number, and assuming the number is also continuous is necessary. And when we use 1-of-K label scheme, we could build the model with <span class="math inline">\(K\)</span> linear functions:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  y_1(\boldsymbol{x})&amp;=\boldsymbol{w}^T_1\boldsymbol{x}\\
+  y_2(\boldsymbol{x})&amp;=\boldsymbol{w}^T_2\boldsymbol{x}\\
+  \vdots&amp;\\
+  y_K(\boldsymbol{x})&amp;=\boldsymbol{w}^T_K\boldsymbol{x}\\
+\end{aligned}\tag{1}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{x}=\begin{bmatrix}1\\x_1\\x_2\\\vdots\\x_n\end{bmatrix}\)</span> and <span class="math inline">\(\boldsymbol{w}_i=\begin{bmatrix}w_0\\w_1\\w_2\\\vdots\\w_n\end{bmatrix}\)</span> for <span class="math inline">\(i=1,2,\cdots,K\)</span>. And <span class="math inline">\(y_i\)</span> is the <span class="math inline">\(i\)</span>th component of 1-of-K output for <span class="math inline">\(i=1,2,\cdots,K\)</span>. Clearly, the output of each <span class="math inline">\(y_i(\boldsymbol{x})\)</span> could not be just 0 or 1. And we set the largest value to be 1 and others 0.</p>
+<p>We had discussed the linear regression with the least-squares in a 'single-target' regression problem. And that idea can also be employed in the multiple targets regression. And these <span class="math inline">\(K\)</span> weight vectors <span class="math inline">\(\boldsymbol{w}_i\)</span> can be calculated simultaneously. We can rewrite the equation (1) into the matrix form:</p>
+<p><span class="math display">\[
+\boldsymbol{y}(\boldsymbol{x})=W^T\boldsymbol{x}\tag{2}
+\]</span></p>
+<p>where the <span class="math inline">\(i\)</span>th column of <span class="math inline">\(W\)</span> is <span class="math inline">\(\boldsymbol{w}_i\)</span></p>
 <p>Then we employ least square method for a smaple:</p>
-<p>$$<br>{(\boldsymbol{x}_1,\boldsymbol{t}_1),(\boldsymbol{x}_2,\boldsymbol{t}_2),\cdots,(\boldsymbol{x}_m,\boldsymbol{t}_m)} \tag{3}<br>$$</p>
-<p>where $\boldsymbol{t}$ is a $K$-dimensional target consisting of $k-1$ 0’s and one ‘1’. And each diminsion of output $\boldsymbol{y}(\boldsymbol{x})_i$ is the regression result of the corresponding dimension of target $t_i$. And we build up the input matrix $X$ of all $m$ input consisting of $\boldsymbol{x}^T$ as rows:</p>
-<p>$$<br>X=\begin{bmatrix}<br>-&amp;\boldsymbol{x}^T_1&amp;-\<br>-&amp;\boldsymbol{x}^T_2&amp;-\<br>&amp;\vdots&amp;\<br>-&amp;\boldsymbol{x}^T_K&amp;-<br>\end{bmatrix}\tag{4}<br>$$</p>
+<p><span class="math display">\[
+\{(\boldsymbol{x}_1,\boldsymbol{t}_1),(\boldsymbol{x}_2,\boldsymbol{t}_2),\cdots,(\boldsymbol{x}_m,\boldsymbol{t}_m)\} \tag{3}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{t}\)</span> is a <span class="math inline">\(K\)</span>-dimensional target consisting of <span class="math inline">\(k-1\)</span> 0's and one '1'. And each diminsion of output <span class="math inline">\(\boldsymbol{y}(\boldsymbol{x})_i\)</span> is the regression result of the corresponding dimension of target <span class="math inline">\(t_i\)</span>. And we build up the input matrix <span class="math inline">\(X\)</span> of all <span class="math inline">\(m\)</span> input consisting of <span class="math inline">\(\boldsymbol{x}^T\)</span> as rows:</p>
+<p><span class="math display">\[
+X=\begin{bmatrix}
+-&amp;\boldsymbol{x}^T_1&amp;-\\
+-&amp;\boldsymbol{x}^T_2&amp;-\\
+&amp;\vdots&amp;\\
+-&amp;\boldsymbol{x}^T_K&amp;-
+\end{bmatrix}\tag{4}
+\]</span></p>
 <p>The sum of square error is:</p>
-<p>$$<br>E(W)=\frac{1}{2}\mathrm{Tr}{(XW-T)^T(XW-T)} \tag{5}<br>$$</p>
-<p>where the matrix $T$ is the target matrix whose $i$th row in target vevtor $\boldsymbol{t}^T_i$. The trace operation is employed because the only the value $(W\boldsymbol{x}^T_i-\boldsymbol{t}_i)^T(W\boldsymbol{x}_i^T-\boldsymbol{t}_i)$ for $i=1,2,\cdots,m$ is meaningful, but $(W\boldsymbol{x}^T_i-\boldsymbol{t}_i)^T(W\boldsymbol{x}_j^T-\boldsymbol{t}_j)$ where $i\neq j$ and $i,j = 1,2,\cdots,m$ is useless.</p>
-<p>To minimize the linear equation in equation(5), we can get its derivative </p>
-<p>$$<br>\begin{aligned}<br>  \frac{dE(W)}{dW}&amp;=\frac{d}{dW}(\frac{1}{2}\mathrm{Tr}{(XW-T)^T(XW-T)})\<br>  &amp;=\frac{1}{2}\frac{d}{dW}(\mathrm{Tr}{W^TX^TXW-T^TXW-W^TX^TT+T^TT})\<br>  &amp;=\frac{1}{2}\frac{d}{dW}(\mathrm{Tr}{W^TX^TXW}-\mathrm{Tr}{T^TXW}\<br>  &amp;-\mathrm{Tr}{W^TX^TT}+\mathrm{Tr}{T^TT})\<br>  &amp;=\frac{1}{2}\frac{d}{dW}(\mathrm{Tr}{W^TX^TXW}-2\mathrm{Tr}{T^TXW}+\mathrm{Tr}{T^TT})\<br>  &amp;=\frac{1}{2}(X^TXW-X^TT)<br>\end{aligned}\tag{6}<br>$$</p>
-<p>and set it eqaul to $\boldsymbol{0}$:</p>
-<p>$$<br>\begin{aligned}<br>  \frac{1}{2}(X^TXW-X^TT )&amp;= \boldsymbol{0}\<br>  W&amp;=(X^TX)^{-1}X^TT<br>\end{aligned}\tag{7}<br>$$</p>
-<p>where we assume $X^TX$ can be inverted.<br>The component $(X^TX)^{-1}X^T$ is also called pseudo-inverse of the matrix $X$ and it is always denoted as $X^{\dagger}$.</p>
-<h2 id="Code-and-Result"><a href="#Code-and-Result" class="headerlink" title="Code and Result"></a>Code and Result</h2><p>The code of this algorithm is relatively simple because we have programmed the linear regression before which has the same form of equation (7).</p>
-<p>What we should care about is the formation of these matrices $W$, $X$ and $T$.</p>
+<p><span class="math display">\[
+E(W)=\frac{1}{2}\mathrm{Tr}\{(XW-T)^T(XW-T)\} \tag{5}
+\]</span></p>
+<p>where the matrix <span class="math inline">\(T\)</span> is the target matrix whose <span class="math inline">\(i\)</span>th row in target vevtor <span class="math inline">\(\boldsymbol{t}^T_i\)</span>. The trace operation is employed because the only the value <span class="math inline">\((W\boldsymbol{x}^T_i-\boldsymbol{t}_i)^T(W\boldsymbol{x}_i^T-\boldsymbol{t}_i)\)</span> for <span class="math inline">\(i=1,2,\cdots,m\)</span> is meaningful, but <span class="math inline">\((W\boldsymbol{x}^T_i-\boldsymbol{t}_i)^T(W\boldsymbol{x}_j^T-\boldsymbol{t}_j)\)</span> where <span class="math inline">\(i\neq j\)</span> and <span class="math inline">\(i,j = 1,2,\cdots,m\)</span> is useless.</p>
+<p>To minimize the linear equation in equation(5), we can get its derivative</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{dE(W)}{dW}&amp;=\frac{d}{dW}(\frac{1}{2}\mathrm{Tr}\{(XW-T)^T(XW-T)\})\\
+  &amp;=\frac{1}{2}\frac{d}{dW}(\mathrm{Tr}\{W^TX^TXW-T^TXW-W^TX^TT+T^TT\})\\
+  &amp;=\frac{1}{2}\frac{d}{dW}(\mathrm{Tr}\{W^TX^TXW\}-\mathrm{Tr}\{T^TXW\}\\
+  &amp;-\mathrm{Tr}\{W^TX^TT\}+\mathrm{Tr}\{T^TT\})\\
+  &amp;=\frac{1}{2}\frac{d}{dW}(\mathrm{Tr}\{W^TX^TXW\}-2\mathrm{Tr}\{T^TXW\}+\mathrm{Tr}\{T^TT\})\\
+  &amp;=\frac{1}{2}(X^TXW-X^TT)
+\end{aligned}\tag{6}
+\]</span></p>
+<p>and set it eqaul to <span class="math inline">\(\boldsymbol{0}\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \frac{1}{2}(X^TXW-X^TT )&amp;= \boldsymbol{0}\\
+  W&amp;=(X^TX)^{-1}X^TT
+\end{aligned}\tag{7}
+\]</span></p>
+<p>where we assume <span class="math inline">\(X^TX\)</span> can be inverted. The component <span class="math inline">\((X^TX)^{-1}X^T\)</span> is also called pseudo-inverse of the matrix <span class="math inline">\(X\)</span> and it is always denoted as <span class="math inline">\(X^{\dagger}\)</span>.</p>
+<h2 id="code-and-result">Code and Result</h2>
+<p>The code of this algorithm is relatively simple because we have programmed the linear regression before which has the same form of equation (7).</p>
+<p>What we should care about is the formation of these matrices <span class="math inline">\(W\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>.</p>
 <p>we should first convert the target value into 1-of-K form:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">label_convert</span>(<span class="params">y, method =<span class="string">&#x27;1-of-K&#x27;</span></span>):</span></span><br><span class="line">    <span class="keyword">if</span> method == <span class="string">&#x27;1-of-K&#x27;</span>:</span><br><span class="line">        label_dict = &#123;&#125;</span><br><span class="line">        number_of_label = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> y:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> label_dict:</span><br><span class="line">                label_dict[i] = number_of_label</span><br><span class="line">                number_of_label += <span class="number">1</span></span><br><span class="line">        y_ = np.zeros([len(y),number_of_label])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(y)):</span><br><span class="line">            y_[i][label_dict[y[i]]] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> y_,number_of_label</span><br></pre></td></tr></table></figure>
-
-<p>what we do is to count the total number of labels($K$)and we set the $i$th component of the 1-of-K target to 1 and other components to 0.</p>
+<p>what we do is to count the total number of labels(<span class="math inline">\(K\)</span>)and we set the <span class="math inline">\(i\)</span>th component of the 1-of-K target to 1 and other components to 0.</p>
 <p>The kernel of the algorithm is:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearClassifier</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">least_square</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        x = np.array(x)</span><br><span class="line">        x_dim = x.shape[<span class="number">0</span>]</span><br><span class="line">        x = np.c_[np.ones(x_dim), x]</span><br><span class="line">        w = np.linalg.pinv(x.transpose().dot(x)).dot(x.transpose()).dot(y)</span><br><span class="line">        <span class="keyword">return</span> w.transpose()</span><br></pre></td></tr></table></figure>
-
-<p>the line <code>x = np.c_[np.ones(x_dim), x]</code> is to augment the input vector $\boldsymbol{x}$ with a dummy value $1$. And the transpose of the result is to make each row represent a weight vector of eqation (2). The entire project can be found The entire project can be found <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/ML">https://github.com/Tony-Tan/ML</a> and please star me.</p>
+<p>the line <code>x = np.c_[np.ones(x_dim), x]</code> is to augment the input vector <span class="math inline">\(\boldsymbol{x}\)</span> with a dummy value <span class="math inline">\(1\)</span>. And the transpose of the result is to make each row represent a weight vector of eqation (2). The entire project can be found The entire project can be found <a target="_blank" rel="noopener" href="https://github.com/Tony-Tan/ML">https://github.com/Tony-Tan/ML</a> and please star me.</p>
 <p>I have test the algorithm in several training set, and the result is like the following figures:</p>
-<p><img src="./2.png"><br><img src="./1.png"><br><img src="./5.png"><br><img src="./7.png"></p>
-<h3 id="Problems-of-Least-Squares"><a href="#Problems-of-Least-Squares" class="headerlink" title="Problems of Least Squares"></a>Problems of Least Squares</h3><ol>
+<p><img src="./2.png" /> <img src="./1.png" /> <img src="./5.png" /> <img src="./7.png" /></p>
+<h3 id="problems-of-least-squares">Problems of Least Squares</h3>
+<ol type="1">
 <li>Lack of robustness if outliers (Figure 2 illustrates this problem)</li>
-<li>Sum of squares error penalizes the predictions that are too correct(if an input belongs to label ‘1’ but its output is ‘100’)</li>
+<li>Sum of squares error penalizes the predictions that are too correct(if an input belongs to label '1' but its output is '100')</li>
 <li>Least squares workes for regression when we assume the target data has a Gaussian distribution and then the least-squares method maximizes the likelihood function. The distribution of targets in these classification tasks is not Gaussian.</li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

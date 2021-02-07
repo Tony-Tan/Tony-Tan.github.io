@@ -170,7 +170,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#From-k-armed-bandit-to-Reinforcement-learning"><span class="nav-number">1.</span> <span class="nav-text">From k-armed bandit to Reinforcement learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -320,53 +320,50 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> Associative, Stationary, Nonassociative, Nonstationary, Contextual Bandits</p>
-<a id="more"></a>
-<h2 id="From-k-armed-bandit-to-Reinforcement-learning"><a href="#From-k-armed-bandit-to-Reinforcement-learning" class="headerlink" title="From k-armed bandit to Reinforcement learning"></a>From k-armed bandit to Reinforcement learning</h2><p>So far, we have learned several methods to solve $k$-armed bandit problem for both stationary and nonstationary:</p>
-<ol>
-<li><a href="TODO">‘An Introduction to $k$-armed Bandit Problem’</a></li>
-<li><a href="TODO">‘Incremental Implementation’</a></li>
-<li><a href="TODO">‘Optimistic Initial Value’</a></li>
-<li><a href="TODO">‘the 10-armed Testbed’</a></li>
-</ol>
+        <p><strong>Keywords:</strong> Associative, Stationary, Nonassociative, Nonstationary, Contextual Bandits <a id="more"></a> ## From k-armed bandit to Reinforcement learning So far, we have learned several methods to solve <span class="math inline">\(k\)</span>-armed bandit problem for both stationary and nonstationary: 1. <a href="TODO">'An Introduction to <span class="math inline">\(k\)</span>-armed Bandit Problem'</a> 2. <a href="TODO">'Incremental Implementation'</a> 3. <a href="TODO">'Optimistic Initial Value'</a> 4. <a href="TODO">'the 10-armed Testbed'</a></p>
 <p>and so on.</p>
 <p>All these tasks are nonassociative. Because they do not need to associate different action with different situations. In all the tasks we have talked about are all in one situation no matter it is stationary or nonstationary. In the nonassociative problem, we explore and exploite. But the general reinforcement learning tasks are always more than one situation. And its goal is to learn a policy to map from situations to the actions that are best in those situation.</p>
 <p>Understanding the difference between nonassociative and associative task is a good way to learn full reinforcement learning.</p>
-<p>Consider several k-armed bandits:<br>$$<br>{\text{kab}_1,\text{kab}_2,\cdots,\text{kab}_n}\tag{1}<br>$$</p>
-<p>And in each step, we face a random slot machine from the set in equation(1). If the agent can not tell the slot machine in the set apart, this is a nonassociation problem. And this task can not be solved by the methods we have learned so far unless the are very simlar:<br><img src="./non-association.jpeg"></p>
-<p>However, if the agent can verify these different situatiin, for example these machines have different colors, so we can learn a policy associate to each situation(a certain color machine), like for the red machine, action 2 is best, and for the yellow one the first action is taken. This is the association task. So to solve this kind of problem, we need :</p>
-<ol>
-<li>not only trial-and-error learning to search for the best action like in the nonassociative ones,</li>
-<li>but also associate these action to the situations</li>
-</ol>
-<p><img src="./association.jpeg"></p>
+<p>Consider several k-armed bandits: <span class="math display">\[
+\{\text{kab}_1,\text{kab}_2,\cdots,\text{kab}_n\}\tag{1}
+\]</span></p>
+<p>And in each step, we face a random slot machine from the set in equation(1). If the agent can not tell the slot machine in the set apart, this is a nonassociation problem. And this task can not be solved by the methods we have learned so far unless the are very simlar: <img src="./non-association.jpeg" /></p>
+<p>However, if the agent can verify these different situatiin, for example these machines have different colors, so we can learn a policy associate to each situation(a certain color machine), like for the red machine, action 2 is best, and for the yellow one the first action is taken. This is the association task. So to solve this kind of problem, we need : 1. not only trial-and-error learning to search for the best action like in the nonassociative ones, 2. but also associate these action to the situations</p>
+<p><img src="./association.jpeg" /></p>
 <p>The bandit problems with associative search are called contextual bandits(color or other information can be used to verified the situation). And it is a good stage help us understand full reinforcement learning from the simplest nonassociative problems such as the k-armed bandits we have learned.</p>
 <p>This table conclude the difference and relation of k-armed bandit problems, associative search tasks, and full reinforcement learning:</p>
 <table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 40%" />
+<col style="width: 33%" />
+</colgroup>
 <thead>
-<tr>
-<th align="center">task</th>
-<th align="center">Effect of action</th>
-<th align="center">Situation</th>
+<tr class="header">
+<th style="text-align: center;">task</th>
+<th style="text-align: center;">Effect of action</th>
+<th style="text-align: center;">Situation</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$k$-armed bandits</td>
-<td align="center">reward</td>
-<td align="center">never change</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(k\)</span>-armed bandits</td>
+<td style="text-align: center;">reward</td>
+<td style="text-align: center;">never change</td>
 </tr>
-<tr>
-<td align="center">associative search tasks</td>
-<td align="center">reward</td>
-<td align="center">can be verified, but dicided by environment</td>
+<tr class="even">
+<td style="text-align: center;">associative search tasks</td>
+<td style="text-align: center;">reward</td>
+<td style="text-align: center;">can be verified, but dicided by environment</td>
 </tr>
-<tr>
-<td align="center">full reinforcement learning</td>
-<td align="center">reward &amp; situation</td>
-<td align="center">decided by action</td>
+<tr class="odd">
+<td style="text-align: center;">full reinforcement learning</td>
+<td style="text-align: center;">reward &amp; situation</td>
+<td style="text-align: center;">decided by action</td>
 </tr>
-</tbody></table>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+</tbody>
+</table>
+<h2 id="references">References</h2>
 
     </div>
 

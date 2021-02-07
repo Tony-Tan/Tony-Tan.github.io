@@ -169,7 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Policy-Evaluation-Prediction"><span class="nav-number">1.</span> <span class="nav-text">Policy Evaluation(Prediction)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#In-Place-Update"><span class="nav-number">2.</span> <span class="nav-text">In Place Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-of-Policy-Evaluation"><span class="nav-number">3.</span> <span class="nav-text">Example of Policy Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-evaluationprediction"><span class="nav-number">1.</span> <span class="nav-text">Policy Evaluation(Prediction)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in-place-update"><span class="nav-number">2.</span> <span class="nav-text">In Place Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-of-policy-evaluation"><span class="nav-number">3.</span> <span class="nav-text">Example of Policy Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -319,48 +319,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p>Dynamic programming have been introduced in the post <a href="TODO">‘An Introduction to Dynamic Programming’</a>. And the following mission is to study some relative algorithms.</p>
-<h2 id="Policy-Evaluation-Prediction"><a href="#Policy-Evaluation-Prediction" class="headerlink" title="Policy Evaluation(Prediction)"></a>Policy Evaluation(Prediction)</h2><p>Value function is widely employed in both DP methods and other reinforcement learning tasks. And if we have the optimal value function when the problems are MDP especially the finite MDP, we can find the optimal policy by just one-step search(that has been introduced in the post <a href="TODO">‘Optimal Policies and Optimal Value Functions’</a>). So, our first strategy is to find the optimal policies through the optimal value functions.</p>
+        <p><strong>Abstract:</strong> <a id="more"></a> Dynamic programming have been introduced in the post <a href="TODO">'An Introduction to Dynamic Programming'</a>. And the following mission is to study some relative algorithms.</p>
+<h2 id="policy-evaluationprediction">Policy Evaluation(Prediction)</h2>
+<p>Value function is widely employed in both DP methods and other reinforcement learning tasks. And if we have the optimal value function when the problems are MDP especially the finite MDP, we can find the optimal policy by just one-step search(that has been introduced in the post <a href="TODO">'Optimal Policies and Optimal Value Functions'</a>). So, our first strategy is to find the optimal policies through the optimal value functions.</p>
 <p>Recall the interaction between agent and environment:</p>
-<p><img src="./agent-environment.jpeg"></p>
-<p>actions of agent are controled by the policy of agent, i.e. $\pi(a|s)$, for a given state. And the value functions we are interested in are consist of the policy $\pi(a|s)$ according Bellman equation(equation (6) in post <a href="TODO">‘Policies and Value Function’</a>):<br>$$<br>\begin{aligned}<br>  v_{\pi}(s)&amp;\doteq \mathbb{E}<em>{\pi}[G_t|S_t=s]\<br>  &amp;=\mathbb{E}</em>{\pi}[R_{t+1}+\gamma G_{t+1}|S_t=s]\<br>  &amp;= \sum_a\pi(a|s)\sum_{s’}\sum_{r}p(s’,r|s,a)[r+\gamma\mathbb{E}<em>{\pi}[G</em>{t+1}|S_{t+1}=s’]]\<br>  &amp;= \sum_a\pi(a|s)\sum_{s’,r}p(s’,r|s,a)[r+\gamma v_{\pi}(s’)]<br>\end{aligned}\tag{1}<br>$$</p>
+<p><img src="./agent-environment.jpeg" /></p>
+<p>actions of agent are controled by the policy of agent, i.e. <span class="math inline">\(\pi(a|s)\)</span>, for a given state. And the value functions we are interested in are consist of the policy <span class="math inline">\(\pi(a|s)\)</span> according Bellman equation(equation (6) in post <a href="TODO">'Policies and Value Function'</a>): <span class="math display">\[
+\begin{aligned}
+  v_{\pi}(s)&amp;\doteq \mathbb{E}_{\pi}[G_t|S_t=s]\\
+  &amp;=\mathbb{E}_{\pi}[R_{t+1}+\gamma G_{t+1}|S_t=s]\\
+  &amp;= \sum_a\pi(a|s)\sum_{s&#39;}\sum_{r}p(s&#39;,r|s,a)[r+\gamma\mathbb{E}_{\pi}[G_{t+1}|S_{t+1}=s&#39;]]\\
+  &amp;= \sum_a\pi(a|s)\sum_{s&#39;,r}p(s&#39;,r|s,a)[r+\gamma v_{\pi}(s&#39;)]
+\end{aligned}\tag{1}
+\]</span></p>
 <p>So, here we just consider the situation that the policy is consistent, which means during computing value function the policy does not change. However, this policy could be arbitrary. Once the policy is invariant, our task convert to a prediction problem, that is to say, we could predict the sum of rewards we would get in the following steps before termination by current state.</p>
-<p>The existence and uniquess of $v_{\pi}$ are guaranteed if:</p>
-<ol>
-<li>$\gamma&lt;1$ or</li>
-<li>eventually termination is guaranteed.</li>
-</ol>
-<p>And if dynamic is completely known, equation (1) converts to a equation of unknows $v_{\pi}(s)$ and $v_{\pi}(s’)$. And $|\mathcal{S}|$, $|\mathcal{A}(s)|$,$|\mathcal{R}|$ and $|\mathcal{S}^{+}|$ are all finite(this has been declared in the post <a href="TODO">‘An Introduction to Dynamic Programming’</a>). So equation (1) can be used to build a system of $|\mathcal{S}|$ simultaneous linear equations in $|\mathcal{S}|$ unknowns, i.e. $v_{\pi}(s)$ for $s\in{\mathcal{S}}$</p>
-<p>A system of $|\mathcal{S}|$ linear equations of $|\mathcal{S}|$ unknows is a troditional problem of linear algebra. And it can be solved in many ways like least square method, and there must be an optimal solution for its linearity. However, in DP methods, we prefer iterative solutions because of their efficiency and simplicity. The iterative process could produce a sequence of value functions:<br>$$<br>{v_0,v_1,\cdots ,v_k}<br>$$</p>
-<p>And each of them is a function mapping $\mathcal{S}^{+}$ to $\mathbb{R}$. The inital value fuction $v_0$ can be chosed arbitrary, but the value of terminal state should be assigned $0$. Other value function $v_i$ for $i&gt;0$ should also be assigned $0$ if the state is termination.</p>
+<p>The existence and uniquess of <span class="math inline">\(v_{\pi}\)</span> are guaranteed if: 1. <span class="math inline">\(\gamma&lt;1\)</span> or 2. eventually termination is guaranteed.</p>
+<p>And if dynamic is completely known, equation (1) converts to a equation of unknows <span class="math inline">\(v_{\pi}(s)\)</span> and <span class="math inline">\(v_{\pi}(s&#39;)\)</span>. And <span class="math inline">\(|\mathcal{S}|\)</span>, <span class="math inline">\(|\mathcal{A}(s)|\)</span>,<span class="math inline">\(|\mathcal{R}|\)</span> and <span class="math inline">\(|\mathcal{S}^{+}|\)</span> are all finite(this has been declared in the post <a href="TODO">'An Introduction to Dynamic Programming'</a>). So equation (1) can be used to build a system of <span class="math inline">\(|\mathcal{S}|\)</span> simultaneous linear equations in <span class="math inline">\(|\mathcal{S}|\)</span> unknowns, i.e. <span class="math inline">\(v_{\pi}(s)\)</span> for <span class="math inline">\(s\in{\mathcal{S}}\)</span></p>
+<p>A system of <span class="math inline">\(|\mathcal{S}|\)</span> linear equations of <span class="math inline">\(|\mathcal{S}|\)</span> unknows is a troditional problem of linear algebra. And it can be solved in many ways like least square method, and there must be an optimal solution for its linearity. However, in DP methods, we prefer iterative solutions because of their efficiency and simplicity. The iterative process could produce a sequence of value functions: <span class="math display">\[
+\{v_0,v_1,\cdots ,v_k\}
+\]</span></p>
+<p>And each of them is a function mapping <span class="math inline">\(\mathcal{S}^{+}\)</span> to <span class="math inline">\(\mathbb{R}\)</span>. The inital value fuction <span class="math inline">\(v_0\)</span> can be chosed arbitrary, but the value of terminal state should be assigned <span class="math inline">\(0\)</span>. Other value function <span class="math inline">\(v_i\)</span> for <span class="math inline">\(i&gt;0\)</span> should also be assigned <span class="math inline">\(0\)</span> if the state is termination.</p>
 <p>The update rule to solve equation (1) is also equation(1) with different subscript:</p>
-<p>$$<br>\begin{aligned}<br>  v_{k+1}&amp;\doteq \mathbb{E}<em>{\pi}[R</em>{t+1}+\gamma v_k(S_{t+1})|S_t=s]\<br>  &amp;=\sum_{a}\pi(a|s)\sum_{s’,r}p(s’,r|s,a)[r+\gamma v_k(s’)]<br>\end{aligned}\tag{2}<br>$$</p>
-<p>for all $s\in \mathcal{S}$. The sequence ${v_0,v_1,\cdots}$ would converge to $v_{\pi}$ as $k\to \infty$ under the conditions that guarantee the existence of $v_{\pi}$. And this is called iterative policy evaluation. $v_{k+1}(s)$ is the new value of $s$ and $v_k$ is the old value of $S_{t+1}$. This kind of expected update depends on the following two elements:</p>
-<ol>
-<li>state or state-action paire</li>
-<li>precise way the estimated values of successor state are combined.</li>
-</ol>
-<p>Because the state and state-action paire are arguments and the way of the combination of extimated values of successor state are the direction of update. All update done in the DP algorithms are called expected updates because they are based on expectation over all next stat, $v_k(S_{t+1})$, rather than on a sample next state, $v_k(s’)$. And these update can be represented by equation like equation(2) and backup diagram(introduced in the post <a href="TODO">‘Policies and Value Function’</a>).</p>
-<h2 id="In-Place-Update"><a href="#In-Place-Update" class="headerlink" title="In Place Update"></a>In Place Update</h2><p>Let’s go back to the update rule:<br>$$<br>v_{k+1}=\mathbb{E}<em>{\pi}[R</em>{t+1}+\gamma v_k(S_{t+1})|S_t=s]<br>$$</p>
-<p>$S_{t+1}$ contains all possible states and the value function of some of them had been updated. So we can replaced the old value function of a state by the new one. Further, We usually update the whole state space one by one in a certain sequence. So some of them have a new value function and others are not. Then we have two ways to deal with these update:</p>
-<ol>
-<li>use an array store new value function and update the value function of the whole state space after a sweep</li>
-<li>update at once the state has a new value</li>
-</ol>
-<p>For example, the old value of states $s_1$, $s_2$ and $s_3$ are $v_t(s_1)=1$, $v_t(s_2)=2$ and $v_t(s_3)=3$:</p>
-<ol>
-<li>we update value of $s_1$ basing on $v_t(S_{t+1})$ and it becomes $v_{t+1}(s_1)=0$ for instance.</li>
-<li>with in-place method, we update $v_t(S_{t+1}=s_1)$  to $0$</li>
-<li>then we use $v_t(S_{t+1}=s_1)=0$ update $v_t(s_2)$ </li>
-</ol>
-<p>this is in-place method. In-place method converges to $v_{\pi}$ faster than original one. A sweep is definition of a loop for each $s\in\mathcal{S}$. And the order of the ‘in-place’ update of value of state has significant influnce on the rate of convergence. In-place update is always the first idea when we use iterative update methods.</p>
-<h2 id="Example-of-Policy-Evaluation"><a href="#Example-of-Policy-Evaluation" class="headerlink" title="Example of Policy Evaluation"></a>Example of Policy Evaluation</h2><p>Gridword:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  v_{k+1}&amp;\doteq \mathbb{E}_{\pi}[R_{t+1}+\gamma v_k(S_{t+1})|S_t=s]\\
+  &amp;=\sum_{a}\pi(a|s)\sum_{s&#39;,r}p(s&#39;,r|s,a)[r+\gamma v_k(s&#39;)]
+\end{aligned}\tag{2}
+\]</span></p>
+<p>for all <span class="math inline">\(s\in \mathcal{S}\)</span>. The sequence <span class="math inline">\(\{v_0,v_1,\cdots\}\)</span> would converge to <span class="math inline">\(v_{\pi}\)</span> as <span class="math inline">\(k\to \infty\)</span> under the conditions that guarantee the existence of <span class="math inline">\(v_{\pi}\)</span>. And this is called iterative policy evaluation. <span class="math inline">\(v_{k+1}(s)\)</span> is the new value of <span class="math inline">\(s\)</span> and <span class="math inline">\(v_k\)</span> is the old value of <span class="math inline">\(S_{t+1}\)</span>. This kind of expected update depends on the following two elements: 1. state or state-action paire 2. precise way the estimated values of successor state are combined.</p>
+<p>Because the state and state-action paire are arguments and the way of the combination of extimated values of successor state are the direction of update. All update done in the DP algorithms are called expected updates because they are based on expectation over all next stat, <span class="math inline">\(v_k(S_{t+1})\)</span>, rather than on a sample next state, <span class="math inline">\(v_k(s&#39;)\)</span>. And these update can be represented by equation like equation(2) and backup diagram(introduced in the post <a href="TODO">'Policies and Value Function'</a>).</p>
+<h2 id="in-place-update">In Place Update</h2>
+<p>Let's go back to the update rule: <span class="math display">\[
+v_{k+1}=\mathbb{E}_{\pi}[R_{t+1}+\gamma v_k(S_{t+1})|S_t=s]
+\]</span></p>
+<p><span class="math inline">\(S_{t+1}\)</span> contains all possible states and the value function of some of them had been updated. So we can replaced the old value function of a state by the new one. Further, We usually update the whole state space one by one in a certain sequence. So some of them have a new value function and others are not. Then we have two ways to deal with these update: 1. use an array store new value function and update the value function of the whole state space after a sweep 2. update at once the state has a new value</p>
+<p>For example, the old value of states <span class="math inline">\(s_1\)</span>, <span class="math inline">\(s_2\)</span> and <span class="math inline">\(s_3\)</span> are <span class="math inline">\(v_t(s_1)=1\)</span>, <span class="math inline">\(v_t(s_2)=2\)</span> and <span class="math inline">\(v_t(s_3)=3\)</span>: 1. we update value of <span class="math inline">\(s_1\)</span> basing on <span class="math inline">\(v_t(S_{t+1})\)</span> and it becomes <span class="math inline">\(v_{t+1}(s_1)=0\)</span> for instance. 2. with in-place method, we update <span class="math inline">\(v_t(S_{t+1}=s_1)\)</span> to <span class="math inline">\(0\)</span> 3. then we use <span class="math inline">\(v_t(S_{t+1}=s_1)=0\)</span> update <span class="math inline">\(v_t(s_2)\)</span></p>
+<p>this is in-place method. In-place method converges to <span class="math inline">\(v_{\pi}\)</span> faster than original one. A sweep is definition of a loop for each <span class="math inline">\(s\in\mathcal{S}\)</span>. And the order of the 'in-place' update of value of state has significant influnce on the rate of convergence. In-place update is always the first idea when we use iterative update methods.</p>
+<h2 id="example-of-policy-evaluation">Example of Policy Evaluation</h2>
+<p>Gridword:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//todo</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<h2 id="references">References</h2>
 
     </div>
 

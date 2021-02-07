@@ -169,7 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Policy"><span class="nav-number">1.</span> <span class="nav-text">Policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Value-Function"><span class="nav-number">2.</span> <span class="nav-text">Value Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Value-Function-of-State"><span class="nav-number">2.1.</span> <span class="nav-text">Value Function of State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value-Function-of-Action"><span class="nav-number">2.2.</span> <span class="nav-text">Value Function of Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backup-Diagram"><span class="nav-number">2.3.</span> <span class="nav-text">Backup Diagram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy"><span class="nav-number">1.</span> <span class="nav-text">Policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-function"><span class="nav-number">2.</span> <span class="nav-text">Value Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#value-function-of-state"><span class="nav-number">2.1.</span> <span class="nav-text">Value Function of State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#value-function-of-action"><span class="nav-number">2.2.</span> <span class="nav-text">Value Function of Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#backup-diagram"><span class="nav-number">2.3.</span> <span class="nav-text">Backup Diagram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -319,51 +319,60 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p>Beside the concepts we have talked about, like agent, environment, goals and rewards, value and value function are another two common words in reinforcement learning. Almost all reinforcement learning algorithms involve estimating value functions. Two forms of value function are:</p>
-<ol>
-<li>function of states: how good the agent would be from a given state.</li>
-<li>function of action(or ‘state-action’ pairs): how good an agent would be when it perform an action(i.e. $a$) at a given state(i.e. $s$).</li>
-</ol>
-<p>‘How good’ can be measured in many ways, but in reforcement learning it is always defined by the expected future rewards, or equally the expected return. However, before we define the value function, we should know how to select an action. Because the action is the only way through which the agent interact with the environment, and the future rewards are fully decided by the environment. In one word, value function is defined of rewards, and rewards is the reaction of the environment to a certain action of the agent.</p>
-<h2 id="Policy"><a href="#Policy" class="headerlink" title="Policy"></a>Policy</h2><p>The policy is how to select an action for a state. We know the state is the information the agent can get from current environment. And the action is produced by the agent basing on the state it is faceing to. For example, we are the agent, and the environment is the weather outside the house. We can not see what the weather is like outside for the curtain was draw. We can only hear like it is raining(this is the description of state, the information the agent could collect from environment). Then we should decide what to do:</p>
-<ol>
-<li>stay at home</li>
-<li>go to work on foot with raincoat</li>
-<li>go to work by car without raincoat or umbrella</li>
-</ol>
+        <p><strong>Abstract:</strong> <a id="more"></a> Beside the concepts we have talked about, like agent, environment, goals and rewards, value and value function are another two common words in reinforcement learning. Almost all reinforcement learning algorithms involve estimating value functions. Two forms of value function are: 1. function of states: how good the agent would be from a given state. 2. function of action(or 'state-action' pairs): how good an agent would be when it perform an action(i.e. <span class="math inline">\(a\)</span>) at a given state(i.e. <span class="math inline">\(s\)</span>).</p>
+<p>'How good' can be measured in many ways, but in reforcement learning it is always defined by the expected future rewards, or equally the expected return. However, before we define the value function, we should know how to select an action. Because the action is the only way through which the agent interact with the environment, and the future rewards are fully decided by the environment. In one word, value function is defined of rewards, and rewards is the reaction of the environment to a certain action of the agent.</p>
+<h2 id="policy">Policy</h2>
+<p>The policy is how to select an action for a state. We know the state is the information the agent can get from current environment. And the action is produced by the agent basing on the state it is faceing to. For example, we are the agent, and the environment is the weather outside the house. We can not see what the weather is like outside for the curtain was draw. We can only hear like it is raining(this is the description of state, the information the agent could collect from environment). Then we should decide what to do: 1. stay at home 2. go to work on foot with raincoat 3. go to work by car without raincoat or umbrella</p>
 <p>And the reward of action (1) and of action (2) and (3) are different obviously. And the difference of the reward of action (2) and of action (3) might be slight. However, this is not we should concern now. What we should do is just to select an action of these three. This is the policy, and it is denoted in a probability form:</p>
-<p>$$<br>\pi(a|s)\tag{1}<br>$$</p>
-<p>This is a conditional probabilty of action $a$ given state $s$ which means how to select an action of a given state. And reinforcement learning method specify how the agent’s policy is changed as a result of it experience.</p>
-<h2 id="Value-Function"><a href="#Value-Function" class="headerlink" title="Value Function"></a>Value Function</h2><p>Once we have the definition of policy, we can have a close look at the valur function.</p>
-<h3 id="Value-Function-of-State"><a href="#Value-Function-of-State" class="headerlink" title="Value Function of State"></a>Value Function of State</h3><p>The value function of state $s$ under a policy $\pi$ is denoted as:<br>$$<br>v_{\pi}(s)\tag{2}<br>$$</p>
-<p>For the MDP, the value function of state $s$ is:</p>
-<p>$$<br>\begin{aligned}<br>  v_{\pi}(s)&amp;\doteq \mathbb{E} [G_t|S_t=s]\<br>  &amp;=\mathbb{E}<em>{\pi}[\sum</em>{k=0}^{\infty}\gamma^kR_{t+k+1}|S_t=s]<br>\end{aligned}\tag{3}<br>$$</p>
-<p>for all $s\in \mathcal{S}$ and the value of terminal state is setted to $0$. Equation (3) is the state-value function for policy $\pi$.</p>
-<h3 id="Value-Function-of-Action"><a href="#Value-Function-of-Action" class="headerlink" title="Value Function of Action"></a>Value Function of Action</h3><p>Similarly, the value fo taking action $a$ in state $s$ under a policy $\pi$ is denoted as:</p>
-<p>$$<br>q_{\pi}(s,a)\tag{4}<br>$$</p>
-<p>It represents the expected return starting from state $s$, taking action $a$. And its definition is:</p>
-<p>$$<br>\begin{aligned}<br>  q_{\pi}(s,a)&amp;\doteq \mathbb{E}<em>{\pi}[G_t|S_t=s,A_t=a]\<br>  &amp;=\mathbb{E}[\sum_{k=0}^{\infty}\gamma^kR</em>{t+k+1}|S_t=s,A_t=a]<br>\end{aligned}\tag{5}<br>$$</p>
-<p>Equation (5) is the action-value function for policy $\pi$.</p>
-<p>Value function is widely used in reinforcement learning. And it can be estimated from experience. For example, in the following posts we will introduced:</p>
-<ol>
-<li>Monte Carlo method which estimates the value by averaging returns</li>
-<li>and parameterized function approximator which estimates the value by approximating returns.</li>
-</ol>
-<p>Value functions statisfy recuresive relationships. For any policy $\pi$ and any state $s$, following relation hold:</p>
-<p>$$<br>\begin{aligned}<br>  v_{\pi}(s)&amp;\doteq \mathbb{E}<em>{\pi}[G_t|S_t=s]\<br>  &amp;=\mathbb{E}</em>{\pi}[R_{t+1}+\gamma G_{t+1}|S_t=s]\<br>  &amp;= \sum_a\pi(a|s)\sum_{s’}\sum_{r}p(s’,r|s,a)[r+\gamma\mathbb{E}<em>{\pi}[G</em>{t+1}|S_{t+1}=s’]]\<br>  &amp;= \sum_a\pi(a|s)\sum_{s’,r}p(s’,r|s,a)[r+\gamma v_{\pi}(s’)]<br>\end{aligned}\tag{6}<br>$$</p>
-<p>for all $s\in mathcal{S}$, where $a\in \mathcal{A}, r\in mathcal{R},s\in\mathcal{S}\text{ or }\mathcal{S^+}$. $p(s’,r|s,a)$ in equation (6) is the dynamics of the environment under MDP and the whold process is summing over $a$, $s’$ and $r$. This is called Bellman equation for $v_{\pi}$. And it represents the relation of current value of state and the value of its successor states.</p>
-<h3 id="Backup-Diagram"><a href="#Backup-Diagram" class="headerlink" title="Backup Diagram"></a>Backup Diagram</h3><p>Backup diagram is a powerful tool to illustrate the process of Bellman equation above and other similar process:<br><img src="./backup.jpeg"></p>
-<p>The open blue circle are states, and black solid circles represent action, $\pi$, $r$ and $p$ are policy, reward and dynamics respectively. And it reprecents the action is selected basing on probability $\pi$ and the next state is produced by dynamics who is a probability of $s$, $a$, $r$ and $s’$. So the expectation return of state $s$ can be calculated by two stages:</p>
-<ol>
-<li>the first one is expectation of a certain action $a_i$ by the row of $s’$ : $\sum_{s’,r}p(s’,r|s,a)[r+\gamma v_{\pi}(s’)]$</li>
-<li>the second one is expectation of state $s$ from stage 1: $\sum_a\pi(a|s)\cdot{\text{‘result of stage 1’}}$</li>
-</ol>
+<p><span class="math display">\[
+\pi(a|s)\tag{1}
+\]</span></p>
+<p>This is a conditional probabilty of action <span class="math inline">\(a\)</span> given state <span class="math inline">\(s\)</span> which means how to select an action of a given state. And reinforcement learning method specify how the agent's policy is changed as a result of it experience.</p>
+<h2 id="value-function">Value Function</h2>
+<p>Once we have the definition of policy, we can have a close look at the valur function.</p>
+<h3 id="value-function-of-state">Value Function of State</h3>
+<p>The value function of state <span class="math inline">\(s\)</span> under a policy <span class="math inline">\(\pi\)</span> is denoted as: <span class="math display">\[
+v_{\pi}(s)\tag{2}
+\]</span></p>
+<p>For the MDP, the value function of state <span class="math inline">\(s\)</span> is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  v_{\pi}(s)&amp;\doteq \mathbb{E} [G_t|S_t=s]\\
+  &amp;=\mathbb{E}_{\pi}[\sum_{k=0}^{\infty}\gamma^kR_{t+k+1}|S_t=s]
+\end{aligned}\tag{3}
+\]</span></p>
+<p>for all <span class="math inline">\(s\in \mathcal{S}\)</span> and the value of terminal state is setted to <span class="math inline">\(0\)</span>. Equation (3) is the state-value function for policy <span class="math inline">\(\pi\)</span>.</p>
+<h3 id="value-function-of-action">Value Function of Action</h3>
+<p>Similarly, the value fo taking action <span class="math inline">\(a\)</span> in state <span class="math inline">\(s\)</span> under a policy <span class="math inline">\(\pi\)</span> is denoted as:</p>
+<p><span class="math display">\[
+q_{\pi}(s,a)\tag{4}
+\]</span></p>
+<p>It represents the expected return starting from state <span class="math inline">\(s\)</span>, taking action <span class="math inline">\(a\)</span>. And its definition is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  q_{\pi}(s,a)&amp;\doteq \mathbb{E}_{\pi}[G_t|S_t=s,A_t=a]\\
+  &amp;=\mathbb{E}[\sum_{k=0}^{\infty}\gamma^kR_{t+k+1}|S_t=s,A_t=a]
+\end{aligned}\tag{5}
+\]</span></p>
+<p>Equation (5) is the action-value function for policy <span class="math inline">\(\pi\)</span>.</p>
+<p>Value function is widely used in reinforcement learning. And it can be estimated from experience. For example, in the following posts we will introduced: 1. Monte Carlo method which estimates the value by averaging returns 2. and parameterized function approximator which estimates the value by approximating returns.</p>
+<p>Value functions statisfy recuresive relationships. For any policy <span class="math inline">\(\pi\)</span> and any state <span class="math inline">\(s\)</span>, following relation hold:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  v_{\pi}(s)&amp;\doteq \mathbb{E}_{\pi}[G_t|S_t=s]\\
+  &amp;=\mathbb{E}_{\pi}[R_{t+1}+\gamma G_{t+1}|S_t=s]\\
+  &amp;= \sum_a\pi(a|s)\sum_{s&#39;}\sum_{r}p(s&#39;,r|s,a)[r+\gamma\mathbb{E}_{\pi}[G_{t+1}|S_{t+1}=s&#39;]]\\
+  &amp;= \sum_a\pi(a|s)\sum_{s&#39;,r}p(s&#39;,r|s,a)[r+\gamma v_{\pi}(s&#39;)]
+\end{aligned}\tag{6}
+\]</span></p>
+<p>for all <span class="math inline">\(s\in mathcal{S}\)</span>, where <span class="math inline">\(a\in \mathcal{A}, r\in mathcal{R},s\in\mathcal{S}\text{ or }\mathcal{S^+}\)</span>. <span class="math inline">\(p(s&#39;,r|s,a)\)</span> in equation (6) is the dynamics of the environment under MDP and the whold process is summing over <span class="math inline">\(a\)</span>, <span class="math inline">\(s&#39;\)</span> and <span class="math inline">\(r\)</span>. This is called Bellman equation for <span class="math inline">\(v_{\pi}\)</span>. And it represents the relation of current value of state and the value of its successor states.</p>
+<h3 id="backup-diagram">Backup Diagram</h3>
+<p>Backup diagram is a powerful tool to illustrate the process of Bellman equation above and other similar process: <img src="./backup.jpeg" /></p>
+<p>The open blue circle are states, and black solid circles represent action, <span class="math inline">\(\pi\)</span>, <span class="math inline">\(r\)</span> and <span class="math inline">\(p\)</span> are policy, reward and dynamics respectively. And it reprecents the action is selected basing on probability <span class="math inline">\(\pi\)</span> and the next state is produced by dynamics who is a probability of <span class="math inline">\(s\)</span>, <span class="math inline">\(a\)</span>, <span class="math inline">\(r\)</span> and <span class="math inline">\(s&#39;\)</span>. So the expectation return of state <span class="math inline">\(s\)</span> can be calculated by two stages: 1. the first one is expectation of a certain action <span class="math inline">\(a_i\)</span> by the row of <span class="math inline">\(s&#39;\)</span> : <span class="math inline">\(\sum_{s&#39;,r}p(s&#39;,r|s,a)[r+\gamma v_{\pi}(s&#39;)]\)</span> 2. the second one is expectation of state <span class="math inline">\(s\)</span> from stage 1: <span class="math inline">\(\sum_a\pi(a|s)\cdot{\text{&#39;result of stage 1&#39;}}\)</span></p>
 <p>and these stages form the equantion (6). For the whole process starts at bottom which represent the future step, it is caled backup diagram.</p>
-<p>To finite MDP, there is unique solution to Bellman equation. For we can list $n$ equations who have $n$ unknowns(it can solve by already known methods). And it is the basis to compute $v_{\pi}$</p>
+<p>To finite MDP, there is unique solution to Bellman equation. For we can list <span class="math inline">\(n\)</span> equations who have <span class="math inline">\(n\)</span> unknowns(it can solve by already known methods). And it is the basis to compute <span class="math inline">\(v_{\pi}\)</span></p>
 <p>Backup diagram would be used in the following posts, because of its simplicity. It is not a transition graph for it just part of the transition.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<h2 id="references">References</h2>
 
     </div>
 

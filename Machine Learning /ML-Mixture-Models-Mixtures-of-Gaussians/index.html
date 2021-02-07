@@ -168,7 +168,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Formal-Introduction-to-Mixtures-of-Gaussians-1"><span class="nav-number">1.</span> <span class="nav-text">A Formal Introduction to Mixtures of Gaussians[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%98Responsibility%E2%80%99-of-Gaussian-Mixtures"><span class="nav-number">2.</span> <span class="nav-text">‘Responsibility’ of Gaussian Mixtures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-formal-introduction-to-mixtures-of-gaussians1"><span class="nav-number">1.</span> <span class="nav-text">A Formal Introduction to Mixtures of Gaussians1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#responsibility-of-gaussian-mixtures"><span class="nav-number">2.</span> <span class="nav-text">&#39;Responsibility&#39; of Gaussian Mixtures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -324,32 +324,61 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>Keywords:</strong> mixtures of Gaussians</p>
 <a id="more"></a>
-
-<h2 id="A-Formal-Introduction-to-Mixtures-of-Gaussians-1"><a href="#A-Formal-Introduction-to-Mixtures-of-Gaussians-1" class="headerlink" title="A Formal Introduction to Mixtures of Gaussians[^1]"></a>A Formal Introduction to Mixtures of Gaussians[^1]</h2><p>We have introduced a mixture distribution in the post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-An-Introduction-to-Mixture-Models/">‘An Introduction to Mixture Models’</a>. And the example in that post was just two components Gaussian Mixture. However, in this post, we would like to talk about Gaussian mixtures formally. And it severs to motivate the expectation-maximization(EM) algorithm.</p>
+<h2 id="a-formal-introduction-to-mixtures-of-gaussians1">A Formal Introduction to Mixtures of Gaussians<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>We have introduced a mixture distribution in the post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-An-Introduction-to-Mixture-Models/">'An Introduction to Mixture Models'</a>. And the example in that post was just two components Gaussian Mixture. However, in this post, we would like to talk about Gaussian mixtures formally. And it severs to motivate the expectation-maximization(EM) algorithm.</p>
 <p>Gaussian mixture distribution can be writen as:</p>
-<p>$$<br>p(\boldsymbol{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)\tag{1}<br>$$</p>
-<p>where $\sum_{k=1}^K \pi_k =1$ and $0\leq \pi_k\leq 1$.<br>And then we introduce a random variable(vector) called latent varible(vector) $\boldsymbol{z}$, that each component:</p>
-<p>$$<br>z_k\in{0,1}\tag{2}<br>$$</p>
-<p>and $\boldsymbol{z}$ is a $1$-of-$K$ representation, which means there is one and only one component is $1$ and others are $0$. To build a joint distribution $p(\boldsymbol{x},\boldsymbol{z})$, we should build $p(\boldsymbol{x}|\boldsymbol{z})$ and $p(\boldsymbol{z})$ firstly. We define the distribution of $\boldsymbol{z}$, we found:</p>
-<p>$$<br>p(z_k=1)=\pi_k\tag{3}<br>$$</p>
-<p>is a good design, for ${\pi_k}$ for $k=1,\cdots,K$ meets the requirements of the probability distribution. And for the entire vector $\boldsymbol{z}$ equ(3) can be written as:</p>
-<p>$$<br>p(\boldsymbol{z}) = \Pi_{k=1}^K \pi_k^{z_k}\tag{4}<br>$$</p>
-<p>And according to the definition of $p(\boldsymbol{z})$ we can get the condition distribution of $\boldsymbol{x}$ given $\boldsymbol{z}$. Under the condition $z_k=1$, we have:</p>
-<p>$$<br>p(\boldsymbol{x}|z_k=1)=\mathcal{N}(\boldsymbol{x}|\mu_k,\Sigma_k)\tag{5}<br>$$</p>
+<p><span class="math display">\[
+p(\boldsymbol{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)\tag{1}
+\]</span></p>
+<p>where <span class="math inline">\(\sum_{k=1}^K \pi_k =1\)</span> and <span class="math inline">\(0\leq \pi_k\leq 1\)</span>. And then we introduce a random variable(vector) called latent varible(vector) <span class="math inline">\(\boldsymbol{z}\)</span>, that each component:</p>
+<p><span class="math display">\[
+z_k\in\{0,1\}\tag{2}
+\]</span></p>
+<p>and <span class="math inline">\(\boldsymbol{z}\)</span> is a <span class="math inline">\(1\)</span>-of-<span class="math inline">\(K\)</span> representation, which means there is one and only one component is <span class="math inline">\(1\)</span> and others are <span class="math inline">\(0\)</span>. To build a joint distribution <span class="math inline">\(p(\boldsymbol{x},\boldsymbol{z})\)</span>, we should build <span class="math inline">\(p(\boldsymbol{x}|\boldsymbol{z})\)</span> and <span class="math inline">\(p(\boldsymbol{z})\)</span> firstly. We define the distribution of <span class="math inline">\(\boldsymbol{z}\)</span>, we found:</p>
+<p><span class="math display">\[
+p(z_k=1)=\pi_k\tag{3}
+\]</span></p>
+<p>is a good design, for <span class="math inline">\(\{\pi_k\}\)</span> for <span class="math inline">\(k=1,\cdots,K\)</span> meets the requirements of the probability distribution. And for the entire vector <span class="math inline">\(\boldsymbol{z}\)</span> equ(3) can be written as:</p>
+<p><span class="math display">\[
+p(\boldsymbol{z}) = \Pi_{k=1}^K \pi_k^{z_k}\tag{4}
+\]</span></p>
+<p>And according to the definition of <span class="math inline">\(p(\boldsymbol{z})\)</span> we can get the condition distribution of <span class="math inline">\(\boldsymbol{x}\)</span> given <span class="math inline">\(\boldsymbol{z}\)</span>. Under the condition <span class="math inline">\(z_k=1\)</span>, we have:</p>
+<p><span class="math display">\[
+p(\boldsymbol{x}|z_k=1)=\mathcal{N}(\boldsymbol{x}|\mu_k,\Sigma_k)\tag{5}
+\]</span></p>
 <p>and then we can derive the vector form of condtional distribution:</p>
-<p>$$<br>p(\boldsymbol{x}|\boldsymbol{z})=\Pi_{k=1}^{K}\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)^{z_k}\tag{6}<br>$$</p>
-<p>Once we have both the probability distribution of $\boldsymbol{z}$, $p(\boldsymbol{z})$ and conditional distribution of $\boldsymbol{x}$ given $\boldsymbol{z}$, $p(\boldsymbol{x}|\boldsymbol{z})$. And we can build joint distribution by multiplication principle:</p>
-<p>$$<br>p(x,z) = p(\boldsymbol{z})\cdot p(\boldsymbol{x}|\boldsymbol{z})\tag{7}<br>$$</p>
-<p>However, what we concern is still the distribution of $\boldsymbol{x}$. We can calculate $\boldsymbol{x}$ by simply:</p>
-<p>$$<br>p(\boldsymbol{x}) = \sum_{j}p(x,z_j) = \sum_{\boldsymbol{j}}p(\boldsymbol{z_j})\cdot p(\boldsymbol{x}|\boldsymbol{z_j})\tag{8}<br>$$</p>
-<p>where $z_j$ is every possible value of random variable $z$<br>This is how latent variables construct mixture Gaussians. And this form is easy for us to analyze the distribution of a mixture model.</p>
-<h2 id="‘Responsibility’-of-Gaussian-Mixtures"><a href="#‘Responsibility’-of-Gaussian-Mixtures" class="headerlink" title="‘Responsibility’ of Gaussian Mixtures"></a>‘Responsibility’ of Gaussian Mixtures</h2><p>Bayesian formula can help us produce posterior. And the posterior probability of latent varibale $\boldsymbol{z}$ by equation (7) can be calculated:</p>
-<p>$$<br>p(z_k=1|\boldsymbol{x})=\frac{p(z_k=1)p(\boldsymbol{x}|z_k=1)}{\sum_j^K p(z_j=1)p(\boldsymbol{x}|z_j=1)}\tag{9}<br>$$</p>
+<p><span class="math display">\[
+p(\boldsymbol{x}|\boldsymbol{z})=\Pi_{k=1}^{K}\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)^{z_k}\tag{6}
+\]</span></p>
+<p>Once we have both the probability distribution of <span class="math inline">\(\boldsymbol{z}\)</span>, <span class="math inline">\(p(\boldsymbol{z})\)</span> and conditional distribution of <span class="math inline">\(\boldsymbol{x}\)</span> given <span class="math inline">\(\boldsymbol{z}\)</span>, <span class="math inline">\(p(\boldsymbol{x}|\boldsymbol{z})\)</span>. And we can build joint distribution by multiplication principle:</p>
+<p><span class="math display">\[
+p(x,z) = p(\boldsymbol{z})\cdot p(\boldsymbol{x}|\boldsymbol{z})\tag{7}
+\]</span></p>
+<p>However, what we concern is still the distribution of <span class="math inline">\(\boldsymbol{x}\)</span>. We can calculate <span class="math inline">\(\boldsymbol{x}\)</span> by simply:</p>
+<p><span class="math display">\[
+p(\boldsymbol{x}) = \sum_{j}p(x,z_j) = \sum_{\boldsymbol{j}}p(\boldsymbol{z_j})\cdot p(\boldsymbol{x}|\boldsymbol{z_j})\tag{8}
+\]</span></p>
+<p>where <span class="math inline">\(z_j\)</span> is every possible value of random variable <span class="math inline">\(z\)</span> This is how latent variables construct mixture Gaussians. And this form is easy for us to analyze the distribution of a mixture model.</p>
+<h2 id="responsibility-of-gaussian-mixtures">'Responsibility' of Gaussian Mixtures</h2>
+<p>Bayesian formula can help us produce posterior. And the posterior probability of latent varibale <span class="math inline">\(\boldsymbol{z}\)</span> by equation (7) can be calculated:</p>
+<p><span class="math display">\[
+p(z_k=1|\boldsymbol{x})=\frac{p(z_k=1)p(\boldsymbol{x}|z_k=1)}{\sum_j^K p(z_j=1)p(\boldsymbol{x}|z_j=1)}\tag{9}
+\]</span></p>
 <p>and substitute equation (3),(5) into equation (9) and we get:</p>
-<p>$$<br>p(z_k=1|\boldsymbol{x})=\frac{\pi_k\mathcal{N}(\boldsymbol{x}|\mu_k,\Sigma_k)}{\sum^K_j \pi_j\mathcal{N}(\boldsymbol{x}|\mu_j,\Sigma_j)}\tag{10}<br>$$</p>
-<p>And $p(z_k=1|\boldsymbol{x})$ is also called reponsibility, and denoted as:</p>
-<p>$$<br>\gamma(z_k)=p(z_k=1|\boldsymbol{x})\tag{11}<br>$$</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<p><span class="math display">\[
+p(z_k=1|\boldsymbol{x})=\frac{\pi_k\mathcal{N}(\boldsymbol{x}|\mu_k,\Sigma_k)}{\sum^K_j \pi_j\mathcal{N}(\boldsymbol{x}|\mu_j,\Sigma_j)}\tag{10}
+\]</span></p>
+<p>And <span class="math inline">\(p(z_k=1|\boldsymbol{x})\)</span> is also called reponsibility, and denoted as:</p>
+<p><span class="math display">\[
+\gamma(z_k)=p(z_k=1|\boldsymbol{x})\tag{11}
+\]</span></p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

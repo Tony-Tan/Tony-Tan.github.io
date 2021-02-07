@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goals-and-Rewards"><span class="nav-number">1.</span> <span class="nav-text">Goals and Rewards</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Returns-and-Episodes"><span class="nav-number">2.</span> <span class="nav-text">Returns and Episodes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Episodes"><span class="nav-number">2.1.</span> <span class="nav-text">Episodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Continuing-Tasks"><span class="nav-number">2.2.</span> <span class="nav-text">Continuing Tasks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discounting"><span class="nav-number">2.3.</span> <span class="nav-text">Discounting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unified-Notion-for-Episodic-and-Continuing-Tasks"><span class="nav-number">3.</span> <span class="nav-text">Unified Notion for Episodic and Continuing Tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#goals-and-rewards"><span class="nav-number">1.</span> <span class="nav-text">Goals and Rewards</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#returns-and-episodes"><span class="nav-number">2.</span> <span class="nav-text">Returns and Episodes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#episodes"><span class="nav-number">2.1.</span> <span class="nav-text">Episodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continuing-tasks"><span class="nav-number">2.2.</span> <span class="nav-text">Continuing Tasks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discounting"><span class="nav-number">2.3.</span> <span class="nav-text">Discounting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unified-notion-for-episodic-and-continuing-tasks"><span class="nav-number">3.</span> <span class="nav-text">Unified Notion for Episodic and Continuing Tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -319,48 +319,68 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>Keywords:</strong></p>
 <a id="more"></a>
-
-<p>We have introduced the concepts about agent and environment in reinforcement learning in the post <a href="TODO">‘The Agent-Environment interface’</a>. In this post, we introduce another 4 concepts and some relative ideas about them. They are:</p>
-<ol>
-<li>Goals,</li>
-<li>Rewards,</li>
-<li>Returns,</li>
-<li>And Episodes.</li>
-</ol>
-<h2 id="Goals-and-Rewards"><a href="#Goals-and-Rewards" class="headerlink" title="Goals and Rewards"></a>Goals and Rewards</h2><p>First, we should verify the concept – goals. Because, the goal of agent and the goal of algorithm designers are different. We, the algorithm designers, want to solve some practical task, like building a smart system to collect information that we concern. In this task, our goal is to collect information, and we do not do that by ourself fot that is tedious. And we make a smart system to do that. However, the information is nothing but some bits for the system, its goal is something else we give it, such as maximizing some objective functions. The goal of the system, is the goal of the agent when we talk about reinforcement learning.</p>
-<p>In the reinforcement learning, the purpose or goal of agent is formalized in terms of a special signal, we call it reward. The reward is a number, denoted as:<br>$$<br>R_t\in \mathbb{R}<br>$$</p>
-<p>where the subscript $t$ means the time or step. This signal, the reward, is the key point through which the evironment interact with the agent(on the other direction the agent interact with the environment by actions).</p>
-<p>Informally, the agent’s goal is to maximize the total amount of reward it recieves. It emplies that the goal is to maximize cummulative reward in the long run but not the immediate reward.</p>
-<p>All above description consiste the reward hypothesis:</p>
-<blockquote>
-<p>“That all of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cummulate sum of a recieved scalar signal(called reward)”[^1]</p>
-</blockquote>
-<p>Converting goal to reward is limiting in the reinforcement learning but flexible and wildly applicable. For example, we design a robot to collect empty cans, and we assign reward $-1$ to the action that the robot collects a book all other thing but not empty cans, or a reward $+1$ to the action it collects an empty can, or reward $0$ when it is searching or doing other things.</p>
+<p>We have introduced the concepts about agent and environment in reinforcement learning in the post <a href="TODO">'The Agent-Environment interface'</a>. In this post, we introduce another 4 concepts and some relative ideas about them. They are: 1. Goals, 2. Rewards, 3. Returns, 4. And Episodes.</p>
+<h2 id="goals-and-rewards">Goals and Rewards</h2>
+<p>First, we should verify the concept -- goals. Because, the goal of agent and the goal of algorithm designers are different. We, the algorithm designers, want to solve some practical task, like building a smart system to collect information that we concern. In this task, our goal is to collect information, and we do not do that by ourself fot that is tedious. And we make a smart system to do that. However, the information is nothing but some bits for the system, its goal is something else we give it, such as maximizing some objective functions. The goal of the system, is the goal of the agent when we talk about reinforcement learning.</p>
+<p>In the reinforcement learning, the purpose or goal of agent is formalized in terms of a special signal, we call it reward. The reward is a number, denoted as: <span class="math display">\[
+R_t\in \mathbb{R}
+\]</span></p>
+<p>where the subscript <span class="math inline">\(t\)</span> means the time or step. This signal, the reward, is the key point through which the evironment interact with the agent(on the other direction the agent interact with the environment by actions).</p>
+<p>Informally, the agent's goal is to maximize the total amount of reward it recieves. It emplies that the goal is to maximize cummulative reward in the long run but not the immediate reward.</p>
+<p>All above description consiste the reward hypothesis: &gt; "That all of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cummulate sum of a recieved scalar signal(called reward)"<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Converting goal to reward is limiting in the reinforcement learning but flexible and wildly applicable. For example, we design a robot to collect empty cans, and we assign reward <span class="math inline">\(-1\)</span> to the action that the robot collects a book all other thing but not empty cans, or a reward <span class="math inline">\(+1\)</span> to the action it collects an empty can, or reward <span class="math inline">\(0\)</span> when it is searching or doing other things.</p>
 <p>The rewards represet what we want accomplished. We provide rewards to the agent, and the agent would maximize its cumulative rewards by optimizing its action or policy. What the agent learned in this process is our goals.</p>
-<p>However, goals is not the elements to represent prior knowledge, such as how to achieve what we want the agent to do. These prior knowledge can be combined into initial policy and intitial condition. </p>
-<p>Unlike other machine learning tasks, seperating reinforcement learning problems into some subgoals are not a good idea. Because the subgoals may lead the agent to another deriction but not the goal. </p>
+<p>However, goals is not the elements to represent prior knowledge, such as how to achieve what we want the agent to do. These prior knowledge can be combined into initial policy and intitial condition.</p>
+<p>Unlike other machine learning tasks, seperating reinforcement learning problems into some subgoals are not a good idea. Because the subgoals may lead the agent to another deriction but not the goal.</p>
 <p>Reward is a way in reinforcement learning tasks through which we communicate to the robot what you want to achieve.</p>
-<h2 id="Returns-and-Episodes"><a href="#Returns-and-Episodes" class="headerlink" title="Returns and Episodes"></a>Returns and Episodes</h2><p>Goal of agent is maximizing the cumulative reward it recieves in the long run. However, the long run cumulative rewrd is not defined yet. And the formally definition of cumulative rewrds. The rewards from $t$ are:<br>$$<br>R_{t+1},R_{t+2},\cdots,R_{T}\tag{1}<br>$$</p>
-<p>The agent seek to maximize the expected return:<br>$$<br>G_t\doteq R_{t+1}+R_{t+2}+\cdots+R_{T}\tag{2}<br>$$</p>
-<p>Where $T$ is the final step. However, this $T$ can a number or $\infty$.</p>
-<h3 id="Episodes"><a href="#Episodes" class="headerlink" title="Episodes"></a>Episodes</h3><p>When $T$ is finite, that means the sequence has an end. The agent-environment interaction breaks naturally into subsequences and the subsequence is called episodes. So there is a terminal state of each episode. The next episode start independently of previous episode. To a same problem, there can be many different episodes with different final cumulative rewards but with the same terminal state. And to episode tasks, $T$ in each episode is a random variable. Nonterminal states are alway denoted as $\mathcal{S}$ and the states containing terminal states and nonterminal states are denoted as $\mathcal{S}^+$.</p>
-<h3 id="Continuing-Tasks"><a href="#Continuing-Tasks" class="headerlink" title="Continuing Tasks"></a>Continuing Tasks</h3><p>When $T$ is infinite, the task could not stop naturely. This is common in on-going process-control task:</p>
-<p>$$<br>G_t\doteq \sum_{i=t+1}^{\infty}R_{i}\tag{3}<br>$$</p>
+<h2 id="returns-and-episodes">Returns and Episodes</h2>
+<p>Goal of agent is maximizing the cumulative reward it recieves in the long run. However, the long run cumulative rewrd is not defined yet. And the formally definition of cumulative rewrds. The rewards from <span class="math inline">\(t\)</span> are: <span class="math display">\[
+R_{t+1},R_{t+2},\cdots,R_{T}\tag{1}
+\]</span></p>
+<p>The agent seek to maximize the expected return: <span class="math display">\[
+G_t\doteq R_{t+1}+R_{t+2}+\cdots+R_{T}\tag{2}
+\]</span></p>
+<p>Where <span class="math inline">\(T\)</span> is the final step. However, this <span class="math inline">\(T\)</span> can a number or <span class="math inline">\(\infty\)</span>.</p>
+<h3 id="episodes">Episodes</h3>
+<p>When <span class="math inline">\(T\)</span> is finite, that means the sequence has an end. The agent-environment interaction breaks naturally into subsequences and the subsequence is called episodes. So there is a terminal state of each episode. The next episode start independently of previous episode. To a same problem, there can be many different episodes with different final cumulative rewards but with the same terminal state. And to episode tasks, <span class="math inline">\(T\)</span> in each episode is a random variable. Nonterminal states are alway denoted as <span class="math inline">\(\mathcal{S}\)</span> and the states containing terminal states and nonterminal states are denoted as <span class="math inline">\(\mathcal{S}^+\)</span>.</p>
+<h3 id="continuing-tasks">Continuing Tasks</h3>
+<p>When <span class="math inline">\(T\)</span> is infinite, the task could not stop naturely. This is common in on-going process-control task:</p>
+<p><span class="math display">\[
+G_t\doteq \sum_{i=t+1}^{\infty}R_{i}\tag{3}
+\]</span></p>
 <p>In this kind of task the cumulative rewards could be infinity easily.</p>
-<h3 id="Discounting"><a href="#Discounting" class="headerlink" title="Discounting"></a>Discounting</h3><p>The return could be described in equation (2). But that is not the only form. We can design a return function of reward of each step(time) to different tasks. For example, we define the ‘expected discounted return’:<br>$$<br>\begin{aligned}<br>  G_t&amp;\doteq R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{k}R_{t+k+1}\<br>  &amp;=\sum_{k=0}^{\infty} \gamma^kR_{t+k+1}<br>\end{aligned}\tag{4}<br>$$</p>
-<p>where $0\leq \gamma \leq 1$ is called discount rate. The value of future rewards could be:</p>
-<ol>
-<li>when $\gamma&lt;1$ , the infinite sum in equation (4) has a finite value as long as the reward sequence ${R_k}$ is bounded</li>
-<li>when $\gamma =0$ the agent is myopic that the agent only concern immediate rewards.</li>
-<li>when $\gamma \to 1$, the agent take future rewards into account more strongly. This time the agent is farsight.</li>
-</ol>
+<h3 id="discounting">Discounting</h3>
+<p>The return could be described in equation (2). But that is not the only form. We can design a return function of reward of each step(time) to different tasks. For example, we define the 'expected discounted return': <span class="math display">\[
+\begin{aligned}
+  G_t&amp;\doteq R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{k}R_{t+k+1}\\
+  &amp;=\sum_{k=0}^{\infty} \gamma^kR_{t+k+1}
+\end{aligned}\tag{4}
+\]</span></p>
+<p>where <span class="math inline">\(0\leq \gamma \leq 1\)</span> is called discount rate. The value of future rewards could be: 1. when <span class="math inline">\(\gamma&lt;1\)</span> , the infinite sum in equation (4) has a finite value as long as the reward sequence <span class="math inline">\(\{R_k\}\)</span> is bounded 2. when <span class="math inline">\(\gamma =0\)</span> the agent is myopic that the agent only concern immediate rewards. 3. when <span class="math inline">\(\gamma \to 1\)</span>, the agent take future rewards into account more strongly. This time the agent is farsight.</p>
 <p>Returns at successive time steps are related to each other. And it is important for the theory and algorithm of reinforcement learning:</p>
-<p>$$<br>\begin{aligned}<br>  G_t&amp;\doteq R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3 R_{t+4}+\cdots\<br>  &amp;=R_{t+1}+\gamma (R_{t+2}+\gamma R_{t+3}+\gamma^2 R_{t+4}+\cdots)\<br>  &amp;=R_{t+1}+\gamma G_{t+1}<br>\end{aligned}\tag{5}<br>$$<br>where $t&lt;T$. Equation (5) is valid even if termination occurs at $t+1$ if we define $G_T=0$. If the reward is constant $+1$, we have:<br>$$<br>G_t=\sum^{\infty}_{k=0}\gamma^k=\frac{1}{1-\gamma}\tag{6}<br>$$</p>
-<h2 id="Unified-Notion-for-Episodic-and-Continuing-Tasks"><a href="#Unified-Notion-for-Episodic-and-Continuing-Tasks" class="headerlink" title="Unified Notion for Episodic and Continuing Tasks"></a>Unified Notion for Episodic and Continuing Tasks</h2><p>Episodic task is easier than continuing tasks. And they have different notations. But we want to unify them for we usually talk about them sumultaneously. To represent the continuing task, we add absorbing state, whcih transitions only to itself with reward $0$, to episodic task:</p>
-<p><img src=""></p>
-<p>Discounting also works in this form:<br>$$<br>G_t\doteq \sum_{k=t+1}^{T}\gamma^{k-t-1}R_k<br>$$</p>
-<p>including $T=\infty$ or $\gamma=1$(but not both).</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<p><span class="math display">\[
+\begin{aligned}
+  G_t&amp;\doteq R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3 R_{t+4}+\cdots\\
+  &amp;=R_{t+1}+\gamma (R_{t+2}+\gamma R_{t+3}+\gamma^2 R_{t+4}+\cdots)\\
+  &amp;=R_{t+1}+\gamma G_{t+1}
+\end{aligned}\tag{5}
+\]</span> where <span class="math inline">\(t&lt;T\)</span>. Equation (5) is valid even if termination occurs at <span class="math inline">\(t+1\)</span> if we define <span class="math inline">\(G_T=0\)</span>. If the reward is constant <span class="math inline">\(+1\)</span>, we have: <span class="math display">\[
+G_t=\sum^{\infty}_{k=0}\gamma^k=\frac{1}{1-\gamma}\tag{6}
+\]</span></p>
+<h2 id="unified-notion-for-episodic-and-continuing-tasks">Unified Notion for Episodic and Continuing Tasks</h2>
+<p>Episodic task is easier than continuing tasks. And they have different notations. But we want to unify them for we usually talk about them sumultaneously. To represent the continuing task, we add absorbing state, whcih transitions only to itself with reward <span class="math inline">\(0\)</span>, to episodic task:</p>
+<p><img src="" /></p>
+<p>Discounting also works in this form: <span class="math display">\[
+G_t\doteq \sum_{k=t+1}^{T}\gamma^{k-t-1}R_k
+\]</span></p>
+<p>including <span class="math inline">\(T=\infty\)</span> or <span class="math inline">\(\gamma=1\)</span>(but not both).</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

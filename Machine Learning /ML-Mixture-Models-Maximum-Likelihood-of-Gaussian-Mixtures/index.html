@@ -168,7 +168,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maximum-Likelihood-1"><span class="nav-number">1.</span> <span class="nav-text">Maximum Likelihood[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maximum-Likelihood-Could-Fail"><span class="nav-number">2.</span> <span class="nav-text">Maximum Likelihood Could Fail</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Covariance-Matrix-Sigma-is-not-Singular"><span class="nav-number">2.1.</span> <span class="nav-text">Covariance Matrix $\Sigma$ is not Singular</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#When-boldsymbol-x-n-boldsymbol-mu-j"><span class="nav-number">2.2.</span> <span class="nav-text">When $\boldsymbol{x}_n&#x3D;\boldsymbol{\mu}_j$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#maximum-likelihood1"><span class="nav-number">1.</span> <span class="nav-text">Maximum Likelihood1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maximum-likelihood-could-fail"><span class="nav-number">2.</span> <span class="nav-text">Maximum Likelihood Could Fail</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#covariance-matrix-sigma-is-not-singular"><span class="nav-number">2.1.</span> <span class="nav-text">Covariance Matrix \(\Sigma\) is not Singular</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-boldsymbolx_nboldsymbolmu_j"><span class="nav-number">2.2.</span> <span class="nav-text">When \(\boldsymbol{x}_n&#x3D;\boldsymbol{\mu}_j\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -322,37 +322,70 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> maximum likelihood, Gaussian mixtures</p>
-<a id="more"></a>
-
-<h2 id="Maximum-Likelihood-1"><a href="#Maximum-Likelihood-1" class="headerlink" title="Maximum Likelihood[^1]"></a>Maximum Likelihood[^1]</h2><p>Gaussian mixtures had been discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">‘Mixtures of Gaussians’</a>. And once we have training data and a certain hypothesis, what we should do next is estimating the parameters of the model. Both kinds of parameters from a mixture of Gaussians </p>
-<p>$$<br>p(\boldsymbol{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)\tag{1}<br>$$</p>
+        <p><strong>Keywords:</strong> maximum likelihood, Gaussian mixtures <a id="more"></a></p>
+<h2 id="maximum-likelihood1">Maximum Likelihood<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Gaussian mixtures had been discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">'Mixtures of Gaussians'</a>. And once we have training data and a certain hypothesis, what we should do next is estimating the parameters of the model. Both kinds of parameters from a mixture of Gaussians</p>
+<p><span class="math display">\[
+p(\boldsymbol{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)\tag{1}
+\]</span></p>
 <p>and latent variables:</p>
-<p>$$<br>\boldsymbol{z}\tag{2}<br>$$</p>
-<p>we defined, need to estimate. However, when we investigated the linear model <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Regression-Maximum-Likelihood-Estimation/">‘Maximum Likelihood Estimation’</a>, we considered the prediction $y$ of the linear model has a Gaussian distribution, and then maximum likelihood was used to derive parameters in the model. So, we could employ the maximum likelihood again in the Gaussian mixture task, and find whether it could work well.</p>
-<p>Firstly, we should prepare the notations that will be used in following analysis:</p>
+<p><span class="math display">\[
+\boldsymbol{z}\tag{2}
+\]</span></p>
+<p>we defined, need to estimate. However, when we investigated the linear model <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Regression-Maximum-Likelihood-Estimation/">'Maximum Likelihood Estimation'</a>, we considered the prediction <span class="math inline">\(y\)</span> of the linear model has a Gaussian distribution, and then maximum likelihood was used to derive parameters in the model. So, we could employ the maximum likelihood again in the Gaussian mixture task, and find whether it could work well.</p>
+<p>Firstly, we should prepare the notations that will be used in following analysis: - input data <span class="math inline">\(\{\boldsymbol{x}_1,\cdots,\boldsymbol{x}_N\}\)</span> for <span class="math inline">\(\boldsymbol{x}_i\in \mathbb{R}^D\)</span> and <span class="math inline">\(i=\{1,2,\cdots,N\}\)</span> and assuming they are i.i.d. Rearranging them in a matrix:</p>
+<p><span class="math display">\[
+X = \begin{bmatrix}
+  -&amp;\boldsymbol{x}_1^T&amp;-\\
+  -&amp;\boldsymbol{x}_2^T&amp;-\\
+  &amp;\vdots&amp;\\
+  -&amp;\boldsymbol{x}_N^T&amp;-\\
+\end{bmatrix}\tag{3}
+\]</span></p>
 <ul>
-<li>input data ${\boldsymbol{x}_1,\cdots,\boldsymbol{x}_N}$ for $\boldsymbol{x}_i\in \mathbb{R}^D$ and $i={1,2,\cdots,N}$ and assuming they are i.i.d. Rearranging them in a matrix:</li>
+<li>Latent varibales <span class="math inline">\(\boldsymbol{z}_i\)</span>, the assistant random varible to <span class="math inline">\(\boldsymbol{x}_i\)</span> for <span class="math inline">\(i\in\{1,\cdots,N\}\)</span>. And according to matrix (3), the matrix of latent varibales is</li>
 </ul>
-<p>$$<br>X = \begin{bmatrix}<br>  -&amp;\boldsymbol{x}_1^T&amp;-\<br>  -&amp;\boldsymbol{x}_2^T&amp;-\<br>  &amp;\vdots&amp;\<br>  -&amp;\boldsymbol{x}_N^T&amp;-\<br>\end{bmatrix}\tag{3}<br>$$</p>
-<ul>
-<li>Latent varibales $\boldsymbol{z}_i$, the assistant random varible to $\boldsymbol{x}_i$ for $i\in{1,\cdots,N}$. And according to matrix (3), the matrix of latent varibales is</li>
-</ul>
-<p>$$<br>Z = \begin{bmatrix}<br>  -&amp;\boldsymbol{z}_1^T&amp;-\<br>  -&amp;\boldsymbol{z}_2^T&amp;-\<br>  &amp;\vdots&amp;\<br>  -&amp;\boldsymbol{z}_N^T&amp;-\<br>\end{bmatrix}\tag{4}<br>$$</p>
-<p>Once we got these two matrices, basing on the equation (1) in <a href="'https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/'">‘Mixtures of Gaussians’</a> as following:</p>
-<p>$$<br>p(\boldsymbol{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)\tag{5}<br>$$</p>
+<p><span class="math display">\[
+Z = \begin{bmatrix}
+  -&amp;\boldsymbol{z}_1^T&amp;-\\
+  -&amp;\boldsymbol{z}_2^T&amp;-\\
+  &amp;\vdots&amp;\\
+  -&amp;\boldsymbol{z}_N^T&amp;-\\
+\end{bmatrix}\tag{4}
+\]</span></p>
+<p>Once we got these two matrices, basing on the equation (1) in <a href="&#39;https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/&#39;">'Mixtures of Gaussians'</a> as following:</p>
+<p><span class="math display">\[
+p(\boldsymbol{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)\tag{5}
+\]</span></p>
 <p>the log-likelihood function is given by:</p>
-<p>$$<br>\begin{aligned}<br>\ln p(\boldsymbol{x}|\boldsymbol{\pi},\boldsymbol{\mu},\Sigma)&amp;=\ln (\Pi_{n=1}^N\sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}<em>k,\Sigma_k))\<br>&amp;=\sum_{n=1}^{N}\ln \sum</em>{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k,\Sigma_k)\<br>\end{aligned}\tag{6}<br>$$</p>
-<p>This looks different from the single Gaussian model where the logarithm operates directly on $\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)$ who is an exponential function. However, the existence of summation in the logarithm makes the problem hard to solve.</p>
-<p>And for the combination of the Gaussian mixture is arbitrary. We could have $K!$ equivalent solutions. So which one we get did not effect on our model.</p>
-<h2 id="Maximum-Likelihood-Could-Fail"><a href="#Maximum-Likelihood-Could-Fail" class="headerlink" title="Maximum Likelihood Could Fail"></a>Maximum Likelihood Could Fail</h2><p>The other differences from the single Gaussian model are the singularity of the covariance matrix and the condition $\boldsymbol{x}_n=\boldsymbol{\mu}_j$.</p>
-<h3 id="Covariance-Matrix-Sigma-is-not-Singular"><a href="#Covariance-Matrix-Sigma-is-not-Singular" class="headerlink" title="Covariance Matrix $\Sigma$ is not Singular"></a>Covariance Matrix $\Sigma$ is not Singular</h3><p>For in the Gaussian distribution, the covariance matrix must be able to be inverted. So in our following discussion, we assume all the covariance matrice are invisible. For simplicity we take $\Sigma_k=\delta_k^2 I$ where $I$ is identity matrix.</p>
-<h3 id="When-boldsymbol-x-n-boldsymbol-mu-j"><a href="#When-boldsymbol-x-n-boldsymbol-mu-j" class="headerlink" title="When $\boldsymbol{x}_n=\boldsymbol{\mu}_j$"></a>When $\boldsymbol{x}_n=\boldsymbol{\mu}_j$</h3><p>When a point in sample accidentally equals to the mean $\mu_j$, the Gaussin distribution of the random variable $\boldsymbol{x}_n$ is:</p>
-<p>$$<br>\mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k,\delta_j^2I)=\frac{1}{2\pi^{\frac{1}{2}}}\frac{1}{\delta_j}\tag{7}<br>$$</p>
-<p>When the variance $\delta_j\to 0$, this part goes to infinity and the whole algorithm failed.</p>
-<p>This problem does not exist in a single Gaussian model, for the $\boldsymbol{x}_n-\boldsymbol{\mu}_j=0$ is not an exponent in its log-likelihood.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The maximum likelihood method is not suited for a Gaussian mixture model. Then we introduce the EM algorithm in the next post.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\ln p(\boldsymbol{x}|\boldsymbol{\pi},\boldsymbol{\mu},\Sigma)&amp;=\ln (\Pi_{n=1}^N\sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k))\\
+&amp;=\sum_{n=1}^{N}\ln \sum_{k=1}^{K}\pi_k\mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k,\Sigma_k)\\
+\end{aligned}\tag{6}
+\]</span></p>
+<p>This looks different from the single Gaussian model where the logarithm operates directly on <span class="math inline">\(\mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k,\Sigma_k)\)</span> who is an exponential function. However, the existence of summation in the logarithm makes the problem hard to solve.</p>
+<p>And for the combination of the Gaussian mixture is arbitrary. We could have <span class="math inline">\(K!\)</span> equivalent solutions. So which one we get did not effect on our model.</p>
+<h2 id="maximum-likelihood-could-fail">Maximum Likelihood Could Fail</h2>
+<p>The other differences from the single Gaussian model are the singularity of the covariance matrix and the condition <span class="math inline">\(\boldsymbol{x}_n=\boldsymbol{\mu}_j\)</span>.</p>
+<h3 id="covariance-matrix-sigma-is-not-singular">Covariance Matrix <span class="math inline">\(\Sigma\)</span> is not Singular</h3>
+<p>For in the Gaussian distribution, the covariance matrix must be able to be inverted. So in our following discussion, we assume all the covariance matrice are invisible. For simplicity we take <span class="math inline">\(\Sigma_k=\delta_k^2 I\)</span> where <span class="math inline">\(I\)</span> is identity matrix.</p>
+<h3 id="when-boldsymbolx_nboldsymbolmu_j">When <span class="math inline">\(\boldsymbol{x}_n=\boldsymbol{\mu}_j\)</span></h3>
+<p>When a point in sample accidentally equals to the mean <span class="math inline">\(\mu_j\)</span>, the Gaussin distribution of the random variable <span class="math inline">\(\boldsymbol{x}_n\)</span> is:</p>
+<p><span class="math display">\[
+\mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k,\delta_j^2I)=\frac{1}{2\pi^{\frac{1}{2}}}\frac{1}{\delta_j}\tag{7}
+\]</span></p>
+<p>When the variance <span class="math inline">\(\delta_j\to 0\)</span>, this part goes to infinity and the whole algorithm failed.</p>
+<p>This problem does not exist in a single Gaussian model, for the <span class="math inline">\(\boldsymbol{x}_n-\boldsymbol{\mu}_j=0\)</span> is not an exponent in its log-likelihood.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The maximum likelihood method is not suited for a Gaussian mixture model. Then we introduce the EM algorithm in the next post.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

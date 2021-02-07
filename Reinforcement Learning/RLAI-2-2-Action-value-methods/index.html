@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Estimating-the-Value-of-Action-1"><span class="nav-number">1.</span> <span class="nav-text">Estimating the Value of Action[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Selecting-Actions-Based-on-the-Estimation"><span class="nav-number">2.</span> <span class="nav-text">Selecting Actions Based on the Estimation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#selecting-actions-based-on-the-estimation"><span class="nav-number">1.</span> <span class="nav-text">Selecting Actions Based on the Estimation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,26 +317,43 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p><strong>Keywords:</strong> value of action, greedy action, $\varepsilon$-greedy action, value function</p>
-<!-- more -->
-<h2 id="Estimating-the-Value-of-Action-1"><a href="#Estimating-the-Value-of-Action-1" class="headerlink" title="Estimating the Value of Action[^1]"></a>Estimating the Value of Action[^1]</h2><p>we have discussed the ‘$k$-armed bandit problem in the post <a href="TODO">‘An Introduction to $k$-armed Bandit Problem’</a>. And now, we need to solve this problem with the information we have known. Our purpose in reinforcement learning is to maximize our cumulation of reward by selecting an action. However, the process does not stop for most steps except the last one, which means we can not know the final sum of reward as a certain action was selected in the middle of the process. So we want to find out the relation between the final sum of rewards and current actions which are not the last step.</p>
-<p>The value function as we have described in the post <a href="TODO"></a> presents the expectation of the accumulated rewards that an agent would get from current state $s$ . And current state $s$ is decided by our action in this $k$-armed bandit. So we can just build the relation between value and action. And the assumption in post <a href="TODO">‘An Introduction to $k$-armed Bandit Problem’</a> defined that ‘the reward of different actions have stationary probability distributions’ which means the state would not change in the future step. So the expectation of sum of the reward in the future:</p>
-<p>$$<br>\mathbb{E}[\sum_{t=\text{current}}^{\text{final}}R_t]=\sum_{t=\text{current}}^{\text{final}}\mathbb{E}[R_t]\tag{1}<br>$$ </p>
-<p>that is under this condition that the environment is <strong>stationary</strong> which means the reward distribution do not change over time, the value of action $a$ can be defined as:</p>
-<p>$$<br>\text{value of action}\doteq \mathbb{E}[R_t|A_t = a]\tag{2}<br>$$</p>
-<p>To calculate the value of action in equation (2), we need the statistical tool which is called ‘law of large number’. This law allow us to approximate the expectation by average. This gives that the value at the time $t$ of action $a$ is:</p>
-<p>$$<br>Q_t(a)\doteq \frac{\sum_{1}^{t-1}R_i\mathbb{1}<em>{A_i=a}}{\sum_{1}^{t-1}\mathbb{1}</em>{A_i=a}}\tag{3}<br>$$</p>
-<p>when the denominator is $0$, we can set the $Q_t(a)$ be any number like $0$. In the equation (3), $\mathbb{1}_{A_i=a}$ is the indicator function that:</p>
-<p>$$<br>\mathbb{1}_{A_i=a}=<br>\begin{cases}<br>1 &amp; \text{ if }A_i=a\<br>0 &amp; \text{ otherwise }<br>\end{cases}\tag{4}<br>$$</p>
-<p>Equation (3) just accumulate the rewards of the action that has been selected, so it is also called ‘sample-average’ method.</p>
-<h2 id="Selecting-Actions-Based-on-the-Estimation"><a href="#Selecting-Actions-Based-on-the-Estimation" class="headerlink" title="Selecting Actions Based on the Estimation"></a>Selecting Actions Based on the Estimation</h2><p>Once we got the action-value function, we can select the action based on the estimation. The first strategy is we can always select the greatest-value action, and this is called greedy action which exploits our current knowledge:</p>
-<p>$$<br>A_t\doteq \mathrm{arg max}_aQ_t(a)\tag{5}<br>$$</p>
-<p>This strategy can bring us good rewards in a short time, but it can not sure the final sum of reward could be the best. This is because this algorithm spends no time to confirm that the current best action is the best or not. For example we have 3 actions in current step and the value of $a_1$, $a_2$ and $a_3$ are $1.0$, $3.0$ and $2.9$ respectively. $a_2$ seems good but for this value are just average, we are not sure whether the expectation of $a_3$ is smaller than the expectation of $a_2$.</p>
-<p>To overcome this drawback, we could exploit our knowledge at probability $1-\varepsilon$ and exploration at probability $\varepsilon$ at a single step. That is to say, we randomly select to greatest-value action with probability $1-\varepsilon$(exploitation) or other actions that do not have the greatest value with probability $\varepsilon$(exploration). This method is called $\varepsilon$-greedy method. When we explore, we select action randomly with an equal probability independent of the action-value estimation.</p>
-<p>The law of large number make sure every $Q_t(a)$ converge to $q_{\star}(a)$ in probability as time $t$ goes to infinity. And this also guarantees that the probability of selecting the greatest action converge to $1-\varepsilon$</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+        <p><strong>Abstract:</strong> <a id="more"></a> <strong>Keywords:</strong> value of action, greedy action, <span class="math inline">\(\varepsilon\)</span>-greedy action, value function <!-- more --> ## Estimating the Value of Action<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> we have discussed the '<span class="math inline">\(k\)</span>-armed bandit problem in the post <a href="TODO">'An Introduction to <span class="math inline">\(k\)</span>-armed Bandit Problem'</a>. And now, we need to solve this problem with the information we have known. Our purpose in reinforcement learning is to maximize our cumulation of reward by selecting an action. However, the process does not stop for most steps except the last one, which means we can not know the final sum of reward as a certain action was selected in the middle of the process. So we want to find out the relation between the final sum of rewards and current actions which are not the last step.</p>
+<p>The value function as we have described in the post <a href="TODO"></a> presents the expectation of the accumulated rewards that an agent would get from current state <span class="math inline">\(s\)</span> . And current state <span class="math inline">\(s\)</span> is decided by our action in this <span class="math inline">\(k\)</span>-armed bandit. So we can just build the relation between value and action. And the assumption in post <a href="TODO">'An Introduction to <span class="math inline">\(k\)</span>-armed Bandit Problem'</a> defined that 'the reward of different actions have stationary probability distributions' which means the state would not change in the future step. So the expectation of sum of the reward in the future:</p>
+<p><span class="math display">\[
+\mathbb{E}[\sum_{t=\text{current}}^{\text{final}}R_t]=\sum_{t=\text{current}}^{\text{final}}\mathbb{E}[R_t]\tag{1}
+\]</span></p>
+<p>that is under this condition that the environment is <strong>stationary</strong> which means the reward distribution do not change over time, the value of action <span class="math inline">\(a\)</span> can be defined as:</p>
+<p><span class="math display">\[
+\text{value of action}\doteq \mathbb{E}[R_t|A_t = a]\tag{2}
+\]</span></p>
+<p>To calculate the value of action in equation (2), we need the statistical tool which is called 'law of large number'. This law allow us to approximate the expectation by average. This gives that the value at the time <span class="math inline">\(t\)</span> of action <span class="math inline">\(a\)</span> is:</p>
+<p><span class="math display">\[
+Q_t(a)\doteq \frac{\sum_{1}^{t-1}R_i\mathbb{1}_{A_i=a}}{\sum_{1}^{t-1}\mathbb{1}_{A_i=a}}\tag{3}
+\]</span></p>
+<p>when the denominator is <span class="math inline">\(0\)</span>, we can set the <span class="math inline">\(Q_t(a)\)</span> be any number like <span class="math inline">\(0\)</span>. In the equation (3), <span class="math inline">\(\mathbb{1}_{A_i=a}\)</span> is the indicator function that:</p>
+<p><span class="math display">\[
+\mathbb{1}_{A_i=a}=
+\begin{cases}
+1 &amp; \text{ if }A_i=a\\
+0 &amp; \text{ otherwise }
+\end{cases}\tag{4}
+\]</span></p>
+<p>Equation (3) just accumulate the rewards of the action that has been selected, so it is also called 'sample-average' method.</p>
+<h2 id="selecting-actions-based-on-the-estimation">Selecting Actions Based on the Estimation</h2>
+<p>Once we got the action-value function, we can select the action based on the estimation. The first strategy is we can always select the greatest-value action, and this is called greedy action which exploits our current knowledge:</p>
+<p><span class="math display">\[
+A_t\doteq \mathrm{arg max}_aQ_t(a)\tag{5}
+\]</span></p>
+<p>This strategy can bring us good rewards in a short time, but it can not sure the final sum of reward could be the best. This is because this algorithm spends no time to confirm that the current best action is the best or not. For example we have 3 actions in current step and the value of <span class="math inline">\(a_1\)</span>, <span class="math inline">\(a_2\)</span> and <span class="math inline">\(a_3\)</span> are <span class="math inline">\(1.0\)</span>, <span class="math inline">\(3.0\)</span> and <span class="math inline">\(2.9\)</span> respectively. <span class="math inline">\(a_2\)</span> seems good but for this value are just average, we are not sure whether the expectation of <span class="math inline">\(a_3\)</span> is smaller than the expectation of <span class="math inline">\(a_2\)</span>.</p>
+<p>To overcome this drawback, we could exploit our knowledge at probability <span class="math inline">\(1-\varepsilon\)</span> and exploration at probability <span class="math inline">\(\varepsilon\)</span> at a single step. That is to say, we randomly select to greatest-value action with probability <span class="math inline">\(1-\varepsilon\)</span>(exploitation) or other actions that do not have the greatest value with probability <span class="math inline">\(\varepsilon\)</span>(exploration). This method is called <span class="math inline">\(\varepsilon\)</span>-greedy method. When we explore, we select action randomly with an equal probability independent of the action-value estimation.</p>
+<p>The law of large number make sure every <span class="math inline">\(Q_t(a)\)</span> converge to <span class="math inline">\(q_{\star}(a)\)</span> in probability as time <span class="math inline">\(t\)</span> goes to infinity. And this also guarantees that the probability of selecting the greatest action converge to <span class="math inline">\(1-\varepsilon\)</span></p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

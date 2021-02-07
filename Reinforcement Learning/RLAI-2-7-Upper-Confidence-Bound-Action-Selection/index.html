@@ -172,7 +172,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Upper-Confidence-Bound-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">Upper-Confidence-Bound Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-of-UCB"><span class="nav-number">2.</span> <span class="nav-text">Code of UCB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#code-of-ucb"><span class="nav-number">1.</span> <span class="nav-text">Code of UCB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -322,29 +322,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> </p>
-<a id="more"></a>
-<h2 id="Upper-Confidence-Bound-Algorithm"><a href="#Upper-Confidence-Bound-Algorithm" class="headerlink" title="Upper-Confidence-Bound Algorithm"></a>Upper-Confidence-Bound Algorithm</h2><p>In the post <a href="TODO">‘Optimistic Initial Value’</a>, we took a look at a trick which could help stationary reinforcement learning explore in the first $k$ step where the $k$ is the number of arms(actions). In the $\varepsilon$-greedy algorithm, we explore randomly among all the actions with probability $\varepsilon$. Although the random selection in $\varepsilon$-greedy algorithm works well in a long run, the speed of convergence is low. What we do, now, is to speed it up.</p>
+        <p><strong>Keywords:</strong> <a id="more"></a> ## Upper-Confidence-Bound Algorithm In the post <a href="TODO">'Optimistic Initial Value'</a>, we took a look at a trick which could help stationary reinforcement learning explore in the first <span class="math inline">\(k\)</span> step where the <span class="math inline">\(k\)</span> is the number of arms(actions). In the <span class="math inline">\(\varepsilon\)</span>-greedy algorithm, we explore randomly among all the actions with probability <span class="math inline">\(\varepsilon\)</span>. Although the random selection in <span class="math inline">\(\varepsilon\)</span>-greedy algorithm works well in a long run, the speed of convergence is low. What we do, now, is to speed it up.</p>
 <p>The first inspiration is that the action whose value is not so far from the current optimal one could be the real optimal action. So we should explore these actions more frequently than others who is far from the current optimal one.</p>
-<p>The second idea comes from the law of large number. The average of reward in $\varepsilon$-greedy algorithm converge to the value of action when the time(steps) goes to infinity. However, if time(steps) is not infinity or even not so large, the average of reward has relatively large variance to approximate the value. Then we need more exploratin in these actions to make their average closer to their values.</p>
+<p>The second idea comes from the law of large number. The average of reward in <span class="math inline">\(\varepsilon\)</span>-greedy algorithm converge to the value of action when the time(steps) goes to infinity. However, if time(steps) is not infinity or even not so large, the average of reward has relatively large variance to approximate the value. Then we need more exploratin in these actions to make their average closer to their values.</p>
 <p>So, now, we mix these two inspirations in the greedy algorithm and then we get a new greedy step:</p>
-<p>$$<br>A_t \doteq \mathrm{arg max}_a[Q_t(a)+c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}]\tag{1}<br>$$</p>
-<p>The first part in equation (1), $Q_t(a)$ represents the first inspiration that the value closer to the optimal one need more concern.</p>
-<p>The second part in equation (1), $c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}$, represent the uncerntainty of the action, where:</p>
-<ol>
-<li>$t$ is the number of step or times the whole process has taken.</li>
-<li>$\mathrm{ln}t$ gives a slow increase than $t$ and make the item stable.</li>
-<li>$N_t(a)$ represents how many times the action $a$ has been selected.</li>
-<li>$c$ is a constant which is greater than $0$, it controls the degree of exploration.</li>
-</ol>
-<p>This algorithm is called upper confidence bound, UCB for short. Because the approximation of each action $Q_t(a)+c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}$ gives a upper bound of possible true value of action $a$.</p>
-<h2 id="Code-of-UCB"><a href="#Code-of-UCB" class="headerlink" title="Code of UCB"></a>Code of UCB</h2><p>We modify the greedy algorithm code and we get:<br><img src="./UCB_Figure_1.png"></p>
-<p><img src="./UCB_Figure_2.png"></p>
-<p>And we can conclude in the stationary environment, UCB method is better than $0.1$-greedy method with setting initial value to $0$.</p>
-<p><img src="./UCB_100_Figure_1.png"><br><img src="./UCB_100_Figure_2.png"></p>
-<p>The spikes in the UCB method is because the $(k+1)$th step is always exploitation. And then the $(t=k+\Delta)$th step is foced to exploration for the existence of the item $c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}$ in equation(1).</p>
+<p><span class="math display">\[
+A_t \doteq \mathrm{arg max}_a[Q_t(a)+c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}]\tag{1}
+\]</span></p>
+<p>The first part in equation (1), <span class="math inline">\(Q_t(a)\)</span> represents the first inspiration that the value closer to the optimal one need more concern.</p>
+<p>The second part in equation (1), <span class="math inline">\(c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}\)</span>, represent the uncerntainty of the action, where: 1. <span class="math inline">\(t\)</span> is the number of step or times the whole process has taken. 2. <span class="math inline">\(\mathrm{ln}t\)</span> gives a slow increase than <span class="math inline">\(t\)</span> and make the item stable. 3. <span class="math inline">\(N_t(a)\)</span> represents how many times the action <span class="math inline">\(a\)</span> has been selected. 4. <span class="math inline">\(c\)</span> is a constant which is greater than <span class="math inline">\(0\)</span>, it controls the degree of exploration.</p>
+<p>This algorithm is called upper confidence bound, UCB for short. Because the approximation of each action <span class="math inline">\(Q_t(a)+c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}\)</span> gives a upper bound of possible true value of action <span class="math inline">\(a\)</span>.</p>
+<h2 id="code-of-ucb">Code of UCB</h2>
+<p>We modify the greedy algorithm code and we get: <img src="./UCB_Figure_1.png" /></p>
+<p><img src="./UCB_Figure_2.png" /></p>
+<p>And we can conclude in the stationary environment, UCB method is better than <span class="math inline">\(0.1\)</span>-greedy method with setting initial value to <span class="math inline">\(0\)</span>.</p>
+<p><img src="./UCB_100_Figure_1.png" /> <img src="./UCB_100_Figure_2.png" /></p>
+<p>The spikes in the UCB method is because the <span class="math inline">\((k+1)\)</span>th step is always exploitation. And then the <span class="math inline">\((t=k+\Delta)\)</span>th step is foced to exploration for the existence of the item <span class="math inline">\(c\sqrt{\frac{\mathrm{ln}t}{N_t(a)}}\)</span> in equation(1).</p>
 <p>UCB method is difficult to extend to both nonstationary task and the reinforcement learning task with large state space.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<h2 id="references">References</h2>
 
     </div>
 

@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-Blackjack"><span class="nav-number">1.</span> <span class="nav-text">Example: Blackjack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backup-Diagram-of-MC"><span class="nav-number">2.</span> <span class="nav-text">Backup Diagram of MC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#example-blackjack"><span class="nav-number">1.</span> <span class="nav-text">Example: Blackjack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backup-diagram-of-mc"><span class="nav-number">2.</span> <span class="nav-text">Backup Diagram of MC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,35 +317,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p>To investagate the MC methods, we should consider the forward step first, which is called value evalution in DP method(in the post <a href="TODO">‘Policy Evaluation’</a>). The basic form of value function of MDP is:</p>
-<p>$$<br>v_{\pi}(s) \doteq \mathbb{E}[R_{t+1}+\gamma G_{t+1}|S_t=s,A_t=a]\tag{1}<br>$$</p>
-<p>When we have no information about dynamics, we can not calculate the expectation in equation(1). So, we try to replace the expectation by average. And it becomes:<br>$$<br>\hat{v}<em>{\pi}(s) =\frac{1}{n}\sum</em>{i=0}^{n}G_i\tag{2}<br>$$</p>
-<p>where:</p>
-<ol>
-<li>$G_i$ is the return from state $s$ to the termination of the episode</li>
-<li>$n$ is the number of episodes in which state $s$ appears.</li>
-</ol>
-<p>And as $n\to \infty$, the $\hat{v}<em>{\pi}(s)$ goes to $v</em>{\pi}(s)$ (if the return of $s$ is i.i.d). And this is the very basic ideal of all MC algorithms.</p>
-<p>Because the state $s$ may occure many times in an episode, denoted as $s_1,s_2,s_3,\dots$ in a certain episode, their returns are not independent random variables. So the law of large number does not apply. Then we can class MC method into two categories:</p>
-<ol>
-<li>first-visit MC method, in which only the fist visit of state $s$ is used to calculate the evarage return. This categories are widely studied since 1940 and the converge is guaranteed by law of large number.</li>
-<li>every-visit MC method, in which all visits of state $s$ and their returns are used to calculate average in equation (2). The returns of $s$ is not i.i.d, but the average is still converge.</li>
-</ol>
-<p>Another strong assumption of converge is that $n$ goes to infinity of every state $s\in\mathcal{S}$.</p>
+        <p><strong>Abstract:</strong> <a id="more"></a> To investagate the MC methods, we should consider the forward step first, which is called value evalution in DP method(in the post <a href="TODO">'Policy Evaluation'</a>). The basic form of value function of MDP is:</p>
+<p><span class="math display">\[
+v_{\pi}(s) \doteq \mathbb{E}[R_{t+1}+\gamma G_{t+1}|S_t=s,A_t=a]\tag{1}
+\]</span></p>
+<p>When we have no information about dynamics, we can not calculate the expectation in equation(1). So, we try to replace the expectation by average. And it becomes: <span class="math display">\[
+\hat{v}_{\pi}(s) =\frac{1}{n}\sum_{i=0}^{n}G_i\tag{2}
+\]</span></p>
+<p>where: 1. <span class="math inline">\(G_i\)</span> is the return from state <span class="math inline">\(s\)</span> to the termination of the episode 2. <span class="math inline">\(n\)</span> is the number of episodes in which state <span class="math inline">\(s\)</span> appears.</p>
+<p>And as <span class="math inline">\(n\to \infty\)</span>, the <span class="math inline">\(\hat{v}_{\pi}(s)\)</span> goes to <span class="math inline">\(v_{\pi}(s)\)</span> (if the return of <span class="math inline">\(s\)</span> is i.i.d). And this is the very basic ideal of all MC algorithms.</p>
+<p>Because the state <span class="math inline">\(s\)</span> may occure many times in an episode, denoted as <span class="math inline">\(s_1,s_2,s_3,\dots\)</span> in a certain episode, their returns are not independent random variables. So the law of large number does not apply. Then we can class MC method into two categories: 1. first-visit MC method, in which only the fist visit of state <span class="math inline">\(s\)</span> is used to calculate the evarage return. This categories are widely studied since 1940 and the converge is guaranteed by law of large number. 2. every-visit MC method, in which all visits of state <span class="math inline">\(s\)</span> and their returns are used to calculate average in equation (2). The returns of <span class="math inline">\(s\)</span> is not i.i.d, but the average is still converge.</p>
+<p>Another strong assumption of converge is that <span class="math inline">\(n\)</span> goes to infinity of every state <span class="math inline">\(s\in\mathcal{S}\)</span>.</p>
 <p>The computational expense of estimating the value of a single state is independent of the number of stats. So the MC methods are attractive when we only need the values of a part of the states.</p>
-<h2 id="Example-Blackjack"><a href="#Example-Blackjack" class="headerlink" title="Example: Blackjack"></a>Example: Blackjack</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="example-blackjack">Example: Blackjack</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="backup-diagram-of-mc">Backup Diagram of MC</h2>
+<p><img src="" /></p>
+<p>the difference between the backup diagram of DP and MC: ||DP|MC| |:---:|:---:|:---:| |1|one-step|all steps| |2|all possible transition|one transition| |3|Bootstraping|not bootstraping|</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>There are three obvious advantages of MC method over DP: 1. It can learn from experience 2. It can learn from simulated experience 3. It can learn from the sample episodes which are generated from the state of interest.</p>
+<h2 id="references">References</h2>
 
-<h2 id="Backup-Diagram-of-MC"><a href="#Backup-Diagram-of-MC" class="headerlink" title="Backup Diagram of MC"></a>Backup Diagram of MC</h2><p><img src=""></p>
-<p>the difference between the backup diagram of DP and MC:<br>||DP|MC|<br>|:—:|:—:|:—:|<br>|1|one-step|all steps|<br>|2|all possible transition|one transition|<br>|3|Bootstraping|not bootstraping|</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>There are three obvious advantages of MC method over DP:</p>
-<ol>
-<li>It can learn from experience</li>
-<li>It can learn from simulated experience</li>
-<li>It can learn from the sample episodes which are generated from the state of interest.</li>
-</ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2>
     </div>
 
     

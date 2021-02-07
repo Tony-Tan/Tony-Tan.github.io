@@ -174,7 +174,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Predoctors-Inputs"><span class="nav-number">1.</span> <span class="nav-text">Multiple Predoctors(Inputs)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coefficients"><span class="nav-number">2.</span> <span class="nav-text">Coefficients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deciding-on-Important-Variable"><span class="nav-number">3.</span> <span class="nav-text">Deciding on Important Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Forward-Selection"><span class="nav-number">3.1.</span> <span class="nav-text">Forward Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backward-Selection"><span class="nav-number">3.2.</span> <span class="nav-text">Backward Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mixed-Selection"><span class="nav-number">3.3.</span> <span class="nav-text">Mixed Selection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-predoctorsinputs"><span class="nav-number">1.</span> <span class="nav-text">Multiple Predoctors(Inputs)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coefficients"><span class="nav-number">2.</span> <span class="nav-text">Coefficients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deciding-on-important-variable"><span class="nav-number">3.</span> <span class="nav-text">Deciding on Important Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#forward-selection"><span class="nav-number">3.1.</span> <span class="nav-text">Forward Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#backward-selection"><span class="nav-number">3.2.</span> <span class="nav-text">Backward Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixed-selection"><span class="nav-number">3.3.</span> <span class="nav-text">Mixed Selection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -328,233 +328,267 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> multiple linear regress</p>
-<a id="more"></a>
-
-<h2 id="Multiple-Predoctors-Inputs"><a href="#Multiple-Predoctors-Inputs" class="headerlink" title="Multiple Predoctors(Inputs)"></a>Multiple Predoctors(Inputs)</h2><p>Go back to our first example in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>, we have three inputs(budget of TV, Radio, Newspaper) and an output (Sale):</p>
-<p><img src="./total.png"></p>
+        <p><strong>Keywords:</strong> multiple linear regress <a id="more"></a></p>
+<h2 id="multiple-predoctorsinputs">Multiple Predoctors(Inputs)</h2>
+<p>Go back to our first example in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'Simple Linear Regression'</a>, we have three inputs(budget of TV, Radio, Newspaper) and an output (Sale):</p>
+<p><img src="./total.png" /></p>
 <p>The first trouble we come across is which model we would employ.</p>
 <p>There are two spontaneous strategies:</p>
-<ol>
+<ol type="1">
 <li>extending one input model to multiple inputs model</li>
 <li>making several models, each of which contains only one input and output.</li>
 </ol>
-<p>The second stratigy is just repeating our discussion in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>, and we can get the coefficients and relative statistics, like ‘t-statistic’ , ‘p-value’ e.t.c. According our knowledge, we can get(I copy the data from book ‘An introduction to statistical learning’[^1]):</p>
+<p>The second stratigy is just repeating our discussion in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'Simple Linear Regression'</a>, and we can get the coefficients and relative statistics, like 't-statistic' , 'p-value' e.t.c. According our knowledge, we can get(I copy the data from book 'An introduction to statistical learning'<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>):</p>
 <table>
 <thead>
-<tr>
-<th align="center">TV-Sales</th>
-<th align="center">Estimate</th>
-<th align="center">Standard Error</th>
-<th align="center">t-statistic</th>
-<th align="center">p-value</th>
+<tr class="header">
+<th style="text-align: center;">TV-Sales</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Standard Error</th>
+<th style="text-align: center;">t-statistic</th>
+<th style="text-align: center;">p-value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$w_0$</td>
-<td align="center">$7.0325$</td>
-<td align="center">$0.4578$</td>
-<td align="center">$15.36$</td>
-<td align="center">$&lt;0.0001$</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(w_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7.0325\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.4578\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(15.36\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-<tr>
-<td align="center">$w_1$</td>
-<td align="center">$0.0475$</td>
-<td align="center">$0.0027$</td>
-<td align="center">$17.67$</td>
-<td align="center">$&lt;0.0001$</td>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(w_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.0475\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.0027\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(17.67\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-</tbody></table>
-<p><img src="./TV_SALEs.png"></p>
+</tbody>
+</table>
+<p><img src="./TV_SALEs.png" /></p>
 <table>
 <thead>
-<tr>
-<th align="center">Radio-Sales</th>
-<th align="center">Estimate</th>
-<th align="center">Standard Error</th>
-<th align="center">t-statistic</th>
-<th align="center">p-value</th>
+<tr class="header">
+<th style="text-align: center;">Radio-Sales</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Standard Error</th>
+<th style="text-align: center;">t-statistic</th>
+<th style="text-align: center;">p-value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$w_0$</td>
-<td align="center">$9.312$</td>
-<td align="center">$0.563$</td>
-<td align="center">$16.54$</td>
-<td align="center">$&lt;0.0001$</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(w_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(9.312\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.563\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(16.54\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-<tr>
-<td align="center">$w_1$</td>
-<td align="center">$0.203$</td>
-<td align="center">$0.020$</td>
-<td align="center">$9.92$</td>
-<td align="center">$&lt;0.0001$</td>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(w_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.203\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.020\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(9.92\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-</tbody></table>
-<p><img src="./Radio_Sales.png"></p>
+</tbody>
+</table>
+<p><img src="./Radio_Sales.png" /></p>
 <table>
 <thead>
-<tr>
-<th align="center">Newspaper-Sales</th>
-<th align="center">Estimate</th>
-<th align="center">Standard Error</th>
-<th align="center">t-statistic</th>
-<th align="center">p-value</th>
+<tr class="header">
+<th style="text-align: center;">Newspaper-Sales</th>
+<th style="text-align: center;">Estimate</th>
+<th style="text-align: center;">Standard Error</th>
+<th style="text-align: center;">t-statistic</th>
+<th style="text-align: center;">p-value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$w_0$</td>
-<td align="center">$12.351$</td>
-<td align="center">$0.621$</td>
-<td align="center">$19.88$</td>
-<td align="center">$&lt;0.0001$</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(w_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(12.351\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.621\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(19.88\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-<tr>
-<td align="center">$w_1$</td>
-<td align="center">$0.055$</td>
-<td align="center">$0.017$</td>
-<td align="center">$3.30$</td>
-<td align="center">$&lt;0.0001$</td>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(w_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.055\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.017\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.30\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-</tbody></table>
-<p><img src="./Newspaper_Sales.png"></p>
-<p>These three models contain information about the relationship of each combination, and they can be used to predict unknown ‘Sales’ by input separately. However, three models will produce three predictions, which prediction would be recorded as the final prediction is not sure. Average or other calculation of the three predictions could solve the problem, but there is no evidence that which kind of calculation could make a precise prediction.</p>
+</tbody>
+</table>
+<p><img src="./Newspaper_Sales.png" /></p>
+<p>These three models contain information about the relationship of each combination, and they can be used to predict unknown 'Sales' by input separately. However, three models will produce three predictions, which prediction would be recorded as the final prediction is not sure. Average or other calculation of the three predictions could solve the problem, but there is no evidence that which kind of calculation could make a precise prediction.</p>
 <p>Then a single model that contains all predictors was built, it was writen as:</p>
-<p>$$<br>Y=w_0+w_1X_1+w_2X_2+\dots+w_nX_n+\varepsilon \tag{1}<br>$$</p>
-<p>The single input model we learnd before, is a specialty of equation(1) when $n=1$. Such as:</p>
-<p>$$<br>Sales =w_0+ w_1 \times TV \tag{2}<br>$$</p>
-<p>In the multiple linear regression model, $w_i$ is the slope of $X_i$, which means how much $Y$ is effected when other $X_j\text{ where }j\neq i$ hold and $X_i$ increase one unit.</p>
-<h2 id="Coefficients"><a href="#Coefficients" class="headerlink" title="Coefficients"></a>Coefficients</h2><p>How to calculate the each coefficient of the model is not contained in this article, and different methods to solve this could be found <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>. Though we do not investigate a certain algorithm, we assume we have got a correct result of the parameters by least square method whose object function is still $\text{RSS}$:</p>
-<p>$$<br>\begin{aligned}<br>\text{RSS}&amp;=\sum(y_i-\hat{y_i})^2\<br>&amp;=\sum(y_i-\hat{w_0}-\hat{w_1}x_1-\dots - \hat{w_n}x_n-\varepsilon)^2<br>\end{aligned}<br>$$ </p>
-<p>where $\begin{bmatrix}\hat{w_0},\hat{w_1},\dots, \hat{w_n}\end{bmatrix}$ minimizes $\text{RSS}$</p>
-<p>Here we analytic the model because, up to now, we still don’t know whether every predictor is necessary for the model. In other words, we want to confirm every predictor contributes to the model.</p>
-<p>Let’s go back to the ‘TV, Radio, Newspaper - Sales’ example. </p>
-<p>$$<br>\text{Sales}= w_0 + w_1\times \text{TV}+ w_2\times \text{Radio}+ w_3\times \text{Newspaper}</p>
+<p><span class="math display">\[
+Y=w_0+w_1X_1+w_2X_2+\dots+w_nX_n+\varepsilon \tag{1}
+\]</span></p>
+<p>The single input model we learnd before, is a specialty of equation(1) when <span class="math inline">\(n=1\)</span>. Such as:</p>
+<p><span class="math display">\[
+Sales =w_0+ w_1 \times TV \tag{2}
+\]</span></p>
+<p>In the multiple linear regression model, <span class="math inline">\(w_i\)</span> is the slope of <span class="math inline">\(X_i\)</span>, which means how much <span class="math inline">\(Y\)</span> is effected when other <span class="math inline">\(X_j\text{ where }j\neq i\)</span> hold and <span class="math inline">\(X_i\)</span> increase one unit.</p>
+<h2 id="coefficients">Coefficients</h2>
+<p>How to calculate the each coefficient of the model is not contained in this article, and different methods to solve this could be found <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'Simple Linear Regression'</a>. Though we do not investigate a certain algorithm, we assume we have got a correct result of the parameters by least square method whose object function is still <span class="math inline">\(\text{RSS}\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{RSS}&amp;=\sum(y_i-\hat{y_i})^2\\
+&amp;=\sum(y_i-\hat{w_0}-\hat{w_1}x_1-\dots - \hat{w_n}x_n-\varepsilon)^2
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\begin{bmatrix}\hat{w_0},\hat{w_1},\dots, \hat{w_n}\end{bmatrix}\)</span> minimizes <span class="math inline">\(\text{RSS}\)</span></p>
+<p>Here we analytic the model because, up to now, we still don't know whether every predictor is necessary for the model. In other words, we want to confirm every predictor contributes to the model.</p>
+<p>Let's go back to the 'TV, Radio, Newspaper - Sales' example.</p>
+<p>$$ = w_0 + w_1+ w_2+ w_3</p>
 <p>$$</p>
 <p>and we got parameter:</p>
 <table>
 <thead>
-<tr>
-<th align="center">$\hat{w_0}$</th>
-<th align="center">$\hat{w_1}$</th>
-<th align="center">$\hat{w_2}$</th>
-<th align="center">$\hat{w_3}$</th>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\hat{w_0}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hat{w_1}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hat{w_2}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hat{w_3}\)</span></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$2.939$</td>
-<td align="center">$0.046$</td>
-<td align="center">$0.189$</td>
-<td align="center">$-0.001$</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2.939\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.046\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.189\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.001\)</span></td>
 </tr>
-</tbody></table>
-<p>We observe that in the table above and find $\hat{w_3}$ is little wierd. Because its absolute value is much smaller than those of $\hat{w_1}, \hat{w_2}$. Then we list all the statistics who assess accuracy of the parameter:</p>
+</tbody>
+</table>
+<p>We observe that in the table above and find <span class="math inline">\(\hat{w_3}\)</span> is little wierd. Because its absolute value is much smaller than those of <span class="math inline">\(\hat{w_1}, \hat{w_2}\)</span>. Then we list all the statistics who assess accuracy of the parameter:</p>
 <table>
 <thead>
-<tr>
-<th align="center"></th>
-<th align="center">Coefficient</th>
-<th align="center">SE</th>
-<th align="center">t-statistic</th>
-<th align="center">p-value</th>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Coefficient</th>
+<th style="text-align: center;">SE</th>
+<th style="text-align: center;">t-statistic</th>
+<th style="text-align: center;">p-value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">$\hat{w_0}$(Intercept)</td>
-<td align="center">2.939</td>
-<td align="center">0.3119</td>
-<td align="center">9.42</td>
-<td align="center">$&lt;0.0001$</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\hat{w_0}\)</span>(Intercept)</td>
+<td style="text-align: center;">2.939</td>
+<td style="text-align: center;">0.3119</td>
+<td style="text-align: center;">9.42</td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-<tr>
-<td align="center">$\hat{w_1}$(TV)</td>
-<td align="center">0.046</td>
-<td align="center">0.0014</td>
-<td align="center">32.81</td>
-<td align="center">$&lt;0.0001$</td>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\hat{w_1}\)</span>(TV)</td>
+<td style="text-align: center;">0.046</td>
+<td style="text-align: center;">0.0014</td>
+<td style="text-align: center;">32.81</td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-<tr>
-<td align="center">$\hat{w_2}$(Radio)</td>
-<td align="center">0.189</td>
-<td align="center">0.0086</td>
-<td align="center">21.89</td>
-<td align="center">$&lt;0.0001$</td>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\hat{w_2}\)</span>(Radio)</td>
+<td style="text-align: center;">0.189</td>
+<td style="text-align: center;">0.0086</td>
+<td style="text-align: center;">21.89</td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0.0001\)</span></td>
 </tr>
-<tr>
-<td align="center">$\hat{w_3}$(Newspaper)</td>
-<td align="center">-0.001</td>
-<td align="center">0.0059</td>
-<td align="center">-0.18</td>
-<td align="center">$0.8599$</td>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\hat{w_3}\)</span>(Newspaper)</td>
+<td style="text-align: center;">-0.001</td>
+<td style="text-align: center;">0.0059</td>
+<td style="text-align: center;">-0.18</td>
+<td style="text-align: center;"><span class="math inline">\(0.8599\)</span></td>
 </tr>
-</tbody></table>
-<p>‘p-value’ and ‘t-statistic’ of $\hat{w_3}$ have changed a lot from ‘Newspaper v.s. Sales’ model. And those indicated that in the multiple linear regression predictors(inputs) affect each other. When we have only ‘Newspaper’ it works for predicting with parameter whose ‘t-statistic’ is large and ‘p-value’ is smalle. But the picture of the ‘Newspaper-Sales’ shows that the linear relationship between ‘Newspaper’ and ‘Sales’ is not very strong. This not strong relationship vanished in the multiple linear regression because the other two predictors dominate the relationship.</p>
-<p>The multiple linear regression gives that ‘TV’ and ‘Radio’ are the essential factors for the prediction of ‘Sales’ while the single linear models did not.</p>
-<p>But what happened to ‘Newspaper’? We supposed that there may be some connection between ‘Newspaper’ and ‘Radio’. For example, in a region radio attracted a lot of customers and these guys love reading newspapers coincidentally.</p>
+</tbody>
+</table>
+<p>'p-value' and 't-statistic' of <span class="math inline">\(\hat{w_3}\)</span> have changed a lot from 'Newspaper v.s. Sales' model. And those indicated that in the multiple linear regression predictors(inputs) affect each other. When we have only 'Newspaper' it works for predicting with parameter whose 't-statistic' is large and 'p-value' is smalle. But the picture of the 'Newspaper-Sales' shows that the linear relationship between 'Newspaper' and 'Sales' is not very strong. This not strong relationship vanished in the multiple linear regression because the other two predictors dominate the relationship.</p>
+<p>The multiple linear regression gives that 'TV' and 'Radio' are the essential factors for the prediction of 'Sales' while the single linear models did not.</p>
+<p>But what happened to 'Newspaper'? We supposed that there may be some connection between 'Newspaper' and 'Radio'. For example, in a region radio attracted a lot of customers and these guys love reading newspapers coincidentally.</p>
 <p>Another interesting example is that the number of shark attacks has a strong relation to the sale of ice-cream near the beach.</p>
 <p>These three predictors and output have the Correlation Matrix:</p>
-<p>$$\begin{array}{c|lll}<br>&amp;{\text{TV}}&amp;{\text{Radio}}&amp;{\text{Newspaper}}&amp;{\text{Sales}}\<br>\hline<br>\text{TV}&amp;1.0000&amp;0.0548&amp;0.0567&amp;0.7822\<br>\text{Radio}&amp;&amp;1.0000&amp;0.3541&amp;0.5762\<br>\text{Newspaper}&amp;&amp;&amp;1.0000&amp;0.2283\<br>\text{Sales}&amp;&amp;&amp;&amp;1.0000<br>\end{array}<br>$$</p>
-<p>this matrix presents a strong relation between ‘Radio’ and ‘Newspaper’.</p>
-<h2 id="Deciding-on-Important-Variable"><a href="#Deciding-on-Important-Variable" class="headerlink" title="Deciding on Important Variable"></a>Deciding on Important Variable</h2><p>As we discussed above ‘newspaper’ is not an important variable for these problems. But what should we do to other problems who has a huge number of parameters to decide which some should be used in multiple linear regression.<br>A spontaneous strategy is we can test every combination. In the ‘Media-Sales’ example above, we could test the following combinations:</p>
+<p><span class="math display">\[\begin{array}{c|lll}
+&amp;{\text{TV}}&amp;{\text{Radio}}&amp;{\text{Newspaper}}&amp;{\text{Sales}}\\
+\hline
+\text{TV}&amp;1.0000&amp;0.0548&amp;0.0567&amp;0.7822\\
+\text{Radio}&amp;&amp;1.0000&amp;0.3541&amp;0.5762\\
+\text{Newspaper}&amp;&amp;&amp;1.0000&amp;0.2283\\
+\text{Sales}&amp;&amp;&amp;&amp;1.0000
+\end{array}
+\]</span></p>
+<p>this matrix presents a strong relation between 'Radio' and 'Newspaper'.</p>
+<h2 id="deciding-on-important-variable">Deciding on Important Variable</h2>
+<p>As we discussed above 'newspaper' is not an important variable for these problems. But what should we do to other problems who has a huge number of parameters to decide which some should be used in multiple linear regression. A spontaneous strategy is we can test every combination. In the 'Media-Sales' example above, we could test the following combinations:</p>
 <table>
 <thead>
-<tr>
-<th align="center">No.</th>
-<th align="center">Combination</th>
+<tr class="header">
+<th style="text-align: center;">No.</th>
+<th style="text-align: center;">Combination</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">‘TV’</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">'TV'</td>
 </tr>
-<tr>
-<td align="center">2</td>
-<td align="center">‘Radion’</td>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">'Radion'</td>
 </tr>
-<tr>
-<td align="center">3</td>
-<td align="center">‘Newspaper’</td>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">'Newspaper'</td>
 </tr>
-<tr>
-<td align="center">4</td>
-<td align="center">‘TV’+’Radion’</td>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">'TV'+'Radion'</td>
 </tr>
-<tr>
-<td align="center">5</td>
-<td align="center">‘TV’+Newspaper’</td>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">'TV'+Newspaper'</td>
 </tr>
-<tr>
-<td align="center">6</td>
-<td align="center">‘Radion’+’Newspaper’</td>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">'Radion'+'Newspaper'</td>
 </tr>
-<tr>
-<td align="center">7</td>
-<td align="center">‘TV’+’Radion’+’Newspaper’</td>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">'TV'+'Radion'+'Newspaper'</td>
 </tr>
-<tr>
-<td align="center">8</td>
-<td align="center">None of the predictors</td>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">None of the predictors</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>The No.8 combination represents that the output is just a random variable who has a mean 0 normal distribution.</p>
 <p>The accuracy of every linear regression of that combination of predictors can be measured through many different kinds of statistics:</p>
-<ol>
-<li>Mallow’s $C_p$</li>
+<ol type="1">
+<li>Mallow's <span class="math inline">\(C_p\)</span></li>
 <li>Akaike information criterion(AIC)</li>
 <li>Bayesian information criterion(BIC)</li>
-<li>Adjusted $\text{R}^2$</li>
+<li>Adjusted <span class="math inline">\(\text{R}^2\)</span></li>
 </ol>
-<p>This strategy has a problem – dimension curse. Three inputs produced $2^3=8$ combinations. When we have only 10 predictors, we have to test 1024 times. In practice, more than 100 predictors are very normal and we can never test all their combinations.</p>
-<p>What we need is a feasible method, and we have three different kinds of method:</p>
+<p>This strategy has a problem -- dimension curse. Three inputs produced <span class="math inline">\(2^3=8\)</span> combinations. When we have only 10 predictors, we have to test 1024 times. In practice, more than 100 predictors are very normal and we can never test all their combinations.</p>
+<p>What we need is a feasible method, and we have three different kinds of method: 1. Forward Selection 2. Backward Selection 3. Mixed Selection</p>
+<h3 id="forward-selection">Forward Selection</h3>
+<p>Selecting variable one by one, each time we select the best among the rest until some conditions are reached. And we stop the greedy process. For instance, in the first iteration, we select <span class="math inline">\(x_2\)</span> from <span class="math inline">\(\{x_1,x_2,x_3,x_4\}\)</span> and then we take out one variable and combine it with <span class="math inline">\(x_2\)</span> and calculate a statistic who can measure the accuracy of the new two-variable linear regression. We select the best one out of the set and test if we could stop the iteration by some condition like a threshold or something else.</p>
+<h3 id="backward-selection">Backward Selection</h3>
+<p>It is inverse of forwarding selection. At first, it takes all the variables and then removes the least important variable one by one until some conditions are reached, too.</p>
+<h3 id="mixed-selection">Mixed Selection</h3>
+<p>Mixed selection is a fixed method of forwarding selection and backward selection. When we add a new variable into the method, we test whether there are any variables can be removed for the new variable may contain the same information as the selected variables. For instance, the 'Media-Sales' example, we firstly selected the 'TV' variable then the 'Newspaper' for some reason, when we get 'Radio' data and the 'Newspaper' is no more necessary; so we remove the 'Newspaper' from the set of variables.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
 <ol>
-<li>Forward Selection</li>
-<li>Backward Selection</li>
-<li>Mixed Selection</li>
+<li id="fn1" role="doc-endnote"><p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<h3 id="Forward-Selection"><a href="#Forward-Selection" class="headerlink" title="Forward Selection"></a>Forward Selection</h3><p>Selecting variable one by one, each time we select the best among the rest until some conditions are reached. And we stop the greedy process. For instance, in the first iteration, we select $x_2$ from ${x_1,x_2,x_3,x_4}$ and then we take out one variable and combine it with $x_2$ and calculate a statistic who can measure the accuracy of the new two-variable linear regression. We select the best one out of the set and test if we could stop the iteration by some condition like a threshold or something else.</p>
-<h3 id="Backward-Selection"><a href="#Backward-Selection" class="headerlink" title="Backward Selection"></a>Backward Selection</h3><p>It is inverse of forwarding selection. At first, it takes all the variables and then removes the least important variable one by one until some conditions are reached, too.</p>
-<h3 id="Mixed-Selection"><a href="#Mixed-Selection" class="headerlink" title="Mixed Selection"></a>Mixed Selection</h3><p>Mixed selection is a fixed method of forwarding selection and backward selection. When we add a new variable into the method, we test whether there are any variables can be removed for the new variable may contain the same information as the selected variables. For instance, the ‘Media-Sales’ example, we firstly selected the ‘TV’ variable then the ‘Newspaper’ for some reason, when we get ‘Radio’ data and the ‘Newspaper’ is no more necessary; so we remove the ‘Newspaper’ from the set of variables.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.</p>
+</section>
 
     </div>
 

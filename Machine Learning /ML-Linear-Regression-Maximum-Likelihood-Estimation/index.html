@@ -24,12 +24,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"brainbomb.org","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="Keywords:  maximum likelihood estimation">
+<meta name="description" content="Keywords: maximum likelihood estimation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maximum Likelihood Estimation">
 <meta property="og:url" content="http://brainbomb.org/Machine%20Learning%20/ML-Linear-Regression-Maximum-Likelihood-Estimation/index.html">
 <meta property="og:site_name" content="Brain Bomb">
-<meta property="og:description" content="Keywords:  maximum likelihood estimation">
+<meta property="og:description" content="Keywords: maximum likelihood estimation">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-14T16:41:25.000Z">
 <meta property="article:modified_time" content="2020-11-08T02:44:56.000Z">
@@ -170,7 +170,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Square-Loss-Function-for-Regression-1"><span class="nav-number">1.</span> <span class="nav-text">Square Loss Function for Regression[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maximum-Likelihood-Estimation"><span class="nav-number">2.</span> <span class="nav-text">Maximum Likelihood Estimation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Least-Square-Estimation-and-Maximum-Likelihood-Estimation"><span class="nav-number">3.</span> <span class="nav-text">Least Square Estimation and Maximum Likelihood Estimation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#square-loss-function-for-regression1"><span class="nav-number">1.</span> <span class="nav-text">Square Loss Function for Regression1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maximum-likelihood-estimation"><span class="nav-number">2.</span> <span class="nav-text">Maximum Likelihood Estimation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#least-square-estimation-and-maximum-likelihood-estimation"><span class="nav-number">3.</span> <span class="nav-text">Least Square Estimation and Maximum Likelihood Estimation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -324,48 +324,121 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong>  maximum likelihood estimation</p>
-<a id="more"></a>
-
-<h2 id="Square-Loss-Function-for-Regression-1"><a href="#Square-Loss-Function-for-Regression-1" class="headerlink" title="Square Loss Function for Regression[^1]"></a>Square Loss Function for Regression[^1]</h2><p>To any input $\boldsymbol{x}$, our goal in a regression task is to give a prediction $\hat{y}=y(\boldsymbol{x})$ to approximate target $t$ where the function $y$ is the chosen hypothesis. And the difference between $t$ and $\hat{y}$ can be called ‘error’ or more precisely ‘loss’. Because in an approximation task, ‘error’ occures by chance and alway exists, but ‘loss’ is a good word to describe the difference. The loss can be written generally as function $\ell(y(\boldsymbol{x}),t)$. Intuitively, the smaller the loss, the better the approximation. So the expection of loss:</p>
-<p>$$<br>\mathbb E[\ell]=\int\int \ell(y(\boldsymbol{x}),t)p(\boldsymbol{x},t)d \boldsymbol{x}dt\tag{1}<br>$$</p>
+        <p><strong>Keywords:</strong> maximum likelihood estimation <a id="more"></a></p>
+<h2 id="square-loss-function-for-regression1">Square Loss Function for Regression<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>To any input <span class="math inline">\(\boldsymbol{x}\)</span>, our goal in a regression task is to give a prediction <span class="math inline">\(\hat{y}=y(\boldsymbol{x})\)</span> to approximate target <span class="math inline">\(t\)</span> where the function <span class="math inline">\(y\)</span> is the chosen hypothesis. And the difference between <span class="math inline">\(t\)</span> and <span class="math inline">\(\hat{y}\)</span> can be called 'error' or more precisely 'loss'. Because in an approximation task, 'error' occures by chance and alway exists, but 'loss' is a good word to describe the difference. The loss can be written generally as function <span class="math inline">\(\ell(y(\boldsymbol{x}),t)\)</span>. Intuitively, the smaller the loss, the better the approximation. So the expection of loss:</p>
+<p><span class="math display">\[
+\mathbb E[\ell]=\int\int \ell(y(\boldsymbol{x}),t)p(\boldsymbol{x},t)d \boldsymbol{x}dt\tag{1}
+\]</span></p>
 <p>should be small.</p>
-<p>In probability viewpoint, the input vector $\boldsymbol{x}$, target $t$ and parameters in function $y$ are all random variables. So the expectation of loss function exists.</p>
-<p>Considering the sqare error loss function $e=(y(\boldsymbol{x})-t)^2$, it is a way to present the difference between the prediction of our prediction and the target. And substitute the loss funtion into equation (1), we have:</p>
-<p>$$<br>\mathbb E[\ell]=\int\int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)d \boldsymbol{x}dt\tag{2}<br>$$</p>
-<p>To minimize this function, we could use <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation">Euler-Lagrange equation</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus">Fundamental theorem of calculus</a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fubini%27s_theorem">Fubini’s theorem</a>:</p>
-<p>Fubini’s theorem told us that we can change the order of intergration:<br>$$<br>\begin{aligned}<br>\mathbb E[\ell]&amp;=\int\int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)d \boldsymbol{x}dt\<br>&amp;=\int\int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)dtd \boldsymbol{x}<br>\end{aligned}\tag{3}<br>$$</p>
-<p>According to the Euler-Lagrange equation, we first create a new function $G(x,y,y’)$:<br>$$<br>G(x,y,y’)= \int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)dt\tag{4}<br>$$</p>
-<p>Euler-Lagrange equation is used to minimize the equation (2):<br>$$<br>\frac{\partial G}{\partial y}-\frac{d}{dx}\frac{\partial G}{\partial y’}=0\tag{5}<br>$$</p>
-<p>Because there is no $y’$ component in function $G()$. Then the equation:<br>$$<br>\frac{\partial G}{\partial y}=0\tag{6}<br>$$<br>becomes the necessary condition to minimize the equation (2):</p>
-<p>$$<br>2\int (y(\boldsymbol{x})-t)p(\boldsymbol{x},t)dt=0 \tag{7}<br>$$</p>
-<p>What we want to find to minimize the loss is predictor $y$, so rearrange the equation (6), and we get a good  predictor that can minimize the square loss function :</p>
-<p>$$<br>\begin{aligned}<br>  \int (y(\boldsymbol{x})-t)p(\boldsymbol{x},t)dt&amp;=0\<br>  \int y(\boldsymbol{x})p(\boldsymbol{x},t)dt-\int tp(\boldsymbol{x},t)dt&amp;=0\<br>  y(\boldsymbol{x})\int p(\boldsymbol{x},t)dt&amp;=\int tp(\boldsymbol{x},t)dt\<br>  y(\boldsymbol{x})&amp;=\frac{\int tp(\boldsymbol{x},t)dt}{\int p(\boldsymbol{x},t)dt}\<br>  y(\boldsymbol{x})&amp;=\frac{\int tp(\boldsymbol{x},t)dt}{p(\boldsymbol{x})}\<br>  y(\boldsymbol{x})&amp;=\int tp(t|\boldsymbol{x})dt\<br>  y(\boldsymbol{x})&amp;= \mathbb{E}_t[t|\boldsymbol{x}]<br>\end{aligned}\tag{8}<br>$$</p>
-<p>To minimize the expection of the square loss function, we finally find the expection of $t$ given $\boldsymbol{x}$ is the optimum solution to the task which means the solution of $y(\boldsymbol{x})=\mathbb{E[t| \boldsymbol{x}]}$. The expection of $t$ given $\boldsymbol{x}$ is also called the <strong>regression function</strong>.</p>
-<p>A small summary: $\mathbb{E[t| \boldsymbol{x}]}$ is a good expection of $y(\boldsymbol{x})$</p>
-<h2 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h2><p>Generally, we assume that there is a generator behand the data:</p>
-<p>$$<br>t=g(\boldsymbol{x},\boldsymbol{w})+\epsilon\tag{9}<br>$$</p>
-<p>where the function $g(\boldsymbol{x},\boldsymbol{w})$ is a deterministic function, $t$ is the target variable and $\epsilon$ is zero mean Gaussian random variable with percision $\beta$ which is the inverse variance. Because of the property of Gaussian distribution, $t$ has a Gaussian distribution, with mean(expectation) $g(\boldsymbol{x},\boldsymbol{w})$ and percesion $\beta$. And recalling the standard form of Gaussian distribution:</p>
-<p>$$<br>\begin{aligned}<br>\mathbb{P}(t|\boldsymbol{x},\boldsymbol{w},\beta)&amp;=\mathcal{N}(t|g(\boldsymbol{x},\boldsymbol{w}),\beta^{-1})\<br>&amp;=\frac{\beta}{\sqrt{2\pi}}\mathrm{e}^{-\frac{1}{2}(\beta(x-\mu)^2)}<br>\end{aligned}\tag{10}<br>$$</p>
-<p>What our task here is to approximate the generator in equation (9) with a linear function. Somehow, when we use the square loss function, the optimum solution for this task is $\mathbb{E}[t|\boldsymbol{x}]$ with respect of equation (8). And to the equation (10) the solution is: </p>
-<p>$$<br>\mathbb{E}[t|\boldsymbol{x}]=g(\boldsymbol{x},\boldsymbol{w})\tag{11}<br>$$</p>
-<p>Then we set our linear model as:<br>$$<br>y(x)=\boldsymbol{w}^T\boldsymbol{x}+b\tag{12}<br>$$</p>
+<p>In probability viewpoint, the input vector <span class="math inline">\(\boldsymbol{x}\)</span>, target <span class="math inline">\(t\)</span> and parameters in function <span class="math inline">\(y\)</span> are all random variables. So the expectation of loss function exists.</p>
+<p>Considering the sqare error loss function <span class="math inline">\(e=(y(\boldsymbol{x})-t)^2\)</span>, it is a way to present the difference between the prediction of our prediction and the target. And substitute the loss funtion into equation (1), we have:</p>
+<p><span class="math display">\[
+\mathbb E[\ell]=\int\int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)d \boldsymbol{x}dt\tag{2}
+\]</span></p>
+<p>To minimize this function, we could use <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation">Euler-Lagrange equation</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus">Fundamental theorem of calculus</a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fubini%27s_theorem">Fubini's theorem</a>:</p>
+<p>Fubini's theorem told us that we can change the order of intergration: <span class="math display">\[
+\begin{aligned}
+\mathbb E[\ell]&amp;=\int\int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)d \boldsymbol{x}dt\\
+&amp;=\int\int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)dtd \boldsymbol{x}
+\end{aligned}\tag{3}
+\]</span></p>
+<p>According to the Euler-Lagrange equation, we first create a new function <span class="math inline">\(G(x,y,y&#39;)\)</span>: <span class="math display">\[
+G(x,y,y&#39;)= \int (y(\boldsymbol{x})-t)^2p(\boldsymbol{x},t)dt\tag{4}
+\]</span></p>
+<p>Euler-Lagrange equation is used to minimize the equation (2): <span class="math display">\[
+\frac{\partial G}{\partial y}-\frac{d}{dx}\frac{\partial G}{\partial y&#39;}=0\tag{5}
+\]</span></p>
+<p>Because there is no <span class="math inline">\(y&#39;\)</span> component in function <span class="math inline">\(G()\)</span>. Then the equation: <span class="math display">\[
+\frac{\partial G}{\partial y}=0\tag{6}
+\]</span> becomes the necessary condition to minimize the equation (2):</p>
+<p><span class="math display">\[
+2\int (y(\boldsymbol{x})-t)p(\boldsymbol{x},t)dt=0 \tag{7}
+\]</span></p>
+<p>What we want to find to minimize the loss is predictor <span class="math inline">\(y\)</span>, so rearrange the equation (6), and we get a good predictor that can minimize the square loss function :</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \int (y(\boldsymbol{x})-t)p(\boldsymbol{x},t)dt&amp;=0\\
+  \int y(\boldsymbol{x})p(\boldsymbol{x},t)dt-\int tp(\boldsymbol{x},t)dt&amp;=0\\
+  y(\boldsymbol{x})\int p(\boldsymbol{x},t)dt&amp;=\int tp(\boldsymbol{x},t)dt\\
+  y(\boldsymbol{x})&amp;=\frac{\int tp(\boldsymbol{x},t)dt}{\int p(\boldsymbol{x},t)dt}\\
+  y(\boldsymbol{x})&amp;=\frac{\int tp(\boldsymbol{x},t)dt}{p(\boldsymbol{x})}\\
+  y(\boldsymbol{x})&amp;=\int tp(t|\boldsymbol{x})dt\\
+  y(\boldsymbol{x})&amp;= \mathbb{E}_t[t|\boldsymbol{x}]
+\end{aligned}\tag{8}
+\]</span></p>
+<p>To minimize the expection of the square loss function, we finally find the expection of <span class="math inline">\(t\)</span> given <span class="math inline">\(\boldsymbol{x}\)</span> is the optimum solution to the task which means the solution of <span class="math inline">\(y(\boldsymbol{x})=\mathbb{E[t| \boldsymbol{x}]}\)</span>. The expection of <span class="math inline">\(t\)</span> given <span class="math inline">\(\boldsymbol{x}\)</span> is also called the <strong>regression function</strong>.</p>
+<p>A small summary: <span class="math inline">\(\mathbb{E[t| \boldsymbol{x}]}\)</span> is a good expection of <span class="math inline">\(y(\boldsymbol{x})\)</span></p>
+<h2 id="maximum-likelihood-estimation">Maximum Likelihood Estimation</h2>
+<p>Generally, we assume that there is a generator behand the data:</p>
+<p><span class="math display">\[
+t=g(\boldsymbol{x},\boldsymbol{w})+\epsilon\tag{9}
+\]</span></p>
+<p>where the function <span class="math inline">\(g(\boldsymbol{x},\boldsymbol{w})\)</span> is a deterministic function, <span class="math inline">\(t\)</span> is the target variable and <span class="math inline">\(\epsilon\)</span> is zero mean Gaussian random variable with percision <span class="math inline">\(\beta\)</span> which is the inverse variance. Because of the property of Gaussian distribution, <span class="math inline">\(t\)</span> has a Gaussian distribution, with mean(expectation) <span class="math inline">\(g(\boldsymbol{x},\boldsymbol{w})\)</span> and percesion <span class="math inline">\(\beta\)</span>. And recalling the standard form of Gaussian distribution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{P}(t|\boldsymbol{x},\boldsymbol{w},\beta)&amp;=\mathcal{N}(t|g(\boldsymbol{x},\boldsymbol{w}),\beta^{-1})\\
+&amp;=\frac{\beta}{\sqrt{2\pi}}\mathrm{e}^{-\frac{1}{2}(\beta(x-\mu)^2)}
+\end{aligned}\tag{10}
+\]</span></p>
+<p>What our task here is to approximate the generator in equation (9) with a linear function. Somehow, when we use the square loss function, the optimum solution for this task is <span class="math inline">\(\mathbb{E}[t|\boldsymbol{x}]\)</span> with respect of equation (8). And to the equation (10) the solution is:</p>
+<p><span class="math display">\[
+\mathbb{E}[t|\boldsymbol{x}]=g(\boldsymbol{x},\boldsymbol{w})\tag{11}
+\]</span></p>
+<p>Then we set our linear model as: <span class="math display">\[
+y(x)=\boldsymbol{w}^T\boldsymbol{x}+b\tag{12}
+\]</span></p>
 <p>and this can be transformed as:</p>
-<p>$$<br>y(x)=<br>\begin{bmatrix}<br>b&amp;\boldsymbol{w}^T<br>\end{bmatrix}<br>\begin{bmatrix}<br>1\<br>\boldsymbol{x}<br>\end{bmatrix}=\boldsymbol{w}_a^T\boldsymbol{x}_a<br>\tag{13}<br>$$</p>
-<p>for short, we just write the $\boldsymbol{w}_a$ and $\boldsymbol{x}_a$ as $\boldsymbol{w}$ and $\boldsymbol{x}$. Then the linear model becomes:</p>
-<p>$$<br>y(x)=\boldsymbol{w}^T\boldsymbol{x}\tag{14}<br>$$</p>
-<p>and to get the prediction we need to find out what $\boldsymbol{w}$ is. As we mentioned above we consider all the parameter as a random variable, then the conditioned distribution of $\boldsymbol{w}$ is $\mathbb{P}(\boldsymbol{w}|\boldsymbol{t},\beta)$. $X$ or $\boldsymbol{x}$ could be omitted for its distribution will not be concerned. And the Bayesian theorem told us:</p>
-<p>$$<br>\mathbb{P}(\boldsymbol{w}|\boldsymbol{t},\beta)=\frac{\mathbb{P}(<br>  \boldsymbol{t}|\boldsymbol{w},\beta)<br>  \mathbb{P}(\boldsymbol{w})}<br>  {\mathbb{P}(\boldsymbol{t})}=\frac{\text{Likelihood}\times \text{Prior}}{\text{Evidence}}\tag{15}<br>$$</p>
-<p>We want to find the $\boldsymbol{w}^{\star}$ that maximise the posterior probability $\mathbb{P}(\boldsymbol{w}|\boldsymbol{t},\beta)$. Because $\mathbb{P}(\boldsymbol{t})$ and  $\mathbb{P}(\boldsymbol{w})$ are constant. Then the maximum of likelihood $\mathbb{P}(\boldsymbol{t}|\boldsymbol{w},\beta)$ maximise the posterior probability. </p>
-<p>$$<br>\begin{aligned}<br>\mathbb{P}(\boldsymbol{t}|\boldsymbol{w},\beta)&amp;=\Pi_{i=0}^{N}\mathcal{N}(t_i|\boldsymbol{w}^T\boldsymbol{x}<em>i,\beta^{-1})\<br>\ln \mathbb{P}(\boldsymbol{t}|\boldsymbol{w},\beta)&amp;=\sum</em>{i=0}^{N}\ln \mathcal{N}(t_i|\boldsymbol{w}^T\boldsymbol{x}<em>i,\beta^{-1})\<br>&amp;=\sum</em>{i=0}^{N}\ln \frac{\beta}{\sqrt{2\pi}}\mathrm{e}^{-\frac{1}{2}(\beta(t_i-\boldsymbol{w}^T\boldsymbol{x}<em>i)^2)}\<br>&amp;=\sum</em>{i=0}^{N} \ln \beta - \sum_{i=0}^{N} \ln \sqrt{2\pi} - \frac{1}{2}\beta\sum_{i=0}^{N}(t_i-\boldsymbol{w}^T\boldsymbol{x}_i)^2<br>\end{aligned}\tag{16}<br>$$</p>
-<p>This gives us a wanderful result. The last part of the equation (16) has only the component $\frac{1}{2}\beta\sum_{i=0}^{N}(t_i-\boldsymbol{w}^T\boldsymbol{x}<em>i)^2$ that can be controled by us, because $\sum</em>{i=0}^{N} \ln \beta$ and $- \sum_{i=0}^{N} \ln \sqrt{2\pi}$ are decided by the assumptions. In other words, to maximise the likelihood, we just need to minimise:</p>
-<p>$$<br>\sum_{i=0}^{N}(t_i-\boldsymbol{w}^T\boldsymbol{x}_i)^2\tag{17}<br>$$</p>
+<p><span class="math display">\[
+y(x)=
+\begin{bmatrix}
+b&amp;\boldsymbol{w}^T
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+\boldsymbol{x}
+\end{bmatrix}=\boldsymbol{w}_a^T\boldsymbol{x}_a
+\tag{13}
+\]</span></p>
+<p>for short, we just write the <span class="math inline">\(\boldsymbol{w}_a\)</span> and <span class="math inline">\(\boldsymbol{x}_a\)</span> as <span class="math inline">\(\boldsymbol{w}\)</span> and <span class="math inline">\(\boldsymbol{x}\)</span>. Then the linear model becomes:</p>
+<p><span class="math display">\[
+y(x)=\boldsymbol{w}^T\boldsymbol{x}\tag{14}
+\]</span></p>
+<p>and to get the prediction we need to find out what <span class="math inline">\(\boldsymbol{w}\)</span> is. As we mentioned above we consider all the parameter as a random variable, then the conditioned distribution of <span class="math inline">\(\boldsymbol{w}\)</span> is <span class="math inline">\(\mathbb{P}(\boldsymbol{w}|\boldsymbol{t},\beta)\)</span>. <span class="math inline">\(X\)</span> or <span class="math inline">\(\boldsymbol{x}\)</span> could be omitted for its distribution will not be concerned. And the Bayesian theorem told us:</p>
+<p><span class="math display">\[
+\mathbb{P}(\boldsymbol{w}|\boldsymbol{t},\beta)=\frac{\mathbb{P}(
+  \boldsymbol{t}|\boldsymbol{w},\beta)
+  \mathbb{P}(\boldsymbol{w})}
+  {\mathbb{P}(\boldsymbol{t})}=\frac{\text{Likelihood}\times \text{Prior}}{\text{Evidence}}\tag{15}
+\]</span></p>
+<p>We want to find the <span class="math inline">\(\boldsymbol{w}^{\star}\)</span> that maximise the posterior probability <span class="math inline">\(\mathbb{P}(\boldsymbol{w}|\boldsymbol{t},\beta)\)</span>. Because <span class="math inline">\(\mathbb{P}(\boldsymbol{t})\)</span> and <span class="math inline">\(\mathbb{P}(\boldsymbol{w})\)</span> are constant. Then the maximum of likelihood <span class="math inline">\(\mathbb{P}(\boldsymbol{t}|\boldsymbol{w},\beta)\)</span> maximise the posterior probability.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{P}(\boldsymbol{t}|\boldsymbol{w},\beta)&amp;=\Pi_{i=0}^{N}\mathcal{N}(t_i|\boldsymbol{w}^T\boldsymbol{x}_i,\beta^{-1})\\
+\ln \mathbb{P}(\boldsymbol{t}|\boldsymbol{w},\beta)&amp;=\sum_{i=0}^{N}\ln \mathcal{N}(t_i|\boldsymbol{w}^T\boldsymbol{x}_i,\beta^{-1})\\
+&amp;=\sum_{i=0}^{N}\ln \frac{\beta}{\sqrt{2\pi}}\mathrm{e}^{-\frac{1}{2}(\beta(t_i-\boldsymbol{w}^T\boldsymbol{x}_i)^2)}\\
+&amp;=\sum_{i=0}^{N} \ln \beta - \sum_{i=0}^{N} \ln \sqrt{2\pi} - \frac{1}{2}\beta\sum_{i=0}^{N}(t_i-\boldsymbol{w}^T\boldsymbol{x}_i)^2
+\end{aligned}\tag{16}
+\]</span></p>
+<p>This gives us a wanderful result. The last part of the equation (16) has only the component <span class="math inline">\(\frac{1}{2}\beta\sum_{i=0}^{N}(t_i-\boldsymbol{w}^T\boldsymbol{x}_i)^2\)</span> that can be controled by us, because <span class="math inline">\(\sum_{i=0}^{N} \ln \beta\)</span> and <span class="math inline">\(- \sum_{i=0}^{N} \ln \sqrt{2\pi}\)</span> are decided by the assumptions. In other words, to maximise the likelihood, we just need to minimise:</p>
+<p><span class="math display">\[
+\sum_{i=0}^{N}(t_i-\boldsymbol{w}^T\boldsymbol{x}_i)^2\tag{17}
+\]</span></p>
 <p>This was just to minimize the sum of squares. Then this optimization problem went back to the least square problem.</p>
-<h2 id="Least-Square-Estimation-and-Maximum-Likelihood-Estimation"><a href="#Least-Square-Estimation-and-Maximum-Likelihood-Estimation" class="headerlink" title="Least Square Estimation and Maximum Likelihood Estimation"></a>Least Square Estimation and Maximum Likelihood Estimation</h2><p>When we assume there is a generator:</p>
-<p>$$<br>t=g(\boldsymbol{x},\boldsymbol{w})+\epsilon\tag{18}<br>$$</p>
-<p>behind the data, and $\epsilon$ has a zero-mean Gaussian distribution with any precision $\beta$, the maximum likelihood estimation finally converts to the least square estimation. This is not only worked for linear regression, because we have no assumption about what $g(\boldsymbol{x},\boldsymbol{w})$ is.</p>
-<p>However, when the $\epsilon$ has a different distribution but not Gaussian distribution, the least square estimation will not be the optimum solution.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<h2 id="least-square-estimation-and-maximum-likelihood-estimation">Least Square Estimation and Maximum Likelihood Estimation</h2>
+<p>When we assume there is a generator:</p>
+<p><span class="math display">\[
+t=g(\boldsymbol{x},\boldsymbol{w})+\epsilon\tag{18}
+\]</span></p>
+<p>behind the data, and <span class="math inline">\(\epsilon\)</span> has a zero-mean Gaussian distribution with any precision <span class="math inline">\(\beta\)</span>, the maximum likelihood estimation finally converts to the least square estimation. This is not only worked for linear regression, because we have no assumption about what <span class="math inline">\(g(\boldsymbol{x},\boldsymbol{w})\)</span> is.</p>
+<p>However, when the <span class="math inline">\(\epsilon\)</span> has a different distribution but not Gaussian distribution, the least square estimation will not be the optimum solution.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

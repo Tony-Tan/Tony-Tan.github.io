@@ -186,7 +186,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Theory-and-Notation-1"><span class="nav-number">1.</span> <span class="nav-text">Theory and Notation[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Neuron-Model"><span class="nav-number">2.</span> <span class="nav-text">Single Neuron Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transfer-Functions"><span class="nav-number">3.</span> <span class="nav-text">Transfer Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hard-Limit-Transfer-Function"><span class="nav-number">3.1.</span> <span class="nav-text">Hard Limit Transfer Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Transfer-Function"><span class="nav-number">3.2.</span> <span class="nav-text">Linear Transfer Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log-sigmoid-Transfer-Function"><span class="nav-number">3.3.</span> <span class="nav-text">Log-sigmoid Transfer Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-inputs-Neuron"><span class="nav-number">4.</span> <span class="nav-text">Multiple-inputs Neuron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Architecture"><span class="nav-number">5.</span> <span class="nav-text">Network Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-layer-of-neurons"><span class="nav-number">5.1.</span> <span class="nav-text">A layer of neurons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Layers-of-Neurons"><span class="nav-number">5.2.</span> <span class="nav-text">Multiple Layers of Neurons</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recurrent-Networks"><span class="nav-number">6.</span> <span class="nav-text">Recurrent Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#theory-and-notation1"><span class="nav-number">1.</span> <span class="nav-text">Theory and Notation1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#single-neuron-model"><span class="nav-number">2.</span> <span class="nav-text">Single Neuron Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transfer-functions"><span class="nav-number">3.</span> <span class="nav-text">Transfer Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hard-limit-transfer-function"><span class="nav-number">3.1.</span> <span class="nav-text">Hard Limit Transfer Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-transfer-function"><span class="nav-number">3.2.</span> <span class="nav-text">Linear Transfer Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-sigmoid-transfer-function"><span class="nav-number">3.3.</span> <span class="nav-text">Log-sigmoid Transfer Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-inputs-neuron"><span class="nav-number">4.</span> <span class="nav-text">Multiple-inputs Neuron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network-architecture"><span class="nav-number">5.</span> <span class="nav-text">Network Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-layer-of-neurons"><span class="nav-number">5.1.</span> <span class="nav-text">A layer of neurons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-layers-of-neurons"><span class="nav-number">5.2.</span> <span class="nav-text">Multiple Layers of Neurons</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recurrent-networks"><span class="nav-number">6.</span> <span class="nav-text">Recurrent Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -340,147 +340,212 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> neuron model, network architecture</p>
-<a id="more"></a>
-
-
-<h2 id="Theory-and-Notation-1"><a href="#Theory-and-Notation-1" class="headerlink" title="Theory and Notation[^1]"></a>Theory and Notation[^1]</h2><p>We are not able to build any artificial cells up to now. It seems impossible to build a neuron network through biological materials manually, either. Then to investigate the ability of neurons we have built mathematical models of the neuron. These models have been assigned different kinds of neuron-like properties. However, there must be a balance between the number of properties contained by the models and the computational abilities of the machines at that time.</p>
-<p>From now on, we begin our study of the neuron network, and it looks like a good strategy to begin with the simplest but basic model – artificial neuron. Because a variety of network architectures are built on these simple neurons. Then well-studied operations of a neuron could be essential to help in predicting the behaviors of a more complex neuron network which is constituted of this kind of neurons.</p>
-<p>The notation is another important issue in modeling a new concept. A unity notation is easy to share ideas while during the last decade’s different authors used their notations and this obstructed ideas. For example, when I read [McCulloch 1943] [^2], notations in the paper made me out of mind. And the following modern notation will be used throughout the whole website.</p>
-<h2 id="Single-Neuron-Model"><a href="#Single-Neuron-Model" class="headerlink" title="Single Neuron Model"></a>Single Neuron Model</h2><p>Let begin with the simplest neuron, which has only one input, one synapse which is represented by weight, a bias, a threshold operation which is expressed by a transfer function and an output.</p>
+        <p><strong>Keywords:</strong> neuron model, network architecture <a id="more"></a></p>
+<h2 id="theory-and-notation1">Theory and Notation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>We are not able to build any artificial cells up to now. It seems impossible to build a neuron network through biological materials manually, either. Then to investigate the ability of neurons we have built mathematical models of the neuron. These models have been assigned different kinds of neuron-like properties. However, there must be a balance between the number of properties contained by the models and the computational abilities of the machines at that time.</p>
+<p>From now on, we begin our study of the neuron network, and it looks like a good strategy to begin with the simplest but basic model -- artificial neuron. Because a variety of network architectures are built on these simple neurons. Then well-studied operations of a neuron could be essential to help in predicting the behaviors of a more complex neuron network which is constituted of this kind of neurons.</p>
+<p>The notation is another important issue in modeling a new concept. A unity notation is easy to share ideas while during the last decade's different authors used their notations and this obstructed ideas. For example, when I read [McCulloch 1943] <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, notations in the paper made me out of mind. And the following modern notation will be used throughout the whole website.</p>
+<h2 id="single-neuron-model">Single Neuron Model</h2>
+<p>Let begin with the simplest neuron, which has only one input, one synapse which is represented by weight, a bias, a threshold operation which is expressed by a transfer function and an output.</p>
 <p>We know that the cell body of neurons plays summation and threshold operation. Then our simplest model is constructed as follows:</p>
-<p><img src="./single_input.gif"></p>
-<ol>
+<p><img src="./single_input.gif" /></p>
+<ol type="1">
 <li>Synapse is represented by a scalar which is called a weight, it will be multiplied by the input as a received signal, and then the signal is transferred to the cell body</li>
-<li>Cell body here is represented by two functions and a scalar property: <ul>
-<li>the first one is summation which is used to collect all signals in a short time interval, while in this naive example only one input is concerned so it looks redundant but in the following more complex models, it is an essential operation of a neuron; </li>
-<li>the second function is a threshold operation which acts as a gatekeeper, only the signal stronger than some value could excite this neuron. Only excited neurons could pass signals to the other neurons connected to them. </li>
+<li>Cell body here is represented by two functions and a scalar property:
+<ul>
+<li>the first one is summation which is used to collect all signals in a short time interval, while in this naive example only one input is concerned so it looks redundant but in the following more complex models, it is an essential operation of a neuron;</li>
+<li>the second function is a threshold operation which acts as a gatekeeper, only the signal stronger than some value could excite this neuron. Only excited neurons could pass signals to the other neurons connected to them.</li>
 <li>The scalar property represents an original faint signal of the neuron. From a biological point, it makes sense because every nerve cell has its resting membrane potential(RMP).</li>
-</ul>
-</li>
+</ul></li>
 <li>Axon is expressed by an output that is produced by the threshold function. It can be any form in a biological neuron, like amplitude or frequency, but here it can just be a number which is decided by the selected threshold function.</li>
 </ol>
 <p>The threshold function is called an active function or transfer functions officially. And it will be listed in the next section.</p>
-<p>Let’s review the single input neuron model and its components:</p>
-<p><img src="./single_input_neuron.jpeg"></p>
+<p>Let's review the single input neuron model and its components:</p>
+<p><img src="./single_input_neuron.jpeg" /></p>
 <ul>
-<li>$P$ : input signal, a scalar, coming from a previous nerve cell or external signal</li>
-<li>$w$ : weight, a scalar, coming from the synapse, act as strength of a synapse</li>
-<li>$b$ : bias, a scalar, a property of this neuron</li>
-<li>$f$ : transfer function, act as a gatekeeper, perform a threshold operation</li>
-<li>$a$ : the output of the neuron, a scalar, can be a signal to the next neuron or as a final output to the external system.</li>
+<li><span class="math inline">\(P\)</span> : input signal, a scalar, coming from a previous nerve cell or external signal</li>
+<li><span class="math inline">\(w\)</span> : weight, a scalar, coming from the synapse, act as strength of a synapse</li>
+<li><span class="math inline">\(b\)</span> : bias, a scalar, a property of this neuron</li>
+<li><span class="math inline">\(f\)</span> : transfer function, act as a gatekeeper, perform a threshold operation</li>
+<li><span class="math inline">\(a\)</span> : the output of the neuron, a scalar, can be a signal to the next neuron or as a final output to the external system.</li>
 </ul>
 <p>The final mathematical expression is:</p>
-<p>$$<br>a=f(w\cdot P + b)\tag{1}<br>$$</p>
-<p>For instance, we have input $P=2.0$, synapse weight $w=3.0$, nerve cell bias $b=-1.5$ and then we get the output:</p>
-<p>$$<br>a= f(2.0\times 3.0 + (-1.5))=f(4.5)\tag{2}<br>$$</p>
+<p><span class="math display">\[
+a=f(w\cdot P + b)\tag{1}
+\]</span></p>
+<p>For instance, we have input <span class="math inline">\(P=2.0\)</span>, synapse weight <span class="math inline">\(w=3.0\)</span>, nerve cell bias <span class="math inline">\(b=-1.5\)</span> and then we get the output:</p>
+<p><span class="math display">\[
+a= f(2.0\times 3.0 + (-1.5))=f(4.5)\tag{2}
+\]</span></p>
 <p>however, bias can be omitted, or be rewritten as a special input and weight combination:</p>
-<p>$$<br>a=f(w_1\cdot P + w_0\cdot 1)\text{ where } w_1=w \text{ and }w_0=b\tag{3}<br>$$</p>
-<p>$w$ and $b$ came from equation(1). In the model, $w$ and $b$ are adjustable. And the ideal procedure is:</p>
-<ol>
-<li>computing summation of all weighted inputs</li>
-<li>select a transfer function</li>
-<li>put the result of step 1 into the selected function from step 2 and get a final output of the neuron</li>
-<li>using the learning rule to adjusting $w$ and $b$ to adaptive the task which is our purpose.</li>
-</ol>
-<h2 id="Transfer-Functions"><a href="#Transfer-Functions" class="headerlink" title="Transfer Functions"></a>Transfer Functions</h2><p>Every part of the neuron no matter the biological one or mathematical one directly affects the function of the neuron. And this also makes the design of neurons more interesting, because we can build different kinds of neurons to simulate different kinds of operations. And this also provides sufficient materials for us to develop a more complicated network. Let’s recall the single input model above, the components are $w$, $b$, $\sum$ and $f$, however, $w$,$b$ is objective of learning rules, and $\sum$ is relatively stable which is hard to be replaced by any other operations. So, we move our attention to the $f$ - threshold operation. Threshold operation is like a switch when some conditions are achieved then output a state, but when the conditions are not reached, another state would be represented. A simple mathematical equation to express this function is:</p>
-<p>$$<br>f(x) =<br>\begin{cases}<br> 0, &amp; \text{if $x&gt;0$} \<br> 1, &amp; \text{else}<br>\end{cases}\tag{4}<br>$$</p>
+<p><span class="math display">\[
+a=f(w_1\cdot P + w_0\cdot 1)\text{ where } w_1=w \text{ and }w_0=b\tag{3}
+\]</span></p>
+<p><span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span> came from equation(1). In the model, <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span> are adjustable. And the ideal procedure is: 1. computing summation of all weighted inputs 2. select a transfer function 3. put the result of step 1 into the selected function from step 2 and get a final output of the neuron 4. using the learning rule to adjusting <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span> to adaptive the task which is our purpose.</p>
+<h2 id="transfer-functions">Transfer Functions</h2>
+<p>Every part of the neuron no matter the biological one or mathematical one directly affects the function of the neuron. And this also makes the design of neurons more interesting, because we can build different kinds of neurons to simulate different kinds of operations. And this also provides sufficient materials for us to develop a more complicated network. Let's recall the single input model above, the components are <span class="math inline">\(w\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(\sum\)</span> and <span class="math inline">\(f\)</span>, however, <span class="math inline">\(w\)</span>,<span class="math inline">\(b\)</span> is objective of learning rules, and <span class="math inline">\(\sum\)</span> is relatively stable which is hard to be replaced by any other operations. So, we move our attention to the <span class="math inline">\(f\)</span> - threshold operation. Threshold operation is like a switch when some conditions are achieved then output a state, but when the conditions are not reached, another state would be represented. A simple mathematical equation to express this function is:</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+ 0, &amp; \text{if $x&gt;0$} \\
+ 1, &amp; \text{else}
+\end{cases}\tag{4}
+\]</span></p>
 <p>Transfer functions can be linear or nonlinear; These three functions are mostly used.</p>
-<h3 id="Hard-Limit-Transfer-Function"><a href="#Hard-Limit-Transfer-Function" class="headerlink" title="Hard Limit Transfer Function"></a>Hard Limit Transfer Function</h3><p>The first commenly used threshold function is the most intuitive one, a peicewise function, when $x&gt;0$ the output is ‘on’ or ‘off’ for others. And by convention, ‘on’ is replace by $1$ and ‘off’ is replaced by $-1$. So it becomes:</p>
-<p>$$<br>f(x) =<br>\begin{cases}<br> 1, &amp; \text{if $x&gt;0$} \<br> -1, &amp; \text{else}<br>\end{cases}\tag{5}<br>$$</p>
+<h3 id="hard-limit-transfer-function">Hard Limit Transfer Function</h3>
+<p>The first commenly used threshold function is the most intuitive one, a peicewise function, when <span class="math inline">\(x&gt;0\)</span> the output is 'on' or 'off' for others. And by convention, 'on' is replace by <span class="math inline">\(1\)</span> and 'off' is replaced by <span class="math inline">\(-1\)</span>. So it becomes:</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+ 1, &amp; \text{if $x&gt;0$} \\
+ -1, &amp; \text{else}
+\end{cases}\tag{5}
+\]</span></p>
 <p>and it looks like:</p>
-<p><img src="./threshold_1.jpeg"></p>
-<p>Then we take equation1 into equation(5), whose $x=w\cdot P +b$, we get:<br>$$<br>f(w\cdot P +b) =<br>\begin{cases}<br> 1, &amp; \text{if $w\cdot P +b&gt;0$} \<br> -1, &amp; \text{else}<br>\end{cases}\tag{6}<br>$$</p>
-<p>We alway regard the input as independent variable so we replace $P$ with $x$ without loss of generality. Then we get:</p>
-<p>$$<br>g(x) =<br>\begin{cases}<br> 1, &amp; \text{if $x&gt; -\frac{b}{w}$} \<br> -1, &amp; \text{else}<br>\end{cases}\tag{7}<br>$$</p>
-<p>where $w\neq 0$. $g(x)$ is a special case for equation(5) as the transfer function of this single-input neuron.</p>
-<p><img src="./threshold_1_re.jpeg"></p>
+<p><img src="./threshold_1.jpeg" /></p>
+<p>Then we take equation1 into equation(5), whose <span class="math inline">\(x=w\cdot P +b\)</span>, we get: <span class="math display">\[
+f(w\cdot P +b) =
+\begin{cases}
+ 1, &amp; \text{if $w\cdot P +b&gt;0$} \\
+ -1, &amp; \text{else}
+\end{cases}\tag{6}
+\]</span></p>
+<p>We alway regard the input as independent variable so we replace <span class="math inline">\(P\)</span> with <span class="math inline">\(x\)</span> without loss of generality. Then we get:</p>
+<p><span class="math display">\[
+g(x) =
+\begin{cases}
+ 1, &amp; \text{if $x&gt; -\frac{b}{w}$} \\
+ -1, &amp; \text{else}
+\end{cases}\tag{7}
+\]</span></p>
+<p>where <span class="math inline">\(w\neq 0\)</span>. <span class="math inline">\(g(x)\)</span> is a special case for equation(5) as the transfer function of this single-input neuron.</p>
+<p><img src="./threshold_1_re.jpeg" /></p>
 <p>This is the famous threshold operation function, the Hard Limit Transfer Function</p>
-<h3 id="Linear-Transfer-Function"><a href="#Linear-Transfer-Function" class="headerlink" title="Linear Transfer Function"></a>Linear Transfer Function</h3><p>Another mostly used function is the linear function, who has the simplest form:</p>
-<p>$$<br>f(x)=x\tag{8}<br>$$</p>
+<h3 id="linear-transfer-function">Linear Transfer Function</h3>
+<p>Another mostly used function is the linear function, who has the simplest form:</p>
+<p><span class="math display">\[
+f(x)=x\tag{8}
+\]</span></p>
 <p>and it is a line going through the origin</p>
-<p><img src="./threshold_2.jpeg"></p>
+<p><img src="./threshold_2.jpeg" /></p>
 <p>When tale equation(1) into equation(8) we get:</p>
-<p>$$<br>f(w\cdot P+b)=w\cdot P+b\tag{9}<br>$$</p>
+<p><span class="math display">\[
+f(w\cdot P+b)=w\cdot P+b\tag{9}
+\]</span></p>
 <p>and we can get the special case of the linear transfer function for the single-input neuron:</p>
-<p>$$<br>g(x)=w\cdot x+b\tag{10}<br>$$</p>
-<p><img src="./threshold_2_re.jpeg"></p>
+<p><span class="math display">\[
+g(x)=w\cdot x+b\tag{10}
+\]</span></p>
+<p><img src="./threshold_2_re.jpeg" /></p>
 <p>Linear transfer function just seems as there is no transfer function in the model but in some networks, it plays an important part.</p>
-<h3 id="Log-sigmoid-Transfer-Function"><a href="#Log-sigmoid-Transfer-Function" class="headerlink" title="Log-sigmoid Transfer Function"></a>Log-sigmoid Transfer Function</h3><p>Another useful transfer function is log-sigmoid funtion:</p>
-<p>$$<br>f(x)=\frac{1}{1+e^{-x}}\tag{11}<br>$$</p>
-<p><img src="./threshold_3.jpeg"></p>
-<p>This sigmoid function has a similar appearance with ‘Hard Limit Transfer Function’ however, sigmoid has a more mathematical advantage than hard limit transfer function, like it has derivative everywhere while equation(5) does not have.</p>
-<p>The single-input neuron model’s special case of the log-sigmoid function is:</p>
-<p>$$<br>g(x)=\frac{1}{1+e^{-w\cdot x+b}}\tag{12}<br>$$</p>
-<p>and it looks like:<br><img src="./threshold_3_re.jpeg"></p>
-<p>These three transfer functions are the most common ones and also the easiest ones. More transfer functions can be found:<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/transfer-functions/">‘Transfer Function’</a></p>
-<h2 id="Multiple-inputs-Neuron"><a href="#Multiple-inputs-Neuron" class="headerlink" title="Multiple-inputs Neuron"></a>Multiple-inputs Neuron</h2><p>After the insight of single-input neuron, we can easily build a more complex and powerful neuron model – multiple-inputs neuron, whose structure is more like the biological nerve cell than the single-input neuron:</p>
-<p><img src="./multiple_inputs.jpeg"></p>
+<h3 id="log-sigmoid-transfer-function">Log-sigmoid Transfer Function</h3>
+<p>Another useful transfer function is log-sigmoid funtion:</p>
+<p><span class="math display">\[
+f(x)=\frac{1}{1+e^{-x}}\tag{11}
+\]</span></p>
+<p><img src="./threshold_3.jpeg" /></p>
+<p>This sigmoid function has a similar appearance with 'Hard Limit Transfer Function' however, sigmoid has a more mathematical advantage than hard limit transfer function, like it has derivative everywhere while equation(5) does not have.</p>
+<p>The single-input neuron model's special case of the log-sigmoid function is:</p>
+<p><span class="math display">\[
+g(x)=\frac{1}{1+e^{-w\cdot x+b}}\tag{12}
+\]</span></p>
+<p>and it looks like: <img src="./threshold_3_re.jpeg" /></p>
+<p>These three transfer functions are the most common ones and also the easiest ones. More transfer functions can be found:<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/transfer-functions/">'Transfer Function'</a></p>
+<h2 id="multiple-inputs-neuron">Multiple-inputs Neuron</h2>
+<p>After the insight of single-input neuron, we can easily build a more complex and powerful neuron model -- multiple-inputs neuron, whose structure is more like the biological nerve cell than the single-input neuron:</p>
+<p><img src="./multiple_inputs.jpeg" /></p>
 <p>then, we can describe the nuron by mathematical expression in which summation operation will play a part in the whole process as follow:</p>
-<p>$$<br>a=w_{1,1}\cdot p_1+w_{1,2}\cdot p_2+\dots+ w_{1,R}\cdot p_R+b\tag{13}<br>$$</p>
-<p>There are two numbers of subscript of $w$ which seem unnecessary in the equation because the first number does not vary any more. But as a long concern, it is better to remain this number for it is used to label the neuron. So $w_{1,2}$ represents the second synapse’s weight belonging to the first neuron. When we have $k$ neurons the $m$th synapse weight of $n$th neuron is $w_{n,m}$.</p>
-<p>Let’s go back to the equation(13). It can be rewritten as:</p>
-<p>$$<br>n=W\boldsymbol{p}+b\tag{14}<br>$$</p>
-<p>where:</p>
-<ul>
-<li>$W$ is a matrix who has only one row containing the weights</li>
-<li>$\boldsymbol{p}$ is a vector representing inputs</li>
-<li>$b$ is a scalar representing bias</li>
-<li>$n$ is the result of the cell body operation,</li>
-</ul>
+<p><span class="math display">\[
+a=w_{1,1}\cdot p_1+w_{1,2}\cdot p_2+\dots+ w_{1,R}\cdot p_R+b\tag{13}
+\]</span></p>
+<p>There are two numbers of subscript of <span class="math inline">\(w\)</span> which seem unnecessary in the equation because the first number does not vary any more. But as a long concern, it is better to remain this number for it is used to label the neuron. So <span class="math inline">\(w_{1,2}\)</span> represents the second synapse's weight belonging to the first neuron. When we have <span class="math inline">\(k\)</span> neurons the <span class="math inline">\(m\)</span>th synapse weight of <span class="math inline">\(n\)</span>th neuron is <span class="math inline">\(w_{n,m}\)</span>.</p>
+<p>Let's go back to the equation(13). It can be rewritten as:</p>
+<p><span class="math display">\[
+n=W\boldsymbol{p}+b\tag{14}
+\]</span></p>
+<p>where: - <span class="math inline">\(W\)</span> is a matrix who has only one row containing the weights - <span class="math inline">\(\boldsymbol{p}\)</span> is a vector representing inputs - <span class="math inline">\(b\)</span> is a scalar representing bias - <span class="math inline">\(n\)</span> is the result of the cell body operation,</p>
 <p>then the output is:</p>
-<p>$$<br>a=f(W\boldsymbol{p}+b)\tag{15}<br>$$</p>
-<p>The diagram is a very powerful tool to express a neuron or a network because it’s good at showing the topological structure of the network. And for further research, an abbreviated notation was designed. To the multiple-inputs neuron, we have:</p>
-<p><img src="./abbreviated_notation.jpeg"></p>
-<p>a feature of this kind of notation is that dimensions of each variable are labeled and the input dimension $R$ is decided by designer.</p>
-<h2 id="Network-Architecture"><a href="#Network-Architecture" class="headerlink" title="Network Architecture"></a>Network Architecture</h2><p>A single neuron is not sufficient, even though it has multiple inputs.</p>
-<h3 id="A-layer-of-neurons"><a href="#A-layer-of-neurons" class="headerlink" title="A layer of neurons"></a>A layer of neurons</h3><p>To perform a more complicated function, we need more than one neurons and construct a network which contains a layer of neurons:</p>
-<p><img src="./a_layer_of_neurons.jpeg"></p>
-<p>in this model, we have $R$-dimensions input and $S$ neurons then we get:</p>
-<p>$$<br>a_i=f(\sum_{j=1}^{R}w_{i,j}\cdot p_{j}+b_j)\tag{16}<br>$$</p>
-<p>this is the output of $j$th neuron in the whole network, and we can rewrite the whole network in a matrical form:</p>
-<p>$$<br>\boldsymbol{a}=\boldsymbol{f}(W\boldsymbol{p}+\boldsymbol{b})\tag{17}<br>$$</p>
+<p><span class="math display">\[
+a=f(W\boldsymbol{p}+b)\tag{15}
+\]</span></p>
+<p>The diagram is a very powerful tool to express a neuron or a network because it's good at showing the topological structure of the network. And for further research, an abbreviated notation was designed. To the multiple-inputs neuron, we have:</p>
+<p><img src="./abbreviated_notation.jpeg" /></p>
+<p>a feature of this kind of notation is that dimensions of each variable are labeled and the input dimension <span class="math inline">\(R\)</span> is decided by designer.</p>
+<h2 id="network-architecture">Network Architecture</h2>
+<p>A single neuron is not sufficient, even though it has multiple inputs.</p>
+<h3 id="a-layer-of-neurons">A layer of neurons</h3>
+<p>To perform a more complicated function, we need more than one neurons and construct a network which contains a layer of neurons:</p>
+<p><img src="./a_layer_of_neurons.jpeg" /></p>
+<p>in this model, we have <span class="math inline">\(R\)</span>-dimensions input and <span class="math inline">\(S\)</span> neurons then we get:</p>
+<p><span class="math display">\[
+a_i=f(\sum_{j=1}^{R}w_{i,j}\cdot p_{j}+b_j)\tag{16}
+\]</span></p>
+<p>this is the output of <span class="math inline">\(j\)</span>th neuron in the whole network, and we can rewrite the whole network in a matrical form:</p>
+<p><span class="math display">\[
+\boldsymbol{a}=\boldsymbol{f}(W\boldsymbol{p}+\boldsymbol{b})\tag{17}
+\]</span></p>
 <p>where</p>
 <ul>
-<li>$W$ is a matrix $\begin{bmatrix}w_{1,1}&amp;\cdots&amp;w_{1,R}\ \vdots&amp;&amp;\vdots\w_{S,1}&amp;\cdots&amp;w_{S_R}\end{bmatrix}$, where $w_{i,j}$ is the $j$th weight of the $i$th neuron</li>
-<li>$\boldsymbol{p}$ is the vector of input $\begin{bmatrix}p_1\ \vdots\p_R\end{bmatrix}$</li>
-<li>$\boldsymbol{a}$ is the vector of output $\begin{bmatrix}a_1\ \vdots\a_S\end{bmatrix}$</li>
-<li>$\boldsymbol{f}$ is the vector of transfer functions $\begin{bmatrix}f_1\ \vdots\f_S\end{bmatrix}$ where each $f_i$ can be different.</li>
+<li><span class="math inline">\(W\)</span> is a matrix <span class="math inline">\(\begin{bmatrix}w_{1,1}&amp;\cdots&amp;w_{1,R}\\ \vdots&amp;&amp;\vdots\\w_{S,1}&amp;\cdots&amp;w_{S_R}\end{bmatrix}\)</span>, where <span class="math inline">\(w_{i,j}\)</span> is the <span class="math inline">\(j\)</span>th weight of the <span class="math inline">\(i\)</span>th neuron</li>
+<li><span class="math inline">\(\boldsymbol{p}\)</span> is the vector of input <span class="math inline">\(\begin{bmatrix}p_1\\ \vdots\\p_R\end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\boldsymbol{a}\)</span> is the vector of output <span class="math inline">\(\begin{bmatrix}a_1\\ \vdots\\a_S\end{bmatrix}\)</span></li>
+<li><span class="math inline">\(\boldsymbol{f}\)</span> is the vector of transfer functions <span class="math inline">\(\begin{bmatrix}f_1\\ \vdots\\f_S\end{bmatrix}\)</span> where each <span class="math inline">\(f_i\)</span> can be different.</li>
 </ul>
 <p>This network is much more powerful than the single neuron but they have a very similar abbreviated notation:</p>
-<p><img src="./a_layer_of_neurons_abbreviated_notation.jpeg"></p>
+<p><img src="./a_layer_of_neurons_abbreviated_notation.jpeg" /></p>
 <p>the only distinction is the dimension of each variable.</p>
-<h3 id="Multiple-Layers-of-Neurons"><a href="#Multiple-Layers-of-Neurons" class="headerlink" title="Multiple Layers of Neurons"></a>Multiple Layers of Neurons</h3><p>The next stage to extend a single-layer network is multiple layers:</p>
-<p><img src="./mutiple_layers_neurons.jpeg"></p>
+<h3 id="multiple-layers-of-neurons">Multiple Layers of Neurons</h3>
+<p>The next stage to extend a single-layer network is multiple layers:</p>
+<p><img src="./mutiple_layers_neurons.jpeg" /></p>
 <p>and, its final output is:</p>
-<p>$$<br>\boldsymbol{a}=\boldsymbol{f}^3(W^3\boldsymbol{f}^2(W^2\boldsymbol{f}^1(W^1\boldsymbol{p}+\boldsymbol{b}^1)+\boldsymbol{b}^2)+\boldsymbol{b}^3)\tag{18}<br>$$</p>
-<p>the numbers of the right-top of the variable are the layer number, for example, $w^1_{2,3}$ is the weight of $2$nd synapse of the $3$rd neuron at the 1st layer.</p>
+<p><span class="math display">\[
+\boldsymbol{a}=\boldsymbol{f}^3(W^3\boldsymbol{f}^2(W^2\boldsymbol{f}^1(W^1\boldsymbol{p}+\boldsymbol{b}^1)+\boldsymbol{b}^2)+\boldsymbol{b}^3)\tag{18}
+\]</span></p>
+<p>the numbers of the right-top of the variable are the layer number, for example, <span class="math inline">\(w^1_{2,3}\)</span> is the weight of <span class="math inline">\(2\)</span>nd synapse of the <span class="math inline">\(3\)</span>rd neuron at the 1st layer.</p>
 <p>Each layer has also its name, for instance, the first layer whose input is external input is called the input layer. The layer whose output is external output is called the output layer. Other layers are called hidden layers. Its abbreviated notation is:</p>
-<p><img src="./mutiple_layers_neurons_abbreviated_notation.jpeg"></p>
-<p>The new model with multiple layers is powerful but it is hard to design because the layer number is arbitrary and neurons number in a layer is also arbitrary. So it becomes an experimental work. However, the input layer and output layer have a constant number and they are decided by the specialized task. Transfer functions are also arbitrary, and each neuron can have its transfer function which can be different from any neuron in the network. Bias can be omitted but this can cause a problem that it will always output $\boldsymbol{0}$ when the input is $\boldsymbol{0}$. This phenomenon could not make sense in some tasks, so bias plays an important part in the $\boldsymbol{0}$ input situation. But to some other input, bias seems not so important.</p>
-<h2 id="Recurrent-Networks"><a href="#Recurrent-Networks" class="headerlink" title="Recurrent Networks"></a>Recurrent Networks</h2><p>It seems possible that a neuron’s output also connects to its input. This means that the input coming some times ago will go back to the neuron again. It acts somehow like</p>
-<p>$$<br>\boldsymbol{a}=\boldsymbol{f}(W\boldsymbol{f}(W\boldsymbol{p}+\boldsymbol{b})+\boldsymbol{b})\tag{19}<br>$$</p>
+<p><img src="./mutiple_layers_neurons_abbreviated_notation.jpeg" /></p>
+<p>The new model with multiple layers is powerful but it is hard to design because the layer number is arbitrary and neurons number in a layer is also arbitrary. So it becomes an experimental work. However, the input layer and output layer have a constant number and they are decided by the specialized task. Transfer functions are also arbitrary, and each neuron can have its transfer function which can be different from any neuron in the network. Bias can be omitted but this can cause a problem that it will always output <span class="math inline">\(\boldsymbol{0}\)</span> when the input is <span class="math inline">\(\boldsymbol{0}\)</span>. This phenomenon could not make sense in some tasks, so bias plays an important part in the <span class="math inline">\(\boldsymbol{0}\)</span> input situation. But to some other input, bias seems not so important.</p>
+<h2 id="recurrent-networks">Recurrent Networks</h2>
+<p>It seems possible that a neuron's output also connects to its input. This means that the input coming some times ago will go back to the neuron again. It acts somehow like</p>
+<p><span class="math display">\[
+\boldsymbol{a}=\boldsymbol{f}(W\boldsymbol{f}(W\boldsymbol{p}+\boldsymbol{b})+\boldsymbol{b})\tag{19}
+\]</span></p>
 <p>to illustrate the procedure, we present the delay block</p>
-<p><img src="./delay_block.jpeg"></p>
+<p><img src="./delay_block.jpeg" /></p>
 <p>where the output is the input delayed 1 time unit:</p>
-<p>$$<br>a(t)=u(t-1)\tag{20}<br>$$</p>
-<p>and the block is initialized by $a(0)$</p>
+<p><span class="math display">\[
+a(t)=u(t-1)\tag{20}
+\]</span></p>
+<p>and the block is initialized by <span class="math inline">\(a(0)\)</span></p>
 <p>Another useful operation for the recurrent network is integrator:</p>
-<p><img src="./integrator.jpeg"></p>
+<p><img src="./integrator.jpeg" /></p>
 <p>whose output is:</p>
-<p>$$<br>a(t)=\int^t_0u(t)dt +a(0)\tag{21}<br>$$</p>
-<p>A recurrent network is a network in which there is a feedback connection that a neuron’s output connects to its input through some path. This is more difficult than the network discussed above. Here we just list some basic concepts and more details would be researched in the following posts. The recurrent network works more powerful than a feedforward network because it exhibits temporal behavior which is a fundamental property of the biological brain. A typical recurrent network is:</p>
-<p><img src="./recurrent_network.jpeg"></p>
+<p><span class="math display">\[
+a(t)=\int^t_0u(t)dt +a(0)\tag{21}
+\]</span></p>
+<p>A recurrent network is a network in which there is a feedback connection that a neuron's output connects to its input through some path. This is more difficult than the network discussed above. Here we just list some basic concepts and more details would be researched in the following posts. The recurrent network works more powerful than a feedforward network because it exhibits temporal behavior which is a fundamental property of the biological brain. A typical recurrent network is:</p>
+<p><img src="./recurrent_network.jpeg" /></p>
 <p>where:</p>
-<p>$$<br>a(0)=\boldsymbol{p}\<br>a(t+1)=f(W\boldsymbol{p}+\boldsymbol{b})\tag{22}<br>$$</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
+<p><span class="math display">\[
+a(0)=\boldsymbol{p}\\
+a(t+1)=f(W\boldsymbol{p}+\boldsymbol{b})\tag{22}
+\]</span></p>
+<h2 id="conclusion">Conclusion</h2>
+<ol type="1">
 <li>Basic neuron network models are important as the element of a more complex model.</li>
 <li>How to build a neuron network from step to step is the essential fundament for future study</li>
 <li>The transfer function is the key feature of a neuron and it can decide the performance of a neuron even a neuron network</li>
 <li>Connection restore the information of the neuron network</li>
 <li>Biological neuron networks could give us more ideas in the following research.</li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<br>[^2]: McCulloch, Warren S., and Walter Pitts. “A logical calculus of the ideas immanent in nervous activity.” The bulletin of mathematical biophysics 5, no. 4 (1943): 115-133.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>McCulloch, Warren S., and Walter Pitts. "A logical calculus of the ideas immanent in nervous activity." The bulletin of mathematical biophysics 5, no. 4 (1943): 115-133.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

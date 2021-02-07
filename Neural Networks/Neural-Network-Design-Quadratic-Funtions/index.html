@@ -173,7 +173,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quadratic-Functions-1"><span class="nav-number">1.</span> <span class="nav-text">Quadratic Functions[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">2.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#quadratic-functions1"><span class="nav-number">1.</span> <span class="nav-text">Quadratic Functions1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">2.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -327,63 +327,131 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> quadratic functions</p>
-<a id="more"></a>
-
-
-<h2 id="Quadratic-Functions-1"><a href="#Quadratic-Functions-1" class="headerlink" title="Quadratic Functions[^1]"></a>Quadratic Functions[^1]</h2><p>Quadratic function, a type of performance index, is universal. One of its key properties is that it can be represented in a second-order Taylor series precisely.</p>
-<p>$$<br>F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x}+\boldsymbol{d}\boldsymbol{x}+c\tag{1}<br>$$</p>
-<p>where $A$ is a symmetric matrix(if it is not symmetric, it can be easily converted into symmetric).<br>And recall the property of gradient:</p>
-<p>$$<br>\nabla (\boldsymbol{h}^T\boldsymbol{x})=\nabla (\boldsymbol{x}^T\boldsymbol{h})=\boldsymbol{h}\tag{2}<br>$$</p>
-<p>and </p>
-<p>$$<br>\nabla (\boldsymbol{x}^TQ\boldsymbol{x})=Q\boldsymbol{x}+Q^T\boldsymbol{x}=2Q\boldsymbol{x}\tag{3}<br>$$</p>
+        <p><strong>Keywords:</strong> quadratic functions <a id="more"></a></p>
+<h2 id="quadratic-functions1">Quadratic Functions<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Quadratic function, a type of performance index, is universal. One of its key properties is that it can be represented in a second-order Taylor series precisely.</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=\frac{1}{2}\boldsymbol{x}^TA\boldsymbol{x}+\boldsymbol{d}\boldsymbol{x}+c\tag{1}
+\]</span></p>
+<p>where <span class="math inline">\(A\)</span> is a symmetric matrix(if it is not symmetric, it can be easily converted into symmetric). And recall the property of gradient:</p>
+<p><span class="math display">\[
+\nabla (\boldsymbol{h}^T\boldsymbol{x})=\nabla (\boldsymbol{x}^T\boldsymbol{h})=\boldsymbol{h}\tag{2}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\nabla (\boldsymbol{x}^TQ\boldsymbol{x})=Q\boldsymbol{x}+Q^T\boldsymbol{x}=2Q\boldsymbol{x}\tag{3}
+\]</span></p>
 <p>then the first-order of quadratic functions is:</p>
-<p>$$<br>\nabla F(\boldsymbol{x})=A\boldsymbol{x}+\boldsymbol{d}\tag{4}<br>$$</p>
-<p>and second-order of quadratic functions is:<br>$$<br>\nabla^2 F(\boldsymbol{x})=A\tag{5}<br>$$</p>
-<p>More than second-order derivatives are $0$.</p>
+<p><span class="math display">\[
+\nabla F(\boldsymbol{x})=A\boldsymbol{x}+\boldsymbol{d}\tag{4}
+\]</span></p>
+<p>and second-order of quadratic functions is: <span class="math display">\[
+\nabla^2 F(\boldsymbol{x})=A\tag{5}
+\]</span></p>
+<p>More than second-order derivatives are <span class="math inline">\(0\)</span>.</p>
 <p>The shape of quadratic functions can be described by eigenvalues and eigenvectors of its <strong>Hessian matrix</strong>. <strong>Hessian matrix</strong> is a symmetric matrix and its eigenvectors are mutually orthogonal, let:</p>
-<p>$$<br>\boldsymbol{z}_1,\boldsymbol{z}_2,\cdots ,\boldsymbol{z}_n\tag{6}<br>$$</p>
-<p>denote the whole set of the eigenvectors of the Hessian matrix $A$ and we build a matrix:</p>
-<p>$$<br>B=\begin{bmatrix}<br>    \boldsymbol{z}_1&amp;\boldsymbol{z}_2&amp;\cdots &amp;\boldsymbol{z}_n<br>\end{bmatrix}\tag{7}<br>$$</p>
-<p>and then we have $BB^T=I$ then $B^{-1}=B^T$. When Hessian matrix is positive definite, it would have $n$ eigenvectors(Hessian has a full rank $n$) and we can change Hessian matrix into a new matrix whose basises are the set of eigenvectors:</p>
-<p>$$<br>A’=B^TAB=\begin{bmatrix}<br>\lambda_1&amp;&amp;&amp;\<br>&amp;\lambda_2&amp;&amp;\<br>&amp;&amp;\ddots&amp;\<br>&amp;&amp;&amp;\lambda_n<br>\end{bmatrix}=\Lambda\tag{8}<br>$$</p>
-<p>after changing the basis, the new Hessian matrix is a diagonal matrix whose elements on the diagonal are the eigenvalues. This process can be inversed because of $BB^T=I$:</p>
-<p>$$<br>A=BA’B^T=B\Lambda B^T\tag{9}<br>$$</p>
+<p><span class="math display">\[
+\boldsymbol{z}_1,\boldsymbol{z}_2,\cdots ,\boldsymbol{z}_n\tag{6}
+\]</span></p>
+<p>denote the whole set of the eigenvectors of the Hessian matrix <span class="math inline">\(A\)</span> and we build a matrix:</p>
+<p><span class="math display">\[
+B=\begin{bmatrix}
+    \boldsymbol{z}_1&amp;\boldsymbol{z}_2&amp;\cdots &amp;\boldsymbol{z}_n
+\end{bmatrix}\tag{7}
+\]</span></p>
+<p>and then we have <span class="math inline">\(BB^T=I\)</span> then <span class="math inline">\(B^{-1}=B^T\)</span>. When Hessian matrix is positive definite, it would have <span class="math inline">\(n\)</span> eigenvectors(Hessian has a full rank <span class="math inline">\(n\)</span>) and we can change Hessian matrix into a new matrix whose basises are the set of eigenvectors:</p>
+<p><span class="math display">\[
+A&#39;=B^TAB=\begin{bmatrix}
+\lambda_1&amp;&amp;&amp;\\
+&amp;\lambda_2&amp;&amp;\\
+&amp;&amp;\ddots&amp;\\
+&amp;&amp;&amp;\lambda_n
+\end{bmatrix}=\Lambda\tag{8}
+\]</span></p>
+<p>after changing the basis, the new Hessian matrix is a diagonal matrix whose elements on the diagonal are the eigenvalues. This process can be inversed because of <span class="math inline">\(BB^T=I\)</span>:</p>
+<p><span class="math display">\[
+A=BA&#39;B^T=B\Lambda B^T\tag{9}
+\]</span></p>
 <p>We can calculate the derivative towards any directions:</p>
-<p>$$<br>\frac{\boldsymbol{p}^T\nabla^2 F(\boldsymbol{x})\boldsymbol{p}}{||\boldsymbol{p}||^2}=\frac{\boldsymbol{p}^TA\boldsymbol{p}}{||\boldsymbol{p}||^2}\tag{10}<br>$$</p>
-<p>For columns of $B$ can span the whole space, So we can find a vector $\boldsymbol{c}$ satisfy:</p>
-<p>$$<br>\boldsymbol{p}=B\boldsymbol{c}\tag{11}<br>$$</p>
+<p><span class="math display">\[
+\frac{\boldsymbol{p}^T\nabla^2 F(\boldsymbol{x})\boldsymbol{p}}{||\boldsymbol{p}||^2}=\frac{\boldsymbol{p}^TA\boldsymbol{p}}{||\boldsymbol{p}||^2}\tag{10}
+\]</span></p>
+<p>For columns of <span class="math inline">\(B\)</span> can span the whole space, So we can find a vector <span class="math inline">\(\boldsymbol{c}\)</span> satisfy:</p>
+<p><span class="math display">\[
+\boldsymbol{p}=B\boldsymbol{c}\tag{11}
+\]</span></p>
 <p>then take equation(8), equation(11) into equation(10) we get:</p>
-<p>$$<br>\frac{\boldsymbol{c}^TB^TAB\boldsymbol{c}}{\boldsymbol{c}^TB^TB\boldsymbol{c}}=\frac{\boldsymbol{c}^T\Lambda\boldsymbol{c}}{\boldsymbol{c}^TI\boldsymbol{c}}=\frac{\sum^n_{i=1}\lambda_i c_i^2}{\sum_{i=1}^n c^2_i}\tag{12}<br>$$</p>
+<p><span class="math display">\[
+\frac{\boldsymbol{c}^TB^TAB\boldsymbol{c}}{\boldsymbol{c}^TB^TB\boldsymbol{c}}=\frac{\boldsymbol{c}^T\Lambda\boldsymbol{c}}{\boldsymbol{c}^TI\boldsymbol{c}}=\frac{\sum^n_{i=1}\lambda_i c_i^2}{\sum_{i=1}^n c^2_i}\tag{12}
+\]</span></p>
 <p>From equation(12), we could conclude:</p>
-<p>$$<br>\lambda_{\text{min}}\leq \frac{\boldsymbol{p}^TA\boldsymbol{p}}{||\boldsymbol{p}||^2}\leq \lambda_{\text{max}}\tag{13}<br>$$</p>
-<ol>
-<li>maximum $2^{\text{nd}}$ derivative occure along with $\boldsymbol{z}<em>{\text{max}}$(according to $\lambda</em>{\text{max}}$)</li>
-<li>eigenvalues is the $2^{\text{nd}}$ derivative along its eigenvector.</li>
+<p><span class="math display">\[
+\lambda_{\text{min}}\leq \frac{\boldsymbol{p}^TA\boldsymbol{p}}{||\boldsymbol{p}||^2}\leq \lambda_{\text{max}}\tag{13}
+\]</span></p>
+<ol type="1">
+<li>maximum <span class="math inline">\(2^{\text{nd}}\)</span> derivative occure along with <span class="math inline">\(\boldsymbol{z}_{\text{max}}\)</span>(according to <span class="math inline">\(\lambda_{\text{max}}\)</span>)</li>
+<li>eigenvalues is the <span class="math inline">\(2^{\text{nd}}\)</span> derivative along its eigenvector.</li>
 <li>eigenvectors could define a new coordinate system</li>
 <li>eigenvectors are principal axes of the function contour.</li>
-<li>going along with the $\boldsymbol{z}_{\text{max}}$ direction could have the largest change in function value $|\Delta F(x)|$ </li>
+<li>going along with the <span class="math inline">\(\boldsymbol{z}_{\text{max}}\)</span> direction could have the largest change in function value <span class="math inline">\(|\Delta F(x)|\)</span></li>
 <li>eigenvalues here are all positive because of positive definite.</li>
 </ol>
 <p>An example:</p>
-<p>$$<br>F(\boldsymbol{x})=x_1^2+x_1x_2+x_2^2<br>=\frac{1}{2}\boldsymbol{x}^T<br>\begin{bmatrix}<br>    2&amp;1\1&amp;2<br>\end{bmatrix}\boldsymbol{x}\tag{14}<br>$$</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=x_1^2+x_1x_2+x_2^2
+=\frac{1}{2}\boldsymbol{x}^T
+\begin{bmatrix}
+    2&amp;1\\1&amp;2
+\end{bmatrix}\boldsymbol{x}\tag{14}
+\]</span></p>
 <p>we can calculate the eigenvectors and eigenvalues:</p>
-<p>$$<br>\begin{aligned}<br>    &amp;\lambda_1=1&amp;&amp;\boldsymbol{z}_1=\begin{bmatrix}<br>        1\-1<br>    \end{bmatrix}\<br>    &amp;\lambda_2=3&amp;&amp;\boldsymbol{z}_2=\begin{bmatrix}<br>        1\1<br>    \end{bmatrix}<br>\end{aligned}\tag{15}<br>$$</p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp;\lambda_1=1&amp;&amp;\boldsymbol{z}_1=\begin{bmatrix}
+        1\\-1
+    \end{bmatrix}\\
+    &amp;\lambda_2=3&amp;&amp;\boldsymbol{z}_2=\begin{bmatrix}
+        1\\1
+    \end{bmatrix}
+\end{aligned}\tag{15}
+\]</span></p>
 <p>The contour plot and 3-D plots is:</p>
-<p><img src="./contour_1.jpeg"><br><img src="./3_D_1.gif"></p>
+<p><img src="./contour_1.jpeg" /> <img src="./3_D_1.gif" /></p>
 <p>Another example:</p>
-<p>$$<br>F(\boldsymbol{x})=-\frac{1}{4}x_1^2-\frac{3}{2}x_1x_2-\frac{1}{4}x_2^2<br>=\frac{1}{2}\boldsymbol{x}^T<br>\begin{bmatrix}<br>    -0.5&amp;-1.5\-1.5&amp;-0.5<br>\end{bmatrix}\boldsymbol{x}\tag{16}<br>$$</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=-\frac{1}{4}x_1^2-\frac{3}{2}x_1x_2-\frac{1}{4}x_2^2
+=\frac{1}{2}\boldsymbol{x}^T
+\begin{bmatrix}
+    -0.5&amp;-1.5\\-1.5&amp;-0.5
+\end{bmatrix}\boldsymbol{x}\tag{16}
+\]</span></p>
 <p>we can calculate the eigenvectors and eigenvalues:</p>
-<p>$$<br>\begin{aligned}<br>    &amp;\lambda_1=1&amp;&amp;\boldsymbol{z}_1=\begin{bmatrix}<br>        -1\1<br>    \end{bmatrix}\<br>    &amp;\lambda_2=-2&amp;&amp;\boldsymbol{z}_2=\begin{bmatrix}<br>        -1\-1<br>    \end{bmatrix}<br>\end{aligned}\tag{17}<br>$$</p>
-<p>The contour plot and 3-D plots is:<br><img src="./contour_1.jpeg"><br><img src="./3_D_2.gif"></p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
-<li>$\lambda_i&gt;0$ or $i=1,2,\cdots$, $F(x)$ have a single strong minimum</li>
-<li>$\lambda_i&lt;0$ or $i=1,2,\cdots$, $F(x)$ have a single strong maximum</li>
-<li>$\lambda_i$ have both negative and positive together. $F(x)$ has a saddle point</li>
-<li>$\lambda_i\geq 0$ and have a $\lambda_j=0$, $F(x)$ has a weak minimum or has no stationary point.</li>
-<li>$\lambda_i\leq 0$ and have a $\lambda_j=0$, $F(x)$ has a weak maximum or has no stationary point.</li>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp;\lambda_1=1&amp;&amp;\boldsymbol{z}_1=\begin{bmatrix}
+        -1\\1
+    \end{bmatrix}\\
+    &amp;\lambda_2=-2&amp;&amp;\boldsymbol{z}_2=\begin{bmatrix}
+        -1\\-1
+    \end{bmatrix}
+\end{aligned}\tag{17}
+\]</span></p>
+<p>The contour plot and 3-D plots is: <img src="./contour_1.jpeg" /> <img src="./3_D_2.gif" /></p>
+<h2 id="conclusion">Conclusion</h2>
+<ol type="1">
+<li><span class="math inline">\(\lambda_i&gt;0\)</span> or <span class="math inline">\(i=1,2,\cdots\)</span>, <span class="math inline">\(F(x)\)</span> have a single strong minimum</li>
+<li><span class="math inline">\(\lambda_i&lt;0\)</span> or <span class="math inline">\(i=1,2,\cdots\)</span>, <span class="math inline">\(F(x)\)</span> have a single strong maximum</li>
+<li><span class="math inline">\(\lambda_i\)</span> have both negative and positive together. <span class="math inline">\(F(x)\)</span> has a saddle point</li>
+<li><span class="math inline">\(\lambda_i\geq 0\)</span> and have a <span class="math inline">\(\lambda_j=0\)</span>, <span class="math inline">\(F(x)\)</span> has a weak minimum or has no stationary point.</li>
+<li><span class="math inline">\(\lambda_i\leq 0\)</span> and have a <span class="math inline">\(\lambda_j=0\)</span>, <span class="math inline">\(F(x)\)</span> has a weak maximum or has no stationary point.</li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

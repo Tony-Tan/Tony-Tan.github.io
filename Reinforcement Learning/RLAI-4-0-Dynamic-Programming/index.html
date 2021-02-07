@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,27 +317,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> </p>
-<a id="more"></a>
-<p>MPD has been introduced in previous posts:</p>
-<ol>
-<li><a href="TODO"></a></li>
-<li><a href="TODO"></a></li>
-<li><a href="TODO"></a></li>
-<li><a href="TODO"></a></li>
-</ol>
-<p>And finite MDP is a more accessible subset of MDP who must have an optimal policy or a set of optimal policy who share the same value function of the same state as we hav discussed in the post <a href="TODO">‘Optimal Policies and Optimal Value Functions’</a>. And we did not give any algorithms to solve finite MDP task. Now, we start to investagate different kinds of algorithms to solve MDP problems. Dynamic programming(DP for short) is such a kind of algorithms which is not only easy to understand but essential to the following algorithms.</p>
-<h2 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h2><p>Dynamic programming is a collect of algorithms, and they are employed to compute optimal policies given a perfect model of environment, i.e. the MDP condition. However, classical DP algorithms are limited utility in reinforcement learning because of its assumption of perfect model(MDP condition) and its great computational expense. But Dynamic programming is essential foundation for understanding of other methods which need less computation and are not based on strong assumption, like MDP condtion.</p>
-<p>Finite MDP who contains finite </p>
-<ol>
-<li>stats, </li>
-<li>kinds of reward </li>
-<li>and actions</li>
-</ol>
-<p>is the basis of dynamic programming. Dynamics who characterizes the environment is: $p(s’,r|s,a)$ where $s\in \mathcal{S}$, $a\in \mathcal{A}(s)$, $r\in \mathcal{R}$, and $s’\in \mathcal{S}^{+}$ and it has been introduced in the post <a href="">‘The Agent-Environment interface’</a>. So if the dynamics are consistent, the environment is not changed from step to step as well. And what we need to concern is just the strategy of agent to find the optimal policies or the optimal value function.</p>
+        <p><strong>Keywords:</strong> <a id="more"></a> MPD has been introduced in previous posts: 1. <a href="TODO"></a> 2. <a href="TODO"></a> 3. <a href="TODO"></a> 4. <a href="TODO"></a></p>
+<p>And finite MDP is a more accessible subset of MDP who must have an optimal policy or a set of optimal policy who share the same value function of the same state as we hav discussed in the post <a href="TODO">'Optimal Policies and Optimal Value Functions'</a>. And we did not give any algorithms to solve finite MDP task. Now, we start to investagate different kinds of algorithms to solve MDP problems. Dynamic programming(DP for short) is such a kind of algorithms which is not only easy to understand but essential to the following algorithms.</p>
+<h2 id="dynamic-programming">Dynamic Programming</h2>
+<p>Dynamic programming is a collect of algorithms, and they are employed to compute optimal policies given a perfect model of environment, i.e. the MDP condition. However, classical DP algorithms are limited utility in reinforcement learning because of its assumption of perfect model(MDP condition) and its great computational expense. But Dynamic programming is essential foundation for understanding of other methods which need less computation and are not based on strong assumption, like MDP condtion.</p>
+<p>Finite MDP who contains finite 1. stats, 2. kinds of reward 3. and actions</p>
+<p>is the basis of dynamic programming. Dynamics who characterizes the environment is: <span class="math inline">\(p(s&#39;,r|s,a)\)</span> where <span class="math inline">\(s\in \mathcal{S}\)</span>, <span class="math inline">\(a\in \mathcal{A}(s)\)</span>, <span class="math inline">\(r\in \mathcal{R}\)</span>, and <span class="math inline">\(s&#39;\in \mathcal{S}^{+}\)</span> and it has been introduced in the post <a href="">'The Agent-Environment interface'</a>. So if the dynamics are consistent, the environment is not changed from step to step as well. And what we need to concern is just the strategy of agent to find the optimal policies or the optimal value function.</p>
 <p>Till now, all states and actions that we have talked about are all discrete and DP methods. In continuous state and action space, there must be exact solution to an MDP task. But we prefer to find an approximate solution of a quantilized state and action space for this is more effecient than searching in the continuous space.</p>
-<p>Using value function of states pr state-action pairs is the key idea of DP methods and other reinforcement learning mehtods. It can be employed to organize and structure the search for good policies. And <a href="">‘Bellman optimality equation’</a> of states and state-action are used widely in DP methods.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<p>Using value function of states pr state-action pairs is the key idea of DP methods and other reinforcement learning mehtods. It can be employed to organize and structure the search for good policies. And <a href="">'Bellman optimality equation'</a> of states and state-action are used widely in DP methods.</p>
+<h2 id="references">References</h2>
 
     </div>
 

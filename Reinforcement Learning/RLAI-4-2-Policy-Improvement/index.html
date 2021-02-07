@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Policy-Improvement-Theorem"><span class="nav-number">1.</span> <span class="nav-text">Policy Improvement Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-improvement-theorem"><span class="nav-number">1.</span> <span class="nav-text">Policy Improvement Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,27 +317,63 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong></p>
-<a id="more"></a>
-<p>The goal of reinforcement learning is to find the optimal policy. Value function is a nice tool to find the optimal policy. But we need the optimal value function of the task. Policy evaluation we talked in previous post <a href="TODO">‘Policy Evaluation’</a> can compute the value function of arbitrary policy. And this value function maybe is not the optimal one of the whole task.</p>
+        <p><strong>Keywords:</strong> <a id="more"></a> The goal of reinforcement learning is to find the optimal policy. Value function is a nice tool to find the optimal policy. But we need the optimal value function of the task. Policy evaluation we talked in previous post <a href="TODO">'Policy Evaluation'</a> can compute the value function of arbitrary policy. And this value function maybe is not the optimal one of the whole task.</p>
 <p>So, an intuitive inspiration is find a new policy that is better than current one basing on the new value function that has been calculated by policy evaluation.</p>
-<p>The first thing we need to declare is what the ‘better’ means in comparing policies. Now, let’s consider the new action $a’$ which is different form the one given by current policy $a=\pi(s)$ of state $s$. The ‘better’ is defined as when the criterion $q_{\pi}(s,a’)$ is larger than $v_{\pi}(s)$, where:</p>
-<p>$$<br>\begin{aligned}<br>  q_{\pi}(s,a’)&amp;\doteq \mathbb{E}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s,A_t=a’]\<br>  &amp;= \sum_{s’,r}p(s’,r|s,a’)[r+\gamma v_{\pi}(s’)]<br>\end{aligned}\tag{1}<br>$$</p>
-<h2 id="Policy-Improvement-Theorem"><a href="#Policy-Improvement-Theorem" class="headerlink" title="Policy Improvement Theorem"></a>Policy Improvement Theorem</h2><p>$\pi$ and $\pi’$ could be any pair of deterministic policies. (Deterministic policies is the policies who give a certain action to an arbitrary state) If for all $s\in \mathcal{S}$:</p>
-<p>$$<br>q_{\pi}(s,\pi’(s))\geq v_{\pi}(s)\tag{2}<br>$$</p>
-<p>then $\pi’$ must be as good as, or better than $\pi$:</p>
-<p>$$<br>v_{\pi’}(s)\geq v_{\pi}(s)\tag{3}<br>$$</p>
-<p>This is called policy imporvement theorem. And if inequation(2) is converted to a strict form<br>:<br>$$<br>q_{\pi}(s,\pi’(s))&gt; v_{\pi}(s)\tag{4}<br>$$</p>
+<p>The first thing we need to declare is what the 'better' means in comparing policies. Now, let's consider the new action <span class="math inline">\(a&#39;\)</span> which is different form the one given by current policy <span class="math inline">\(a=\pi(s)\)</span> of state <span class="math inline">\(s\)</span>. The 'better' is defined as when the criterion <span class="math inline">\(q_{\pi}(s,a&#39;)\)</span> is larger than <span class="math inline">\(v_{\pi}(s)\)</span>, where:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  q_{\pi}(s,a&#39;)&amp;\doteq \mathbb{E}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s,A_t=a&#39;]\\
+  &amp;= \sum_{s&#39;,r}p(s&#39;,r|s,a&#39;)[r+\gamma v_{\pi}(s&#39;)]
+\end{aligned}\tag{1}
+\]</span></p>
+<h2 id="policy-improvement-theorem">Policy Improvement Theorem</h2>
+<p><span class="math inline">\(\pi\)</span> and <span class="math inline">\(\pi&#39;\)</span> could be any pair of deterministic policies. (Deterministic policies is the policies who give a certain action to an arbitrary state) If for all <span class="math inline">\(s\in \mathcal{S}\)</span>:</p>
+<p><span class="math display">\[
+q_{\pi}(s,\pi&#39;(s))\geq v_{\pi}(s)\tag{2}
+\]</span></p>
+<p>then <span class="math inline">\(\pi&#39;\)</span> must be as good as, or better than <span class="math inline">\(\pi\)</span>:</p>
+<p><span class="math display">\[
+v_{\pi&#39;}(s)\geq v_{\pi}(s)\tag{3}
+\]</span></p>
+<p>This is called policy imporvement theorem. And if inequation(2) is converted to a strict form : <span class="math display">\[
+q_{\pi}(s,\pi&#39;(s))&gt; v_{\pi}(s)\tag{4}
+\]</span></p>
 <p>inequation(3) becomes:</p>
-<p>$$<br>v_{\pi’}(s)&gt; v_{\pi}(s)\tag{5}<br>$$</p>
-<p>For example, if we just change one action to $a’$ to a state $s_i$ and $q(s_i,a’)\geq q(s_i,\pi(s_i))$ and $\pi’(s)=\pi(s)$ except $\pi’(s)=a’\neq \pi(s)$ then $v_{\pi’}(s) \geq v_{\pi}(s)$.</p>
-<p>The proof of the policy improvement theorem:<br>$$<br>\begin{aligned}<br>  v_{\pi}&amp;\leq q_{\pi}(s,\pi’(s))\<br>  &amp;=\mathbb{E}<em>{\pi}[R</em>{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s,A_t=\pi’(s)]\<br>  &amp;= \mathbb{E}<em>{\pi’}[R</em>{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s]\<br>  &amp;\leq \mathbb{E}<em>{\pi’}[R</em>{t+1}+\gamma q_{\pi}(S_{t+1},\pi’(S_{t+1}))|S_t=s]\<br>  &amp;= \mathbb{E}<em>{\pi’}[R</em>{t+1}+\gamma \mathbb{E}<em>{\pi’}[R</em>{t+2}+\gamma v_{\pi} (S_{t+2})|S_{t+1},A_{t+1}=\pi’(S_{t+1})]|S_t=s]\<br>  &amp;= \mathbb{E}<em>{\pi’}[R</em>{t+1}+\gamma R_{t+2}+\gamma^2 v_{\pi} (S_{t+2})|S_t=s]\<br>  &amp;\leq \mathbb{E}<em>{\pi’}[R</em>{t+1}+\gamma R_{t+2}+ \gamma^2 q_{\pi}(S_{t+2},\pi’(S_{t+2}))|S_t=s]\<br>  &amp; \vdots\<br>  &amp;\leq \mathbb{E}<em>{\pi’}[R</em>{t+1}+\gamma R_{t+2}++\gamma^2 R_{t+3}+\cdots]\<br>  &amp;=v_{\pi’}(s)<br>\end{aligned}\tag{6}<br>$$</p>
-<p>The philosophy behind the proof is that the value fuction of a state $s$ is calculated by all its following value of states, i.e. $S_{t+1}, S_{t+2},S_{t+3},\cdots$, and a better policy $\pi’$ should improve all these values.</p>
-<p>All above give a policy $\pi’$ is better than current policy $\pi$ of state $s$. And we can find the best action for every $s\in\mathcal{S}$ among finit actions. This is a kind of greedy policy, and given by:<br>$$<br>\begin{aligned}<br>  \pi’(s)&amp;\doteq \mathop{argmax}<em>a q</em>{\pi}(s,a)\<br>  &amp;=\mathop{argmax}<em>a \mathbb{E}[R</em>{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s,A_t=a]\<br>  &amp;=\mathop{argmax}<em>a \sum</em>{s’,r}p(s’,r|s,a)[r+\gamma v_{\pi}(s’)]<br>\end{aligned}\tag{7}<br>$$</p>
-<p>The greedy policy described in equation (7) can be proved by repeat equation (6) $|\mathcal{S}|$ times. And the greedy policy is as good as or better than original policy. When original policy is optimal policy, the greedy policy is the same as the original policy. And if $\pi’$ is as good as $\pi$ but not better than $\pi$, we say $\pi’=\pi$ and</p>
-<p>$$<br>\begin{aligned}<br>  v_{\pi’}(s)&amp;=\mathop{max}<em>a\mathbb{E}[R</em>{t+1}+\gamma v_{\pi’}(S_{t+1})|S_t=s,A_t=a]\<br>  &amp;=\mathop{max}<em>a\sum</em>{s’,r}p(s’,r|s,a)[r+\gamma v_{\pi’}(s’)]<br>\end{aligned}\tag{8}<br>$$</p>
-<p>Equation (8) shares the same form as Bellman optimal equation( equation(6) in the post <a href="TODO">‘Optimal Policies and Optimal Value Functions’</a>) and we say $\pi’$ and $\pi$ is optimal. But this optimality is just in current value function, and in general it’s only an improvement. </p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<p><span class="math display">\[
+v_{\pi&#39;}(s)&gt; v_{\pi}(s)\tag{5}
+\]</span></p>
+<p>For example, if we just change one action to <span class="math inline">\(a&#39;\)</span> to a state <span class="math inline">\(s_i\)</span> and <span class="math inline">\(q(s_i,a&#39;)\geq q(s_i,\pi(s_i))\)</span> and <span class="math inline">\(\pi&#39;(s)=\pi(s)\)</span> except <span class="math inline">\(\pi&#39;(s)=a&#39;\neq \pi(s)\)</span> then <span class="math inline">\(v_{\pi&#39;}(s) \geq v_{\pi}(s)\)</span>.</p>
+<p>The proof of the policy improvement theorem: <span class="math display">\[
+\begin{aligned}
+  v_{\pi}&amp;\leq q_{\pi}(s,\pi&#39;(s))\\
+  &amp;=\mathbb{E}_{\pi}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s,A_t=\pi&#39;(s)]\\
+  &amp;= \mathbb{E}_{\pi&#39;}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s]\\
+  &amp;\leq \mathbb{E}_{\pi&#39;}[R_{t+1}+\gamma q_{\pi}(S_{t+1},\pi&#39;(S_{t+1}))|S_t=s]\\
+  &amp;= \mathbb{E}_{\pi&#39;}[R_{t+1}+\gamma \mathbb{E}_{\pi&#39;}[R_{t+2}+\gamma v_{\pi} (S_{t+2})|S_{t+1},A_{t+1}=\pi&#39;(S_{t+1})]|S_t=s]\\
+  &amp;= \mathbb{E}_{\pi&#39;}[R_{t+1}+\gamma R_{t+2}+\gamma^2 v_{\pi} (S_{t+2})|S_t=s]\\
+  &amp;\leq \mathbb{E}_{\pi&#39;}[R_{t+1}+\gamma R_{t+2}+ \gamma^2 q_{\pi}(S_{t+2},\pi&#39;(S_{t+2}))|S_t=s]\\
+  &amp; \vdots\\
+  &amp;\leq \mathbb{E}_{\pi&#39;}[R_{t+1}+\gamma R_{t+2}++\gamma^2 R_{t+3}+\cdots]\\
+  &amp;=v_{\pi&#39;}(s)
+\end{aligned}\tag{6}
+\]</span></p>
+<p>The philosophy behind the proof is that the value fuction of a state <span class="math inline">\(s\)</span> is calculated by all its following value of states, i.e. <span class="math inline">\(S_{t+1}, S_{t+2},S_{t+3},\cdots\)</span>, and a better policy <span class="math inline">\(\pi&#39;\)</span> should improve all these values.</p>
+<p>All above give a policy <span class="math inline">\(\pi&#39;\)</span> is better than current policy <span class="math inline">\(\pi\)</span> of state <span class="math inline">\(s\)</span>. And we can find the best action for every <span class="math inline">\(s\in\mathcal{S}\)</span> among finit actions. This is a kind of greedy policy, and given by: <span class="math display">\[
+\begin{aligned}
+  \pi&#39;(s)&amp;\doteq \mathop{argmax}_a q_{\pi}(s,a)\\
+  &amp;=\mathop{argmax}_a \mathbb{E}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s,A_t=a]\\
+  &amp;=\mathop{argmax}_a \sum_{s&#39;,r}p(s&#39;,r|s,a)[r+\gamma v_{\pi}(s&#39;)]
+\end{aligned}\tag{7}
+\]</span></p>
+<p>The greedy policy described in equation (7) can be proved by repeat equation (6) <span class="math inline">\(|\mathcal{S}|\)</span> times. And the greedy policy is as good as or better than original policy. When original policy is optimal policy, the greedy policy is the same as the original policy. And if <span class="math inline">\(\pi&#39;\)</span> is as good as <span class="math inline">\(\pi\)</span> but not better than <span class="math inline">\(\pi\)</span>, we say <span class="math inline">\(\pi&#39;=\pi\)</span> and</p>
+<p><span class="math display">\[
+\begin{aligned}
+  v_{\pi&#39;}(s)&amp;=\mathop{max}_a\mathbb{E}[R_{t+1}+\gamma v_{\pi&#39;}(S_{t+1})|S_t=s,A_t=a]\\
+  &amp;=\mathop{max}_a\sum_{s&#39;,r}p(s&#39;,r|s,a)[r+\gamma v_{\pi&#39;}(s&#39;)]
+\end{aligned}\tag{8}
+\]</span></p>
+<p>Equation (8) shares the same form as Bellman optimal equation( equation(6) in the post <a href="TODO">'Optimal Policies and Optimal Value Functions'</a>) and we say <span class="math inline">\(\pi&#39;\)</span> and <span class="math inline">\(\pi\)</span> is optimal. But this optimality is just in current value function, and in general it's only an improvement.</p>
+<h2 id="references">References</h2>
 
     </div>
 

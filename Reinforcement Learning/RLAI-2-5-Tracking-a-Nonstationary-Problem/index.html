@@ -170,7 +170,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Constant-Step-size"><span class="nav-number">1.</span> <span class="nav-text">Constant Step-size</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Converge-Condition"><span class="nav-number">2.</span> <span class="nav-text">Converge Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment"><span class="nav-number">3.</span> <span class="nav-text">Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#converge-condition"><span class="nav-number">1.</span> <span class="nav-text">Converge Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#experiment"><span class="nav-number">2.</span> <span class="nav-text">Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -320,43 +320,45 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> step-size, converge condition, weighted average, stationary, nonstationary, exponential recency-weighted averge</p>
-<a id="more"></a>
-<h2 id="Constant-Step-size"><a href="#Constant-Step-size" class="headerlink" title="Constant Step-size"></a>Constant Step-size</h2><p>To a stationary problem we have talked about, such as 10-armed bandits in post <a href="TODO">‘the 10-armed Testbed’</a>, the reward of each action has a invariable distritbution, and we call this environment is stationary. The balance between exploration and exploitation had been discussed to get a relatively high reward during a long run. However, in most reinforcement learning task, the enviroment changes all the time which is called nonstationary. what we would like to investage today is to find out whether we can use the framwork, the <a href="TODO">‘increment implementation’</a>, to solve the nonstationary task.</p>
-<p>To a stationary problem, we have used the average of rewards that recieved from start of experiment to approximate the value of an action:<br>$$<br>Q_{n} = \frac{R_1+R_2+\cdots+R_{n-1}}{n-1}\tag{1}<br>$$</p>
-<p>To make the compute of the value $Q_{n}$ efficiently, we transform the equation (1) and get its increment form:</p>
-<p>$$<br>Q_{n+1} = Q_{n} + \frac{1}{n}(R_n-Q_{n})\tag{2}<br>$$</p>
-<p>and based on the equantion(2), we got the framwork refered to as <a href="TODO">‘increment implementation’</a>:<br>$$<br>\text{NewEstimate}\gets\text{OldEstimate}+\text{stepsize}\times[\text{Target}-\text{OldEstimate}]\tag{3}<br>$$</p>
-<p>To average all the rewards, we employed a changing step-size $\alpha = \frac{1}{n}$. And this step-size goes to $0$ as the time goes to infinite. However, if we set the step-size to a constant value that $\alpha \in ( 0,1 ]$, the <a href="TODO">‘increment implementation’</a> would behavior differently:<br>$$<br>\begin{aligned}<br>  Q_{n+1} &amp;= Q_n +\alpha [R_n -Q_n]\<br>  &amp;= \alpha R_n +(1-\alpha)Q_n\<br>  &amp;= \alpha R_n +(1-\alpha)(Q_{n-1} +\alpha [R_{n-1} -Q_{n-1}])\<br>  &amp;= \alpha R_n +\alpha(1-\alpha) R_{n-1} + (1-\alpha)^2Q_{n-1}\<br>  &amp;= \alpha R_n +\alpha(1-\alpha) R_{n-1} + (1-\alpha)^2Q_{n-1}\<br>  &amp;= \alpha R_n +\alpha(1-\alpha) R_{n-1} + \alpha(1-\alpha)^2 R_{n-2} +\cdots \<br>  &amp;= (1-\alpha)^n Q_1 +\sum_{i=1}^{n}\alpha(1-\alpha)^{n-i} R_{i}<br>\end{aligned}\tag{4}<br>$$</p>
-<p>So according to the equation (4), the behaviors of constant step-size can be concluded as:</p>
-<ol>
-<li>for $(1-\alpha)^n+\sum_{i=1}^{n}\alpha(1-\alpha)^{n-i} =1$ and $\alpha \in (0,1]$ then the equation (4) is a weighted average.</li>
-<li>the coefficient of each reward $R_i$ is $\alpha(1-\alpha)^{n-i}$ represent that when $i$ is big the reward has higher weighted and vice versa. And the bigger $i$ means the step is more recent action.</li>
-<li>$\alpha(1-\alpha)^{n-i}$ is an exponential weight. And equation (4) is also called ‘exponential recency-weighted average’.</li>
-<li>if $\alpha=1$, beside the reward of step $n$, $R_n$, others weight are all $0$, that means the value is only decided by the last reward.</li>
-</ol>
-<h2 id="Converge-Condition"><a href="#Converge-Condition" class="headerlink" title="Converge Condition"></a>Converge Condition</h2><p>So far, we have studied two choices of step-size. However, we want to know how to vary the step-size for different task. The step-size of equation (1), $\alpha = \frac{1}{n}$ guarantees the final result converge to the expectation of reward, the value, in probability by the law of large number. And we list the conditions of convergence with probability $1$ here:</p>
-<ul>
-<li>Condition 1:<br>$$<br>\sum_{n=1}^{\infty}\alpha_n(a)=\infty\tag{5}<br>$$  </li>
-<li>Condition 2:<br>$$<br>\sum_{n=1}^{\infty}\alpha_n^2(a)&lt;\infty\tag{6}<br>$$</li>
-</ul>
-<p>The equation (5) make sure the step-sizes are large enough to overcome:</p>
-<ol>
-<li>the initial condition(that is set by us)</li>
-<li>random fluctuation</li>
-</ol>
+        <p><strong>Keywords:</strong> step-size, converge condition, weighted average, stationary, nonstationary, exponential recency-weighted averge <a id="more"></a> ## Constant Step-size To a stationary problem we have talked about, such as 10-armed bandits in post <a href="TODO">'the 10-armed Testbed'</a>, the reward of each action has a invariable distritbution, and we call this environment is stationary. The balance between exploration and exploitation had been discussed to get a relatively high reward during a long run. However, in most reinforcement learning task, the enviroment changes all the time which is called nonstationary. what we would like to investage today is to find out whether we can use the framwork, the <a href="TODO">'increment implementation'</a>, to solve the nonstationary task.</p>
+<p>To a stationary problem, we have used the average of rewards that recieved from start of experiment to approximate the value of an action: <span class="math display">\[
+Q_{n} = \frac{R_1+R_2+\cdots+R_{n-1}}{n-1}\tag{1}
+\]</span></p>
+<p>To make the compute of the value <span class="math inline">\(Q_{n}\)</span> efficiently, we transform the equation (1) and get its increment form:</p>
+<p><span class="math display">\[
+Q_{n+1} = Q_{n} + \frac{1}{n}(R_n-Q_{n})\tag{2}
+\]</span></p>
+<p>and based on the equantion(2), we got the framwork refered to as <a href="TODO">'increment implementation'</a>: <span class="math display">\[
+\text{NewEstimate}\gets\text{OldEstimate}+\text{stepsize}\times[\text{Target}-\text{OldEstimate}]\tag{3}
+\]</span></p>
+<p>To average all the rewards, we employed a changing step-size <span class="math inline">\(\alpha = \frac{1}{n}\)</span>. And this step-size goes to <span class="math inline">\(0\)</span> as the time goes to infinite. However, if we set the step-size to a constant value that <span class="math inline">\(\alpha \in ( 0,1 ]\)</span>, the <a href="TODO">'increment implementation'</a> would behavior differently: <span class="math display">\[
+\begin{aligned}
+  Q_{n+1} &amp;= Q_n +\alpha [R_n -Q_n]\\
+  &amp;= \alpha R_n +(1-\alpha)Q_n\\
+  &amp;= \alpha R_n +(1-\alpha)(Q_{n-1} +\alpha [R_{n-1} -Q_{n-1}])\\
+  &amp;= \alpha R_n +\alpha(1-\alpha) R_{n-1} + (1-\alpha)^2Q_{n-1}\\
+  &amp;= \alpha R_n +\alpha(1-\alpha) R_{n-1} + (1-\alpha)^2Q_{n-1}\\
+  &amp;= \alpha R_n +\alpha(1-\alpha) R_{n-1} + \alpha(1-\alpha)^2 R_{n-2} +\cdots \\
+  &amp;= (1-\alpha)^n Q_1 +\sum_{i=1}^{n}\alpha(1-\alpha)^{n-i} R_{i}
+\end{aligned}\tag{4}
+\]</span></p>
+<p>So according to the equation (4), the behaviors of constant step-size can be concluded as: 1. for <span class="math inline">\((1-\alpha)^n+\sum_{i=1}^{n}\alpha(1-\alpha)^{n-i} =1\)</span> and <span class="math inline">\(\alpha \in (0,1]\)</span> then the equation (4) is a weighted average. 2. the coefficient of each reward <span class="math inline">\(R_i\)</span> is <span class="math inline">\(\alpha(1-\alpha)^{n-i}\)</span> represent that when <span class="math inline">\(i\)</span> is big the reward has higher weighted and vice versa. And the bigger <span class="math inline">\(i\)</span> means the step is more recent action. 3. <span class="math inline">\(\alpha(1-\alpha)^{n-i}\)</span> is an exponential weight. And equation (4) is also called 'exponential recency-weighted average'. 4. if <span class="math inline">\(\alpha=1\)</span>, beside the reward of step <span class="math inline">\(n\)</span>, <span class="math inline">\(R_n\)</span>, others weight are all <span class="math inline">\(0\)</span>, that means the value is only decided by the last reward.</p>
+<h2 id="converge-condition">Converge Condition</h2>
+<p>So far, we have studied two choices of step-size. However, we want to know how to vary the step-size for different task. The step-size of equation (1), <span class="math inline">\(\alpha = \frac{1}{n}\)</span> guarantees the final result converge to the expectation of reward, the value, in probability by the law of large number. And we list the conditions of convergence with probability <span class="math inline">\(1\)</span> here: - Condition 1: <span class="math display">\[
+\sum_{n=1}^{\infty}\alpha_n(a)=\infty\tag{5}
+\]</span><br />
+- Condition 2: <span class="math display">\[
+\sum_{n=1}^{\infty}\alpha_n^2(a)&lt;\infty\tag{6}
+\]</span></p>
+<p>The equation (5) make sure the step-sizes are large enough to overcome: 1. the initial condition(that is set by us) 2. random fluctuation</p>
 <p>The equation (6) take the step decrease as the time goes.</p>
-<p>These two conditions guarantee the converge of stationary environment reinforcement learning task. But it has a lot of drawbacks:</p>
-<ol>
-<li>the value calculated by the step-size under these conditions converge slowly</li>
-<li>this kind of step-size needs considerable tuning</li>
-<li>these conditions are seldem used in practical task</li>
-</ol>
-<p>The constant step-size $\alpha_n(a)=\text{constant}$ does converge for it mismatch the second condition.</p>
-<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><p>We modify the 10-armed bandit testbed into a nonstationary form by adding a noise with normal distribution of mean 0 variance 0.1 to the mean of the normal distribution based on which the reward is produced of each bandit. And we use the constant step-size $\alpha= 0.1$ and $\varepsilon =0.1$-greedy. The process last longer to 5,000 steps:</p>
-<p><img src="./nonstationary_Figure_1.png"><br><img src="./nonstationary_Figure_2.png"></p>
-<p>The code is based on that in post <a href="TODO">‘the 10-armed Testbed’</a>, the entir project can be found:<a href="TODO"></a></p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<p>These two conditions guarantee the converge of stationary environment reinforcement learning task. But it has a lot of drawbacks: 1. the value calculated by the step-size under these conditions converge slowly 2. this kind of step-size needs considerable tuning 3. these conditions are seldem used in practical task</p>
+<p>The constant step-size <span class="math inline">\(\alpha_n(a)=\text{constant}\)</span> does converge for it mismatch the second condition.</p>
+<h2 id="experiment">Experiment</h2>
+<p>We modify the 10-armed bandit testbed into a nonstationary form by adding a noise with normal distribution of mean 0 variance 0.1 to the mean of the normal distribution based on which the reward is produced of each bandit. And we use the constant step-size <span class="math inline">\(\alpha= 0.1\)</span> and <span class="math inline">\(\varepsilon =0.1\)</span>-greedy. The process last longer to 5,000 steps:</p>
+<p><img src="./nonstationary_Figure_1.png" /> <img src="./nonstationary_Figure_2.png" /></p>
+<p>The code is based on that in post <a href="TODO">'the 10-armed Testbed'</a>, the entir project can be found:<a href="TODO"></a></p>
+<h2 id="references">References</h2>
 
     </div>
 

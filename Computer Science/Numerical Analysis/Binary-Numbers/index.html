@@ -170,7 +170,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-numbers"><span class="nav-number">1.</span> <span class="nav-text">Binary numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decimal-to-Binary"><span class="nav-number">2.</span> <span class="nav-text">Decimal to Binary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer-Part"><span class="nav-number">2.1.</span> <span class="nav-text">Integer Part</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fractional-Part"><span class="nav-number">2.2.</span> <span class="nav-text">Fractional Part</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-to-Decimal"><span class="nav-number">3.</span> <span class="nav-text">Binary to Decimal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-numbers"><span class="nav-number">1.</span> <span class="nav-text">Binary numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decimal-to-binary"><span class="nav-number">2.</span> <span class="nav-text">Decimal to Binary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#integer-part"><span class="nav-number">2.1.</span> <span class="nav-text">Integer Part</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fractional-part"><span class="nav-number">2.2.</span> <span class="nav-text">Fractional Part</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-to-decimal"><span class="nav-number">3.</span> <span class="nav-text">Binary to Decimal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -324,34 +324,100 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> binary numbers</p>
-<a id="more"></a>
-<p>Today, we are going to talk about numbers, especially binary numbers. We had already had abilities to use numbers even when we were babies; for example, you must had asked your mother for ‘an’ apple , ‘a’ toy or ‘one’ dollar. These words are so normal for everyone that, for a long time, we have never recognize that there is an important and essential mathematic concept behind it. That is number. Sure enough, though we all have known $1,2,3,\dots$ very well, what is a number might never have been thought by us untill we were asked to do that. For we will learn to use binary numbers and decimal numbers simultaneously, during which the concept of number is a key point, we have to go closer to the defination of the number.<br>From now on, assuming that we know nothing about numbers is necessary to make everything clear, during which even $1,2,3,\dots$ are unknown until they are defined formally and precisely.</p>
-<p>When we get something from others, no mater what they are, what we concern most is always how many they are. This question is about quantity, so the figure below can be an answer to our question :<br><img src="./apples.png"></p>
-<p>Three rows represent three different things:<br>□. The row I contains ${\text{apple}}$<br>○. The row II contains ${\text{apple},\text{apple}}$<br>△. The row III contains ${\text{apple},\text{apple},\text{apple}}$</p>
-<p>To answer the question of how many they are, I have drawn three symbles on the right-hand  side of the equations, each of which represent the quantity of things at its row. (However here is a little bug that we have not defined what the equeling is ) So:<br>□. The quantity, how many the apples are, in row I is <strong>rectangular</strong><br>○. The quantity, how many the apples are, in row II is <strong>circle</strong><br>△. The quantity, how many the apples are, in row III row is <strong>triangle</strong></p>
-<p>Aha, till now, we have already have defined some numbers, and they are ${□,○,△}$ . Although we have only define △ numbers (the quantity of ${□,○,△}$ is △), but we can use this strategy to define as many numbers as you want. So the light might have already brought you that <em>the number is just a symbol which gives a certain and unique answer to the quesetion – how many things there are</em> . Even though we surely have abilities and times to define so many symbles that they can answer whatever the quantity question is, it’s too monotonous and inefficient. According this a new idea came to us, how about use just <strong><em>a few symbols</em></strong> , by whom we can create infinite different combinations. This simple idea gives us sufficient tools and materials to build the conceret and elegant number bulding. Then some great forefathers created ${0,1,2,3,\dots}$. However, I have to admit these symbols are more convenient than my ‘gurgles’(The name of baby play, whose heroes are rectangular, circle, and ect in ‘Good luck Charlie’).</p>
+        <p><strong>Keywords:</strong> binary numbers <a id="more"></a> Today, we are going to talk about numbers, especially binary numbers. We had already had abilities to use numbers even when we were babies; for example, you must had asked your mother for 'an' apple , 'a' toy or 'one' dollar. These words are so normal for everyone that, for a long time, we have never recognize that there is an important and essential mathematic concept behind it. That is number. Sure enough, though we all have known <span class="math inline">\(1,2,3,\dots\)</span> very well, what is a number might never have been thought by us untill we were asked to do that. For we will learn to use binary numbers and decimal numbers simultaneously, during which the concept of number is a key point, we have to go closer to the defination of the number. From now on, assuming that we know nothing about numbers is necessary to make everything clear, during which even <span class="math inline">\(1,2,3,\dots\)</span> are unknown until they are defined formally and precisely.</p>
+<p>When we get something from others, no mater what they are, what we concern most is always how many they are. This question is about quantity, so the figure below can be an answer to our question : <img src="./apples.png" /></p>
+<p>Three rows represent three different things: □. The row I contains <span class="math inline">\(\{\text{apple}\}\)</span> ○. The row II contains <span class="math inline">\(\{\text{apple},\text{apple}\}\)</span> △. The row III contains <span class="math inline">\(\{\text{apple},\text{apple},\text{apple}\}\)</span></p>
+<p>To answer the question of how many they are, I have drawn three symbles on the right-hand side of the equations, each of which represent the quantity of things at its row. (However here is a little bug that we have not defined what the equeling is ) So: □. The quantity, how many the apples are, in row I is <strong>rectangular</strong> ○. The quantity, how many the apples are, in row II is <strong>circle</strong> △. The quantity, how many the apples are, in row III row is <strong>triangle</strong></p>
+<p>Aha, till now, we have already have defined some numbers, and they are <span class="math inline">\(\{□,○,△\}\)</span> . Although we have only define △ numbers (the quantity of <span class="math inline">\(\{□,○,△\}\)</span> is △), but we can use this strategy to define as many numbers as you want. So the light might have already brought you that <em>the number is just a symbol which gives a certain and unique answer to the quesetion -- how many things there are</em> . Even though we surely have abilities and times to define so many symbles that they can answer whatever the quantity question is, it's too monotonous and inefficient. According this a new idea came to us, how about use just <strong><em>a few symbols</em></strong> , by whom we can create infinite different combinations. This simple idea gives us sufficient tools and materials to build the conceret and elegant number bulding. Then some great forefathers created <span class="math inline">\(\{0,1,2,3,\dots\}\)</span>. However, I have to admit these symbols are more convenient than my 'gurgles'(The name of baby play, whose heroes are rectangular, circle, and ect in 'Good luck Charlie').</p>
 <p>How many symbols we are going to use decides what the number system is. If we use just 2 symbols we get a binary number system, and if we use ten symbols we get a decimal number system.</p>
-<h2 id="Binary-numbers"><a href="#Binary-numbers" class="headerlink" title="Binary numbers"></a>Binary numbers</h2><p>Just as most of human just know decimal numbers, computers only know binary ones( or $2^n$nary ones, like octonary and hexadecimal system) because of their hardware framwork. Binary numbers are expressed as<br>$$<br>\dots b_2b_1b_0.b_{-1}b_{-2}\dots \text{ where } b_i\in{0,1}<br>$$</p>
-<p>This may be wired for you if you are not a computer science students. But our all computations on computers, smart phones and e.t.c. are based on binary. Each binary digit is called a bit.<br>Let’s look some examples, the decimal number 4 can be expressed as $(100.)<em>2$ in base 2, we can write this in the form:<br>$$<br>(4)</em>{10}=(100)_2<br>$$</p>
-<p>Translating binary code to the decimal one for us to read is relatively easier than the contrary:<br>$$<br>n_{10}=\dots b_2 2^{2}+b_1 2^{1}+b_0 2^{0}+b_{-1} 2^{-1}+b_{-2} 2^{-2}+\dots \tag{1}<br>$$<br>The $2^{n}$ here must be calculated in the decimal system, where $2^2=4, 2^10=1024,\dots$<br>For example, convert $(10010)<em>2$ to the decimal number:<br>$$<br>1\times 2^4 + 0\times 2^3 + 0\times 2^2 + 1\times 2^1 + 0\times 2^0=16</em>{10}+0_{10}+0_{10}+2_{10}+0_{10}=18_{10}<br>$$</p>
+<h2 id="binary-numbers">Binary numbers</h2>
+<p>Just as most of human just know decimal numbers, computers only know binary ones( or <span class="math inline">\(2^n\)</span>nary ones, like octonary and hexadecimal system) because of their hardware framwork. Binary numbers are expressed as <span class="math display">\[
+\dots b_2b_1b_0.b_{-1}b_{-2}\dots \text{ where } b_i\in\{0,1\}
+\]</span></p>
+<p>This may be wired for you if you are not a computer science students. But our all computations on computers, smart phones and e.t.c. are based on binary. Each binary digit is called a bit. Let's look some examples, the decimal number 4 can be expressed as <span class="math inline">\((100.)_2\)</span> in base 2, we can write this in the form: <span class="math display">\[
+(4)_{10}=(100)_2
+\]</span></p>
+<p>Translating binary code to the decimal one for us to read is relatively easier than the contrary: <span class="math display">\[
+n_{10}=\dots b_2 2^{2}+b_1 2^{1}+b_0 2^{0}+b_{-1} 2^{-1}+b_{-2} 2^{-2}+\dots \tag{1}
+\]</span> The <span class="math inline">\(2^{n}\)</span> here must be calculated in the decimal system, where <span class="math inline">\(2^2=4, 2^10=1024,\dots\)</span> For example, convert <span class="math inline">\((10010)_2\)</span> to the decimal number: <span class="math display">\[
+1\times 2^4 + 0\times 2^3 + 0\times 2^2 + 1\times 2^1 + 0\times 2^0=16_{10}+0_{10}+0_{10}+2_{10}+0_{10}=18_{10}
+\]</span></p>
 <p>The algorithm we wish to discuss next is about how to convert decimal numbers to binary numbers.</p>
-<h2 id="Decimal-to-Binary"><a href="#Decimal-to-Binary" class="headerlink" title="Decimal to Binary"></a>Decimal to Binary</h2><p>We divid the decimal numbers into two parts, integer and fractional parts. For example,<br>$$<br>(50.7)<em>{10}=(50.)</em>{10}+(0.7)_{10}<br>$$</p>
-<h3 id="Integer-Part"><a href="#Integer-Part" class="headerlink" title="Integer Part"></a>Integer Part</h3><p>We devide the integer part by $2$ successively until the result is 0 and recording the remainders which will always be $0$ or $1$, like $5\div 2 =2 \dots 1$ where the 2 is the result and 1 is the remainder. The successive recorded numbers are starting at the decimal point(radix may be more accurate)<br>$$<br>\begin{aligned}<br>53\div 2&amp;=26 &amp;\dots 1\<br>26\div 2&amp;=13 &amp;\dots 0\<br>13\div 2&amp;=6 &amp;\dots 1\<br>6\div 2&amp;=3 &amp;\dots 0\<br>3\div 2&amp;=1 &amp;\dots 1\<br>1\div 2&amp;=0 &amp;\dots 1\<br>\end{aligned}<br>$$</p>
-<p>Then the $53.$ in base 10 is equal to $110101.$ in base 2. To check this result, we can ues formular (1) easily:<br>$$<br>1\times 2^5+1\times 2^4+0\times 2^3+1\times 2^2+0\times 2^1+1\times 2^0=53<br>$$</p>
-<h3 id="Fractional-Part"><a href="#Fractional-Part" class="headerlink" title="Fractional Part"></a>Fractional Part</h3><p>Convert $(0.7)<em>{10}$ to binary by reversing the preceding steps. Multiply by 2 successively and record the integer parts, and move away the integer parts and then go on:<br>$$<br>\begin{aligned}<br>0.7\times 2&amp;=0.4 &amp;+ 1\<br>0.4\times 2&amp;=0.8 &amp;+ 0\<br>0.8\times 2&amp;=0.6 &amp;+ 1\<br>0.6\times 2&amp;=0.2 &amp;+ 1\<br>0.2\times 2&amp;=0.4 &amp;+ 0\<br>0.4\times 2&amp;=0.8 &amp;+ 0\<br>0.8\times 2&amp;=0.6 &amp;+ 1\<br>0.6\times 2&amp;=0.2 &amp;+ 1\<br>0.2\times 2&amp;=0.4 &amp;+ 0\<br>&amp;\vdots&amp;<br>\end{aligned}<br>$$<br>We can notice that the part which is start from $0.4\times 2$ to $0.2\times 2$ will repeat over and over, so the result must be repeat infinitely. So we write it as:<br>$$<br>(0.7)</em>{10}=(0.1\overline{0110})<em>{2}<br>$$<br>For this we conclude that<br>$$<br>53.7</em>{10}=(110101.1\overline{0110})_{2}<br>$$</p>
-<h2 id="Binary-to-Decimal"><a href="#Binary-to-Decimal" class="headerlink" title="Binary to Decimal"></a>Binary to Decimal</h2><p>Formular 1 has told us how to convert binary nunber into the number in base 10, then we use some little tricks to make the fractional part more concise.<br>$$<br>(.1011)<em>2=1\times(\frac{1}{2})^1+0\times(\frac{1}{2})^2+1\times(\frac{1}{2})^3+1\times(\frac{1}{2})^4=(\frac{11}{16})</em>{10}<br>$$<br>There is no doubt in this proccess, but how should the infinite ones be calculated? Suppose $x=(0.\overline{1011})_2$ let’s convert it to decimal:</p>
-<p>$$<br>\begin{aligned}<br>x&amp;=0.\overline{1011}\<br>2^4x &amp;=1011. \overline{1011}\<br>2^4x -x&amp;=1011. \overline{1011}-0.\overline{1011}\<br>(16-1)<em>{10}x&amp;=1011</em>{2}=11_{10}\<br>x&amp;=(\frac{11}{15})_{10}<br>\end{aligned}<br>$$</p>
-<p>Another more complicated example, what is $x=(0.10\overline{101})_2$ in decimal form:<br>first<br>$$<br>z=2^2x=(10.\overline{101})_2<br>$$</p>
-<p>for<br>$$<br>(10)<em>2=2</em>{10}<br>$$</p>
-<p>then we set:<br>$$<br>y_{10}=(z-2)_{10}=(.\overline{101})_2<br>$$</p>
-<p>use the same method as last example we can get :<br>$$<br>(2^3-1)y_{10}=101_2=5_{10}\<br>y_{10}=(\frac{5}{7})_{10}<br>$$</p>
-<p>then we can get z from the third formular :<br>$$<br>z=y_{10}+2=\frac{19}{7}<br>$$</p>
-<p>then we can get x from the first formular : </p>
-<p>$$<br>x=z_{10}\div 4=\frac{19}{28}<br>$$</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This post we have learned something about binary numbers, how to convert between decimal and binary is the central topic.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li>Sauer, T., Columbus, B., New, I., San, Y., Upper, F., River, S., … Tokyo, T. (n.d.). Numerical Analysis. Retrieved from <a target="_blank" rel="noopener" href="http://www.pearsoned.com/legal/permissions.htm">http://www.pearsoned.com/legal/permissions.htm</a>.</li>
+<h2 id="decimal-to-binary">Decimal to Binary</h2>
+<p>We divid the decimal numbers into two parts, integer and fractional parts. For example, <span class="math display">\[
+(50.7)_{10}=(50.)_{10}+(0.7)_{10}
+\]</span></p>
+<h3 id="integer-part">Integer Part</h3>
+<p>We devide the integer part by <span class="math inline">\(2\)</span> successively until the result is 0 and recording the remainders which will always be <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, like <span class="math inline">\(5\div 2 =2 \dots 1\)</span> where the 2 is the result and 1 is the remainder. The successive recorded numbers are starting at the decimal point(radix may be more accurate) <span class="math display">\[
+\begin{aligned}
+53\div 2&amp;=26 &amp;\dots 1\\
+26\div 2&amp;=13 &amp;\dots 0\\
+13\div 2&amp;=6 &amp;\dots 1\\
+6\div 2&amp;=3 &amp;\dots 0\\
+3\div 2&amp;=1 &amp;\dots 1\\
+1\div 2&amp;=0 &amp;\dots 1\\
+\end{aligned}
+\]</span></p>
+<p>Then the <span class="math inline">\(53.\)</span> in base 10 is equal to <span class="math inline">\(110101.\)</span> in base 2. To check this result, we can ues formular (1) easily: <span class="math display">\[
+1\times 2^5+1\times 2^4+0\times 2^3+1\times 2^2+0\times 2^1+1\times 2^0=53
+\]</span></p>
+<h3 id="fractional-part">Fractional Part</h3>
+<p>Convert <span class="math inline">\((0.7)_{10}\)</span> to binary by reversing the preceding steps. Multiply by 2 successively and record the integer parts, and move away the integer parts and then go on: <span class="math display">\[
+\begin{aligned}
+0.7\times 2&amp;=0.4 &amp;+ 1\\
+0.4\times 2&amp;=0.8 &amp;+ 0\\
+0.8\times 2&amp;=0.6 &amp;+ 1\\
+0.6\times 2&amp;=0.2 &amp;+ 1\\
+0.2\times 2&amp;=0.4 &amp;+ 0\\
+0.4\times 2&amp;=0.8 &amp;+ 0\\
+0.8\times 2&amp;=0.6 &amp;+ 1\\
+0.6\times 2&amp;=0.2 &amp;+ 1\\
+0.2\times 2&amp;=0.4 &amp;+ 0\\
+&amp;\vdots&amp;
+\end{aligned}
+\]</span> We can notice that the part which is start from <span class="math inline">\(0.4\times 2\)</span> to <span class="math inline">\(0.2\times 2\)</span> will repeat over and over, so the result must be repeat infinitely. So we write it as: <span class="math display">\[
+(0.7)_{10}=(0.1\overline{0110})_{2}
+\]</span> For this we conclude that <span class="math display">\[
+53.7_{10}=(110101.1\overline{0110})_{2}
+\]</span></p>
+<h2 id="binary-to-decimal">Binary to Decimal</h2>
+<p>Formular 1 has told us how to convert binary nunber into the number in base 10, then we use some little tricks to make the fractional part more concise. <span class="math display">\[
+(.1011)_2=1\times(\frac{1}{2})^1+0\times(\frac{1}{2})^2+1\times(\frac{1}{2})^3+1\times(\frac{1}{2})^4=(\frac{11}{16})_{10}
+\]</span> There is no doubt in this proccess, but how should the infinite ones be calculated? Suppose <span class="math inline">\(x=(0.\overline{1011})_2\)</span> let's convert it to decimal:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x&amp;=0.\overline{1011}\\
+2^4x &amp;=1011. \overline{1011}\\
+2^4x -x&amp;=1011. \overline{1011}-0.\overline{1011}\\
+(16-1)_{10}x&amp;=1011_{2}=11_{10}\\
+x&amp;=(\frac{11}{15})_{10}
+\end{aligned}
+\]</span></p>
+<p>Another more complicated example, what is <span class="math inline">\(x=(0.10\overline{101})_2\)</span> in decimal form: first <span class="math display">\[
+z=2^2x=(10.\overline{101})_2
+\]</span></p>
+<p>for <span class="math display">\[
+(10)_2=2_{10}
+\]</span></p>
+<p>then we set: <span class="math display">\[
+y_{10}=(z-2)_{10}=(.\overline{101})_2
+\]</span></p>
+<p>use the same method as last example we can get : <span class="math display">\[
+(2^3-1)y_{10}=101_2=5_{10}\\
+y_{10}=(\frac{5}{7})_{10}
+\]</span></p>
+<p>then we can get z from the third formular : <span class="math display">\[
+z=y_{10}+2=\frac{19}{7}
+\]</span></p>
+<p>then we can get x from the first formular :</p>
+<p><span class="math display">\[
+x=z_{10}\div 4=\frac{19}{28}
+\]</span></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This post we have learned something about binary numbers, how to convert between decimal and binary is the central topic.</p>
+<h2 id="reference">Reference</h2>
+<ol type="1">
+<li>Sauer, T., Columbus, B., New, I., San, Y., Upper, F., River, S., … Tokyo, T. (n.d.). Numerical Analysis. Retrieved from http://www.pearsoned.com/legal/permissions.htm.</li>
 </ol>
 
     </div>

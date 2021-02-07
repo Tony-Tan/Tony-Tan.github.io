@@ -175,7 +175,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Network-Training-Technique-1"><span class="nav-number">1.</span> <span class="nav-text">Neural Network Training Technique[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-Learning-and-Performance-Index"><span class="nav-number">2.</span> <span class="nav-text">Performance Learning and Performance Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Taylor-Series"><span class="nav-number">3.</span> <span class="nav-text">Taylor Series</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalar-form-function"><span class="nav-number">3.1.</span> <span class="nav-text">Scalar form function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector-form-function"><span class="nav-number">3.2.</span> <span class="nav-text">Vector form function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Necessary-Conditions-for-Optimality"><span class="nav-number">4.</span> <span class="nav-text">Necessary Conditions for Optimality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-order-Conditions"><span class="nav-number">4.1.</span> <span class="nav-text">First-order Conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Second-order-Condition"><span class="nav-number">4.2.</span> <span class="nav-text">Second_order Condition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#neural-network-training-technique1"><span class="nav-number">1.</span> <span class="nav-text">Neural Network Training Technique1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#performance-learning-and-performance-index"><span class="nav-number">2.</span> <span class="nav-text">Performance Learning and Performance Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#taylor-series"><span class="nav-number">3.</span> <span class="nav-text">Taylor Series</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scalar-form-function"><span class="nav-number">3.1.</span> <span class="nav-text">Scalar form function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vector-form-function"><span class="nav-number">3.2.</span> <span class="nav-text">Vector form function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#necessary-conditions-for-optimality"><span class="nav-number">4.</span> <span class="nav-text">Necessary Conditions for Optimality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#first-order-conditions"><span class="nav-number">4.1.</span> <span class="nav-text">First-order Conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#second_order-condition"><span class="nav-number">4.2.</span> <span class="nav-text">Second_order Condition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -331,119 +331,205 @@
     <div class="post-body" itemprop="articleBody">
         <p><strong>Keywords:</strong> performance surfaces, optimum points</p>
 <a id="more"></a>
-
-<h2 id="Neural-Network-Training-Technique-1"><a href="#Neural-Network-Training-Technique-1" class="headerlink" title="Neural Network Training Technique[^1]"></a>Neural Network Training Technique[^1]</h2><p>In the articles posted before, several architectures of the neural networks had been proposed. And each neural network had its own learning rule, like, perceptron learning algorithm, Hebbian learning algorithm. What we should do when more and more neural networks come to accumulate is becoming complicated. If we can propose some general methods, we can train new architecture easily by simply modifying existing algorithms. Up to now, we can classify all training rules in three categories in a general way:</p>
-<ol>
+<h2 id="neural-network-training-technique1">Neural Network Training Technique<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>In the articles posted before, several architectures of the neural networks had been proposed. And each neural network had its own learning rule, like, perceptron learning algorithm, Hebbian learning algorithm. What we should do when more and more neural networks come to accumulate is becoming complicated. If we can propose some general methods, we can train new architecture easily by simply modifying existing algorithms. Up to now, we can classify all training rules in three categories in a general way:</p>
+<ol type="1">
 <li>Performance Learning</li>
 <li>Associative Learning</li>
 <li>Competitive Learning</li>
 </ol>
-<p>Linear associator we discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Supervised-Hebbian-Learning/">‘Hebbian Learning’</a> is a kind of associative learning, which is used to build a connection between two events. Competitive learning is a kind of unsupervised learning in which nodes of the neural network compete for the right to respond to a subset of the input data.[^2] The main topic we are going to discuss today is Performance Learning which is also a widely used training method in neural network projects. By the way, the categories of learning can be classified from variant views. So, this is not the only kind of classification.</p>
-<h2 id="Performance-Learning-and-Performance-Index"><a href="#Performance-Learning-and-Performance-Index" class="headerlink" title="Performance Learning and Performance Index"></a>Performance Learning and Performance Index</h2><p>Training a network is to find suitable parameters of the model to meet our requirements for some specialized tasks. If we can measure how satisfied the neural network is for the task at a certain time, we can then decide what to do next to modify the parameters. Performance learning is the procedure that modifies the parameter of neural networks by their performance through a certain measurement of the performance of the neural network.</p>
+<p>Linear associator we discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Supervised-Hebbian-Learning/">'Hebbian Learning'</a> is a kind of associative learning, which is used to build a connection between two events. Competitive learning is a kind of unsupervised learning in which nodes of the neural network compete for the right to respond to a subset of the input data.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The main topic we are going to discuss today is Performance Learning which is also a widely used training method in neural network projects. By the way, the categories of learning can be classified from variant views. So, this is not the only kind of classification.</p>
+<h2 id="performance-learning-and-performance-index">Performance Learning and Performance Index</h2>
+<p>Training a network is to find suitable parameters of the model to meet our requirements for some specialized tasks. If we can measure how satisfied the neural network is for the task at a certain time, we can then decide what to do next to modify the parameters. Performance learning is the procedure that modifies the parameter of neural networks by their performance through a certain measurement of the performance of the neural network.</p>
 <p>The measurement of the performance we investigate here is called <strong>performance index</strong> and its appearance is called <strong>performance surface</strong>. What we should also concern is the conditions for the existence of the minima or maxima. Because the minima or maxima decide the final result of the performance of the neural network for the task. In a word, what we need to do is optimizing the performance index by modifying parameters of the neural network to satisfy a certain task(training set).</p>
-<p>Performance learning contains several different laws. And there are two steps involved in the optimization process generally:</p>
-<ol>
-<li>Define the concept what we called ‘performance’<ul>
-<li>a quantitative measure of network performance is called performance index which has the properties when the neural network works well it has a lower value but when neural network works poorly it has a larger value</li>
-</ul>
-</li>
-<li>Search parameters space to reduce the performance index</li>
-</ol>
+<p>Performance learning contains several different laws. And there are two steps involved in the optimization process generally: 1. Define the concept what we called 'performance' - a quantitative measure of network performance is called performance index which has the properties when the neural network works well it has a lower value but when neural network works poorly it has a larger value 2. Search parameters space to reduce the performance index</p>
 <p>This is the heart of performance learning. After defining a performance or building a performance index, we cloud also analyze the characteristics of the performance index before searching for the minima. Because, if the performance index we had selected did not meet the conditions of the existence of minima, searching for a minimum is just a waste of time. Or we can also set the additional condition to guarantee the existence of a minimum point.</p>
-<h2 id="Taylor-Series"><a href="#Taylor-Series" class="headerlink" title="Taylor Series"></a>Taylor Series</h2><p>When we have a suitable performance index, what we need is a certain algorithm or a framework to deal with the optimization task. To design such a framework, we should study the performance index function firstly. Taylor series is a powerful tool to analyze function.</p>
-<h3 id="Scalar-form-function"><a href="#Scalar-form-function" class="headerlink" title="Scalar form function"></a>Scalar form function</h3><p>A function $F(x)$ is <strong>analytic function</strong> which means all derivatives of $F(x)$ exist. Then the Taylor series expansion about some nominal points $x^{\star}$</p>
-<p>$$<br>\begin{aligned}<br>  F(x)=F(x^{\star})&amp;+\frac{d}{dx}F(x)|<em>{x=x^{\star}}(x-x^{\star})\<br>  &amp;+\frac{1}{2}\frac{d^2}{d^2x}F(x)|</em>{x=x^{\star}}(x-x^{\star})^2\<br>  &amp;\vdots \<br>  &amp;+\frac{1}{n!}\frac{d^n}{d^nx}F(x)|_{x=x^{\star}}(x-x^{\star})^n<br>\end{aligned}\tag{1}<br>$$</p>
+<h2 id="taylor-series">Taylor Series</h2>
+<p>When we have a suitable performance index, what we need is a certain algorithm or a framework to deal with the optimization task. To design such a framework, we should study the performance index function firstly. Taylor series is a powerful tool to analyze function.</p>
+<h3 id="scalar-form-function">Scalar form function</h3>
+<p>A function <span class="math inline">\(F(x)\)</span> is <strong>analytic function</strong> which means all derivatives of <span class="math inline">\(F(x)\)</span> exist. Then the Taylor series expansion about some nominal points <span class="math inline">\(x^{\star}\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  F(x)=F(x^{\star})&amp;+\frac{d}{dx}F(x)|_{x=x^{\star}}(x-x^{\star})\\
+  &amp;+\frac{1}{2}\frac{d^2}{d^2x}F(x)|_{x=x^{\star}}(x-x^{\star})^2\\
+  &amp;\vdots \\
+  &amp;+\frac{1}{n!}\frac{d^n}{d^nx}F(x)|_{x=x^{\star}}(x-x^{\star})^n
+\end{aligned}\tag{1}
+\]</span></p>
 <p>This series with infinity items can exactly equal to the origin analytic function.</p>
-<p>If we only want to approximate the function in a small region near $x^{\star}$, only finite items in equation(1) are needed.</p>
-<p>For instance, we have a function $F(x)=\cos(x)$ when $x^{\star}=0$, then:</p>
-<p>$$<br>\begin{aligned}<br>  F(x)=\cos(x)&amp;=\cos(0)-\sin(0)(x-0)-\frac{1}{2}\cos(0)(x-0)^2+\cdots\<br>  &amp;=1-\frac{1}{2}x^2+\frac{1}{24}x^4+\cdots<br>\end{aligned}\tag{2}<br>$$</p>
+<p>If we only want to approximate the function in a small region near <span class="math inline">\(x^{\star}\)</span>, only finite items in equation(1) are needed.</p>
+<p>For instance, we have a function <span class="math inline">\(F(x)=\cos(x)\)</span> when <span class="math inline">\(x^{\star}=0\)</span>, then:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  F(x)=\cos(x)&amp;=\cos(0)-\sin(0)(x-0)-\frac{1}{2}\cos(0)(x-0)^2+\cdots\\
+  &amp;=1-\frac{1}{2}x^2+\frac{1}{24}x^4+\cdots
+\end{aligned}\tag{2}
+\]</span></p>
 <ul>
-<li>$0^{\text{th}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_0(x)=1$ </li>
-<li>$1^{\text{st}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_1(x)=1+0$ </li>
-<li>$2^{\text{nd}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_2(x)=1+0-\frac{1}{2}x^2$</li>
-<li>$3^{\text{rd}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_3(x)=1+0-\frac{1}{2}x^2+0$</li>
-<li>$4^{\text{th}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_4(x)=1+0-\frac{1}{2}x^2+0+\frac{1}{24}x^4$</li>
+<li><span class="math inline">\(0^{\text{th}}\)</span> order approximation of <span class="math inline">\(F(x)\)</span> near <span class="math inline">\(0\)</span> is <span class="math inline">\(F(x)\approx F_0(x)=1\)</span></li>
+<li><span class="math inline">\(1^{\text{st}}\)</span> order approximation of <span class="math inline">\(F(x)\)</span> near <span class="math inline">\(0\)</span> is <span class="math inline">\(F(x)\approx F_1(x)=1+0\)</span></li>
+<li><span class="math inline">\(2^{\text{nd}}\)</span> order approximation of <span class="math inline">\(F(x)\)</span> near <span class="math inline">\(0\)</span> is <span class="math inline">\(F(x)\approx F_2(x)=1+0-\frac{1}{2}x^2\)</span></li>
+<li><span class="math inline">\(3^{\text{rd}}\)</span> order approximation of <span class="math inline">\(F(x)\)</span> near <span class="math inline">\(0\)</span> is <span class="math inline">\(F(x)\approx F_3(x)=1+0-\frac{1}{2}x^2+0\)</span></li>
+<li><span class="math inline">\(4^{\text{th}}\)</span> order approximation of <span class="math inline">\(F(x)\)</span> near <span class="math inline">\(0\)</span> is <span class="math inline">\(F(x)\approx F_4(x)=1+0-\frac{1}{2}x^2+0+\frac{1}{24}x^4\)</span></li>
 </ul>
-<p>Odd number$^{\text{th}}$ iterm is $0$ because of the value of $\sin(x)$ at $0$ is $0$</p>
-<p>And the $0^{\text{th}},1^{\text{st}},2^{\text{nd}},3^{\text{rd}}$ and $4^{\text{th}}$ approximation of $F(x)$ looks like:</p>
-<p><img src="./Taylor_sieres.png"></p>
-<p>and, from the figure above we can observe that $F_0(x)$ can only approximate $F(x)$ at $x^{\star}=0$ point. While in the interval between $-1$ and $+1$, $F(x)$ can be precisely approximated by $F_2(x)$. In a more wider interval like $[-1.6,+1.6]$ to approximate $F(x)$, $4^{\text{th}}$ order Taylor series are needed. Then we can get a conclusion that if we want a certain precise extent in a relatively larger interval we need more items in the Taylor series. And we should pay attention to the interval out of the precise region, such as $F_2(x)$ in the interval $(-\infty,-1]\cup [1,+\infty)$ are going away from $F(x)$ as $x$ moving away from $x^{\star}=0$</p>
-<h3 id="Vector-form-function"><a href="#Vector-form-function" class="headerlink" title="Vector form function"></a>Vector form function</h3><p>When the performance index is a function of a vector $\boldsymbol{x}$, a vector form the Taylor series should be presented. And in the neural network, parameters are variables of the performance index so vector form Taylor series is the basic tool in performance learning. Function $F(\boldsymbol{x})$ can be decomposed in any precise:</p>
-<p>$$<br>\begin{aligned}<br>  F(\boldsymbol{x})=F(\boldsymbol{x}^{\star})&amp;<br>  +\frac{\partial}{\partial x_1}F(\boldsymbol{x})|<em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})\<br>  &amp;+\frac{\partial}{\partial x_2}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_2-x_2^{\star})+\cdots\<br>  &amp;+\frac{1}{2}\frac{\partial^2}{\partial^2 x_1}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})^2\<br>  &amp;+\frac{1}{2}\frac{\partial^2}{\partial x_1 \partial x_2}F(\boldsymbol{x})|</em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})(x_2-x_2^{\star})<br>  +\cdots\<br>  &amp;\vdots<br>\end{aligned}\tag{3}<br>$$</p>
-<p>if we notate the gradient as :<br>$$<br>\nabla F(x)=\begin{bmatrix}<br>  \frac{\partial F}{\partial x_1}\<br>  \frac{\partial F}{\partial x_2}\<br>  \vdots\<br>  \frac{\partial F}{\partial x_n}<br>\end{bmatrix}\tag{4}<br>$$</p>
-<p>then the Taylor series can be written as:<br>$$<br>\begin{aligned}<br>  F(\boldsymbol{x})=F(\boldsymbol{x}^{\star})&amp;+(\boldsymbol{x}-\boldsymbol{x}^{\star})^T\nabla F(x)|<em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}\<br>  &amp;+\frac{1}{2}(\boldsymbol{x}-\boldsymbol{x}^{\star})^T\nabla^2 F(x)|</em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})\<br>  &amp; \vdots<br>\end{aligned}\tag{5}<br>$$</p>
+<p>Odd number<span class="math inline">\(^{\text{th}}\)</span> iterm is <span class="math inline">\(0\)</span> because of the value of <span class="math inline">\(\sin(x)\)</span> at <span class="math inline">\(0\)</span> is <span class="math inline">\(0\)</span></p>
+<p>And the <span class="math inline">\(0^{\text{th}},1^{\text{st}},2^{\text{nd}},3^{\text{rd}}\)</span> and <span class="math inline">\(4^{\text{th}}\)</span> approximation of <span class="math inline">\(F(x)\)</span> looks like:</p>
+<p><img src="./Taylor_sieres.png" /></p>
+<p>and, from the figure above we can observe that <span class="math inline">\(F_0(x)\)</span> can only approximate <span class="math inline">\(F(x)\)</span> at <span class="math inline">\(x^{\star}=0\)</span> point. While in the interval between <span class="math inline">\(-1\)</span> and <span class="math inline">\(+1\)</span>, <span class="math inline">\(F(x)\)</span> can be precisely approximated by <span class="math inline">\(F_2(x)\)</span>. In a more wider interval like <span class="math inline">\([-1.6,+1.6]\)</span> to approximate <span class="math inline">\(F(x)\)</span>, <span class="math inline">\(4^{\text{th}}\)</span> order Taylor series are needed. Then we can get a conclusion that if we want a certain precise extent in a relatively larger interval we need more items in the Taylor series. And we should pay attention to the interval out of the precise region, such as <span class="math inline">\(F_2(x)\)</span> in the interval <span class="math inline">\((-\infty,-1]\cup [1,+\infty)\)</span> are going away from <span class="math inline">\(F(x)\)</span> as <span class="math inline">\(x\)</span> moving away from <span class="math inline">\(x^{\star}=0\)</span></p>
+<h3 id="vector-form-function">Vector form function</h3>
+<p>When the performance index is a function of a vector <span class="math inline">\(\boldsymbol{x}\)</span>, a vector form the Taylor series should be presented. And in the neural network, parameters are variables of the performance index so vector form Taylor series is the basic tool in performance learning. Function <span class="math inline">\(F(\boldsymbol{x})\)</span> can be decomposed in any precise:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  F(\boldsymbol{x})=F(\boldsymbol{x}^{\star})&amp;
+  +\frac{\partial}{\partial x_1}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})\\
+  &amp;+\frac{\partial}{\partial x_2}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_2-x_2^{\star})+\cdots\\
+  &amp;+\frac{1}{2}\frac{\partial^2}{\partial^2 x_1}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})^2\\
+  &amp;+\frac{1}{2}\frac{\partial^2}{\partial x_1 \partial x_2}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})(x_2-x_2^{\star})
+  +\cdots\\
+  &amp;\vdots
+\end{aligned}\tag{3}
+\]</span></p>
+<p>if we notate the gradient as : <span class="math display">\[
+\nabla F(x)=\begin{bmatrix}
+  \frac{\partial F}{\partial x_1}\\
+  \frac{\partial F}{\partial x_2}\\
+  \vdots\\
+  \frac{\partial F}{\partial x_n}
+\end{bmatrix}\tag{4}
+\]</span></p>
+<p>then the Taylor series can be written as: <span class="math display">\[
+\begin{aligned}
+  F(\boldsymbol{x})=F(\boldsymbol{x}^{\star})&amp;+(\boldsymbol{x}-\boldsymbol{x}^{\star})^T\nabla F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}\\
+  &amp;+\frac{1}{2}(\boldsymbol{x}-\boldsymbol{x}^{\star})^T\nabla^2 F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})\\
+  &amp; \vdots
+\end{aligned}\tag{5}
+\]</span></p>
 <p>The coefficients of the second-order item can be written in a matrix form, and it is also called the <strong>Hessian matrix</strong>:</p>
-<p>$$<br>\nabla^2 F(x) = \begin{bmatrix}<br>  \frac{\partial^2}{\partial^2 x_1}&amp;\cdots&amp;\frac{\partial^2}{\partial x_1 \partial x_n}\<br>  \vdots&amp;\ddots&amp;\vdots \<br>  \frac{\partial^2}{\partial x_n \partial x_1}&amp;\cdots&amp;\frac{\partial^2}{\partial^2 x_n}<br>\end{bmatrix}\tag{6}<br>$$</p>
-<p><strong>Hessian matrix</strong> has many beautiful properties, such as it is always</p>
+<p><span class="math display">\[
+\nabla^2 F(x) = \begin{bmatrix}
+  \frac{\partial^2}{\partial^2 x_1}&amp;\cdots&amp;\frac{\partial^2}{\partial x_1 \partial x_n}\\
+  \vdots&amp;\ddots&amp;\vdots \\
+  \frac{\partial^2}{\partial x_n \partial x_1}&amp;\cdots&amp;\frac{\partial^2}{\partial^2 x_n}
+\end{bmatrix}\tag{6}
+\]</span></p>
+<p><strong>Hessian matrix</strong> has many beautiful properties, such as it is always - Square matrix - Symmetric matrix</p>
+<p>In the matrix, the elements on the diagonal are <span class="math inline">\(\frac{\partial^2 F}{\partial^2 x_i}\)</span> is the <span class="math inline">\(2^{\text{nd}}\)</span> derivative along the <span class="math inline">\(x_i\)</span>-axis and in the gradient vector, <span class="math inline">\(\frac{d F}{d x_i}\)</span> is the first derivative along the <span class="math inline">\(x_i\)</span>-axis.</p>
+<p>To calculate the <span class="math inline">\(1^{\text{st}}\)</span> or <span class="math inline">\(2^{\text{nd}}\)</span> derivative along arbitrary deriction <span class="math inline">\(\boldsymbol{p}\)</span>, we have: 1. <span class="math inline">\(1^{\text{st}}\)</span>-order derivative along <span class="math inline">\(\boldsymbol{p}\)</span> : <span class="math inline">\(\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x})}{||\boldsymbol{p}||}\)</span> 2. <span class="math inline">\(2^{\text{nd}}\)</span>-order derivative along <span class="math inline">\(\boldsymbol{p}\)</span> : <span class="math inline">\(\frac{\boldsymbol{p}^T\nabla^2 F(\boldsymbol{x})\boldsymbol{p}}{||\boldsymbol{p}||^2}\)</span></p>
+<p>For instance, we have a function <span class="math display">\[
+F(\boldsymbol{x})=x_1^2+2x_2^2\tag{7}
+\]</span></p>
+<p>to find the derivative at <span class="math inline">\(\boldsymbol{x}^{\star}=\begin{bmatrix}0.5\\0.5\end{bmatrix}\)</span> in the direction <span class="math inline">\(\boldsymbol{p}=\begin{bmatrix}2\\-1\end{bmatrix}\)</span>, we get the derivative at <span class="math inline">\(\boldsymbol{x}^{\star}=\begin{bmatrix}0.5\\0.5\end{bmatrix}\)</span>:</p>
+<p><span class="math display">\[
+\nabla F|_{\boldsymbol{x}=\boldsymbol{x}^{\star}} = 
+\begin{bmatrix}
+\frac{\partial F}{\partial x_1}\\
+  \frac{\partial F}{\partial x_2}
+\end{bmatrix}\bigg|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}=\begin{bmatrix}
+2x_1\\
+4x_2
+\end{bmatrix}\bigg|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}=\begin{bmatrix}
+1\\
+2
+\end{bmatrix}\tag{8}
+\]</span></p>
+<p>and the direction <span class="math inline">\(\boldsymbol{p}=\begin{bmatrix}2\\-1\end{bmatrix}\)</span>, the derivative is</p>
+<p><span class="math display">\[
+\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x}^{\star})}{||\boldsymbol{p}||}= 
+\frac{\begin{bmatrix}2&amp;-1\end{bmatrix}
+\begin{bmatrix}1\\2\end{bmatrix}}{\sqrt{2^2+(-1)^2}}=\frac{0}{\sqrt{5}}=0\tag{9}
+\]</span></p>
+<p><span class="math inline">\(0\)</span> is a special number in the whole real numbers set. And the derivative is zero also useful in optimization procedure. And to find a zero slop direction we should solve the equation:</p>
+<p><span class="math display">\[
+\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x}^{\star})}{||\boldsymbol{p}||}=0\tag{10}
+\]</span></p>
+<p>this means <span class="math inline">\(\boldsymbol{p}\)</span> is not <span class="math inline">\(\boldsymbol{0}\)</span> because <span class="math inline">\(0\)</span> length is insignificant. and <span class="math inline">\(\boldsymbol{p}_{\text{unit}}=\frac{\boldsymbol{p}}{||\boldsymbol{p}||}\)</span> is a unit vector along deriction <span class="math inline">\(\boldsymbol{p}\)</span> so this can be written as:</p>
+<p><span class="math display">\[
+\boldsymbol{p}_{\text{unit}}^T\nabla F(\boldsymbol{x}^{\star})=0\tag{11}
+\]</span></p>
+<p>which means <span class="math inline">\(\boldsymbol{p}_{\text{unit}}\)</span> is orthogonal to gradient <span class="math inline">\(\nabla F(\boldsymbol{x}^{\star})\)</span></p>
+<p>Another special deriction is which one has the greatest slop. Assuming the deriction <span class="math inline">\(\boldsymbol{p}_{\text{unit}}=\frac{\boldsymbol{p}}{||\boldsymbol{p}||}\)</span> is the greatest slope, so:</p>
+<p><span class="math display">\[
+\boldsymbol{p}_{\text{unit}}^T\nabla F(\boldsymbol{x}^{\star})=||\boldsymbol{p}_{\text{unit}}^T|| \cdot ||\nabla F(\boldsymbol{x}^{\star})||\cos(\theta)\tag{12}
+\]</span></p>
+<p>has the greatest value. We know this can only happen when <span class="math inline">\(\cos(\theta)=1\)</span> which means the direction of the gradient has the greatest slop.</p>
+<p><img src="./unit_circle.png" /></p>
+<h2 id="necessary-conditions-for-optimality">Necessary Conditions for Optimality</h2>
+<p>The main objective of performance learning is to minimize the performance index. So the condition of existence of minimum of performance index should be investagated: 1. A strong minimum <span class="math inline">\(\boldsymbol{x}\)</span> which mean in any deriction <span class="math inline">\(\boldsymbol{p}_{\text{unit}}\)</span> around this point with a short distance <span class="math inline">\(\delta\)</span> always has <span class="math inline">\(F(\boldsymbol{x})&lt;F(\boldsymbol{x}+\delta \boldsymbol{p}_{\text{unit}})\)</span>, where <span class="math inline">\(\delta \to 0\)</span> 2. A weak minimum <span class="math inline">\(\boldsymbol{x}\)</span> which mean in any deriction <span class="math inline">\(\boldsymbol{p}_{\text{unit}}\)</span> around this point with a short distance <span class="math inline">\(\delta\)</span> always has <span class="math inline">\(F(\boldsymbol{x})\leq F(\boldsymbol{x}+\delta \boldsymbol{p}_{\text{unit}})\)</span>, where <span class="math inline">\(\delta \to 0\)</span> 3. Global minimum is the minimum one of all weak or strong minimum set.</p>
+<p>For instance,</p>
+<p><span class="math display">\[
+F(x)=3x^4-7x^2-\frac{1}{2}x+6\tag{13}
+\]</span></p>
+<p><img src="./minimums.png" /></p>
 <ul>
-<li>Square matrix</li>
-<li>Symmetric matrix</li>
-</ul>
-<p>In the matrix, the elements on the diagonal are $\frac{\partial^2 F}{\partial^2 x_i}$ is the $2^{\text{nd}}$ derivative along the $x_i$-axis and in the gradient vector, $\frac{d F}{d x_i}$ is the first derivative along the $x_i$-axis.</p>
-<p>To calculate the $1^{\text{st}}$ or $2^{\text{nd}}$ derivative along arbitrary deriction $\boldsymbol{p}$, we have:</p>
-<ol>
-<li>$1^{\text{st}}$-order derivative along $\boldsymbol{p}$ : $\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x})}{||\boldsymbol{p}||}$</li>
-<li>$2^{\text{nd}}$-order derivative along $\boldsymbol{p}$ : $\frac{\boldsymbol{p}^T\nabla^2 F(\boldsymbol{x})\boldsymbol{p}}{||\boldsymbol{p}||^2}$</li>
-</ol>
-<p>For instance, we have a function<br>$$<br>F(\boldsymbol{x})=x_1^2+2x_2^2\tag{7}<br>$$</p>
-<p>to find the derivative at $\boldsymbol{x}^{\star}=\begin{bmatrix}0.5\0.5\end{bmatrix}$ in the direction $\boldsymbol{p}=\begin{bmatrix}2\-1\end{bmatrix}$, we get the derivative at $\boldsymbol{x}^{\star}=\begin{bmatrix}0.5\0.5\end{bmatrix}$:</p>
-<p>$$<br>\nabla F|<em>{\boldsymbol{x}=\boldsymbol{x}^{\star}} =<br>\begin{bmatrix}<br>\frac{\partial F}{\partial x_1}\<br>  \frac{\partial F}{\partial x_2}<br>\end{bmatrix}\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}=\begin{bmatrix}<br>2x_1\<br>4x_2<br>\end{bmatrix}\bigg|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}=\begin{bmatrix}<br>1\<br>2<br>\end{bmatrix}\tag{8}<br>$$</p>
-<p>and the direction $\boldsymbol{p}=\begin{bmatrix}2\-1\end{bmatrix}$, the derivative is </p>
-<p>$$<br>\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x}^{\star})}{||\boldsymbol{p}||}=<br>\frac{\begin{bmatrix}2&amp;-1\end{bmatrix}<br>\begin{bmatrix}1\2\end{bmatrix}}{\sqrt{2^2+(-1)^2}}=\frac{0}{\sqrt{5}}=0\tag{9}<br>$$</p>
-<p>$0$ is a special number in the whole real numbers set. And the derivative is zero also useful in optimization procedure. And to find a zero slop direction we should solve the equation:</p>
-<p>$$<br>\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x}^{\star})}{||\boldsymbol{p}||}=0\tag{10}<br>$$</p>
-<p>this means $\boldsymbol{p}$ is not $\boldsymbol{0}$ because $0$ length is insignificant. and $\boldsymbol{p}_{\text{unit}}=\frac{\boldsymbol{p}}{||\boldsymbol{p}||}$ is a unit vector along deriction $\boldsymbol{p}$ so this can be written as:</p>
-<p>$$<br>\boldsymbol{p}_{\text{unit}}^T\nabla F(\boldsymbol{x}^{\star})=0\tag{11}<br>$$</p>
-<p>which means $\boldsymbol{p}_{\text{unit}}$ is orthogonal to gradient $\nabla F(\boldsymbol{x}^{\star})$</p>
-<p>Another special deriction is which one has the greatest slop. Assuming the deriction $\boldsymbol{p}_{\text{unit}}=\frac{\boldsymbol{p}}{||\boldsymbol{p}||}$ is the greatest slope, so:</p>
-<p>$$<br>\boldsymbol{p}<em>{\text{unit}}^T\nabla F(\boldsymbol{x}^{\star})=||\boldsymbol{p}</em>{\text{unit}}^T|| \cdot ||\nabla F(\boldsymbol{x}^{\star})||\cos(\theta)\tag{12}<br>$$</p>
-<p>has the greatest value. We know this can only happen when $\cos(\theta)=1$ which means the direction of the gradient has the greatest slop.</p>
-<p><img src="./unit_circle.png"></p>
-<h2 id="Necessary-Conditions-for-Optimality"><a href="#Necessary-Conditions-for-Optimality" class="headerlink" title="Necessary Conditions for Optimality"></a>Necessary Conditions for Optimality</h2><p>The main objective of performance learning is to minimize the performance index. So the condition of existence of minimum of performance index should be investagated:</p>
-<ol>
-<li>A strong minimum $\boldsymbol{x}$ which mean in any deriction $\boldsymbol{p}<em>{\text{unit}}$ around this point with a short distance $\delta$ always has $F(\boldsymbol{x})&lt;F(\boldsymbol{x}+\delta \boldsymbol{p}</em>{\text{unit}})$, where $\delta \to 0$</li>
-<li>A weak minimum $\boldsymbol{x}$ which mean in any deriction $\boldsymbol{p}<em>{\text{unit}}$ around this point with a short distance $\delta$ always has $F(\boldsymbol{x})\leq F(\boldsymbol{x}+\delta \boldsymbol{p}</em>{\text{unit}})$, where $\delta \to 0$</li>
-<li>Global minimum is the minimum one of all weak or strong minimum set.</li>
-</ol>
-<p>For instance, </p>
-<p>$$<br>F(x)=3x^4-7x^2-\frac{1}{2}x+6\tag{13}<br>$$</p>
-<p><img src="./minimums.png"></p>
-<ul>
-<li>2 local minimums at near $x_1=-1.1$ and near $x_2=1.1$</li>
-<li>near $x_2=1.1$ gives the global minimum</li>
+<li>2 local minimums at near <span class="math inline">\(x_1=-1.1\)</span> and near <span class="math inline">\(x_2=1.1\)</span></li>
+<li>near <span class="math inline">\(x_2=1.1\)</span> gives the global minimum</li>
 </ul>
 <p>If the variable of function is a vector:</p>
-<p>$$<br>F(\boldsymbol{x})=(x_2-x_1)^4+8x_1x_2-x_1+x_2+3\tag{14}<br>$$</p>
+<p><span class="math display">\[
+F(\boldsymbol{x})=(x_2-x_1)^4+8x_1x_2-x_1+x_2+3\tag{14}
+\]</span></p>
 <p>and it looks like:</p>
-<p><img src="./vector_performance_index.gif"></p>
+<p><img src="./vector_performance_index.gif" /></p>
 <p>in 3-D space. And the contour plot of this function is:</p>
-<p><img src="./contour_plot.png"></p>
+<p><img src="./contour_plot.png" /></p>
 <p>There are three points in this contour figure:</p>
-<p><img src="./contour_plot.gif"></p>
+<p><img src="./contour_plot.gif" /></p>
 <p>and the pink points are the two local minimums, and the black points are called a saddle point.</p>
 <p>These two examples illustrate the minimum points and saddle points. But what conditions are needed to confirm the existence?</p>
-<h3 id="First-order-Conditions"><a href="#First-order-Conditions" class="headerlink" title="First-order Conditions"></a>First-order Conditions</h3><p>Go back to the Taylor series with $\Delta x=x-x^{\star}\neq 0$, the first item of series is taking into account:</p>
-<p>$$<br>\begin{aligned}<br>  F(x)&amp;=F(x^{\star})+\frac{d}{dx}F(x)|_{x=x^{\star}}(x-x^{\star})\<br>  F(x^{\star}+\Delta x)&amp;=F(x^{\star})+\nabla F(x)\Delta x<br>\end{aligned}\tag{15}<br>$$</p>
-<p>when $x^{\star}$ is a candidate of minimum point, we want:</p>
-<p>$$<br>F(x^{\star}+\Delta x)\geq F(x^{\star})\tag{16}<br>$$</p>
-<p>so, in equation(15),<br>$$<br>\nabla F(x)\Delta x\geq 0 \tag{17}<br>$$ </p>
-<p>are needed. Considering another direction, if $x^{\star}$ is the minimum point, it also has:</p>
-<p>$$<br>F(x^{\star}-\Delta x)=F(x^{\star})-\nabla F(x)\Delta x\geq F(x^{\star})\tag{18}<br>$$</p>
-<p>then </p>
-<p>$$<br>\nabla F(x)\Delta x\leq 0 \tag{19}<br>$$</p>
-<p>To satisfy both equation(17) and equation(19) if and only if </p>
-<p>$$<br>\nabla F(x)\Delta x=0\tag{20}<br>$$</p>
-<p>Because $\Delta x\neq 0$, so we must have $\nabla F(x)$ when $x$ is the minimum point. $\nabla F(x)=0$ is a necessary but not sufficient condition. The first-order condition has been concluded above.</p>
-<h3 id="Second-order-Condition"><a href="#Second-order-Condition" class="headerlink" title="Second_order Condition"></a>Second_order Condition</h3><p>The first order condition does not give a sufficient condition. Now let’s consider the second-order conditon. With $\Delta\boldsymbol{x}=\boldsymbol{x}-\boldsymbol{x}^{\star}\neq \boldsymbol{0}$ and gradient equal to $\boldsymbol{0}$, and take them into equation(5) (<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">in part I</a>). Then the second order Taylor series is:</p>
-<p>$$<br>F(\boldsymbol{\Delta\boldsymbol{x}-\boldsymbol{x}^{\star}})=F(\boldsymbol{x}^{\star})+\frac{1}{2}\Delta\boldsymbol{x}^T\nabla^2 F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}\Delta\boldsymbol{x}\tag{21}<br>$$</p>
-<p>When $||\Delta\boldsymbol{x}||$ is small, zero-order, first-order and second-order iterms of Taylor series are precise enough to approximate original function. When $F(\boldsymbol{x}^{\star})$ is a strong minimum, the second-order iterm should be:</p>
-<p>$$<br>\frac{1}{2}\Delta\boldsymbol{x}^T\nabla^2 F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}\Delta\boldsymbol{x}&gt;0<br>$$</p>
-<p>Recalling linear algebra knowledge, positive definite matrix $A$ is:</p>
-<p>$$<br>\boldsymbol{z}^T A \boldsymbol{z}&gt;0 \text{ for any } \boldsymbol{z}<br>$$</p>
-<p>and positive semidefinite matrix $A$ is:</p>
-<p>$$<br>\boldsymbol{z}^T A \boldsymbol{z}\geq0 \text{ for any } \boldsymbol{z}<br>$$</p>
-<p>So when the gradient is $\boldsymbol{0}$ and second-order derivative are positive definite(semidefinite), this point is a strong(weak) minimum. And positive definite Hessian matrix is sufficient condition to a strong minimum point, but it’s not a necessary condition. Because when the Hessian matrix is $0$ the third-order item has to be calculated.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<br>[^2]: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Competitive_learning">https://en.wikipedia.org/wiki/Competitive_learning</a></p>
+<h3 id="first-order-conditions">First-order Conditions</h3>
+<p>Go back to the Taylor series with <span class="math inline">\(\Delta x=x-x^{\star}\neq 0\)</span>, the first item of series is taking into account:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  F(x)&amp;=F(x^{\star})+\frac{d}{dx}F(x)|_{x=x^{\star}}(x-x^{\star})\\
+  F(x^{\star}+\Delta x)&amp;=F(x^{\star})+\nabla F(x)\Delta x
+\end{aligned}\tag{15}
+\]</span></p>
+<p>when <span class="math inline">\(x^{\star}\)</span> is a candidate of minimum point, we want:</p>
+<p><span class="math display">\[
+F(x^{\star}+\Delta x)\geq F(x^{\star})\tag{16}
+\]</span></p>
+<p>so, in equation(15), <span class="math display">\[
+\nabla F(x)\Delta x\geq 0 \tag{17}
+\]</span></p>
+<p>are needed. Considering another direction, if <span class="math inline">\(x^{\star}\)</span> is the minimum point, it also has:</p>
+<p><span class="math display">\[
+F(x^{\star}-\Delta x)=F(x^{\star})-\nabla F(x)\Delta x\geq F(x^{\star})\tag{18}
+\]</span></p>
+<p>then</p>
+<p><span class="math display">\[
+\nabla F(x)\Delta x\leq 0 \tag{19}
+\]</span></p>
+<p>To satisfy both equation(17) and equation(19) if and only if</p>
+<p><span class="math display">\[
+\nabla F(x)\Delta x=0\tag{20}
+\]</span></p>
+<p>Because <span class="math inline">\(\Delta x\neq 0\)</span>, so we must have <span class="math inline">\(\nabla F(x)\)</span> when <span class="math inline">\(x\)</span> is the minimum point. <span class="math inline">\(\nabla F(x)=0\)</span> is a necessary but not sufficient condition. The first-order condition has been concluded above.</p>
+<h3 id="second_order-condition">Second_order Condition</h3>
+<p>The first order condition does not give a sufficient condition. Now let's consider the second-order conditon. With <span class="math inline">\(\Delta\boldsymbol{x}=\boldsymbol{x}-\boldsymbol{x}^{\star}\neq \boldsymbol{0}\)</span> and gradient equal to <span class="math inline">\(\boldsymbol{0}\)</span>, and take them into equation(5) (<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">in part I</a>). Then the second order Taylor series is:</p>
+<p><span class="math display">\[
+F(\boldsymbol{\Delta\boldsymbol{x}-\boldsymbol{x}^{\star}})=F(\boldsymbol{x}^{\star})+\frac{1}{2}\Delta\boldsymbol{x}^T\nabla^2 F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}\Delta\boldsymbol{x}\tag{21}
+\]</span></p>
+<p>When <span class="math inline">\(||\Delta\boldsymbol{x}||\)</span> is small, zero-order, first-order and second-order iterms of Taylor series are precise enough to approximate original function. When <span class="math inline">\(F(\boldsymbol{x}^{\star})\)</span> is a strong minimum, the second-order iterm should be:</p>
+<p><span class="math display">\[
+\frac{1}{2}\Delta\boldsymbol{x}^T\nabla^2 F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}\Delta\boldsymbol{x}&gt;0
+\]</span></p>
+<p>Recalling linear algebra knowledge, positive definite matrix <span class="math inline">\(A\)</span> is:</p>
+<p><span class="math display">\[
+\boldsymbol{z}^T A \boldsymbol{z}&gt;0 \text{ for any } \boldsymbol{z}
+\]</span></p>
+<p>and positive semidefinite matrix <span class="math inline">\(A\)</span> is:</p>
+<p><span class="math display">\[
+\boldsymbol{z}^T A \boldsymbol{z}\geq0 \text{ for any } \boldsymbol{z}
+\]</span></p>
+<p>So when the gradient is <span class="math inline">\(\boldsymbol{0}\)</span> and second-order derivative are positive definite(semidefinite), this point is a strong(weak) minimum. And positive definite Hessian matrix is sufficient condition to a strong minimum point, but it's not a necessary condition. Because when the Hessian matrix is <span class="math inline">\(0\)</span> the third-order item has to be calculated.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>https://en.wikipedia.org/wiki/Competitive_learning<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

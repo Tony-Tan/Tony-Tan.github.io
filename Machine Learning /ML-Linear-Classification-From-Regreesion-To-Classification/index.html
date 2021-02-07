@@ -169,7 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Recall-Linear-Regression-1"><span class="nav-number">1.</span> <span class="nav-text">Recall Linear Regression[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#General-Classification"><span class="nav-number">2.</span> <span class="nav-text">General Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Classification"><span class="nav-number">3.</span> <span class="nav-text">Linear Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#recall-linear-regression1"><span class="nav-number">1.</span> <span class="nav-text">Recall Linear Regression1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-classification"><span class="nav-number">2.</span> <span class="nav-text">General Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-classification"><span class="nav-number">3.</span> <span class="nav-text">Linear Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -323,48 +323,70 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> linear classification</p>
-<a id="more"></a>
-
-<h2 id="Recall-Linear-Regression-1"><a href="#Recall-Linear-Regression-1" class="headerlink" title="Recall Linear Regression[^1]"></a>Recall Linear Regression[^1]</h2><p>In the posts <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Introduction-to-Linear-Regression/">‘Introduction to Linear Regression’</a>, <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Polynomial-Regression-Least-Squares-Estimation/">‘Polynomial Regression and Features-Extension of Linear Regression’</a>, we had discussed the regression task. The goal of regression is to find out a function or hypothesis that given an input $\boldsymbol{x}$, the hypothesis can make a prediction $\hat{y}$ which should be as close to the target $y$ as possible. And both the target $y$ and prediction $\hat{y}$ are contiuous. They have the properties of numbers:</p>
+        <p><strong>Keywords:</strong> linear classification <a id="more"></a></p>
+<h2 id="recall-linear-regression1">Recall Linear Regression<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>In the posts <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Introduction-to-Linear-Regression/">'Introduction to Linear Regression'</a>, <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">'Simple Linear Regression'</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Polynomial-Regression-Least-Squares-Estimation/">'Polynomial Regression and Features-Extension of Linear Regression'</a>, we had discussed the regression task. The goal of regression is to find out a function or hypothesis that given an input <span class="math inline">\(\boldsymbol{x}\)</span>, the hypothesis can make a prediction <span class="math inline">\(\hat{y}\)</span> which should be as close to the target <span class="math inline">\(y\)</span> as possible. And both the target <span class="math inline">\(y\)</span> and prediction <span class="math inline">\(\hat{y}\)</span> are contiuous. They have the properties of numbers:</p>
 <blockquote>
-<p>Considering 3 inputs $\boldsymbol{x}_1$, $\boldsymbol{x}_2$ and $\boldsymbol{x}_3$ and their coresponding targets $y_1=0$, $y_2=1$ and $y_3=2$. Then a good predictor should give the predictions $\hat{y}_1$, $\hat{y}_2$ and $\hat{y}_3$ where the distance between  $\hat{y}_1$ and $\hat{y}_2$ is larger than the one between  $\hat{y}_1$ and $\hat{y}_3$</p>
+<p>Considering 3 inputs <span class="math inline">\(\boldsymbol{x}_1\)</span>, <span class="math inline">\(\boldsymbol{x}_2\)</span> and <span class="math inline">\(\boldsymbol{x}_3\)</span> and their coresponding targets <span class="math inline">\(y_1=0\)</span>, <span class="math inline">\(y_2=1\)</span> and <span class="math inline">\(y_3=2\)</span>. Then a good predictor should give the predictions <span class="math inline">\(\hat{y}_1\)</span>, <span class="math inline">\(\hat{y}_2\)</span> and <span class="math inline">\(\hat{y}_3\)</span> where the distance between <span class="math inline">\(\hat{y}_1\)</span> and <span class="math inline">\(\hat{y}_2\)</span> is larger than the one between <span class="math inline">\(\hat{y}_1\)</span> and <span class="math inline">\(\hat{y}_3\)</span></p>
 </blockquote>
 <p>Some properties of linear regression or other regression tasks we should pay attention:</p>
-<ol>
+<ol type="1">
 <li>The goal of regression is to produce a hypothesis that can give a prediction as close to the target as possible</li>
 <li>The output of the hypothesis and target are continuous numbers and have numerical meanings, like distance, order and so on.</li>
 </ol>
-<h2 id="General-Classification"><a href="#General-Classification" class="headerlink" title="General Classification"></a>General Classification</h2><p>On the other side, we met more classification tasks in our life than regression. Such as in the supermarket we can tell the apple and the orange apart easily. And we can even verify this apple is tasty or not.</p>
+<h2 id="general-classification">General Classification</h2>
+<p>On the other side, we met more classification tasks in our life than regression. Such as in the supermarket we can tell the apple and the orange apart easily. And we can even verify this apple is tasty or not.</p>
 <p>Then the goal of classification is clear:</p>
 <blockquote>
-<p>Assign input $\boldsymbol{x}$ to a certain class of $K$ classes. And $\boldsymbol{x}$ belongs to one and only one class.</p>
+<p>Assign input <span class="math inline">\(\boldsymbol{x}\)</span> to a certain class of <span class="math inline">\(K\)</span> classes. And <span class="math inline">\(\boldsymbol{x}\)</span> belongs to one and only one class.</p>
 </blockquote>
-<p>The input $\boldsymbol{x}$, like the input of regression, can be a feature or basis function of feature and can be continuous or discrete. However, its output is different from that of regression. Let’s go back to the example that we can tell apple, orange, and pineapple apart. The difference between apple and orange and the difference between apple and pineapple can not be compared, for the distance(it is the mathematical name of difference) itself had no means.</p>
-<p>In the mathematical models, apple and orange can not be calculated. So a usual step in classification task is mapping the target or labels of an example into a number, like $1$ for the apple and $2$ for the orange.</p>
+<p>The input <span class="math inline">\(\boldsymbol{x}\)</span>, like the input of regression, can be a feature or basis function of feature and can be continuous or discrete. However, its output is different from that of regression. Let's go back to the example that we can tell apple, orange, and pineapple apart. The difference between apple and orange and the difference between apple and pineapple can not be compared, for the distance(it is the mathematical name of difference) itself had no means.</p>
+<p>In the mathematical models, apple and orange can not be calculated. So a usual step in classification task is mapping the target or labels of an example into a number, like <span class="math inline">\(1\)</span> for the apple and <span class="math inline">\(2\)</span> for the orange.</p>
 <p>A binary code scheme is another way to code targets. To a two classes mission, the numerical labels can be:</p>
-<p>$$<br>\mathcal{C}_1=0 \text{ and }\mathcal{C}_2=1\tag{1}<br>$$</p>
-<p>It’s equal to:</p>
-<p>$$<br>\mathcal{C}_1=1 \text{ and }\mathcal{C}_2=0\tag{2}<br>$$</p>
-<p>and to a $K$ classes target, the binary code scheme is:</p>
-<p>$$<br>\begin{aligned}<br>  \mathcal{C}_1 &amp;= {1,0,\cdots,0}\<br>  \mathcal{C}_2 &amp;= {0,1,\cdots,0}\<br>  \vdots &amp; \<br>  \mathcal{C}_K &amp;= {0,0,\cdots,1}\<br>\end{aligned}\tag{3}<br>$$</p>
-<p>The $n$-dimensional input $\boldsymbol{x}\in \mathbb{R}^n$ and $\mathbb{R}^n$ is called the input space. In the classification task, the input points can be separated by the targets, and these parts of space are called <strong>decision regions</strong> and the boundaries between decision regions are called <strong>decision boundaries</strong> or <strong>decision surfaces</strong>. When the decision boundary is linear, the task is called linear classification.</p>
+<p><span class="math display">\[
+\mathcal{C}_1=0 \text{ and }\mathcal{C}_2=1\tag{1}
+\]</span></p>
+<p>It's equal to:</p>
+<p><span class="math display">\[
+\mathcal{C}_1=1 \text{ and }\mathcal{C}_2=0\tag{2}
+\]</span></p>
+<p>and to a <span class="math inline">\(K\)</span> classes target, the binary code scheme is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \mathcal{C}_1 &amp;= \{1,0,\cdots,0\}\\
+  \mathcal{C}_2 &amp;= \{0,1,\cdots,0\}\\
+  \vdots &amp; \\
+  \mathcal{C}_K &amp;= \{0,0,\cdots,1\}\\
+\end{aligned}\tag{3}
+\]</span></p>
+<p>The <span class="math inline">\(n\)</span>-dimensional input <span class="math inline">\(\boldsymbol{x}\in \mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{R}^n\)</span> is called the input space. In the classification task, the input points can be separated by the targets, and these parts of space are called <strong>decision regions</strong> and the boundaries between decision regions are called <strong>decision boundaries</strong> or <strong>decision surfaces</strong>. When the decision boundary is linear, the task is called linear classification.</p>
 <p>There are roughly two kinds of procedure of classification:</p>
-<ol>
-<li>Discriminant Function: assign input $\boldsymbol{x}$ to a certain class directly.</li>
-<li>We infer $\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})$ firstly and then make a decision basing on the posterior probability.<ol>
-<li>Inference of $\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})$ can be calculated directly</li>
-<li>$\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})$ can also be calculated by Bayesian Theorem $\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\mathbb{P}(\boldsymbol{x})}=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\sum_k \mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}$</li>
-</ol>
-</li>
+<ol type="1">
+<li>Discriminant Function: assign input <span class="math inline">\(\boldsymbol{x}\)</span> to a certain class directly.</li>
+<li>We infer <span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})\)</span> firstly and then make a decision basing on the posterior probability.
+<ol type="1">
+<li>Inference of <span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})\)</span> can be calculated directly</li>
+<li><span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})\)</span> can also be calculated by Bayesian Theorem <span class="math inline">\(\mathbb{P}(\mathcal{C}_k|\boldsymbol{x})=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\mathbb{P}(\boldsymbol{x})}=\frac{\mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}{\sum_k \mathbb{P}(\boldsymbol{x}|\mathcal{C}_k)\mathbb{P}(\mathcal{C}_k)}\)</span></li>
+</ol></li>
 </ol>
 <p>They are discriminate model and generative model, respectively.</p>
-<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the regression problem, the output of the linear function:</p>
-<p>$$<br>\boldsymbol{w}^T\boldsymbol{x}+b\tag{4}<br>$$</p>
-<p>is an approximation of target. But in the classification task, we want the output is the class to which the input $\boldsymbol{x}$ belongs. However, the output of the linear function is always continuous. Then we wish this value can represent the probability of a given class but not the class label, say $\mathbb{P}({\mathcal{C}_i|\boldsymbol{x}})$. To achieve this, function $f(\cdot)$ which is called ‘action function’ in machine learning and ‘link function’ in statistical learning is introduced. For example, we can choose a threshold function as the active function:</p>
-<p>$$<br>y(\boldsymbol{x})=f(\boldsymbol{w}^T\boldsymbol{x}+b)\tag{5}<br>$$</p>
-<p>where $f(\cdot)$ is the threshold function. In this case, the boundary is $f(\boldsymbol{w}^T\boldsymbol{x}+b) = \text{ constant }$, and so $\boldsymbol{w}^T\boldsymbol{x}+b = \text{ constant }$ is a line. Technically, $f(\boldsymbol{w}^T\boldsymbol{x}+b)$ is no more linear. It is a generalized linear model. By the way, the input $\boldsymbol{x}$ can be replaced by a basis function $\phi(\boldsymbol{x})$ as in the polynomial regression.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+<h2 id="linear-classification">Linear Classification</h2>
+<p>In the regression problem, the output of the linear function:</p>
+<p><span class="math display">\[
+\boldsymbol{w}^T\boldsymbol{x}+b\tag{4}
+\]</span></p>
+<p>is an approximation of target. But in the classification task, we want the output is the class to which the input <span class="math inline">\(\boldsymbol{x}\)</span> belongs. However, the output of the linear function is always continuous. Then we wish this value can represent the probability of a given class but not the class label, say <span class="math inline">\(\mathbb{P}({\mathcal{C}_i|\boldsymbol{x}})\)</span>. To achieve this, function <span class="math inline">\(f(\cdot)\)</span> which is called 'action function' in machine learning and 'link function' in statistical learning is introduced. For example, we can choose a threshold function as the active function:</p>
+<p><span class="math display">\[
+y(\boldsymbol{x})=f(\boldsymbol{w}^T\boldsymbol{x}+b)\tag{5}
+\]</span></p>
+<p>where <span class="math inline">\(f(\cdot)\)</span> is the threshold function. In this case, the boundary is <span class="math inline">\(f(\boldsymbol{w}^T\boldsymbol{x}+b) = \text{ constant }\)</span>, and so <span class="math inline">\(\boldsymbol{w}^T\boldsymbol{x}+b = \text{ constant }\)</span> is a line. Technically, <span class="math inline">\(f(\boldsymbol{w}^T\boldsymbol{x}+b)\)</span> is no more linear. It is a generalized linear model. By the way, the input <span class="math inline">\(\boldsymbol{x}\)</span> can be replaced by a basis function <span class="math inline">\(\phi(\boldsymbol{x})\)</span> as in the polynomial regression.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

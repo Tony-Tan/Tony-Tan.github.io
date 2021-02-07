@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,35 +317,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> </p>
-<a id="more"></a>
-<p>In the previous posts, we talked about the k-armed bandit task in stationary or non-stationary situation. And we also had introduced associative search and non-associative problems. The k-armed bandits are non-associative task but the full reinforcement learning is associative.[^1]</p>
-<ol>
-<li><a href="TODO">2.1</a></li>
-<li><a href="TODO">2.3</a></li>
-<li><a href="TODO">2.4</a></li>
-<li><a href="TODO">2.9</a></li>
-</ol>
-<p>Now, we take a step towards the full reinforcement learning task, we introduce finite Markov Decision Processes, finite MDP for short, which contains both evaluating feedback and an associative aspect that the agent choose action in different situations. In the bandit problem, action influence nothing but the immediate reward. However, in the finite MDP that we will investage, the action influence:</p>
-<ol>
-<li>immediate reward</li>
-<li>sequencial situation</li>
-<li>state</li>
-<li>future reward</li>
-</ol>
-<p>In the bandit problems, which is nonassociative, the agents or the dicision makers only concern which action should be taken currently to maximize the total rewards. But to an associative task, not only immediate rewards but also delay rewards should be concerned. And what the agent and dicision maker should do in an associative task is to balance the delay rewards and the immediate rewards. In the post <a href="">‘Action-value methods’</a>, we introduced the value function and how to estimate the value function, based on which we can select the action giving a higher total reward in a long run. And the value function is only decided by action:<br>$$<br>q_{*}(a)<br>$$</p>
-<p>However, in finite MDP, the value function is of both action and the state that the agent or decision maker faced. Then it converts to:<br>$$<br>q_{*}(s,a)<br>$$</p>
+        <p><strong>Keywords:</strong> <a id="more"></a> In the previous posts, we talked about the k-armed bandit task in stationary or non-stationary situation. And we also had introduced associative search and non-associative problems. The k-armed bandits are non-associative task but the full reinforcement learning is associative.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 1. <a href="TODO">2.1</a> 2. <a href="TODO">2.3</a> 3. <a href="TODO">2.4</a> 4. <a href="TODO">2.9</a></p>
+<p>Now, we take a step towards the full reinforcement learning task, we introduce finite Markov Decision Processes, finite MDP for short, which contains both evaluating feedback and an associative aspect that the agent choose action in different situations. In the bandit problem, action influence nothing but the immediate reward. However, in the finite MDP that we will investage, the action influence: 1. immediate reward 2. sequencial situation 3. state 4. future reward</p>
+<p>In the bandit problems, which is nonassociative, the agents or the dicision makers only concern which action should be taken currently to maximize the total rewards. But to an associative task, not only immediate rewards but also delay rewards should be concerned. And what the agent and dicision maker should do in an associative task is to balance the delay rewards and the immediate rewards. In the post <a href="">'Action-value methods'</a>, we introduced the value function and how to estimate the value function, based on which we can select the action giving a higher total reward in a long run. And the value function is only decided by action: <span class="math display">\[
+q_{*}(a)
+\]</span></p>
+<p>However, in finite MDP, the value function is of both action and the state that the agent or decision maker faced. Then it converts to: <span class="math display">\[
+q_{*}(s,a)
+\]</span></p>
 <p>and for the state, now, is a relatively important element in the finite MDP, the associative task, we can study the relation between the states and the value given a determined policy basing on which the action would be selected. The value function of state is:</p>
-<p>$$<br>v_{*}(s)<br>$$</p>
+<p><span class="math display">\[
+v_{*}(s)
+\]</span></p>
 <p>and it is essential to assign credit to individual action selection for long-term consequence, because the state transmission is decided by actions, and if we have known which state is better in the next step then we could choose an action to reach that state.</p>
-<p>The finite MDP is not a full reinforcement learning, but is a good idealized mathematical model for full reinforcement learning. And some key elements of this kind of mathematical model are:</p>
-<ol>
-<li>returns</li>
-<li>value function</li>
-<li>Bellman equations</li>
-</ol>
+<p>The finite MDP is not a full reinforcement learning, but is a good idealized mathematical model for full reinforcement learning. And some key elements of this kind of mathematical model are: 1. returns 2. value function 3. Bellman equations</p>
 <p>All we have talk is far from the real intelligence, for our basic tool is mathematics, and there is tension between breadth of applicability and mathematical tractability.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 

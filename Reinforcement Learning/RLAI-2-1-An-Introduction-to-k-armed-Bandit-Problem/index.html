@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#from-Supervised-Learning-to-Reinforcement-learning-1"><span class="nav-number">1.</span> <span class="nav-text">from Supervised Learning to Reinforcement learning[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-armed-Bandit"><span class="nav-number">2.</span> <span class="nav-text">$k$-armed Bandit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#from-supervised-learning-to-reinforcement-learning1"><span class="nav-number">1.</span> <span class="nav-text">from Supervised Learning to Reinforcement learning1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-armed-bandit"><span class="nav-number">2.</span> <span class="nav-text">\(k\)-armed Bandit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -317,31 +317,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Abstract:</strong></p>
-<a id="more"></a>
-<p><strong>Keywords:</strong> Evaluative Feedback, $k$-armed Bandit, Non-associative, Associative, Value of Action, Greedy Action, Exploration, Exploitation</p>
-<!-- more -->
-
-<h2 id="from-Supervised-Learning-to-Reinforcement-learning-1"><a href="#from-Supervised-Learning-to-Reinforcement-learning-1" class="headerlink" title="from Supervised Learning to Reinforcement learning[^1]"></a>from Supervised Learning to Reinforcement learning[^1]</h2><p>Some supervised learning algorithms like traditional machine learning algorithms, like linear regression, linear classification, and other more complex algorithms and deep learning, like neural networks are all based on training data who acts as a teacher told the algorithms what is correct and led the algorithms to some specified form. And the teacher gave the ‘correct’ answers no matter what the algorithm outputted. </p>
+        <p><strong>Abstract:</strong> <a id="more"></a> <strong>Keywords:</strong> Evaluative Feedback, <span class="math inline">\(k\)</span>-armed Bandit, Non-associative, Associative, Value of Action, Greedy Action, Exploration, Exploitation <!-- more --></p>
+<h2 id="from-supervised-learning-to-reinforcement-learning1">from Supervised Learning to Reinforcement learning<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>Some supervised learning algorithms like traditional machine learning algorithms, like linear regression, linear classification, and other more complex algorithms and deep learning, like neural networks are all based on training data who acts as a teacher told the algorithms what is correct and led the algorithms to some specified form. And the teacher gave the 'correct' answers no matter what the algorithm outputted.</p>
 <p>However, reinforcement learning works in another way, the training data does not give any correct answer to an algorithm after its action. But it just evaluates the action of the algorithm. Then the algorithm modified itself for getting higher rewards given by the teacher(the result of the evaluation of the teacher). This is the main distinction between supervised learning and reinforcement learning.</p>
-<p>A full reinforcement learning is too complex for us to begin with. So, we use a more simplified problem which is non-associative to have a first look at this kind of problem. The non-associative problem is the problem whose most prior work, involving <strong>evaluative feedback</strong>, has been done before we work on it. A well known non-associative task is the ‘$k$-armed bandits’.</p>
-<h2 id="k-armed-Bandit"><a href="#k-armed-Bandit" class="headerlink" title="$k$-armed Bandit"></a>$k$-armed Bandit</h2><p>A $k$-armed bandit problem can be simply described as such a problem that:</p>
+<p>A full reinforcement learning is too complex for us to begin with. So, we use a more simplified problem which is non-associative to have a first look at this kind of problem. The non-associative problem is the problem whose most prior work, involving <strong>evaluative feedback</strong>, has been done before we work on it. A well known non-associative task is the '<span class="math inline">\(k\)</span>-armed bandits'.</p>
+<h2 id="k-armed-bandit"><span class="math inline">\(k\)</span>-armed Bandit</h2>
+<p>A <span class="math inline">\(k\)</span>-armed bandit problem can be simply described as such a problem that: 1. it contains a choice of <span class="math inline">\(k\)</span> different actions in each step 2. the reward of different actions have stationary probability distributions 3. the main purpose of the actions is to maximize the cumulation of the reward of each step 4. the whole experiment should be repeated at certain times like 1000.</p>
+<p>These 4 elements constitute several tasks in the real world. And these 4 element is also meaningful for reinforcement learning research. Then some concepts of reinforcement learning are given from these 4 elements: 1. '<strong>value of action</strong>': it is the expected/mean reward of an action 2. <span class="math inline">\(A_t\)</span>: action selected by the agent at time <span class="math inline">\(t\)</span> 3. <span class="math inline">\(R_t\)</span>: reward at time <span class="math inline">\(t\)</span> corresponding to the action <span class="math inline">\(A_t\)</span> 4. <span class="math inline">\(q_{\star}(a)\)</span>: value of an arbitrary action <span class="math inline">\(a\)</span> , and <span class="math display">\[
+    q_{\star}(a)\doteq \mathbb{E}[R_t|A_t=a]
+    \]</span> 5. <span class="math inline">\(Q(a)\)</span>: estimation of <strong>value of action</strong> <span class="math inline">\(a\)</span></p>
+<p>However, for the most time the value of an action <span class="math inline">\(q_{\star}(a)\)</span> is unknown. And once it had been calculated, what we need to do is just to repeat the best action which had the greatest value. But almost all the time what we knew is just its estimation <span class="math inline">\(Q(a)\)</span>. There is also the biggest value among <span class="math inline">\(Q(a)\)</span>, but for it is just an expectation, the biggest value might be not <span class="math inline">\(q_{\star}\)</span>. So what we need to concern is how to find the greatest value. An intuitive idea is that for each step selecting the action who has the greatest value currently(this is called '<strong>exploitation</strong>') or searching the action space to update <span class="math inline">\(Q(a)\)</span> for all <span class="math inline">\(a\)</span> (this is called '<strong>exploration</strong>') are employed randomly. For a short time interval, <strong>exploitation</strong> can maximize the reward and this is also called <strong>greedy action</strong>, but for a long time, <strong>exploration</strong> can produce a maximum reward. Because the agent must select the exploitation or the exploration, so they are conflicting. How to balance them is a great issue in reinforcement learning.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
 <ol>
-<li>it contains a choice of $k$ different actions in each step</li>
-<li>the reward of different actions have stationary probability distributions</li>
-<li>the main purpose of the actions is to maximize the cumulation of the reward of each step</li>
-<li>the whole experiment should be repeated at certain times like 1000.</li>
+<li id="fn1" role="doc-endnote"><p>Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>These 4 elements constitute several tasks in the real world. And these 4 element is also meaningful for reinforcement learning research. Then some concepts of reinforcement learning are given from these 4 elements:</p>
-<ol>
-<li>‘<strong>value of action</strong>‘: it is the expected/mean reward of an action</li>
-<li>$A_t$: action selected by the agent at time $t$</li>
-<li>$R_t$: reward at time $t$ corresponding to the action $A_t$</li>
-<li>$q_{\star}(a)$: value of an arbitrary action $a$ , and<br> $$<br> q_{\star}(a)\doteq \mathbb{E}[R_t|A_t=a]<br> $$</li>
-<li>$Q(a)$: estimation of <strong>value of action</strong> $a$</li>
-</ol>
-<p>However, for the most time the value of an action $q_{\star}(a)$ is unknown. And once it had been calculated, what we need to do is just to repeat the best action which had the greatest value. But almost all the time what we knew is just its estimation $Q(a)$. There is also the biggest value among $Q(a)$, but for it is just an expectation, the biggest value might be not $q_{\star}$. So what we need to concern is how to find the greatest value. An intuitive idea is that for each step selecting the action who has the greatest value currently(this is called ‘<strong>exploitation</strong>‘) or searching the action space to update $Q(a)$ for all $a$ (this is called ‘<strong>exploration</strong>‘) are employed randomly. For a short time interval, <strong>exploitation</strong> can maximize the reward and this is also called <strong>greedy action</strong>, but for a long time, <strong>exploration</strong> can produce a maximum reward. Because the agent must select the exploitation or the exploration, so they are conflicting. How to balance them is a great issue in reinforcement learning.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.</p>
+</section>
 
     </div>
 

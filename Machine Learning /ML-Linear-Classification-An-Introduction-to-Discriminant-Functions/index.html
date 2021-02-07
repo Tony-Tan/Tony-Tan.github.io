@@ -174,7 +174,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Discriminant-Function-in-Classification"><span class="nav-number">1.</span> <span class="nav-text">Discriminant Function in Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-classes"><span class="nav-number">2.</span> <span class="nav-text">Two classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Classes"><span class="nav-number">3.</span> <span class="nav-text">Multiple Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-versus-the-rest-Classifier"><span class="nav-number">3.1.</span> <span class="nav-text">1-versus-the-rest Classifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-versus-1-classifier"><span class="nav-number">3.2.</span> <span class="nav-text">1-versus-1 classifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Linear-functions"><span class="nav-number">3.3.</span> <span class="nav-text">$K$ Linear functions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#discriminant-function-in-classification"><span class="nav-number">1.</span> <span class="nav-text">Discriminant Function in Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#two-classes"><span class="nav-number">2.</span> <span class="nav-text">Two classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-classes"><span class="nav-number">3.</span> <span class="nav-text">Multiple Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#versus-the-rest-classifier"><span class="nav-number">3.1.</span> <span class="nav-text">1-versus-the-rest Classifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#versus-1-classifier"><span class="nav-number">3.2.</span> <span class="nav-text">1-versus-1 classifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-linear-functions"><span class="nav-number">3.3.</span> <span class="nav-text">\(K\) Linear functions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -328,57 +328,86 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> discriminant functions, decision boundary</p>
-<a id="more"></a>
-
-<h2 id="Discriminant-Function-in-Classification"><a href="#Discriminant-Function-in-Classification" class="headerlink" title="Discriminant Function in Classification"></a>Discriminant Function in Classification</h2><p>The discriminant function or discriminant model is on the other side of <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-An-Introduction-to-Probabilistic-Generative-Models-for-Classification/">‘the generative model’</a>.  So we, here, have a look at the behave of discriminant function in linear classification.[^1]</p>
+        <p><strong>Keywords:</strong> discriminant functions, decision boundary <a id="more"></a></p>
+<h2 id="discriminant-function-in-classification">Discriminant Function in Classification</h2>
+<p>The discriminant function or discriminant model is on the other side of <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-An-Introduction-to-Probabilistic-Generative-Models-for-Classification/">'the generative model'</a>. So we, here, have a look at the behave of discriminant function in linear classification.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>In the post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-Least-Squares/">‘Least Squares Classification’</a>, we have seen, in a linear classification task, the decision boundary is a line or hyperplane by which we tell two classes apart. And if our model is based on the decision boundary or, in other words, we partition inputs by a function and a threshold, the model is a discriminant model and the decision boundary can be formed by the function and the threshold.</p>
-<p>Now, we are going to talk about how the decision boundaries look like in the $K$-classes problem when $K=2$ and $K&gt;2$. To illustrate the boundaries, we only consider the 2D(two dimensional) input vector $\boldsymbol{x}$ who has only two components.</p>
-<h2 id="Two-classes"><a href="#Two-classes" class="headerlink" title="Two classes"></a>Two classes</h2><p>The easiest decision boundary comes from 2-dimensional input space which is partitioned into 2 classes as:</p>
-<p><img src="./2classes.jpeg"></p>
+<p>Now, we are going to talk about how the decision boundaries look like in the <span class="math inline">\(K\)</span>-classes problem when <span class="math inline">\(K=2\)</span> and <span class="math inline">\(K&gt;2\)</span>. To illustrate the boundaries, we only consider the 2D(two dimensional) input vector <span class="math inline">\(\boldsymbol{x}\)</span> who has only two components.</p>
+<h2 id="two-classes">Two classes</h2>
+<p>The easiest decision boundary comes from 2-dimensional input space which is partitioned into 2 classes as:</p>
+<p><img src="./2classes.jpeg" /></p>
 <p>whose decision boundary is:</p>
-<p>$$<br>\boldsymbol{w}^T\boldsymbol{x}+w_0=\text{ constant }\tag{1}<br>$$</p>
-<p>This equation is equal to $\boldsymbol{w}^T\boldsymbol{x}+w_0=0$ because $w_0$ is also a constant, so then they can be merged. Of course, the 1-dimensional input space is easier than 2-dimensional, but its decision boundary is a point that represents nothing.</p>
-<p>Let’s go back to the line, and some properties of the linear decision boundary are:</p>
-<ol>
-<li>The vector $\boldsymbol{w}$ always points to a certain region and is perpendicular to the line.</li>
-<li>$w_0$ decides the location of the boundary relative to the origin.</li>
-<li>The perpendicular distance $r$ to the line of a point $\boldsymbol{x}$ can be calculated by $r=\frac{y(\boldsymbol{x})}{||\boldsymbol{w}||}$ where $y(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+w_0$</li>
+<p><span class="math display">\[
+\boldsymbol{w}^T\boldsymbol{x}+w_0=\text{ constant }\tag{1}
+\]</span></p>
+<p>This equation is equal to <span class="math inline">\(\boldsymbol{w}^T\boldsymbol{x}+w_0=0\)</span> because <span class="math inline">\(w_0\)</span> is also a constant, so then they can be merged. Of course, the 1-dimensional input space is easier than 2-dimensional, but its decision boundary is a point that represents nothing.</p>
+<p>Let's go back to the line, and some properties of the linear decision boundary are:</p>
+<ol type="1">
+<li>The vector <span class="math inline">\(\boldsymbol{w}\)</span> always points to a certain region and is perpendicular to the line.</li>
+<li><span class="math inline">\(w_0\)</span> decides the location of the boundary relative to the origin.</li>
+<li>The perpendicular distance <span class="math inline">\(r\)</span> to the line of a point <span class="math inline">\(\boldsymbol{x}\)</span> can be calculated by <span class="math inline">\(r=\frac{y(\boldsymbol{x})}{||\boldsymbol{w}||}\)</span> where <span class="math inline">\(y(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+w_0\)</span></li>
 </ol>
 <p>For these three properties are all basic concepts of a line, we just roughly prove the third point:</p>
-<p>proof: We set $\boldsymbol{x}_{\perp}$ is the projection of $\boldsymbol{x}$ on the line. </p>
-<p><img src="./r.jpeg"></p>
-<p>We using the first point that $\boldsymbol{w}$ is perpendicular to the line and $\frac{\boldsymbol{w}}{||\boldsymbol{w}||}$ is the union vector:</p>
-<p>$$<br>\boldsymbol{x}=\boldsymbol{x}_{\perp}+r\frac{\boldsymbol{w}}{||\boldsymbol{w}||}\tag{2}<br>$$</p>
-<p>and we substitute equation (2) to the line function $y(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+w_0$ :</p>
-<p>$$<br>\begin{aligned}<br>y(\boldsymbol{x})&amp;=\boldsymbol{w}^T(\boldsymbol{x}_{\perp}+r\frac{\boldsymbol{w}}{||\boldsymbol{w}||})+w_0\<br>&amp;=\boldsymbol{w}^T\boldsymbol{x}_{\perp}+\boldsymbol{w}^Tr\frac{\boldsymbol{w}}{||\boldsymbol{w}||}+w_0\<br>&amp;=\boldsymbol{w}^Tr\frac{\boldsymbol{w}}{||\boldsymbol{w}||}\<br>&amp;=r\frac{||\boldsymbol{w}||^2}{||\boldsymbol{w}||}\<br>\end{aligned}\tag{3}<br>$$</p>
+<p>proof: We set <span class="math inline">\(\boldsymbol{x}_{\perp}\)</span> is the projection of <span class="math inline">\(\boldsymbol{x}\)</span> on the line.</p>
+<p><img src="./r.jpeg" /></p>
+<p>We using the first point that <span class="math inline">\(\boldsymbol{w}\)</span> is perpendicular to the line and <span class="math inline">\(\frac{\boldsymbol{w}}{||\boldsymbol{w}||}\)</span> is the union vector:</p>
+<p><span class="math display">\[
+\boldsymbol{x}=\boldsymbol{x}_{\perp}+r\frac{\boldsymbol{w}}{||\boldsymbol{w}||}\tag{2}
+\]</span></p>
+<p>and we substitute equation (2) to the line function <span class="math inline">\(y(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+w_0\)</span> :</p>
+<p><span class="math display">\[
+\begin{aligned}
+y(\boldsymbol{x})&amp;=\boldsymbol{w}^T(\boldsymbol{x}_{\perp}+r\frac{\boldsymbol{w}}{||\boldsymbol{w}||})+w_0\\
+&amp;=\boldsymbol{w}^T\boldsymbol{x}_{\perp}+\boldsymbol{w}^Tr\frac{\boldsymbol{w}}{||\boldsymbol{w}||}+w_0\\
+&amp;=\boldsymbol{w}^Tr\frac{\boldsymbol{w}}{||\boldsymbol{w}||}\\
+&amp;=r\frac{||\boldsymbol{w}||^2}{||\boldsymbol{w}||}\\
+\end{aligned}\tag{3}
+\]</span></p>
 <p>So we have</p>
-<p>$$<br>r=\frac{y(\boldsymbol{x})}{||\boldsymbol{w}||}\tag{4}<br>$$</p>
+<p><span class="math display">\[
+r=\frac{y(\boldsymbol{x})}{||\boldsymbol{w}||}\tag{4}
+\]</span></p>
 <p>Q.E.D</p>
-<p>However, augmented vectors $\boldsymbol{w}= \begin{bmatrix}w_0\w_1\ \vdots\w_d\end{bmatrix}$ and $\boldsymbol{x}= \begin{bmatrix}1\x_1\ \vdots\x_d\end{bmatrix}$ can cancel $w_0$ of the original boundary equation. So a $d+1$-dimensional hyperplane that goes through the origin could take the place of an arbitrary $d$-dimensional hyperplane.</p>
-<h2 id="Multiple-Classes"><a href="#Multiple-Classes" class="headerlink" title="Multiple Classes"></a>Multiple Classes</h2><p>Things changed when we consider more than 2 classes. Their boundaries become more complicated, and we have 3 different strategies for this problem intuitively:</p>
-<h3 id="1-versus-the-rest-Classifier"><a href="#1-versus-the-rest-Classifier" class="headerlink" title="1-versus-the-rest Classifier"></a>1-versus-the-rest Classifier</h3><p>This strategy needs at least $K-1$ classifiers(boundaries). Each classifier $k$ just decides which side belongs to class $k$ and the other side does not belong to $k$. So when we have two boundaries, the condition is like:</p>
-<p><img src="./1-rest.jpeg"></p>
-<p>where the region $R_4$ is embarrassed, based on the properties of the decision boundary, and the definition of classification in the post<a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-From-Regreesion-To-Classification/">‘From Linear Regression to Linear Classification’</a>, region $R_4$ can not belong to $\mathcal{C}_1$ and $\mathbb{C}_2$ simultaneously.</p>
-<p>So the first strategy can work for some regions, but there are some black whole region where the input $\boldsymbol{x}$ belongs to more than one class and some white whole region where the input $\boldsymbol{x}$ belongs no classes(region $R_3$ could be such a region)</p>
-<h3 id="1-versus-1-classifier"><a href="#1-versus-1-classifier" class="headerlink" title="1-versus-1 classifier"></a>1-versus-1 classifier</h3><p>Another kind of multiple class boundary is the combination of several 1-versus-1 linear decision boundaries. Both sides of a decision boundary belong to a certain class, not like the 1-versus-rest classifier. And to a $K$ class task, it needs $K(K-1)/2$ binary discriminant functions.</p>
-<p><img src="./1-1.jpeg"></p>
-<p>However, the contradiction still exists. Region $R_4$ belongs to class $\mathcal{C}_1$, $\mathcal{C}_2$, and $\mathcal{C}_3$ simultaneously.</p>
-<h3 id="K-Linear-functions"><a href="#K-Linear-functions" class="headerlink" title="$K$ Linear functions"></a>$K$ Linear functions</h3><p>We us a set of $K$ linear functions:<br>$$<br>\begin{aligned}<br>y_1(\boldsymbol{x})&amp;=\boldsymbol{w}^T_1\boldsymbol{x}+w_{10}\<br>y_2(\boldsymbol{x})&amp;=\boldsymbol{w}^T_2\boldsymbol{x}+w_{20}\<br>&amp;\vdots \<br>y_K(\boldsymbol{x})&amp;=\boldsymbol{w}^T_K\boldsymbol{x}+w_{K0}\<br>\end{aligned}\tag{5}<br>$$</p>
-<p>and an input belongs to $k$ when $y_k(\boldsymbol{x})&gt;y_j(\boldsymbol{x})$ where $j\in {1,2,\cdots,K}$ and $j\neq k$. According to this definition, the decision boundary between class $k$ and class $j$ is $y_k(\boldsymbol{x})=y_j(\boldsymbol{x})$ where $k,j\in{1,2,\cdots,K}$ and $j\neq k$. Then a decision hyperplane is defined as:</p>
-<p>$$<br>(\boldsymbol{w}<em>k-\boldsymbol{w}<em>j)^T\boldsymbol{x}+(w</em>{k0}-w</em>{j0})=0\tag{6}<br>$$</p>
-<p>These decision boundaries separate the input spaces into $K$ single connect, convex regions.</p>
-<p>proof:<br>choose two points in the region $k$ that $k\in {1,2,\cdots,K}$. $\boldsymbol{x}_A$ and $\boldsymbol{x}_B$ are two points in the region. An arbitrary point on the line between $\boldsymbol{x}_A$ and $\boldsymbol{x}_B$ can be written as $\boldsymbol{x}’=\lambda \boldsymbol{x}_A + (1-\lambda)\boldsymbol{x}_B$ where $0\leq\lambda\leq1$. For the linearity of $y_k(\boldsymbol{x})$ we have:</p>
-<p>$$<br>y_k(\boldsymbol{x}’)=\lambda y_k(\boldsymbol{x}_A) + (1-\lambda)y_k(\boldsymbol{x}_B)\tag{7}<br>$$</p>
-<p>Because $\boldsymbol{x}_A$ and $\boldsymbol{x}_B$ belong to class $k$,  $y_k(\boldsymbol{x}_A)&gt;y_j(\boldsymbol{x}_A)$ and $y_k(\boldsymbol{x}_B)&gt;y_j(\boldsymbol{x}_B)$ where $j\neq k$. Then $y_k(\boldsymbol{x}’)&gt;y_j(\boldsymbol{x}’)$ and the region of class $k$ is convex.</p>
+<p>However, augmented vectors <span class="math inline">\(\boldsymbol{w}= \begin{bmatrix}w_0\\w_1\\ \vdots\\w_d\end{bmatrix}\)</span> and <span class="math inline">\(\boldsymbol{x}= \begin{bmatrix}1\\x_1\\ \vdots\\x_d\end{bmatrix}\)</span> can cancel <span class="math inline">\(w_0\)</span> of the original boundary equation. So a <span class="math inline">\(d+1\)</span>-dimensional hyperplane that goes through the origin could take the place of an arbitrary <span class="math inline">\(d\)</span>-dimensional hyperplane.</p>
+<h2 id="multiple-classes">Multiple Classes</h2>
+<p>Things changed when we consider more than 2 classes. Their boundaries become more complicated, and we have 3 different strategies for this problem intuitively:</p>
+<h3 id="versus-the-rest-classifier">1-versus-the-rest Classifier</h3>
+<p>This strategy needs at least <span class="math inline">\(K-1\)</span> classifiers(boundaries). Each classifier <span class="math inline">\(k\)</span> just decides which side belongs to class <span class="math inline">\(k\)</span> and the other side does not belong to <span class="math inline">\(k\)</span>. So when we have two boundaries, the condition is like:</p>
+<p><img src="./1-rest.jpeg" /></p>
+<p>where the region <span class="math inline">\(R_4\)</span> is embarrassed, based on the properties of the decision boundary, and the definition of classification in the post<a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-From-Regreesion-To-Classification/">'From Linear Regression to Linear Classification'</a>, region <span class="math inline">\(R_4\)</span> can not belong to <span class="math inline">\(\mathcal{C}_1\)</span> and <span class="math inline">\(\mathbb{C}_2\)</span> simultaneously.</p>
+<p>So the first strategy can work for some regions, but there are some black whole region where the input <span class="math inline">\(\boldsymbol{x}\)</span> belongs to more than one class and some white whole region where the input <span class="math inline">\(\boldsymbol{x}\)</span> belongs no classes(region <span class="math inline">\(R_3\)</span> could be such a region)</p>
+<h3 id="versus-1-classifier">1-versus-1 classifier</h3>
+<p>Another kind of multiple class boundary is the combination of several 1-versus-1 linear decision boundaries. Both sides of a decision boundary belong to a certain class, not like the 1-versus-rest classifier. And to a <span class="math inline">\(K\)</span> class task, it needs <span class="math inline">\(K(K-1)/2\)</span> binary discriminant functions.</p>
+<p><img src="./1-1.jpeg" /></p>
+<p>However, the contradiction still exists. Region <span class="math inline">\(R_4\)</span> belongs to class <span class="math inline">\(\mathcal{C}_1\)</span>, <span class="math inline">\(\mathcal{C}_2\)</span>, and <span class="math inline">\(\mathcal{C}_3\)</span> simultaneously.</p>
+<h3 id="k-linear-functions"><span class="math inline">\(K\)</span> Linear functions</h3>
+<p>We us a set of <span class="math inline">\(K\)</span> linear functions: <span class="math display">\[
+\begin{aligned}
+y_1(\boldsymbol{x})&amp;=\boldsymbol{w}^T_1\boldsymbol{x}+w_{10}\\
+y_2(\boldsymbol{x})&amp;=\boldsymbol{w}^T_2\boldsymbol{x}+w_{20}\\
+&amp;\vdots \\
+y_K(\boldsymbol{x})&amp;=\boldsymbol{w}^T_K\boldsymbol{x}+w_{K0}\\
+\end{aligned}\tag{5}
+\]</span></p>
+<p>and an input belongs to <span class="math inline">\(k\)</span> when <span class="math inline">\(y_k(\boldsymbol{x})&gt;y_j(\boldsymbol{x})\)</span> where <span class="math inline">\(j\in \{1,2,\cdots,K\}\)</span> and <span class="math inline">\(j\neq k\)</span>. According to this definition, the decision boundary between class <span class="math inline">\(k\)</span> and class <span class="math inline">\(j\)</span> is <span class="math inline">\(y_k(\boldsymbol{x})=y_j(\boldsymbol{x})\)</span> where <span class="math inline">\(k,j\in\{1,2,\cdots,K\}\)</span> and <span class="math inline">\(j\neq k\)</span>. Then a decision hyperplane is defined as:</p>
+<p><span class="math display">\[
+(\boldsymbol{w}_k-\boldsymbol{w}_j)^T\boldsymbol{x}+(w_{k0}-w_{j0})=0\tag{6}
+\]</span></p>
+<p>These decision boundaries separate the input spaces into <span class="math inline">\(K\)</span> single connect, convex regions.</p>
+<p>proof: choose two points in the region <span class="math inline">\(k\)</span> that <span class="math inline">\(k\in \{1,2,\cdots,K\}\)</span>. <span class="math inline">\(\boldsymbol{x}_A\)</span> and <span class="math inline">\(\boldsymbol{x}_B\)</span> are two points in the region. An arbitrary point on the line between <span class="math inline">\(\boldsymbol{x}_A\)</span> and <span class="math inline">\(\boldsymbol{x}_B\)</span> can be written as <span class="math inline">\(\boldsymbol{x}&#39;=\lambda \boldsymbol{x}_A + (1-\lambda)\boldsymbol{x}_B\)</span> where <span class="math inline">\(0\leq\lambda\leq1\)</span>. For the linearity of <span class="math inline">\(y_k(\boldsymbol{x})\)</span> we have:</p>
+<p><span class="math display">\[
+y_k(\boldsymbol{x}&#39;)=\lambda y_k(\boldsymbol{x}_A) + (1-\lambda)y_k(\boldsymbol{x}_B)\tag{7}
+\]</span></p>
+<p>Because <span class="math inline">\(\boldsymbol{x}_A\)</span> and <span class="math inline">\(\boldsymbol{x}_B\)</span> belong to class <span class="math inline">\(k\)</span>, <span class="math inline">\(y_k(\boldsymbol{x}_A)&gt;y_j(\boldsymbol{x}_A)\)</span> and <span class="math inline">\(y_k(\boldsymbol{x}_B)&gt;y_j(\boldsymbol{x}_B)\)</span> where <span class="math inline">\(j\neq k\)</span>. Then <span class="math inline">\(y_k(\boldsymbol{x}&#39;)&gt;y_j(\boldsymbol{x}&#39;)\)</span> and the region of class <span class="math inline">\(k\)</span> is convex.</p>
 <p>Q.E.D</p>
-<p>The last strategy seems good. And what we should do is to estimate the parameters of the model. The most famous approaches that can be used to estimate the parameters of discriminant functions are:</p>
+<p>The last strategy seems good. And what we should do is to estimate the parameters of the model. The most famous approaches that can be used to estimate the parameters of discriminant functions are: 1. <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Regression-Least-Squares-Estimation/">Least square</a> 2. <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-Fisher-Linear-Discriminant/">Fisher's linear discriminant</a> 3. <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Implement-of-Perceptron/">Perceptron algorithm</a></p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr />
 <ol>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Regression-Least-Squares-Estimation/">Least square</a> </li>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Linear-Classification-Fisher-Linear-Discriminant/">Fisher’s linear discriminant</a> </li>
-<li><a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Implement-of-Perceptron/">Perceptron algorithm</a> </li>
+<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.</p>
+</section>
 
     </div>
 
