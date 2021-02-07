@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"brainbomb.org","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="Keywords: performance surfaces, optimum points">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Performance Surfaces and Optimum Points(Part I)">
+<meta property="og:url" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/index.html">
+<meta property="og:site_name" content="Brain Bomb">
+<meta property="og:description" content="Keywords: performance surfaces, optimum points">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/Taylor_sieres.png">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/unit_circle.png">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/minimums.png">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/vector_performance_index.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/contour_plot.png">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/contour_plot.gif">
+<meta property="article:published_time" content="2019-12-19T00:57:53.000Z">
+<meta property="article:modified_time" content="2020-11-08T02:57:43.000Z">
+<meta property="article:author" content="Anthony Tan">
+<meta property="article:tag" content="Artificial Neural Networks">
+<meta property="article:tag" content="Artificial Intelligence">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/Taylor_sieres.png">
+
+
+<link rel="canonical" href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Performance Surfaces and Optimum Points(Part I) | Brain Bomb</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105335860-9"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-105335860-9');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Brain Bomb</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="https://anthony-tan.site/" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Network-Training-Technique-1"><span class="nav-number">1.</span> <span class="nav-text">Neural Network Training Technique[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-Learning-and-Performance-Index"><span class="nav-number">2.</span> <span class="nav-text">Performance Learning and Performance Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Taylor-Series"><span class="nav-number">3.</span> <span class="nav-text">Taylor Series</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalar-form-function"><span class="nav-number">3.1.</span> <span class="nav-text">Scalar form function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector-form-function"><span class="nav-number">3.2.</span> <span class="nav-text">Vector form function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Necessary-Conditions-for-Optimality"><span class="nav-number">4.</span> <span class="nav-text">Necessary Conditions for Optimality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-order-Conditions"><span class="nav-number">4.1.</span> <span class="nav-text">First-order Conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Second-order-Condition"><span class="nav-number">4.2.</span> <span class="nav-text">Second_order Condition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anthony Tan"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Anthony Tan</p>
+  <div class="site-description" itemprop="description">Research Note of Reinforcement Learning</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/tony-tan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Anthony Tan">
+      <meta itemprop="description" content="Research Note of Reinforcement Learning">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brain Bomb">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Performance Surfaces and Optimum Points(Part I)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-12-19 08:57:53" itemprop="dateCreated datePublished" datetime="2019-12-19T08:57:53+08:00">2019-12-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-08 10:57:43" itemprop="dateModified" datetime="2020-11-08T10:57:43+08:00">2020-11-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/Artificial-Neural-Networks/" itemprop="url" rel="index"><span itemprop="name">Artificial Neural Networks</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Neural Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>Keywords:</strong> performance surfaces, optimum points</p>
+<a id="more"></a>
+
+<h2 id="Neural-Network-Training-Technique-1"><a href="#Neural-Network-Training-Technique-1" class="headerlink" title="Neural Network Training Technique[^1]"></a>Neural Network Training Technique[^1]</h2><p>In the articles posted before, several architectures of the neural networks had been proposed. And each neural network had its own learning rule, like, perceptron learning algorithm, Hebbian learning algorithm. What we should do when more and more neural networks come to accumulate is becoming complicated. If we can propose some general methods, we can train new architecture easily by simply modifying existing algorithms. Up to now, we can classify all training rules in three categories in a general way:</p>
+<ol>
+<li>Performance Learning</li>
+<li>Associative Learning</li>
+<li>Competitive Learning</li>
+</ol>
+<p>Linear associator we discussed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Supervised-Hebbian-Learning/">‘Hebbian Learning’</a> is a kind of associative learning, which is used to build a connection between two events. Competitive learning is a kind of unsupervised learning in which nodes of the neural network compete for the right to respond to a subset of the input data.[^2] The main topic we are going to discuss today is Performance Learning which is also a widely used training method in neural network projects. By the way, the categories of learning can be classified from variant views. So, this is not the only kind of classification.</p>
+<h2 id="Performance-Learning-and-Performance-Index"><a href="#Performance-Learning-and-Performance-Index" class="headerlink" title="Performance Learning and Performance Index"></a>Performance Learning and Performance Index</h2><p>Training a network is to find suitable parameters of the model to meet our requirements for some specialized tasks. If we can measure how satisfied the neural network is for the task at a certain time, we can then decide what to do next to modify the parameters. Performance learning is the procedure that modifies the parameter of neural networks by their performance through a certain measurement of the performance of the neural network.</p>
+<p>The measurement of the performance we investigate here is called <strong>performance index</strong> and its appearance is called <strong>performance surface</strong>. What we should also concern is the conditions for the existence of the minima or maxima. Because the minima or maxima decide the final result of the performance of the neural network for the task. In a word, what we need to do is optimizing the performance index by modifying parameters of the neural network to satisfy a certain task(training set).</p>
+<p>Performance learning contains several different laws. And there are two steps involved in the optimization process generally:</p>
+<ol>
+<li>Define the concept what we called ‘performance’<ul>
+<li>a quantitative measure of network performance is called performance index which has the properties when the neural network works well it has a lower value but when neural network works poorly it has a larger value</li>
+</ul>
+</li>
+<li>Search parameters space to reduce the performance index</li>
+</ol>
+<p>This is the heart of performance learning. After defining a performance or building a performance index, we cloud also analyze the characteristics of the performance index before searching for the minima. Because, if the performance index we had selected did not meet the conditions of the existence of minima, searching for a minimum is just a waste of time. Or we can also set the additional condition to guarantee the existence of a minimum point.</p>
+<h2 id="Taylor-Series"><a href="#Taylor-Series" class="headerlink" title="Taylor Series"></a>Taylor Series</h2><p>When we have a suitable performance index, what we need is a certain algorithm or a framework to deal with the optimization task. To design such a framework, we should study the performance index function firstly. Taylor series is a powerful tool to analyze function.</p>
+<h3 id="Scalar-form-function"><a href="#Scalar-form-function" class="headerlink" title="Scalar form function"></a>Scalar form function</h3><p>A function $F(x)$ is <strong>analytic function</strong> which means all derivatives of $F(x)$ exist. Then the Taylor series expansion about some nominal points $x^{\star}$</p>
+<p>$$<br>\begin{aligned}<br>  F(x)=F(x^{\star})&amp;+\frac{d}{dx}F(x)|<em>{x=x^{\star}}(x-x^{\star})\<br>  &amp;+\frac{1}{2}\frac{d^2}{d^2x}F(x)|</em>{x=x^{\star}}(x-x^{\star})^2\<br>  &amp;\vdots \<br>  &amp;+\frac{1}{n!}\frac{d^n}{d^nx}F(x)|_{x=x^{\star}}(x-x^{\star})^n<br>\end{aligned}\tag{1}<br>$$</p>
+<p>This series with infinity items can exactly equal to the origin analytic function.</p>
+<p>If we only want to approximate the function in a small region near $x^{\star}$, only finite items in equation(1) are needed.</p>
+<p>For instance, we have a function $F(x)=\cos(x)$ when $x^{\star}=0$, then:</p>
+<p>$$<br>\begin{aligned}<br>  F(x)=\cos(x)&amp;=\cos(0)-\sin(0)(x-0)-\frac{1}{2}\cos(0)(x-0)^2+\cdots\<br>  &amp;=1-\frac{1}{2}x^2+\frac{1}{24}x^4+\cdots<br>\end{aligned}\tag{2}<br>$$</p>
+<ul>
+<li>$0^{\text{th}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_0(x)=1$ </li>
+<li>$1^{\text{st}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_1(x)=1+0$ </li>
+<li>$2^{\text{nd}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_2(x)=1+0-\frac{1}{2}x^2$</li>
+<li>$3^{\text{rd}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_3(x)=1+0-\frac{1}{2}x^2+0$</li>
+<li>$4^{\text{th}}$ order approximation of $F(x)$ near $0$ is $F(x)\approx F_4(x)=1+0-\frac{1}{2}x^2+0+\frac{1}{24}x^4$</li>
+</ul>
+<p>Odd number$^{\text{th}}$ iterm is $0$ because of the value of $\sin(x)$ at $0$ is $0$</p>
+<p>And the $0^{\text{th}},1^{\text{st}},2^{\text{nd}},3^{\text{rd}}$ and $4^{\text{th}}$ approximation of $F(x)$ looks like:</p>
+<p><img src="./Taylor_sieres.png"></p>
+<p>and, from the figure above we can observe that $F_0(x)$ can only approximate $F(x)$ at $x^{\star}=0$ point. While in the interval between $-1$ and $+1$, $F(x)$ can be precisely approximated by $F_2(x)$. In a more wider interval like $[-1.6,+1.6]$ to approximate $F(x)$, $4^{\text{th}}$ order Taylor series are needed. Then we can get a conclusion that if we want a certain precise extent in a relatively larger interval we need more items in the Taylor series. And we should pay attention to the interval out of the precise region, such as $F_2(x)$ in the interval $(-\infty,-1]\cup [1,+\infty)$ are going away from $F(x)$ as $x$ moving away from $x^{\star}=0$</p>
+<h3 id="Vector-form-function"><a href="#Vector-form-function" class="headerlink" title="Vector form function"></a>Vector form function</h3><p>When the performance index is a function of a vector $\boldsymbol{x}$, a vector form the Taylor series should be presented. And in the neural network, parameters are variables of the performance index so vector form Taylor series is the basic tool in performance learning. Function $F(\boldsymbol{x})$ can be decomposed in any precise:</p>
+<p>$$<br>\begin{aligned}<br>  F(\boldsymbol{x})=F(\boldsymbol{x}^{\star})&amp;<br>  +\frac{\partial}{\partial x_1}F(\boldsymbol{x})|<em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})\<br>  &amp;+\frac{\partial}{\partial x_2}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_2-x_2^{\star})+\cdots\<br>  &amp;+\frac{1}{2}\frac{\partial^2}{\partial^2 x_1}F(\boldsymbol{x})|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})^2\<br>  &amp;+\frac{1}{2}\frac{\partial^2}{\partial x_1 \partial x_2}F(\boldsymbol{x})|</em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})(x_2-x_2^{\star})<br>  +\cdots\<br>  &amp;\vdots<br>\end{aligned}\tag{3}<br>$$</p>
+<p>if we notate the gradient as :<br>$$<br>\nabla F(x)=\begin{bmatrix}<br>  \frac{\partial F}{\partial x_1}\<br>  \frac{\partial F}{\partial x_2}\<br>  \vdots\<br>  \frac{\partial F}{\partial x_n}<br>\end{bmatrix}\tag{4}<br>$$</p>
+<p>then the Taylor series can be written as:<br>$$<br>\begin{aligned}<br>  F(\boldsymbol{x})=F(\boldsymbol{x}^{\star})&amp;+(\boldsymbol{x}-\boldsymbol{x}^{\star})^T\nabla F(x)|<em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}\<br>  &amp;+\frac{1}{2}(\boldsymbol{x}-\boldsymbol{x}^{\star})^T\nabla^2 F(x)|</em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}(x_1-x_1^{\star})\<br>  &amp; \vdots<br>\end{aligned}\tag{5}<br>$$</p>
+<p>The coefficients of the second-order item can be written in a matrix form, and it is also called the <strong>Hessian matrix</strong>:</p>
+<p>$$<br>\nabla^2 F(x) = \begin{bmatrix}<br>  \frac{\partial^2}{\partial^2 x_1}&amp;\cdots&amp;\frac{\partial^2}{\partial x_1 \partial x_n}\<br>  \vdots&amp;\ddots&amp;\vdots \<br>  \frac{\partial^2}{\partial x_n \partial x_1}&amp;\cdots&amp;\frac{\partial^2}{\partial^2 x_n}<br>\end{bmatrix}\tag{6}<br>$$</p>
+<p><strong>Hessian matrix</strong> has many beautiful properties, such as it is always</p>
+<ul>
+<li>Square matrix</li>
+<li>Symmetric matrix</li>
+</ul>
+<p>In the matrix, the elements on the diagonal are $\frac{\partial^2 F}{\partial^2 x_i}$ is the $2^{\text{nd}}$ derivative along the $x_i$-axis and in the gradient vector, $\frac{d F}{d x_i}$ is the first derivative along the $x_i$-axis.</p>
+<p>To calculate the $1^{\text{st}}$ or $2^{\text{nd}}$ derivative along arbitrary deriction $\boldsymbol{p}$, we have:</p>
+<ol>
+<li>$1^{\text{st}}$-order derivative along $\boldsymbol{p}$ : $\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x})}{||\boldsymbol{p}||}$</li>
+<li>$2^{\text{nd}}$-order derivative along $\boldsymbol{p}$ : $\frac{\boldsymbol{p}^T\nabla^2 F(\boldsymbol{x})\boldsymbol{p}}{||\boldsymbol{p}||^2}$</li>
+</ol>
+<p>For instance, we have a function<br>$$<br>F(\boldsymbol{x})=x_1^2+2x_2^2\tag{7}<br>$$</p>
+<p>to find the derivative at $\boldsymbol{x}^{\star}=\begin{bmatrix}0.5\0.5\end{bmatrix}$ in the direction $\boldsymbol{p}=\begin{bmatrix}2\-1\end{bmatrix}$, we get the derivative at $\boldsymbol{x}^{\star}=\begin{bmatrix}0.5\0.5\end{bmatrix}$:</p>
+<p>$$<br>\nabla F|<em>{\boldsymbol{x}=\boldsymbol{x}^{\star}} =<br>\begin{bmatrix}<br>\frac{\partial F}{\partial x_1}\<br>  \frac{\partial F}{\partial x_2}<br>\end{bmatrix}\bigg|</em>{\boldsymbol{x}=\boldsymbol{x}^{\star}}=\begin{bmatrix}<br>2x_1\<br>4x_2<br>\end{bmatrix}\bigg|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}=\begin{bmatrix}<br>1\<br>2<br>\end{bmatrix}\tag{8}<br>$$</p>
+<p>and the direction $\boldsymbol{p}=\begin{bmatrix}2\-1\end{bmatrix}$, the derivative is </p>
+<p>$$<br>\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x}^{\star})}{||\boldsymbol{p}||}=<br>\frac{\begin{bmatrix}2&amp;-1\end{bmatrix}<br>\begin{bmatrix}1\2\end{bmatrix}}{\sqrt{2^2+(-1)^2}}=\frac{0}{\sqrt{5}}=0\tag{9}<br>$$</p>
+<p>$0$ is a special number in the whole real numbers set. And the derivative is zero also useful in optimization procedure. And to find a zero slop direction we should solve the equation:</p>
+<p>$$<br>\frac{\boldsymbol{p}^T\nabla F(\boldsymbol{x}^{\star})}{||\boldsymbol{p}||}=0\tag{10}<br>$$</p>
+<p>this means $\boldsymbol{p}$ is not $\boldsymbol{0}$ because $0$ length is insignificant. and $\boldsymbol{p}_{\text{unit}}=\frac{\boldsymbol{p}}{||\boldsymbol{p}||}$ is a unit vector along deriction $\boldsymbol{p}$ so this can be written as:</p>
+<p>$$<br>\boldsymbol{p}_{\text{unit}}^T\nabla F(\boldsymbol{x}^{\star})=0\tag{11}<br>$$</p>
+<p>which means $\boldsymbol{p}_{\text{unit}}$ is orthogonal to gradient $\nabla F(\boldsymbol{x}^{\star})$</p>
+<p>Another special deriction is which one has the greatest slop. Assuming the deriction $\boldsymbol{p}_{\text{unit}}=\frac{\boldsymbol{p}}{||\boldsymbol{p}||}$ is the greatest slope, so:</p>
+<p>$$<br>\boldsymbol{p}<em>{\text{unit}}^T\nabla F(\boldsymbol{x}^{\star})=||\boldsymbol{p}</em>{\text{unit}}^T|| \cdot ||\nabla F(\boldsymbol{x}^{\star})||\cos(\theta)\tag{12}<br>$$</p>
+<p>has the greatest value. We know this can only happen when $\cos(\theta)=1$ which means the direction of the gradient has the greatest slop.</p>
+<p><img src="./unit_circle.png"></p>
+<h2 id="Necessary-Conditions-for-Optimality"><a href="#Necessary-Conditions-for-Optimality" class="headerlink" title="Necessary Conditions for Optimality"></a>Necessary Conditions for Optimality</h2><p>The main objective of performance learning is to minimize the performance index. So the condition of existence of minimum of performance index should be investagated:</p>
+<ol>
+<li>A strong minimum $\boldsymbol{x}$ which mean in any deriction $\boldsymbol{p}<em>{\text{unit}}$ around this point with a short distance $\delta$ always has $F(\boldsymbol{x})&lt;F(\boldsymbol{x}+\delta \boldsymbol{p}</em>{\text{unit}})$, where $\delta \to 0$</li>
+<li>A weak minimum $\boldsymbol{x}$ which mean in any deriction $\boldsymbol{p}<em>{\text{unit}}$ around this point with a short distance $\delta$ always has $F(\boldsymbol{x})\leq F(\boldsymbol{x}+\delta \boldsymbol{p}</em>{\text{unit}})$, where $\delta \to 0$</li>
+<li>Global minimum is the minimum one of all weak or strong minimum set.</li>
+</ol>
+<p>For instance, </p>
+<p>$$<br>F(x)=3x^4-7x^2-\frac{1}{2}x+6\tag{13}<br>$$</p>
+<p><img src="./minimums.png"></p>
+<ul>
+<li>2 local minimums at near $x_1=-1.1$ and near $x_2=1.1$</li>
+<li>near $x_2=1.1$ gives the global minimum</li>
+</ul>
+<p>If the variable of function is a vector:</p>
+<p>$$<br>F(\boldsymbol{x})=(x_2-x_1)^4+8x_1x_2-x_1+x_2+3\tag{14}<br>$$</p>
+<p>and it looks like:</p>
+<p><img src="./vector_performance_index.gif"></p>
+<p>in 3-D space. And the contour plot of this function is:</p>
+<p><img src="./contour_plot.png"></p>
+<p>There are three points in this contour figure:</p>
+<p><img src="./contour_plot.gif"></p>
+<p>and the pink points are the two local minimums, and the black points are called a saddle point.</p>
+<p>These two examples illustrate the minimum points and saddle points. But what conditions are needed to confirm the existence?</p>
+<h3 id="First-order-Conditions"><a href="#First-order-Conditions" class="headerlink" title="First-order Conditions"></a>First-order Conditions</h3><p>Go back to the Taylor series with $\Delta x=x-x^{\star}\neq 0$, the first item of series is taking into account:</p>
+<p>$$<br>\begin{aligned}<br>  F(x)&amp;=F(x^{\star})+\frac{d}{dx}F(x)|_{x=x^{\star}}(x-x^{\star})\<br>  F(x^{\star}+\Delta x)&amp;=F(x^{\star})+\nabla F(x)\Delta x<br>\end{aligned}\tag{15}<br>$$</p>
+<p>when $x^{\star}$ is a candidate of minimum point, we want:</p>
+<p>$$<br>F(x^{\star}+\Delta x)\geq F(x^{\star})\tag{16}<br>$$</p>
+<p>so, in equation(15),<br>$$<br>\nabla F(x)\Delta x\geq 0 \tag{17}<br>$$ </p>
+<p>are needed. Considering another direction, if $x^{\star}$ is the minimum point, it also has:</p>
+<p>$$<br>F(x^{\star}-\Delta x)=F(x^{\star})-\nabla F(x)\Delta x\geq F(x^{\star})\tag{18}<br>$$</p>
+<p>then </p>
+<p>$$<br>\nabla F(x)\Delta x\leq 0 \tag{19}<br>$$</p>
+<p>To satisfy both equation(17) and equation(19) if and only if </p>
+<p>$$<br>\nabla F(x)\Delta x=0\tag{20}<br>$$</p>
+<p>Because $\Delta x\neq 0$, so we must have $\nabla F(x)$ when $x$ is the minimum point. $\nabla F(x)=0$ is a necessary but not sufficient condition. The first-order condition has been concluded above.</p>
+<h3 id="Second-order-Condition"><a href="#Second-order-Condition" class="headerlink" title="Second_order Condition"></a>Second_order Condition</h3><p>The first order condition does not give a sufficient condition. Now let’s consider the second-order conditon. With $\Delta\boldsymbol{x}=\boldsymbol{x}-\boldsymbol{x}^{\star}\neq \boldsymbol{0}$ and gradient equal to $\boldsymbol{0}$, and take them into equation(5) (<a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">in part I</a>). Then the second order Taylor series is:</p>
+<p>$$<br>F(\boldsymbol{\Delta\boldsymbol{x}-\boldsymbol{x}^{\star}})=F(\boldsymbol{x}^{\star})+\frac{1}{2}\Delta\boldsymbol{x}^T\nabla^2 F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}\Delta\boldsymbol{x}\tag{21}<br>$$</p>
+<p>When $||\Delta\boldsymbol{x}||$ is small, zero-order, first-order and second-order iterms of Taylor series are precise enough to approximate original function. When $F(\boldsymbol{x}^{\star})$ is a strong minimum, the second-order iterm should be:</p>
+<p>$$<br>\frac{1}{2}\Delta\boldsymbol{x}^T\nabla^2 F(x)|_{\boldsymbol{x}=\boldsymbol{x}^{\star}}\Delta\boldsymbol{x}&gt;0<br>$$</p>
+<p>Recalling linear algebra knowledge, positive definite matrix $A$ is:</p>
+<p>$$<br>\boldsymbol{z}^T A \boldsymbol{z}&gt;0 \text{ for any } \boldsymbol{z}<br>$$</p>
+<p>and positive semidefinite matrix $A$ is:</p>
+<p>$$<br>\boldsymbol{z}^T A \boldsymbol{z}\geq0 \text{ for any } \boldsymbol{z}<br>$$</p>
+<p>So when the gradient is $\boldsymbol{0}$ and second-order derivative are positive definite(semidefinite), this point is a strong(weak) minimum. And positive definite Hessian matrix is sufficient condition to a strong minimum point, but it’s not a necessary condition. Because when the Hessian matrix is $0$ the third-order item has to be calculated.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.<br>[^2]: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Competitive_learning">https://en.wikipedia.org/wiki/Competitive_learning</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Anthony Tan
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/" title="Performance Surfaces and Optimum Points(Part I)">http://brainbomb.org/Neural Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/username">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Artificial-Neural-Networks/" rel="tag"><i class="fa fa-tag"></i> Artificial Neural Networks</a>
+              <a href="/tags/Artificial-Intelligence/" rel="tag"><i class="fa fa-tag"></i> Artificial Intelligence</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Neural%20Networks/Neural-Network-Design-Supervised-Hebbian-Learning/" rel="prev" title="Supervised Hebbian Learning (Part I)">
+                  <i class="fa fa-chevron-left"></i> Supervised Hebbian Learning (Part I)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Neural%20Networks/Neural-Network-Design-Quadratic-Funtions/" rel="next" title="Neural Network Quadratic Functions">
+                  Neural Network Quadratic Functions <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anthony Tan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'all'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://brainbomb-1.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/";
+    this.page.identifier = "Neural Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/";
+    this.page.title = "Performance Surfaces and Optimum Points(Part I)";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://brainbomb-1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>

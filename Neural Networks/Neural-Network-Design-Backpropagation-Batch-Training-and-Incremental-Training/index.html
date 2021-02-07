@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"brainbomb.org","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="Keywords: backpropagation, batch training, incremental training">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Backpropagation, Batch Training, and Incremental Training">
+<meta property="og:url" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/index.html">
+<meta property="og:site_name" content="Brain Bomb">
+<meta property="og:description" content="Keywords: backpropagation, batch training, incremental training">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/generator.jpeg">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/bp-1-3-1-sin(pi_4_1).gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/bp-1-3-1-sin(pi_4_2).gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/bp-1-3-1-sin(pi_4_4).gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/bp-1-3-1-sin(pi_4_8).gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/1-3-1_approximations.jpeg">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/1-2-1.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/1-3-1.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/1-4-1.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/1-5-1.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/sin(pi_4_6)_result.jpeg">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/convergence.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/loss_convergence.png">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/nonconvergence.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/loss_nonconvergence.png">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/generalization_good.gif">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/generalization_bad.gif">
+<meta property="article:published_time" content="2020-01-02T09:49:55.000Z">
+<meta property="article:modified_time" content="2020-11-08T02:44:56.000Z">
+<meta property="article:author" content="Anthony Tan">
+<meta property="article:tag" content="Artificial Neural Networks">
+<meta property="article:tag" content="Artificial Intelligence">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/generator.jpeg">
+
+
+<link rel="canonical" href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Backpropagation, Batch Training, and Incremental Training | Brain Bomb</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105335860-9"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-105335860-9');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Brain Bomb</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="https://anthony-tan.site/" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Batch-v-s-Incremental-Training-1"><span class="nav-number">1.</span> <span class="nav-text">Batch v.s. Incremental Training[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Backpropagation"><span class="nav-number">2.</span> <span class="nav-text">Using Backpropagation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Choice-of-Network-Architecture"><span class="nav-number">2.1.</span> <span class="nav-text">Choice of Network Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-Neural-Network"><span class="nav-number">2.2.</span> <span class="nav-text">1-3-1 Neural Network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-1-3-1-1-4-1-1-5-1-networks-for-g-p-1-sin-frac-6-pi-4-cdot-p"><span class="nav-number">2.3.</span> <span class="nav-text">1-2-1, 1-3-1, 1-4-1, 1-5-1 networks for $g(p)&#x3D;1+\sin(\frac{6\pi}{4}\cdot p)$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convergence-Analysis"><span class="nav-number">3.</span> <span class="nav-text">Convergence Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Convergent-to-a-local-minimum"><span class="nav-number">3.1.</span> <span class="nav-text">Convergent to a local minimum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Convergent-to-another-local-minimum"><span class="nav-number">3.2.</span> <span class="nav-text">Convergent to another local minimum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generalization"><span class="nav-number">4.</span> <span class="nav-text">Generalization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1"><span class="nav-number">4.1.</span> <span class="nav-text">1-2-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-1"><span class="nav-number">4.2.</span> <span class="nav-text">1-9-1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anthony Tan"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Anthony Tan</p>
+  <div class="site-description" itemprop="description">Research Note of Reinforcement Learning</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/tony-tan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Anthony Tan">
+      <meta itemprop="description" content="Research Note of Reinforcement Learning">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brain Bomb">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Backpropagation, Batch Training, and Incremental Training
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-01-02 17:49:55" itemprop="dateCreated datePublished" datetime="2020-01-02T17:49:55+08:00">2020-01-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-08 10:44:56" itemprop="dateModified" datetime="2020-11-08T10:44:56+08:00">2020-11-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/Artificial-Neural-Networks/" itemprop="url" rel="index"><span itemprop="name">Artificial Neural Networks</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Neural Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>Keywords:</strong> backpropagation, batch training, incremental training</p>
+<a id="more"></a>
+
+<p>Backpropagation has been developed in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Backpropagation-Introduction-and-Multilayer-Perceptrons/">‘An Introduction to Backpropagation and Multilayer Perceptrons’</a>. And we have known why backpropagation is called backpropagation but not forward propagation or something else. And in this post, we will discuss some applications of backpropagation and some useful concepts.</p>
+<h2 id="Batch-v-s-Incremental-Training-1"><a href="#Batch-v-s-Incremental-Training-1" class="headerlink" title="Batch v.s. Incremental Training[^1]"></a>Batch v.s. Incremental Training[^1]</h2><p>In both LMS and BP algorithms, the error in each update process step is not MSE but SE $e=t_i-a_i$ which is calculated just by a data point of the training set. This is called a stochastic gradient descent algorithm. And why it is called ‘stochastic’ is because error at every iterative step is approximated by a random selected train data point but not the whole data set nor the actual error given by performance index. This is also called ‘on-line’ learning, because each time a data point is used and ‘on-line’ data aways comes to us one by one, and each one can be used independently to the algorithm. So incremental training is also a name for this process.</p>
+<p>When we use the whole data set to approximate the error, this is called batch training. This algorithm calculating gradient after all inputs are applied to the network before parameters are updated. For example, when all inputs have equal probability, the mean square error becomes:</p>
+<p>$$<br>\begin{aligned}<br>  F(\boldsymbol{x})&amp;=\mathbb E[\boldsymbol{e}^T\boldsymbol{e}]\<br>  &amp;=\mathbb E[(\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})]\<br>  &amp;=\frac{1}{Q}\sum^{Q}_{q=1}(\boldsymbol{t}_q-\boldsymbol{a}_q)^T(\boldsymbol{t}_q-\boldsymbol{a}_q)<br>\end{aligned}\tag{1}<br>$$</p>
+<p>Rather than changing MSE into SE, this algorithm just replaced the MSE with the average of the whole training set error. A statistics professor at MIT said: ‘what our statisticians do every day is replacing expectation with average’. This average is closer to the MSE than SE is. Then the total gradient is:</p>
+<p>$$<br>\begin{aligned}<br>  \nabla F(\boldsymbol{x})&amp;=\nabla{\frac{1}{Q}\sum^{Q}<em>{q=1}(\boldsymbol{t}_q-\boldsymbol{a}_q)^T(\boldsymbol{t}_q-\boldsymbol{a}_q)}\<br>  &amp;=\frac{1}{Q}\sum^{Q}</em>{q=1}\nabla{(\boldsymbol{t}_q-\boldsymbol{a}_q)^T(\boldsymbol{t}_q-\boldsymbol{a}_q)}<br>\end{aligned}\tag{2}<br>$$</p>
+<p>Then the update step is converted to:</p>
+<p>$$<br>W^m(k+1)=W^m(k)-\frac{\alpha}{Q}\sum^{Q}<em>{q=1}\boldsymbol{s}^m_q(\boldsymbol{a}^{m-1}_q)^T\<br>\boldsymbol{b}^m(k+1)=\boldsymbol{b}^m(k)-\frac{\alpha}{Q}\sum^{Q}</em>{q=1}\boldsymbol{s}^m_q\cdot 1\tag{3}<br>$$</p>
+<h2 id="Using-Backpropagation"><a href="#Using-Backpropagation" class="headerlink" title="Using Backpropagation"></a>Using Backpropagation</h2><p>Building a toy BP program is a good way to go deeper inside into the algorithm. The details of the design of the algorithm could be found in <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/">‘The Backpropagation Algorithm (Part I)’</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm-P2/">‘The Backpropagation Algorithm (Part II)’</a>. And the task is consist of three essential parts:</p>
+<ol>
+<li>Choice of network architecture </li>
+<li>The algorithm used to train to a network would convergent</li>
+<li>Generalization</li>
+</ol>
+<h3 id="Choice-of-Network-Architecture"><a href="#Choice-of-Network-Architecture" class="headerlink" title="Choice of Network Architecture"></a>Choice of Network Architecture</h3><p>How many layers and how many neurons are necessary for a certain task is the key point in designing a network. For instance, to approximate the target functions </p>
+<p>$$<br>g(p)=1+\sin(\frac{i\pi}{4}\cdot p)\tag{4}<br>$$</p>
+<p>where for $-2\leq p \leq 2$ and $i={1,2,4,8}$. And these four different functions look like:</p>
+<p><img src="./generator.jpeg"></p>
+<p>at the interval of $[-2,2]$</p>
+<h3 id="1-3-1-Neural-Network"><a href="#1-3-1-Neural-Network" class="headerlink" title="1-3-1 Neural Network"></a>1-3-1 Neural Network</h3><p>And the architecture we used here for approximating four functions is a 1-3-1 net. And the BP algorithm is used. Then the process of changing of the curve for $g(p)=1+\sin(\frac{\pi}{4}\cdot p)$ is like:</p>
+<p><img src="./bp-1-3-1-sin(pi_4_1).gif"></p>
+<p>And for the $g(p)=1+\sin(\frac{2\pi}{4}\cdot p)$<br><img src="./bp-1-3-1-sin(pi_4_2).gif"></p>
+<p>And for the $g(p)=1+\sin(\frac{4\pi}{4}\cdot p)$<br><img src="./bp-1-3-1-sin(pi_4_4).gif"></p>
+<p>And for the $g(p)=1+\sin(\frac{8\pi}{4}\cdot p)$<br><img src="./bp-1-3-1-sin(pi_4_8).gif"></p>
+<p>The four final approximate results of these for the function is:<br><img src="./1-3-1_approximations.jpeg"></p>
+<p>Limit of 1-3-1 network has been illustrated above and the capacity of 1-3-1 network can only approximate $g(p)=1+\sin(\frac{i\pi}{4}\cdot p)$ for $i={1,2,3,4}$.</p>
+<p>$g(p)=1+\sin(\frac{8\pi}{4}\cdot p)$ can not be regressed by 1-3-1 for its flexibility is not enough for the target function. This can also be concluded by the property of these three neurons in the hidden layer whose transfer function is log-sigmoid. Because these three neurons have only three ‘steps’(which has been described at [](to be done)). These three steps are trained to approximate the three crests of the target functions. And when the target functions have more than 3 crests (including 3 crests), 1-3-1 can not regress the target function precisely.</p>
+<h3 id="1-2-1-1-3-1-1-4-1-1-5-1-networks-for-g-p-1-sin-frac-6-pi-4-cdot-p"><a href="#1-2-1-1-3-1-1-4-1-1-5-1-networks-for-g-p-1-sin-frac-6-pi-4-cdot-p" class="headerlink" title="1-2-1, 1-3-1, 1-4-1, 1-5-1 networks for $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$"></a>1-2-1, 1-3-1, 1-4-1, 1-5-1 networks for $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$</h3><p>The target function $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$ has 3 crests at iterval $[-2,2]$ and 4 different types of network are used in the approximation:</p>
+<p>The process of 1-2-1 neuron network for $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$ is like:</p>
+<p><img src="./1-2-1.gif"></p>
+<p>The process of 1-3-1 neuron network for $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$ is like:</p>
+<p><img src="./1-3-1.gif"></p>
+<p>The process of 1-4-1 neuron network for $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$ is like:</p>
+<p><img src="./1-4-1.gif"></p>
+<p>The process of 1-5-1 neuron network for $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$ is like:</p>
+<p><img src="./1-5-1.gif"></p>
+<p>And the final results of these four networks are:</p>
+<p><img src="./sin(pi_4_6)_result.jpeg"></p>
+<p>This summary of the comparison of the results of the four different networks are:</p>
+<ol>
+<li>the more neurons in hidden layers the more flexible entire network is </li>
+<li>if the flexibility of the network is not sufficient for the target function, it is not a good model for the task.</li>
+<li>although the flexibility of the network is sufficient, the training algorithm may also not be able to converge to the global minimum</li>
+</ol>
+<h2 id="Convergence-Analysis"><a href="#Convergence-Analysis" class="headerlink" title="Convergence Analysis"></a>Convergence Analysis</h2><p>When the training algorithm did not converge to the global minimum, the responses of the network can not give an accurate approximation to the desire function. This is just because the BP algorithm used here is not like LMS who worked under the condition that the performance index function is quadratic and it has only had one minimum. The performance index of multiple layers network has a lot of local minimum and many parameters in the learning algorithm worked together to the final local minimum and during the process, saddle points also affect the convergence of the algorithm.</p>
+<p>BP can not guarantee to convergent to the global minimum. Many factors can affect the process. And now let’s observe the different initial value of the parameters of the network which lead to different local minimums of the performance index:</p>
+<h3 id="Convergent-to-a-local-minimum"><a href="#Convergent-to-a-local-minimum" class="headerlink" title="Convergent to a local minimum"></a>Convergent to a local minimum</h3><p>Initial values:<br>|layer|neuron|initial weights and bias|<br>|:—:|:—:|:—:|<br>|2|1|$[0.42965179 -0.07152415]$|<br>|2|2|$[0.16361572 0.79774829]$|<br>|2|3|$[0.73702272 0.75144977]$|<br>|3|1|$[0.76338542  0.95722099 -0.11531554  0.20356626]$|</p>
+<p>and the process of the algorithm is:</p>
+<p><img src="./convergence.gif"></p>
+<p>the descent process of MSE is:</p>
+<p><img src="./loss_convergence.png"></p>
+<p>and the final converged parameters:</p>
+<table>
+<thead>
+<tr>
+<th align="center">layer</th>
+<th align="center">neuron</th>
+<th align="center">initial weights and bias</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">$[0.93900718 -0.01797782]$</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">$[-4.82660011  4.52635542]$</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">$[4.80297794 4.51769764]$</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">$[13.6902581   5.32639145 -5.37517373 -5.8557322]$</td>
+</tr>
+</tbody></table>
+<h3 id="Convergent-to-another-local-minimum"><a href="#Convergent-to-another-local-minimum" class="headerlink" title="Convergent to another local minimum"></a>Convergent to another local minimum</h3><p>Initial values:<br>|layer|neuron|initial weights and bias|<br>|:—:|:—:|:—:|<br>|2|1|$[-18.61882866  12.96283924]$|<br>|2|2|$[ 11.35841636 -20.15384594]$|<br>|2|3|$[ 2.77601854 22.87956077]$|<br>|3|1|$[-44.15374244 -58.65710547 -34.40432363 -78.4400726 ]$|</p>
+<p>and the process of the algorithm is:</p>
+<p><img src="./nonconvergence.gif"></p>
+<p>the descent process of MSE is:</p>
+<p><img src="./loss_nonconvergence.png"></p>
+<p>and the final converged parameters:</p>
+<table>
+<thead>
+<tr>
+<th align="center">layer</th>
+<th align="center">neuron</th>
+<th align="center">initial weights and bias</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">$[-19.84672298 -21.74627601]$</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">$[-31.5629279  -67.20354561]$</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">$[2.77601496 22.8795743 ]$</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">$[0.98462573 -47.6630436   22.41340957 -21.62233846]$</td>
+</tr>
+</tbody></table>
+<p>These two examples imply that the initial values of parameters primarily affect the local minimum the algorithm would converge to. not only the initial values but also other parameters of the learning algorithm would affect the final results.</p>
+<p>The convergence of the BP algorithm in training multiple neuron network can not guarantee to the global minimum for the multilayer network has more local minimums than one global minimum in quadratic function.</p>
+<h2 id="Generalization"><a href="#Generalization" class="headerlink" title="Generalization"></a>Generalization</h2><p>For we have only a finite number of training samples(examples of proper network behavior) which means our task is approximating the function that has more input/output pairs than we used in training. And the behavior of the inputs which were not used in the training process is called generalization. For instance, the target function is:</p>
+<p>$$<br>g(p)=1+\sin(\frac{\pi}{4}\cdot p)\tag{5}<br>$$</p>
+<p>and the training set are the inputs $p=-2.0,-1.6,\cdots,1.6,2.0$ and their corresponding outputs. These 11 pairs are used in training the following the two network:</p>
+<h3 id="1-2-1"><a href="#1-2-1" class="headerlink" title="1-2-1"></a>1-2-1</h3><p>1-2-1 give a good generalization that is when the points are not used in the train, the blue line is also close to the red line:</p>
+<p><img src="./generalization_good.gif"></p>
+<h3 id="1-9-1"><a href="#1-9-1" class="headerlink" title="1-9-1"></a>1-9-1</h3><p>However, a more powerful network, a 1-9-1 network gives closer approximation than 1-2-1 network at training points that the blue circles are close to red circles. But at other points, which is not used in training, represented by the blue line is far from the approximated function. This means 1-9-1 gives a bad generalization:</p>
+<p><img src="./generalization_bad.gif"></p>
+<p>the summary of these two experiments are:</p>
+<ol>
+<li>parameters in the model should be less than the number of points in the training set(this can also be described as the number of training data should be more than the parameter in the model)</li>
+<li>Ockham’s Razor is a good rule in future work of neuron network design: when the smaller networks could work, a bigger network is not necessary. </li>
+</ol>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, Howard B., Mark H. Beale, Orlando De Jess, and Martin T. Hagan. Neural network design. Martin Hagan, 2014.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Anthony Tan
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/" title="Backpropagation, Batch Training, and Incremental Training">http://brainbomb.org/Neural Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/username">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Artificial-Neural-Networks/" rel="tag"><i class="fa fa-tag"></i> Artificial Neural Networks</a>
+              <a href="/tags/Artificial-Intelligence/" rel="tag"><i class="fa fa-tag"></i> Artificial Intelligence</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/" rel="prev" title="The Backpropagation Algorithm (Part I)">
+                  <i class="fa fa-chevron-left"></i> The Backpropagation Algorithm (Part I)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Neural%20Networks/Neural-Network-Design-Variations-on-BP-Drawbacks-of-Backpropagation/" rel="next" title="Drawbacks of Backpropagation">
+                  Drawbacks of Backpropagation <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anthony Tan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'all'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://brainbomb-1.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/";
+    this.page.identifier = "Neural Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/";
+    this.page.title = "Backpropagation, Batch Training, and Incremental Training";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://brainbomb-1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>

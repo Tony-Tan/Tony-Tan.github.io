@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"brainbomb.org","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="Keywords: multiple linear regress">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Estimating Multiple Linear Regress Coefficients">
+<meta property="og:url" content="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/index.html">
+<meta property="og:site_name" content="Brain Bomb">
+<meta property="og:description" content="Keywords: multiple linear regress">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/total.png">
+<meta property="og:image" content="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/TV_SALEs.png">
+<meta property="og:image" content="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/Radio_Sales.png">
+<meta property="og:image" content="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/Newspaper_Sales.png">
+<meta property="article:published_time" content="2019-10-25T02:29:33.000Z">
+<meta property="article:modified_time" content="2020-11-08T02:44:56.000Z">
+<meta property="article:author" content="Anthony Tan">
+<meta property="article:tag" content="Linear Regression">
+<meta property="article:tag" content="Statistical Learning">
+<meta property="article:tag" content="Machine Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/total.png">
+
+
+<link rel="canonical" href="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Estimating Multiple Linear Regress Coefficients | Brain Bomb</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105335860-9"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-105335860-9');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Brain Bomb</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="https://anthony-tan.site/" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Predoctors-Inputs"><span class="nav-number">1.</span> <span class="nav-text">Multiple Predoctors(Inputs)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coefficients"><span class="nav-number">2.</span> <span class="nav-text">Coefficients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deciding-on-Important-Variable"><span class="nav-number">3.</span> <span class="nav-text">Deciding on Important Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Forward-Selection"><span class="nav-number">3.1.</span> <span class="nav-text">Forward Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backward-Selection"><span class="nav-number">3.2.</span> <span class="nav-text">Backward Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mixed-Selection"><span class="nav-number">3.3.</span> <span class="nav-text">Mixed Selection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anthony Tan"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Anthony Tan</p>
+  <div class="site-description" itemprop="description">Research Note of Reinforcement Learning</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/tony-tan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Anthony Tan">
+      <meta itemprop="description" content="Research Note of Reinforcement Learning">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brain Bomb">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Estimating Multiple Linear Regress Coefficients
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-10-25 10:29:33" itemprop="dateCreated datePublished" datetime="2019-10-25T10:29:33+08:00">2019-10-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-08 10:44:56" itemprop="dateModified" datetime="2020-11-08T10:44:56+08:00">2020-11-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Machine Learning /Multiple-Linear-regression-Estimating-the-Regress-Coefficients/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>Keywords:</strong> multiple linear regress</p>
+<a id="more"></a>
+
+<h2 id="Multiple-Predoctors-Inputs"><a href="#Multiple-Predoctors-Inputs" class="headerlink" title="Multiple Predoctors(Inputs)"></a>Multiple Predoctors(Inputs)</h2><p>Go back to our first example in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>, we have three inputs(budget of TV, Radio, Newspaper) and an output (Sale):</p>
+<p><img src="./total.png"></p>
+<p>The first trouble we come across is which model we would employ.</p>
+<p>There are two spontaneous strategies:</p>
+<ol>
+<li>extending one input model to multiple inputs model</li>
+<li>making several models, each of which contains only one input and output.</li>
+</ol>
+<p>The second stratigy is just repeating our discussion in <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>, and we can get the coefficients and relative statistics, like ‘t-statistic’ , ‘p-value’ e.t.c. According our knowledge, we can get(I copy the data from book ‘An introduction to statistical learning’[^1]):</p>
+<table>
+<thead>
+<tr>
+<th align="center">TV-Sales</th>
+<th align="center">Estimate</th>
+<th align="center">Standard Error</th>
+<th align="center">t-statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$w_0$</td>
+<td align="center">$7.0325$</td>
+<td align="center">$0.4578$</td>
+<td align="center">$15.36$</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+<tr>
+<td align="center">$w_1$</td>
+<td align="center">$0.0475$</td>
+<td align="center">$0.0027$</td>
+<td align="center">$17.67$</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+</tbody></table>
+<p><img src="./TV_SALEs.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">Radio-Sales</th>
+<th align="center">Estimate</th>
+<th align="center">Standard Error</th>
+<th align="center">t-statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$w_0$</td>
+<td align="center">$9.312$</td>
+<td align="center">$0.563$</td>
+<td align="center">$16.54$</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+<tr>
+<td align="center">$w_1$</td>
+<td align="center">$0.203$</td>
+<td align="center">$0.020$</td>
+<td align="center">$9.92$</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+</tbody></table>
+<p><img src="./Radio_Sales.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center">Newspaper-Sales</th>
+<th align="center">Estimate</th>
+<th align="center">Standard Error</th>
+<th align="center">t-statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$w_0$</td>
+<td align="center">$12.351$</td>
+<td align="center">$0.621$</td>
+<td align="center">$19.88$</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+<tr>
+<td align="center">$w_1$</td>
+<td align="center">$0.055$</td>
+<td align="center">$0.017$</td>
+<td align="center">$3.30$</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+</tbody></table>
+<p><img src="./Newspaper_Sales.png"></p>
+<p>These three models contain information about the relationship of each combination, and they can be used to predict unknown ‘Sales’ by input separately. However, three models will produce three predictions, which prediction would be recorded as the final prediction is not sure. Average or other calculation of the three predictions could solve the problem, but there is no evidence that which kind of calculation could make a precise prediction.</p>
+<p>Then a single model that contains all predictors was built, it was writen as:</p>
+<p>$$<br>Y=w_0+w_1X_1+w_2X_2+\dots+w_nX_n+\varepsilon \tag{1}<br>$$</p>
+<p>The single input model we learnd before, is a specialty of equation(1) when $n=1$. Such as:</p>
+<p>$$<br>Sales =w_0+ w_1 \times TV \tag{2}<br>$$</p>
+<p>In the multiple linear regression model, $w_i$ is the slope of $X_i$, which means how much $Y$ is effected when other $X_j\text{ where }j\neq i$ hold and $X_i$ increase one unit.</p>
+<h2 id="Coefficients"><a href="#Coefficients" class="headerlink" title="Coefficients"></a>Coefficients</h2><p>How to calculate the each coefficient of the model is not contained in this article, and different methods to solve this could be found <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/Simple-Linear-Regression/">‘Simple Linear Regression’</a>. Though we do not investigate a certain algorithm, we assume we have got a correct result of the parameters by least square method whose object function is still $\text{RSS}$:</p>
+<p>$$<br>\begin{aligned}<br>\text{RSS}&amp;=\sum(y_i-\hat{y_i})^2\<br>&amp;=\sum(y_i-\hat{w_0}-\hat{w_1}x_1-\dots - \hat{w_n}x_n-\varepsilon)^2<br>\end{aligned}<br>$$ </p>
+<p>where $\begin{bmatrix}\hat{w_0},\hat{w_1},\dots, \hat{w_n}\end{bmatrix}$ minimizes $\text{RSS}$</p>
+<p>Here we analytic the model because, up to now, we still don’t know whether every predictor is necessary for the model. In other words, we want to confirm every predictor contributes to the model.</p>
+<p>Let’s go back to the ‘TV, Radio, Newspaper - Sales’ example. </p>
+<p>$$<br>\text{Sales}= w_0 + w_1\times \text{TV}+ w_2\times \text{Radio}+ w_3\times \text{Newspaper}</p>
+<p>$$</p>
+<p>and we got parameter:</p>
+<table>
+<thead>
+<tr>
+<th align="center">$\hat{w_0}$</th>
+<th align="center">$\hat{w_1}$</th>
+<th align="center">$\hat{w_2}$</th>
+<th align="center">$\hat{w_3}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$2.939$</td>
+<td align="center">$0.046$</td>
+<td align="center">$0.189$</td>
+<td align="center">$-0.001$</td>
+</tr>
+</tbody></table>
+<p>We observe that in the table above and find $\hat{w_3}$ is little wierd. Because its absolute value is much smaller than those of $\hat{w_1}, \hat{w_2}$. Then we list all the statistics who assess accuracy of the parameter:</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Coefficient</th>
+<th align="center">SE</th>
+<th align="center">t-statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$\hat{w_0}$(Intercept)</td>
+<td align="center">2.939</td>
+<td align="center">0.3119</td>
+<td align="center">9.42</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+<tr>
+<td align="center">$\hat{w_1}$(TV)</td>
+<td align="center">0.046</td>
+<td align="center">0.0014</td>
+<td align="center">32.81</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+<tr>
+<td align="center">$\hat{w_2}$(Radio)</td>
+<td align="center">0.189</td>
+<td align="center">0.0086</td>
+<td align="center">21.89</td>
+<td align="center">$&lt;0.0001$</td>
+</tr>
+<tr>
+<td align="center">$\hat{w_3}$(Newspaper)</td>
+<td align="center">-0.001</td>
+<td align="center">0.0059</td>
+<td align="center">-0.18</td>
+<td align="center">$0.8599$</td>
+</tr>
+</tbody></table>
+<p>‘p-value’ and ‘t-statistic’ of $\hat{w_3}$ have changed a lot from ‘Newspaper v.s. Sales’ model. And those indicated that in the multiple linear regression predictors(inputs) affect each other. When we have only ‘Newspaper’ it works for predicting with parameter whose ‘t-statistic’ is large and ‘p-value’ is smalle. But the picture of the ‘Newspaper-Sales’ shows that the linear relationship between ‘Newspaper’ and ‘Sales’ is not very strong. This not strong relationship vanished in the multiple linear regression because the other two predictors dominate the relationship.</p>
+<p>The multiple linear regression gives that ‘TV’ and ‘Radio’ are the essential factors for the prediction of ‘Sales’ while the single linear models did not.</p>
+<p>But what happened to ‘Newspaper’? We supposed that there may be some connection between ‘Newspaper’ and ‘Radio’. For example, in a region radio attracted a lot of customers and these guys love reading newspapers coincidentally.</p>
+<p>Another interesting example is that the number of shark attacks has a strong relation to the sale of ice-cream near the beach.</p>
+<p>These three predictors and output have the Correlation Matrix:</p>
+<p>$$\begin{array}{c|lll}<br>&amp;{\text{TV}}&amp;{\text{Radio}}&amp;{\text{Newspaper}}&amp;{\text{Sales}}\<br>\hline<br>\text{TV}&amp;1.0000&amp;0.0548&amp;0.0567&amp;0.7822\<br>\text{Radio}&amp;&amp;1.0000&amp;0.3541&amp;0.5762\<br>\text{Newspaper}&amp;&amp;&amp;1.0000&amp;0.2283\<br>\text{Sales}&amp;&amp;&amp;&amp;1.0000<br>\end{array}<br>$$</p>
+<p>this matrix presents a strong relation between ‘Radio’ and ‘Newspaper’.</p>
+<h2 id="Deciding-on-Important-Variable"><a href="#Deciding-on-Important-Variable" class="headerlink" title="Deciding on Important Variable"></a>Deciding on Important Variable</h2><p>As we discussed above ‘newspaper’ is not an important variable for these problems. But what should we do to other problems who has a huge number of parameters to decide which some should be used in multiple linear regression.<br>A spontaneous strategy is we can test every combination. In the ‘Media-Sales’ example above, we could test the following combinations:</p>
+<table>
+<thead>
+<tr>
+<th align="center">No.</th>
+<th align="center">Combination</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">‘TV’</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">‘Radion’</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">‘Newspaper’</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">‘TV’+’Radion’</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">‘TV’+Newspaper’</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">‘Radion’+’Newspaper’</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">‘TV’+’Radion’+’Newspaper’</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">None of the predictors</td>
+</tr>
+</tbody></table>
+<p>The No.8 combination represents that the output is just a random variable who has a mean 0 normal distribution.</p>
+<p>The accuracy of every linear regression of that combination of predictors can be measured through many different kinds of statistics:</p>
+<ol>
+<li>Mallow’s $C_p$</li>
+<li>Akaike information criterion(AIC)</li>
+<li>Bayesian information criterion(BIC)</li>
+<li>Adjusted $\text{R}^2$</li>
+</ol>
+<p>This strategy has a problem – dimension curse. Three inputs produced $2^3=8$ combinations. When we have only 10 predictors, we have to test 1024 times. In practice, more than 100 predictors are very normal and we can never test all their combinations.</p>
+<p>What we need is a feasible method, and we have three different kinds of method:</p>
+<ol>
+<li>Forward Selection</li>
+<li>Backward Selection</li>
+<li>Mixed Selection</li>
+</ol>
+<h3 id="Forward-Selection"><a href="#Forward-Selection" class="headerlink" title="Forward Selection"></a>Forward Selection</h3><p>Selecting variable one by one, each time we select the best among the rest until some conditions are reached. And we stop the greedy process. For instance, in the first iteration, we select $x_2$ from ${x_1,x_2,x_3,x_4}$ and then we take out one variable and combine it with $x_2$ and calculate a statistic who can measure the accuracy of the new two-variable linear regression. We select the best one out of the set and test if we could stop the iteration by some condition like a threshold or something else.</p>
+<h3 id="Backward-Selection"><a href="#Backward-Selection" class="headerlink" title="Backward Selection"></a>Backward Selection</h3><p>It is inverse of forwarding selection. At first, it takes all the variables and then removes the least important variable one by one until some conditions are reached, too.</p>
+<h3 id="Mixed-Selection"><a href="#Mixed-Selection" class="headerlink" title="Mixed Selection"></a>Mixed Selection</h3><p>Mixed selection is a fixed method of forwarding selection and backward selection. When we add a new variable into the method, we test whether there are any variables can be removed for the new variable may contain the same information as the selected variables. For instance, the ‘Media-Sales’ example, we firstly selected the ‘TV’ variable then the ‘Newspaper’ for some reason, when we get ‘Radio’ data and the ‘Newspaper’ is no more necessary; so we remove the ‘Newspaper’ from the set of variables.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Anthony Tan
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/" title="Estimating Multiple Linear Regress Coefficients">http://brainbomb.org/Machine Learning /Multiple-Linear-regression-Estimating-the-Regress-Coefficients/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/username">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linear-Regression/" rel="tag"><i class="fa fa-tag"></i> Linear Regression</a>
+              <a href="/tags/Statistical-Learning/" rel="tag"><i class="fa fa-tag"></i> Statistical Learning</a>
+              <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Machine%20Learning%20/Assessing-the-Accuracy-of-the-Model/" rel="prev" title="Assessing the Accuracy of the Model">
+                  <i class="fa fa-chevron-left"></i> Assessing the Accuracy of the Model
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Neural%20Networks/A-Logical-Calculus-of-the-Ideas-Immanent-in-Nervous-Activity/" rel="next" title="A Logical Calculus of the Ideas Immanent in Nervous Activity">
+                  A Logical Calculus of the Ideas Immanent in Nervous Activity <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anthony Tan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'all'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://brainbomb-1.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://brainbomb.org/Machine%20Learning%20/Multiple-Linear-regression-Estimating-the-Regress-Coefficients/";
+    this.page.identifier = "Machine Learning /Multiple-Linear-regression-Estimating-the-Regress-Coefficients/";
+    this.page.title = "Estimating Multiple Linear Regress Coefficients";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://brainbomb-1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>

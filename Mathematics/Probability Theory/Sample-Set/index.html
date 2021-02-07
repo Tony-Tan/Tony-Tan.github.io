@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"brainbomb.org","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="Keywords: set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sample Set">
+<meta property="og:url" content="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/index.html">
+<meta property="og:site_name" content="Brain Bomb">
+<meta property="og:description" content="Keywords: set">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/marvel-movies-inline.jpg">
+<meta property="og:image" content="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/avangers_tony.jpg">
+<meta property="og:image" content="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/set.jpg">
+<meta property="og:image" content="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/finite.png">
+<meta property="article:published_time" content="2019-06-15T03:42:00.000Z">
+<meta property="article:modified_time" content="2020-11-08T02:37:00.000Z">
+<meta property="article:author" content="Anthony Tan">
+<meta property="article:tag" content="Probability Theory">
+<meta property="article:tag" content="Sample Set">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/marvel-movies-inline.jpg">
+
+
+<link rel="canonical" href="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Sample Set | Brain Bomb</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105335860-9"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-105335860-9');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Brain Bomb</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="https://anthony-tan.site/" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-point-and-Sample-Space"><span class="nav-number">1.</span> <span class="nav-text">Sample point and Sample Space</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subset"><span class="nav-number">2.</span> <span class="nav-text">Subset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Size-of-Set"><span class="nav-number">3.</span> <span class="nav-text">Size of Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-of-the-Size"><span class="nav-number">3.1.</span> <span class="nav-text">Properties of the Size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Finity-and-Infinity-sets"><span class="nav-number">3.2.</span> <span class="nav-text">Finity and Infinity sets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Well-Defined-Set"><span class="nav-number">4.</span> <span class="nav-text">Well Defined Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Belong-to"><span class="nav-number">4.1.</span> <span class="nav-text">Belong to</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Define-a-Set"><span class="nav-number">4.2.</span> <span class="nav-text">Define a Set</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subset-Superset-and-Identical-2"><span class="nav-number">5.</span> <span class="nav-text">Subset, Superset, and Identical[^2]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anthony Tan"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Anthony Tan</p>
+  <div class="site-description" itemprop="description">Research Note of Reinforcement Learning</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/tony-tan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Anthony Tan">
+      <meta itemprop="description" content="Research Note of Reinforcement Learning">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brain Bomb">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Sample Set
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-06-15 11:42:00" itemprop="dateCreated datePublished" datetime="2019-06-15T11:42:00+08:00">2019-06-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-08 10:37:00" itemprop="dateModified" datetime="2020-11-08T10:37:00+08:00">2020-11-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mathematics/" itemprop="url" rel="index"><span itemprop="name">Mathematics</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mathematics/Probability-Theory/" itemprop="url" rel="index"><span itemprop="name">Probability Theory</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Mathematics/Probability%20Theory/Sample-Set/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Mathematics/Probability Theory/Sample-Set/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>Keywords:</strong> set</p>
+<a id="more"></a>
+<p>Today, We are going to discuss a most fundamental concept of mathematics, of course, as well as of probability theory. It is set.</p>
+<p>Thousands of years ago, our ancestors had been able to distinguish a single apple from a sack of apples. The single apple and the apples in the sack can be regarded as specific objects, that is, every apple can be identified among the ‘bunch’ of apples, and we can label them as ${\text{Apple}_1,\text{Apple}_2,\dots ,\text{Apple}_n}$, and these labels have:</p>
+<p>$$<br>\text{Apple}_i\neq \text{Apple}_j \text{ where } i\neq j<br>$$</p>
+<p>However, the sack of apples also attracted the attention of human beings. It is known as the set.<br>Let’s see another example of a set. We, now, have an Incident Response Team that is made up of several Avengers, they are:</p>
+<p><img src="./marvel-movies-inline.jpg" alt="Marvel"></p>
+<p>$$<br>{\text{Natasha},\text{Thor},\text{Steve},\text{Clinton},\text{Tony},\text{Bruce}}<br>$$<br>But one day, they found they need a more powerful guy to help them learn probability theory. So they invited me to their team, and then, the team became:</p>
+<p><img src="./avangers_tony.jpg" alt="marvel and me"></p>
+<p>Aha, the team now is listed as:<br>$$<br>{\text{Natasha},\text{Thor},\text{Steve},\text{Tony},\text{Clinton},\text{Tony},\text{Bruce}}<br>$$<br>Since we have two ‘Tony’s now, and just according the list above, we can not tell which Tony is me and which one is Anthony Edward Stark(Iron Man).</p>
+<p>The problem we came cross represented an essential property of set – there should not be duplicated in a set list. And we have a lot of methods to solve the duplicate-problem, for instance, we can list their family name at the same time, so they are</p>
+<p>$$<br>{\text{Natasha Romanoff},\text{Thor Odinson},\text{Steve Rogers},\text{Tony Tan},\\<br>\text{Clinton Barton},\text{Tony Stark},\text{Bruce Banner}}<br>$$</p>
+<p>The same members cannot be counted twice in a set and the different members with the same name in the list are considered as the same one(We do not have other information to tell them apart). Although the duplicate-problem has been solved by adding a family name, the list of the set does not always work.</p>
+<p>To represents a specific set, the list should be complete. However, most of the time, we are not able to list a set completely. Here are some examples, which can not list all members in the set and they look like:</p>
+<ol>
+<li>In geometry, we definite circle as: “The set of points which are equidistant from a given point”</li>
+<li>In algebra, “The set of integers which have no other divisors except 1 and itself” is called the set of prime numbers</li>
+</ol>
+<p>These two sets seem impossible to be enumerated all elements. </p>
+<p>In probability, the notion of set plays a more fundamental role. The notion of a set can also be divided into general kinds of sets as well as concrete ones. For the general things are always difficult to understand, we begin our probability theory with the easier concrete examples:</p>
+<ul>
+<li>a) A bushel of apples </li>
+<li>b) All Possible outcomes when six dice are rolled</li>
+<li>c) All student in the college</li>
+</ul>
+<p>Then let’s look at the smaller ones:</p>
+<ul>
+<li>a’) The rotten apples in that bushel</li>
+<li>b’) The situation that six dice show a different face when six dice are rolled</li>
+<li>c’) The mathematics majors of that college</li>
+</ul>
+<p>All the examples(a<del>c and a’</del>c’) are all sets. These examples and the Avengers’ example have an abstract common – they are all “a bunch of things”.</p>
+<h2 id="Sample-point-and-Sample-Space"><a href="#Sample-point-and-Sample-Space" class="headerlink" title="Sample point and Sample Space"></a>Sample point and Sample Space</h2><p>The examples can help us know what is a set intuitively. However, we are mathematicians, and we should be more mathematical and more precise. A bunch of things can never be a formal definition. So we need to set up a mathematical model for a set.<br>Every signal thing(object, situation, result, e.t.c) in the bunch will be called a ‘point’. And the bunch of things is called a ‘space’. If you have learned linear algebra, you would be familiar with the word ‘space’. A space in linear algebra is made up of infinity vectors who obey some certain rules. For instance, in the example a), every apple is a point, and, of course, they are different from each other. And then the bushel of apples which contains all the apples is the space. In the same way, we can find the points in the other examples. And each of them is space. To distinguish the space in probability theory and in other situations, we prefix the space by sample. So does the point. They become sample space and sample point.</p>
+<p>We use $\Omega$ to denote the sample space, and the sample points in the sample space are denoted by $\omega$. Every point can have a specific name, such that the set in the picture where I drew a sack of things.<br><img src="./set.jpg"></p>
+<p>Its mathematical model is:<br>$$<br>\Omega={\omega_{\text{apple}},\omega_{\text{raining}},\omega_{\text{car}},\omega_{\text{sunshine}},\omega_{\text{ghost}}}<br>$$</p>
+<h2 id="Subset"><a href="#Subset" class="headerlink" title="Subset"></a>Subset</h2><p>Sets are made up of elements, in other word, spaces consist of points. When all the elements in a new set $S_n$ are all from another set $S_0$, the set $S_n$ is the subset of $S_0$. The sets in examples a’)~ c’) are subsets of examples a)~ c). Two extreme subsets are the biggest one – the set itself, and the smallest one – empty set which has nothing.<br>The empty set is a special case in set theory and it has its own donation $\emptyset$</p>
+<h2 id="Size-of-Set"><a href="#Size-of-Set" class="headerlink" title="Size of Set"></a>Size of Set</h2><p>“The subset is smaller than the original set and the empty set is the smallest subset”, this description uses an undefined concept, the size of a set, which can be used to identify which one is bigger or smaller among two sets. The number of points in a set is called “size”, and it denotes as:<br>$$\vert S\vert$$</p>
+<p><strong>The size of</strong><br>$$<br>\Omega={\omega_{\text{apple}},\omega_{\text{raining}},\omega_{\text{car}},\omega_{\text{sunshine}},\omega_{\text{ghost}}}<br>$$</p>
+<p><strong>is</strong></p>
+<p>$$<br>\vert \Omega\vert=5<br>$$</p>
+<p><strong>The size of</strong><br>$$<br>\Omega_{\text{Avangers}}={\text{Natasha Romanoff},\text{Thor Odinson},\text{Steve Rogers},\text{Tony Tan},\\<br>\text{Clinton Barton},\text{Tony Stark},\text{Bruce Banner}}<br>$$<br><strong>is</strong><br>$$<br>\vert\Omega_{\text{Avangers}}\vert=7<br>$$</p>
+<h3 id="Properties-of-the-Size"><a href="#Properties-of-the-Size" class="headerlink" title="Properties of the Size"></a>Properties of the Size</h3><p>The size has several properties, and here are the most useful three:</p>
+<ol>
+<li>The size should be a non-negative integer </li>
+<li>The size can be infinity</li>
+<li>The size of the empty set is 0</li>
+</ol>
+<p>By the way, the natural number can be defined by the size of the set. But that is not our business here.</p>
+<h3 id="Finity-and-Infinity-sets"><a href="#Finity-and-Infinity-sets" class="headerlink" title="Finity and Infinity sets"></a>Finity and Infinity sets</h3><p>“Finity” and “infinity” are two general classifications of size. However “countable” and “uncountable” are another two distinct concepts. “Countable” is not equal to “finite”, while “Uncountable” is infinity.<br>Their precise relation is shown in the Venn Diagram</p>
+<p><img src="./finite.png"></p>
+<blockquote>
+<p>Definition of Countable/Uncountable: An inﬁnite set $A$ is countable if there is a one-to-one correspondence between the elements of A and the set of natural numbers ${1, 2, 3, \dots}$. A set is uncountable if it is neither ﬁnite nor countable. If we say that a set has at most countably many elements, we mean that the set is either ﬁnite or countable.[^1]</p>
+</blockquote>
+<p>The most common example of the set which is infinity but countable is the set of all odd numbers and the index of element $n$ can be calculated by:<br>$$<br>f(n)=\frac{n-1}{2}<br>$$</p>
+<h2 id="Well-Defined-Set"><a href="#Well-Defined-Set" class="headerlink" title="Well Defined Set"></a>Well Defined Set</h2><p>All the sets above are defined by words. Although we have had a mathematical model, it’s also difficult to find a current method to define set rigidly. What the well-defined set means is that it is possible to tell whether a point belongs to the set or not. </p>
+<h3 id="Belong-to"><a href="#Belong-to" class="headerlink" title="Belong to"></a>Belong to</h3><p><em>Belong to</em> is a relation between point and space. We say “Iron Man” (point) belongs to the Avengers(space). It’s denoted as:</p>
+<p>$$<br>\omega_{\text{Iron Man}}\in \Omega_{\text{Avengers}}<br>$$</p>
+<p>And “not belong to” is denoted as:</p>
+<p>$$<br>\omega_{\text{Super Man}}\notin \Omega_{\text{Avengers}}<br>$$</p>
+<h3 id="Define-a-Set"><a href="#Define-a-Set" class="headerlink" title="Define a Set"></a>Define a Set</h3><p>The first method that can define the set rigidly is “enumerate”, and we put all points in curly brackets. For example, rolling a six-face dice may get $6$ outcomes as:</p>
+<p>$$<br>{1,2,3,4,5,6}<br>$$</p>
+<p>Intuitively, rolling two different six-face dice may get $6\times 6$ outcomes:</p>
+<p>$$<br>\begin{aligned}<br>{&amp;(1,1),(1,2),(1,3),(1,4),(1,5),(1,6) \<br>&amp;(2,1),(2,2),(2,3),(2,4),(2,5),(2,6) \<br>&amp;(3,1),(3,2),(3,3),(3,4),(3,5),(3,6) \<br>&amp;(4,1),(4,2),(4,3),(4,4),(4,5),(4,6) \<br>&amp;(5,1),(5,2),(5,3),(5,4),(5,5),(5,6) \<br>&amp;(6,1),(6,2),(6,3),(6,4),(6,5),(6,6) }<br>\end{aligned}<br>$$</p>
+<p>As we can see, two different dice would produce $6^2=36$ outcomes, and then three different dice would produce $6^3=216$ outcomes. When we roll $6$ dice, we would get a set of size 46656. It is impossible to list all the combinations. However, we can solve this problem through a mathematical model:</p>
+<p>$$<br>\Omega={(s_1,s_2,s_3,s_4,s_5,s_6)|s_j \text{ may be: }1,2,3,4,5,6 \text{ where } 1\leq j\leq 6}<br>$$</p>
+<p>This is a simple use of the mathematical expression. However, it does not always work, such as defining the set of all the girls in the world. Listing all the names of them is tedious and impossible, and this set is dynamic because girls are born and died at the present moment.</p>
+<p>The second method to determine a set is through a specified rule of membership, however, there are always people who quibbled about the meaning of words. That is meaningless.</p>
+<h2 id="Subset-Superset-and-Identical-2"><a href="#Subset-Superset-and-Identical-2" class="headerlink" title="Subset, Superset, and Identical[^2]"></a>Subset, Superset, and Identical[^2]</h2><p>Subset has been explained above, but here we have an official definition:</p>
+<blockquote>
+<p>If every point of $A$ belongs to $B$, Then $A$ is contained or included in $B$ and is a <em>subset</em> of $B$, and $B$ is the superset of $A$</p>
+</blockquote>
+<p>We can write this relation in two ways:<br>$$<br>A\subset B\text{ , } B\supset A<br>$$</p>
+<p>Two sets are identical if they contain exactly the same points, and then we write<br>$$<br>A=B<br>$$</p>
+<p>By the way, a roundabout method to check whether two sets are identical is to chech: if and only if $A\subset B$ and $A\supset B$. Although this roundabout way seems indirect, it might be the easiest way to investigate whether these two sets are identical.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This post is the first one of our series of Probability Theory. We talked about some concepts and properties of set and sample set. And the relationship between elements (also known as points) and space (also known as a set) and between set and another set. The subset is also a set, however, it is in a special position in probability theory. Without understanding the concept of subset, we might be confused in later discussion.  </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[^1]:DeGroot M H, Schervish M J. Probability and statistics[M]. Pearson Education, 2012.</p>
+<p>[^2]:Chung K L. Elementary probability theory with stochastic processes[M]. Springer Science &amp; Business Media, 2012.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Anthony Tan
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/" title="Sample Set">http://brainbomb.org/Mathematics/Probability Theory/Sample-Set/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/username">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Probability-Theory/" rel="tag"><i class="fa fa-tag"></i> Probability Theory</a>
+              <a href="/tags/Sample-Set/" rel="tag"><i class="fa fa-tag"></i> Sample Set</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Computer%20Science/Numerical%20Analysis/Binary-Numbers/" rel="prev" title="Binary Numbers">
+                  <i class="fa fa-chevron-left"></i> Binary Numbers
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Machine%20Learning%20/Introduction-to-Linear-Regression/" rel="next" title="Introduction to Linear Regression">
+                  Introduction to Linear Regression <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anthony Tan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'all'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://brainbomb-1.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://brainbomb.org/Mathematics/Probability%20Theory/Sample-Set/";
+    this.page.identifier = "Mathematics/Probability Theory/Sample-Set/";
+    this.page.title = "Sample Set";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://brainbomb-1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>

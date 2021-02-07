@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"brainbomb.org","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="Keywords: backpropagation, BP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Backpropagation Algorithm (Part I)">
+<meta property="og:url" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/index.html">
+<meta property="og:site_name" content="Brain Bomb">
+<meta property="og:description" content="Keywords: backpropagation, BP">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/abbreviated_notation.jpeg">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/abbreviated_notation_example.jpeg">
+<meta property="og:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/example.png">
+<meta property="article:published_time" content="2020-01-01T06:26:55.000Z">
+<meta property="article:modified_time" content="2020-11-08T02:56:43.000Z">
+<meta property="article:author" content="Anthony Tan">
+<meta property="article:tag" content="Artificial Neural Networks">
+<meta property="article:tag" content="Artificial Intelligence">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/abbreviated_notation.jpeg">
+
+
+<link rel="canonical" href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>The Backpropagation Algorithm (Part I) | Brain Bomb</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105335860-9"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-105335860-9');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Brain Bomb</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="https://anthony-tan.site/" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture-1"><span class="nav-number">1.</span> <span class="nav-text">Architecture[^1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-Index"><span class="nav-number">2.</span> <span class="nav-text">Performance Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chain-Rule"><span class="nav-number">3.</span> <span class="nav-text">Chain Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Calculus"><span class="nav-number">3.1.</span> <span class="nav-text">Calculus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sensitivity"><span class="nav-number">3.2.</span> <span class="nav-text">Sensitivity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagating-the-Sensitivities"><span class="nav-number">4.</span> <span class="nav-text">Backpropagating the Sensitivities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-BP"><span class="nav-number">5.</span> <span class="nav-text">Summary of BP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#An-example-of-BP-algorithm"><span class="nav-number">6.</span> <span class="nav-text">An example of BP algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anthony Tan"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Anthony Tan</p>
+  <div class="site-description" itemprop="description">Research Note of Reinforcement Learning</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/tony-tan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Anthony Tan">
+      <meta itemprop="description" content="Research Note of Reinforcement Learning">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brain Bomb">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          The Backpropagation Algorithm (Part I)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-01-01 14:26:55" itemprop="dateCreated datePublished" datetime="2020-01-01T14:26:55+08:00">2020-01-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-08 10:56:43" itemprop="dateModified" datetime="2020-11-08T10:56:43+08:00">2020-11-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index"><span itemprop="name">Artificial Intelligence</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Artificial-Intelligence/Artificial-Neural-Networks/" itemprop="url" rel="index"><span itemprop="name">Artificial Neural Networks</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Neural Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>Keywords:</strong> backpropagation, BP</p>
+<a id="more"></a>
+
+
+<h2 id="Architecture-1"><a href="#Architecture-1" class="headerlink" title="Architecture[^1]"></a>Architecture[^1]</h2><p>We have seen a three-layer network is flexible in approximating functions. If we had a more-than-three-layer network, it could be used to approximate any functions as close as we want. However, another trouble came to us is how to train these networks. This problem almost killed neural networks in the 1970s. Until backpropagation(BP for short) algorithm was found that it is an efficient algorithm in training multiple layers networks.</p>
+<p>3-layer network is also used in this post for it is the simplest multiple-layer network whose abbreviated notation is:</p>
+<p><img src="./abbreviated_notation.jpeg"></p>
+<p>and a more short way to represent its architecture is:</p>
+<p>$$<br>R - S^1 - S^2 - S^3 \tag{1}<br>$$</p>
+<p>For the three-layer network has only three layers which is not too large to denote mathematically, then it can be writen as:</p>
+<p>$$<br>\boldsymbol{a}=f^3(W^3\cdot f^2(W^2\cdot f^1(W^1\cdot \boldsymbol{p}+\boldsymbol{b}^1)+\boldsymbol{b}^2)+\boldsymbol{b}^3)\tag{2}<br>$$</p>
+<p>but, it becomes impossible when we have a 10-layer network or 100-layer network. Then we can use some short equations that describe the whole operation of $M$-layer network:</p>
+<p>$$<br>a^{m+1}=f^{m+1}(W^{m+1}\boldsymbol{a}^{m}+\boldsymbol{b}^{m+1})\tag{3}<br>$$</p>
+<p>for $m = 1, 2, 3, \cdots M-1$. $M$ is the number of layers in the neural networks. And:</p>
+<ul>
+<li>$\boldsymbol{a}^0=\boldsymbol{p}$ is its input</li>
+<li>$\boldsymbol{a}=\boldsymbol{a}^M$ is its output</li>
+</ul>
+<h2 id="Performance-Index"><a href="#Performance-Index" class="headerlink" title="Performance Index"></a>Performance Index</h2><p>We have had a network now. And <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Surfaces-and-Optimum-Points/">‘performance learning’</a> is a kind of learning rule in learning task. Then we need a definite performance index for the 3-layer network. MSE is used here as the performance index the same as what the LMS algorithm did in post <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Widrow-Hoff-Learning/">‘Widrow-Hoff Learning(Part I)’</a> and <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Widrow-Hoff-Learning-P2/">‘Widrow-Hoff Learning(Part II)’</a>. And a set of examples of proper network behavior are needed:</p>
+<p>$$<br>{\boldsymbol{p}_1,\boldsymbol{t}_1},{\boldsymbol{p}_2,\boldsymbol{t}_2},\cdots {\boldsymbol{p}_Q,\boldsymbol{t}_Q}\tag{4}<br>$$</p>
+<p>where $\boldsymbol{p}_1$ is the input and $\boldsymbol{t}_1$ is the corresponding output.</p>
+<p>Recall that in the steepest descent algorithm, we have a definite objective function, minimizing which is the task of the algorithm iteratively. BP is the generation of LMS algorithms, and both of them try to minimize the mean square error. However, the best structure of the network that is the closest to the true data is unknown. So each iteration an approximation of ‘Error’ which was calculated from our observation was used in the algorithm. And what we finally get is a trained neural network that fits the training set but not guarantees fitting the original task. So a good training set which can represent the original task as close as possible is necessary.</p>
+<p>To make it easier to understand from the steepest descent algorithm to LMS and BP, we convert the weights and bias in the neural network form $w$ and $b$ into a vector $\boldsymbol{x}$. Then the performance index is:</p>
+<p>$$<br>F(\boldsymbol{x})=\mathbb E[e^2]=\mathbb E[(t-a)^2]\tag{5}<br>$$</p>
+<p>When network has multiple outputs this generalizes to:</p>
+<p>$$<br>F(\boldsymbol{x})=\mathbb E[\boldsymbol{e}^T\boldsymbol{e}]=\mathbb E[(\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})]\tag{6}<br>$$</p>
+<p>During an iteration, in the LMS algorithm, MSE(mean square error) is approximated by SE(square error):</p>
+<p>$$<br>\hat{F}(\boldsymbol{x})=(\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})=\boldsymbol{e}^T\boldsymbol{e}\tag{7}<br>$$</p>
+<p>where the expectations are replaced by the calculation of current input, output, and target.</p>
+<p>Reviewing the <a href="https://brainbomb.org/Artificial-Intelligence/Neural-Networks/Neural-Network-Design-Performance-Optimization-Steepest-Descent/">‘steepest descent algorithm’</a>, the approximate MSE which is also called stochastic gradient descent:</p>
+<p>$$<br>\begin{aligned}<br>  w^m_{i,j}(k+1)&amp;=w^m_{i,j}(k)-\alpha \frac{\partial \hat{F}}{\partial w^m_{i,j}}\<br>  b^m_{i}(k+1)&amp;=b^m_{i}(k)-\alpha \frac{\partial \hat{F}}{\partial b^m_{i}}<br>\end{aligned}\tag{8}<br>$$</p>
+<p>where $\alpha$ is the learning rate.</p>
+<p>However, the steep descent algorithm seems can not work on a multiple-layer network for we can not just calculate the partial derivative in the hidden layer and input layer directly. So we should recall another mathematical tool - <strong>chain rule</strong>.</p>
+<h2 id="Chain-Rule"><a href="#Chain-Rule" class="headerlink" title="Chain Rule"></a>Chain Rule</h2><h3 id="Calculus"><a href="#Calculus" class="headerlink" title="Calculus"></a>Calculus</h3><p>when $f$ is explicit function of $\boldsymbol{n}$ and $\boldsymbol{n}$ is a explicit function of $\boldsymbol{w}$, we can calculate the partial derivative $\frac{\partial f}{\partial w}$ by:</p>
+<p>$$<br>\frac{\partial f}{\partial w}=\frac{\partial f}{\partial n}\frac{\partial n}{\partial w}\tag{9}<br>$$</p>
+<p>The whole process looks like a chain. And let’s look at a simple example: when we have $f(n)=e^n$ and $n=2w$, we have $f(n(w))=e^{2w}$. We can easily calculate the direvative $\frac{\partial f}{\partial w}=\frac{\partial e^2w}{\partial w}=2e^{2w}$. And when chain rule is used, we have:</p>
+<p>$$<br>\frac{\partial f(n(w))}{\partial w}=\frac{\partial e^n}{\partial n}\frac{\partial n}{\partial w}=\frac{\partial e^n}{\partial n}\frac{\partial 2w}{\partial w}=e^n\cdot 2=2e^{2w}\tag{10}<br>$$</p>
+<p>that is the same as what we get directly.</p>
+<p>When the chain rule is used in the second part on the right of equation (8), we get the way to calculate the derivative of the weight of hidden layers:</p>
+<p>$$<br>\begin{aligned}<br>  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial n^m_i}{\partial w^m_{i,j}}\<br>\frac{\partial \hat{F}}{\partial b^m_{i}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial n^m_i}{\partial b^m_{i}}<br>\end{aligned}\tag{11}<br>$$</p>
+<p>from the abbreviated notation, we know that $n^m_i=\sum^{S^{m-1}}<em>{j=1}w^m</em>{i,j}a^{m-1}_{j}+b^m_i$. Then equation (11) can be writen as:</p>
+<p>$$<br>\begin{aligned}<br>  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial \sum^{S^{m-1}}<em>{j=1}w^m</em>{i,j}a^{m-1}<em>{j}+b^m_i}{\partial w^m_{i,j}}=\frac{\partial \hat{F}}{\partial n^m_i}\cdot a^{m-1}_j\<br>\frac{\partial \hat{F}}{\partial b^m</em>{i}}&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\cdot \frac{\partial \sum^{S^{m-1}}<em>{j=1}w^m</em>{i,j}a^{m-1}_{j}+b^m_i}{\partial b^m_{i}}=\frac{\partial \hat{F}}{\partial n^m_i}\cdot 1<br>\end{aligned}\tag{12}<br>$$</p>
+<p>Equation (12) could also be simplified by defining a new concept: sensitivity.</p>
+<h3 id="Sensitivity"><a href="#Sensitivity" class="headerlink" title="Sensitivity"></a>Sensitivity</h3><p>We define <strong>sensitivity</strong> as $s^m_i\equiv \frac{\partial \hat{F}}{\partial n^m_{i}}$ that means the sensitivity of $\hat{F}$ to changes in the $i^{\text{th}}$ element of the net input at layer $m$. Then equation (12) can be simplified as:</p>
+<p>$$<br>\begin{aligned}<br>  \frac{\partial \hat{F}}{\partial w^m_{i,j}}&amp;=s^m_{i}\cdot a^{m-1}<em>j\<br>\frac{\partial \hat{F}}{\partial b^m</em>{i}}&amp;=s^m_{i}\cdot 1 \end{aligned}\tag{13}<br>$$</p>
+<p>Then the steepest descent algorithm is:<br>$$<br>\begin{aligned}<br>  w^m_{i,j}(k+1)&amp;=w^m_{i,j}(k)-\alpha s^m_{i}\cdot a^{m-1}<em>j\<br>  b^m</em>{i}(k+1)&amp;=b^m_{i}(k)-\alpha s^m_{i}\cdot 1<br>\end{aligned}\tag{14}<br>$$</p>
+<p>This can also be written in a matrix form:</p>
+<p>$$<br>\begin{aligned}<br>  W^m(k+1)&amp;=W^m(k)-\alpha \boldsymbol{s}^m(\boldsymbol{a}^{m-1})^T\<br>  \boldsymbol{b}^m(k+1)&amp;=\boldsymbol{b}^m(k)-\alpha \boldsymbol{s}^m\cdot 1<br>\end{aligned}\tag{15}<br>$$</p>
+<p>where:<br>$$<br>\boldsymbol{s}^m=\frac{\partial \hat{F}}{\alpha \boldsymbol{n}^m}=\begin{bmatrix}<br>  \frac{\partial \hat{F}}{\partial n^m_1}\<br>  \frac{\partial \hat{F}}{\partial n^m_2}\<br>  \vdots\<br>  \frac{\partial \hat{F}}{\partial n^m_{S^m}}\<br>\end{bmatrix}\tag{16}<br>$$</p>
+<p>And be careful of the $\boldsymbol{s}$ which means the sensitivity and $S^m$ which means the number of layers $m$</p>
+<h2 id="Backpropagating-the-Sensitivities"><a href="#Backpropagating-the-Sensitivities" class="headerlink" title="Backpropagating the Sensitivities"></a>Backpropagating the Sensitivities</h2><p>Equation (15) is our BP algorithm. But we can not calculate sensitivities yet. We can easily calculate the sensitivities of the last layer which is the same as LMS. And we have an inspiration that is we can use the relation between the latter layer and current layer. So let’s observe the Jacobian matrix which represents the relation between the latter layer linear combination output $\boldsymbol{n}^{m+1}$ and current layer linear combination output  $\boldsymbol{n}^m$:</p>
+<p>$$<br>\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}}=<br>\begin{bmatrix}<br>  \frac{<br>    \partial n^{m+1}<em>1}{\partial n^{m}_1} &amp;<br>    \frac{\partial n^{m+1}_1}{\partial n^{m}_2} &amp;<br>    \cdots &amp; \frac{\partial n^{m+1}_1}{\partial n^{m}</em>{S^m}}\<br>    \frac{\partial n^{m+1}<em>2}{\partial n^{m}_1} &amp;<br>    \frac{\partial n^{m+1}_2}{\partial n^{m}_2} &amp;<br>    \cdots &amp; \frac{\partial n^{m+1}_2}{\partial n^{m}</em>{S^m}}\<br>    \vdots&amp;\vdots&amp;&amp;\vdots\<br>    \frac{\partial n^{m+1}<em>{S^{m+1}}}{\partial n^{m}<em>1} &amp;<br>    \frac{\partial n^{m+1}</em>{S^{m+1}}}{\partial n^{m}<em>2} &amp;<br>    \cdots &amp;<br>    \frac{\partial n^{m+1}</em>{S^{m+1}}}{\partial n^{m}</em>{S^m}}\<br>\end{bmatrix}\tag{17}<br>$$</p>
+<p>And the $(i,j)^{\text{th}}$ element of the matrix is:</p>
+<p>$$<br>\begin{aligned}<br>  \frac{\partial n^{m+1}<em>i}{\partial n^{m}<em>j}&amp;=\frac{\partial (\sum^{S^m}</em>{l=1}w^{m+1}</em>{i,l}a^m_l+b^{m+1}<em>i)}{\partial n^m_j}\<br>  &amp;= w^{m+1}_{i,j}\frac{\partial a^m_j}{\partial n^m_j}\<br>  &amp;= w^{m+1}</em>{i,j}\frac{\partial f^m(n^m_j)}{\partial n^m_j}\<br>  &amp;= w^{m+1}_{i,j}\dot{f}^m(n^m_j)<br>\end{aligned}\tag{18}<br>$$</p>
+<p>where $\sum^{S^m}<em>{l=1}w^{m+1}</em>{i,l}a^m_l+b^{m+1}_i$ is the linear combination output of layer $m+1$ and $a^m$ is the output of layer $m$. And we can define $\dot{f}^m(n^m_j)=\frac{\partial f^m(n^m_j)}{\partial n^m_j}$</p>
+<p>Therefore the Jacobian matrix can be written as:</p>
+<p>$$<br>\begin{aligned}<br>  &amp;\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}}\<br>  =&amp;W^{m+1}\dot{F}^m(\boldsymbol{n}^m)\<br>  =&amp;\begin{bmatrix}<br>  w^{m+1}<em>{1,1}\dot{f}^m(n^m_1) &amp;<br>    w^{m+1}_{1,2}\dot{f}^m(n^m_2) &amp;<br>    \cdots &amp; w^{m+1}_{1,{S^m}}\dot{f}^m(n^m</em>{S^m})\<br>  w^{m+1}<em>{2,1}\dot{f}^m(n^m_1) &amp;<br>    w^{m+1}_{2,2}\dot{f}^m(n^m_2) &amp;<br>    \cdots &amp; w^{m+1}_{2,{S^m}}\dot{f}^m(n^m</em>{S^m})\<br>    \vdots&amp;\vdots&amp;&amp;\vdots\<br>  w^{m+1}<em>{S^{m+1},1}\dot{f}^m(n^m_1) &amp;<br>    w^{m+1}_{S^{m+1},2}\dot{f}^m(n^m_2) &amp;<br>    \cdots &amp; w^{m+1}_{S^{m+1},{S^m}}\dot{f}^m(n^m</em>{S^m})<br>\end{bmatrix}<br>\end{aligned}<br>\tag{19}<br>$$</p>
+<p>where we have:</p>
+<p>$$<br>\dot{F}^m(\boldsymbol{n}^m)=<br>\begin{bmatrix}<br>  \dot{f}(n^m_1)&amp;0&amp;\cdots&amp;0\<br>  0&amp;\dot{f}(n^m_2)&amp;\cdots&amp;0\<br>  \vdots&amp;\vdots&amp;\ddots&amp;\vdots\<br>  0&amp;0&amp;\cdots&amp;\dot{f}(n^m_{S^m})<br>\end{bmatrix}\tag{20}<br>$$</p>
+<p>Then recurrence relation for the sensitivity by using chain rule in matrix form is:</p>
+<p>$$<br>\begin{aligned}<br>  \boldsymbol{s}^m&amp;=\frac{\partial \hat{F}}{\partial n^m}\<br>  &amp;=(\frac{\partial \boldsymbol{n}^{m+1}}{\partial \boldsymbol{n}^{m}})^T\cdot \frac{\partial \hat{F}}{\partial n^{m+1}}\<br>  &amp;=\dot{F}^m(\boldsymbol{n}^m)W^{m+1}\boldsymbol{s}^{m+1}\<br>\end{aligned}\tag{21}<br>$$</p>
+<p>This is why it is called backpropagation, because the sensitivities of layer $m$ is calculated by layer $m+1$ :</p>
+<p>$$<br>S^{M}\to S^{M-1}\to S^{M-2}\to \cdots \to S^{1}\tag{22}<br>$$</p>
+<p>Same to the LMS algorithm, BP is also an approximating algorithm of the steepest descent technique. And the start of BP $\boldsymbol{s}^M_i$ is:</p>
+<p>$$<br>\begin{aligned}<br>  \boldsymbol{s}^M_i&amp;=\frac{\partial \hat{F}}{\partial n^m_i}\<br>  &amp;=\frac{\partial (\boldsymbol{t}-\boldsymbol{a})^T(\boldsymbol{t}-\boldsymbol{a})}{\partial n^m_i}\<br>  &amp;=\frac{\partial \sum_{j=1}^{S^M}(t_j-a_j)^2}{\partial n^M_i}\<br>  &amp;=-2(t_i-a_i)\frac{\partial a_i}{\partial n^M_{i}}<br>\end{aligned}\tag{23}<br>$$</p>
+<p>and this is easy to understand because it is just a variation of the LMS algorithm. Since</p>
+<p>$$<br>\frac{\partial a_i}{\partial n^M_i}=\frac{\partial f^M(n^M_i)}{\partial n^M_i}=\dot{f}^M(n^M_j)\tag{24}<br>$$</p>
+<p>we can write:</p>
+<p>$$<br>s^M_i=-2(t_i-a_i)\dot{f}^M(n^M_i)\tag{25}<br>$$</p>
+<p>and its matrix form is:</p>
+<p>$$<br>\boldsymbol{s}^M_i=-\dot{F}^M(\boldsymbol{n}^M)(\boldsymbol{t}-\boldsymbol{a})\tag{26}<br>$$</p>
+<h2 id="Summary-of-BP"><a href="#Summary-of-BP" class="headerlink" title="Summary of BP"></a>Summary of BP</h2><ol>
+<li>Propagate the input forward through the network<ul>
+<li>$\boldsymbol{a}^0=\boldsymbol{p}$</li>
+<li>$\boldsymbol{a}^{m+1}=f^{m+1}(W^{m+1}\boldsymbol{a}^m+\boldsymbol{b}^{m+1})$ for $m=0,1,2,\cdots, M-1$</li>
+<li>$\boldsymbol{a}=\boldsymbol{a}^M$</li>
+</ul>
+</li>
+<li>Propagate the sensitivities backward through the network:<ul>
+<li>$\boldsymbol{s}^M=-2\dot{F}^M(\boldsymbol{n}^M)(\boldsymbol{t}-\boldsymbol{a})$</li>
+<li>$\boldsymbol{s}^m= \dot{F}^m(\boldsymbol{n}^m)(W^{m+1})^T\boldsymbol{s}^{m+1})$ for $m=M-1,\cdots,2,1$</li>
+</ul>
+</li>
+<li>Finally, the weights and bias are updated using the approximate steepest descent rule:<ul>
+<li>$W^{m}(k+1)=W^{m}(k)-\alpha \boldsymbol{s}^m(\boldsymbol{a}^{m-1})^T$</li>
+<li>$\boldsymbol{b}^{m}(k+1)=\boldsymbol{b}^{m}(k)-\alpha \boldsymbol{s}^m$</li>
+</ul>
+</li>
+</ol>
+<h2 id="An-example-of-BP-algorithm"><a href="#An-example-of-BP-algorithm" class="headerlink" title="An example of BP algorithm"></a>An example of BP algorithm</h2><p>Here we look at a simple example. Considering the function:</p>
+<p>$$<br>g(p)=1+\sin(\frac{\pi}{4}p) \text{ for } -2\leq p\leq 2\tag{27}<br>$$</p>
+<p>Then the sampling process should be done. And we get same function values with some selected inputs $p$’s, for example, we have a set of </p>
+<p>$$<br>p={-2,-1.8,\cdots ,1.8,2.0}\tag{28}<br>$$ </p>
+<p>then we get corresponding function values of $g(p)$ are </p>
+<p>$$<br>\begin{aligned}<br>  {&amp;\<br>  &amp;1+\sin(\frac{\pi}{4}\times(-2)),\<br>  &amp;1+\sin(\frac{\pi}{4}\times(-1.8)),\<br>  &amp;\cdots,\<br>  &amp;1+\sin(\frac{\pi}{4}\times(1.8)),\<br>  &amp;1+\sin(\frac{\pi}{4}\times(2))\<br>  }&amp;<br>\end{aligned}<br>\tag{29}<br>$$ </p>
+<p>So, we have had training data, and then we need to choose a network architecture. The following network would be used:</p>
+<p><img src="./abbreviated_notation_example.jpeg"></p>
+<p>This 1-2-1 network is relatively simpler than other networks. And what we should do next is to choose initial values for the network weights and biases. They are usually chosen to be small random values. Here we chose all of these parameters from a uniform distribution over $[-1,1]$.</p>
+<p>And the inputs ${-2.0,-1.8,-1.6,\cdots,1.8,2.0}$ are fed into the 1-2-1 network whose initial weights are:</p>
+<p>$$<br>W^1(0)=\begin{bmatrix}<br>  -0.27\-0.41<br>\end{bmatrix}\<br>\boldsymbol{b}^1(0)=\begin{bmatrix}<br>  -0.48\-0.13<br>\end{bmatrix}\<br>W^2(0)=\begin{bmatrix}<br>  0.09\-0.17<br>\end{bmatrix}\<br>\boldsymbol{b}^2(0)=\begin{bmatrix}<br>  0.48<br>\end{bmatrix}\tag{30}<br>$$</p>
+<p>and we get the output of the network are:</p>
+<p><img src="./example.png"></p>
+<p>Now let’s start the algorithm step by step:</p>
+<ol>
+<li>we have the first input $\boldsymbol{a}^0=\boldsymbol{p}=1$<ol>
+<li>The output of the first layer is then<br>$$\begin{aligned}<br>  \boldsymbol{a}^1&amp;=f(W^1\boldsymbol{a}^0+\boldsymbol{b}^1)\<br>  &amp;=\text{logsig}(\begin{bmatrix}-0.27\-0.41\end{bmatrix}\begin{bmatrix}1\end{bmatrix}+\begin{bmatrix}-0.48\-0.13\end{bmatrix})\<br>  &amp;=\text{logsig}(\begin{bmatrix}-0.75\-0.54\end{bmatrix})\<br>  &amp;=\begin{bmatrix}\frac{1}{1+e^{0.75}}\\frac{1}{1+e^{0.54}}\end{bmatrix}\<br>  &amp;=\begin{bmatrix}0.321\0.368\end{bmatrix}<br>\end{aligned}<br>$$</li>
+<li>The output of the second layer is:<br>$$<br>\begin{aligned}<br>  \boldsymbol{a}^2&amp;=f(W^2\boldsymbol{a}^1+\boldsymbol{b}^2)\<br>  &amp;=\text{logsig}(\begin{bmatrix}0.09&amp;-0.17\end{bmatrix}\begin{bmatrix}0.321\0.368\end{bmatrix}+\begin{bmatrix}0.48\end{bmatrix})\<br>  &amp;=\text{logsig}(\begin{bmatrix}0.446\end{bmatrix})<br>\end{aligned}<br>$$ </li>
+</ol>
+</li>
+<li>Because we have generated both the input and target in equation(3), we can calculate the error:<br> $$<br> \begin{aligned}<br>   e=t-a&amp;={1+\sin(\frac{\pi}{4}p)}-a^2\<br>   &amp;={1+\sin(\frac{\pi}{4}\times 1)}-0.446\<br>   &amp;=1.261<br> \end{aligned}<br> $$</li>
+<li>We then backpropagate the sensitivities during which derivatives of transfer function are needed:<br> $$<br> \begin{aligned}<br>   \dot{f}^1(n)&amp;=\frac{d}{dn}(\frac{1}{1+e^{-n}})\<br>   &amp;=\frac{e^{-n}}{(1+e^{-n})^2}\<br>   &amp;=(1-\frac{1}{1+e^{-n}})(\frac{1}{1+e^{-n}})\<br>   &amp;=(1-a^1)(a^1)<br> \end{aligned}<br> $$<br> and<br> $$<br>   \dot{f}^2(n)=\frac{d}{dn}(n)=1<br> $$</li>
+<li>Now we have all components which is required for backpropagating<ol>
+<li>The starting point is found in the second layer:<br>$$<br>\begin{aligned}<br>  \boldsymbol{s}^2&amp;=2\dot{F}^2(\boldsymbol{n}^1)(\boldsymbol{t}-\boldsymbol{a})\<br>  &amp;=-2\begin{bmatrix}<pre><code>\dot&#123;f&#125;^2(n^2)</code></pre>
+  \end{bmatrix}(1.261)\<br>  &amp;=-2\begin{bmatrix}<pre><code>1</code></pre>
+  \end{bmatrix}(1.261)\<br>  &amp;=-2.522<br>\end{aligned}<br>$$ </li>
+<li>And the sensitivity of first layer is:<br>$$<br>\begin{aligned}<br>  \boldsymbol{s}^1&amp;=\dot{F}^1(\boldsymbol{n}^1)(W^2)^T\boldsymbol{s}^2\<br>  &amp;=\begin{bmatrix}<pre><code>(1-a^1_1)(a^1_1)&amp;0\\
+0&amp;(1-a^1_2)(a^1_2)</code></pre>
+  \end{bmatrix}\begin{bmatrix}<pre><code>0.09\\
+-0.17</code></pre>
+  \end{bmatrix}\begin{bmatrix}<pre><code>-2.522</code></pre>
+  \end{bmatrix}\<br>  &amp;=\begin{bmatrix}<pre><code>(1-0.321)(0.321)&amp;0\\
+0&amp;(1-0.368)(0.368)</code></pre>
+  \end{bmatrix}\begin{bmatrix}<pre><code>0.09\\
+-0.17</code></pre>
+  \end{bmatrix}\begin{bmatrix}<pre><code>-2.522</code></pre>
+  \end{bmatrix}\<br>  &amp;=\begin{bmatrix}<pre><code>0.218&amp;0\\
+0&amp;0.233</code></pre>
+  \end{bmatrix}\begin{bmatrix}<pre><code>-0.227\\
+0.429</code></pre>
+  \end{bmatrix}\<br>  &amp;=\begin{bmatrix}<pre><code>-0.0495\\
+0.0997</code></pre>
+  \end{bmatrix}<br>\end{aligned}<br>$$</li>
+</ol>
+</li>
+<li>Finally we update the weights. For similicity, we will use a learning rate $\alpha = 0.01$:<br>$$<br>\begin{aligned}<br>  W^2(1)&amp;=W^2(0)-\alpha\boldsymbol{s}^2(\boldsymbol{a}^1)^T\<br>  &amp;=\begin{bmatrix}0.09&amp;-0.17\end{bmatrix}-0.1\begin{bmatrix}-2.522\end{bmatrix}\begin{bmatrix}0.321&amp;0.368\end{bmatrix}\<br>  &amp;=\begin{bmatrix}0.171&amp;-0.0772\end{bmatrix}<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>  \boldsymbol{b}^2(1)&amp;=\boldsymbol{b}^2(0)-\alpha\boldsymbol{s}^2\cdot 1\<br>  &amp;=\begin{bmatrix}0.48\end{bmatrix}-0.1\begin{bmatrix}-2.522\end{bmatrix}\<br>  &amp;=\begin{bmatrix}0.732\end{bmatrix}<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>  W^1(1)&amp;=W^1(0)-\alpha\boldsymbol{s}^1(\boldsymbol{a}^0)^T\<br>  &amp;=\begin{bmatrix}-0.27\-0.41\end{bmatrix}-0.1\begin{bmatrix}-0.0495\0.0997\end{bmatrix}\begin{bmatrix}1\end{bmatrix}\<br>  &amp;=\begin{bmatrix}-0.265\-0.420\end{bmatrix}<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>  \boldsymbol{b}^1(1)&amp;=\boldsymbol{b}^1(0)-\alpha\boldsymbol{s}^1\cdot 1\<br>  &amp;=\begin{bmatrix}-0.48\-0.13\end{bmatrix}-0.1\begin{bmatrix}-0.0495\0.0997\end{bmatrix}\<br>  &amp;=\begin{bmatrix}-0.475\-0.140\end{bmatrix}<br>\end{aligned}<br>$$ </li>
+</ol>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[^1]: Demuth, Howard B., Mark H. Beale, Orlando De Jess, and Martin T. Hagan. Neural network design. Martin Hagan, 2014.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Anthony Tan
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/" title="The Backpropagation Algorithm (Part I)">http://brainbomb.org/Neural Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/username">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Artificial-Neural-Networks/" rel="tag"><i class="fa fa-tag"></i> Artificial Neural Networks</a>
+              <a href="/tags/Artificial-Intelligence/" rel="tag"><i class="fa fa-tag"></i> Artificial Intelligence</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Neural%20Networks/Neural-Network-Design-Backpropagation-Introduction-and-Multilayer-Perceptrons/" rel="prev" title="An Introduction to Backpropagation and Multilayer Perceptrons">
+                  <i class="fa fa-chevron-left"></i> An Introduction to Backpropagation and Multilayer Perceptrons
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Neural%20Networks/Neural-Network-Design-Backpropagation-Batch-Training-and-Incremental-Training/" rel="next" title="Backpropagation, Batch Training, and Incremental Training">
+                  Backpropagation, Batch Training, and Incremental Training <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anthony Tan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'all'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://brainbomb-1.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://brainbomb.org/Neural%20Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/";
+    this.page.identifier = "Neural Networks/Neural-Network-Design-Backpropagation-Backpropagation-Algorithm/";
+    this.page.title = "The Backpropagation Algorithm (Part I)";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://brainbomb-1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
