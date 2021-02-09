@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">1.</span> <span class="nav-text"> References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -198,16 +198,16 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <a href="https://github.com/Tony-Tan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tony-Tan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <a href="mailto:tony.face2ai@gmail.com" title="E-Mail → mailto:tony.face2ai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+        <a href="https://twitter.com/brainbomb_tony" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;brainbomb_tony" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100043728642162" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100043728642162" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
       </span>
   </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
@@ -317,26 +317,45 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> <a id="more"></a> In the previous posts, we talked about the k-armed bandit task in stationary or non-stationary situation. And we also had introduced associative search and non-associative problems. The k-armed bandits are non-associative task but the full reinforcement learning is associative.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 1. <a href="TODO">2.1</a> 2. <a href="TODO">2.3</a> 3. <a href="TODO">2.4</a> 4. <a href="TODO">2.9</a></p>
-<p>Now, we take a step towards the full reinforcement learning task, we introduce finite Markov Decision Processes, finite MDP for short, which contains both evaluating feedback and an associative aspect that the agent choose action in different situations. In the bandit problem, action influence nothing but the immediate reward. However, in the finite MDP that we will investage, the action influence: 1. immediate reward 2. sequencial situation 3. state 4. future reward</p>
-<p>In the bandit problems, which is nonassociative, the agents or the dicision makers only concern which action should be taken currently to maximize the total rewards. But to an associative task, not only immediate rewards but also delay rewards should be concerned. And what the agent and dicision maker should do in an associative task is to balance the delay rewards and the immediate rewards. In the post <a href="">'Action-value methods'</a>, we introduced the value function and how to estimate the value function, based on which we can select the action giving a higher total reward in a long run. And the value function is only decided by action: <span class="math display">\[
-q_{*}(a)
-\]</span></p>
-<p>However, in finite MDP, the value function is of both action and the state that the agent or decision maker faced. Then it converts to: <span class="math display">\[
-q_{*}(s,a)
-\]</span></p>
-<p>and for the state, now, is a relatively important element in the finite MDP, the associative task, we can study the relation between the states and the value given a determined policy basing on which the action would be selected. The value function of state is:</p>
-<p><span class="math display">\[
-v_{*}(s)
-\]</span></p>
-<p>and it is essential to assign credit to individual action selection for long-term consequence, because the state transmission is decided by actions, and if we have known which state is better in the next step then we could choose an action to reach that state.</p>
-<p>The finite MDP is not a full reinforcement learning, but is a good idealized mathematical model for full reinforcement learning. And some key elements of this kind of mathematical model are: 1. returns 2. value function 3. Bellman equations</p>
-<p>All we have talk is far from the real intelligence, for our basic tool is mathematics, and there is tension between breadth of applicability and mathematical tractability.</p>
-<h2 id="references">References</h2>
-<section class="footnotes" role="doc-endnotes">
-<hr />
+        <p><strong>Keywords:</strong></p>
+<a id="more"></a>
+<p>In the previous posts, we talked about the k-armed bandit task in stationary or non-stationary situation. And we also had introduced associative search and non-associative problems. The k-armed bandits are non-associative task but the full reinforcement learning is associative.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li><a href="TODO">2.1</a></li>
+<li><a href="TODO">2.3</a></li>
+<li><a href="TODO">2.4</a></li>
+<li><a href="TODO">2.9</a></li>
+</ol>
+<p>Now, we take a step towards the full reinforcement learning task, we introduce finite Markov Decision Processes, finite MDP for short, which contains both evaluating feedback and an associative aspect that the agent choose action in different situations. In the bandit problem, action influence nothing but the immediate reward. However, in the finite MDP that we will investage, the action influence:</p>
+<ol>
+<li>immediate reward</li>
+<li>sequencial situation</li>
+<li>state</li>
+<li>future reward</li>
+</ol>
+<p>In the bandit problems, which is nonassociative, the agents or the dicision makers only concern which action should be taken currently to maximize the total rewards. But to an associative task, not only immediate rewards but also delay rewards should be concerned. And what the agent and dicision maker should do in an associative task is to balance the delay rewards and the immediate rewards. In the post <a href="">‘Action-value methods’</a>, we introduced the value function and how to estimate the value function, based on which we can select the action giving a higher total reward in a long run. And the value function is only decided by action:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>q</mi><mo>∗</mo></msub><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{*}(a)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.175696em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∗</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span></span></p>
+<p>However, in finite MDP, the value function is of both action and the state that the agent or decision maker faced. Then it converts to:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>q</mi><mo>∗</mo></msub><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q_{*}(s,a)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.175696em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∗</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span></span></p>
+<p>and for the state, now, is a relatively important element in the finite MDP, the associative task, we can study the relation between the states and the value given a determined policy basing on which the action would be selected. The value function of state is:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>v</mi><mo>∗</mo></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v_{*}(s)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.175696em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∗</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mclose">)</span></span></span></span></span></p>
+<p>and it is essential to assign credit to individual action selection for long-term consequence, because the state transmission is decided by actions, and if we have known which state is better in the next step then we could choose an action to reach that state.</p>
+<p>The finite MDP is not a full reinforcement learning, but is a good idealized mathematical model for full reinforcement learning. And some key elements of this kind of mathematical model are:</p>
+<ol>
+<li>returns</li>
+<li>value function</li>
+<li>Bellman equations</li>
+</ol>
+<p>All we have talk is far from the real intelligence, for our basic tool is mathematics, and there is tension between breadth of applicability and mathematical tractability.</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Koller, Daphne, Nir Friedman, Sašo Džeroski, Charles Sutton, Andrew McCallum, Avi Pfeffer, Pieter Abbeel et al. Introduction to statistical relational learning. MIT press, 2007. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
 </ol>
 </section>
 
@@ -347,20 +366,6 @@ v_{*}(s)
     
 
     <footer class="post-footer">
-          <div class="reward-container">
-  <div></div>
-  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
-    Donate
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
-        <span>PayPal</span>
-      </div>
-
-  </div>
-</div>
-
           
 
 <div class="post-copyright">
@@ -384,7 +389,7 @@ v_{*}(s)
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/username">
+        <a target="_blank" class="social-link" href="https://twitter.com/brainbomb_tony">
           <span class="icon">
             <i class="fab fa-twitter"></i>
           </span>
@@ -534,37 +539,7 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'all'
-      },
-      options: {
-        renderActions: {
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 
 

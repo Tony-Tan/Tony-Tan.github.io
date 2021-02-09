@@ -167,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">1.</span> <span class="nav-text"> Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text"> References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -198,16 +198,16 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <a href="https://github.com/Tony-Tan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tony-Tan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <a href="mailto:tony.face2ai@gmail.com" title="E-Mail → mailto:tony.face2ai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+        <a href="https://twitter.com/brainbomb_tony" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;brainbomb_tony" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100043728642162" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100043728642162" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
       </span>
   </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
@@ -317,15 +317,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> <a id="more"></a> MPD has been introduced in previous posts: 1. <a href="TODO"></a> 2. <a href="TODO"></a> 3. <a href="TODO"></a> 4. <a href="TODO"></a></p>
-<p>And finite MDP is a more accessible subset of MDP who must have an optimal policy or a set of optimal policy who share the same value function of the same state as we hav discussed in the post <a href="TODO">'Optimal Policies and Optimal Value Functions'</a>. And we did not give any algorithms to solve finite MDP task. Now, we start to investagate different kinds of algorithms to solve MDP problems. Dynamic programming(DP for short) is such a kind of algorithms which is not only easy to understand but essential to the following algorithms.</p>
-<h2 id="dynamic-programming">Dynamic Programming</h2>
+        <p><strong>Keywords:</strong></p>
+<a id="more"></a>
+<p>MPD has been introduced in previous posts:</p>
+<ol>
+<li><a href="TODO"></a></li>
+<li><a href="TODO"></a></li>
+<li><a href="TODO"></a></li>
+<li><a href="TODO"></a></li>
+</ol>
+<p>And finite MDP is a more accessible subset of MDP who must have an optimal policy or a set of optimal policy who share the same value function of the same state as we hav discussed in the post <a href="TODO">‘Optimal Policies and Optimal Value Functions’</a>. And we did not give any algorithms to solve finite MDP task. Now, we start to investagate different kinds of algorithms to solve MDP problems. Dynamic programming(DP for short) is such a kind of algorithms which is not only easy to understand but essential to the following algorithms.</p>
+<h2 id="dynamic-programming"><a class="markdownIt-Anchor" href="#dynamic-programming"></a> Dynamic Programming</h2>
 <p>Dynamic programming is a collect of algorithms, and they are employed to compute optimal policies given a perfect model of environment, i.e. the MDP condition. However, classical DP algorithms are limited utility in reinforcement learning because of its assumption of perfect model(MDP condition) and its great computational expense. But Dynamic programming is essential foundation for understanding of other methods which need less computation and are not based on strong assumption, like MDP condtion.</p>
-<p>Finite MDP who contains finite 1. stats, 2. kinds of reward 3. and actions</p>
-<p>is the basis of dynamic programming. Dynamics who characterizes the environment is: <span class="math inline">\(p(s&#39;,r|s,a)\)</span> where <span class="math inline">\(s\in \mathcal{S}\)</span>, <span class="math inline">\(a\in \mathcal{A}(s)\)</span>, <span class="math inline">\(r\in \mathcal{R}\)</span>, and <span class="math inline">\(s&#39;\in \mathcal{S}^{+}\)</span> and it has been introduced in the post <a href="">'The Agent-Environment interface'</a>. So if the dynamics are consistent, the environment is not changed from step to step as well. And what we need to concern is just the strategy of agent to find the optimal policies or the optimal value function.</p>
+<p>Finite MDP who contains finite</p>
+<ol>
+<li>stats,</li>
+<li>kinds of reward</li>
+<li>and actions</li>
+</ol>
+<p>is the basis of dynamic programming. Dynamics who characterizes the environment is: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msup><mi>s</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">,</mo><mi>r</mi><mi mathvariant="normal">∣</mi><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(s&#x27;,r|s,a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">∣</span><span class="mord mathdefault">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span> where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>∈</mo><mi mathvariant="script">S</mi></mrow><annotation encoding="application/x-tex">s\in \mathcal{S}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.075em;">S</span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>∈</mo><mi mathvariant="script">A</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a\in \mathcal{A}(s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal">A</span></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>∈</mo><mi mathvariant="script">R</mi></mrow><annotation encoding="application/x-tex">r\in \mathcal{R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal">R</span></span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>s</mi><mo mathvariant="normal">′</mo></msup><mo>∈</mo><msup><mi mathvariant="script">S</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">s&#x27;\in \mathcal{S}^{+}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.790992em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.075em;">S</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span></span></span></span> and it has been introduced in the post <a href="">‘The Agent-Environment interface’</a>. So if the dynamics are consistent, the environment is not changed from step to step as well. And what we need to concern is just the strategy of agent to find the optimal policies or the optimal value function.</p>
 <p>Till now, all states and actions that we have talked about are all discrete and DP methods. In continuous state and action space, there must be exact solution to an MDP task. But we prefer to find an approximate solution of a quantilized state and action space for this is more effecient than searching in the continuous space.</p>
-<p>Using value function of states pr state-action pairs is the key idea of DP methods and other reinforcement learning mehtods. It can be employed to organize and structure the search for good policies. And <a href="">'Bellman optimality equation'</a> of states and state-action are used widely in DP methods.</p>
-<h2 id="references">References</h2>
+<p>Using value function of states pr state-action pairs is the key idea of DP methods and other reinforcement learning mehtods. It can be employed to organize and structure the search for good policies. And <a href="">‘Bellman optimality equation’</a> of states and state-action are used widely in DP methods.</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
 
     </div>
 
@@ -334,20 +347,6 @@
     
 
     <footer class="post-footer">
-          <div class="reward-container">
-  <div></div>
-  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
-    Donate
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
-        <span>PayPal</span>
-      </div>
-
-  </div>
-</div>
-
           
 
 <div class="post-copyright">
@@ -371,7 +370,7 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/username">
+        <a target="_blank" class="social-link" href="https://twitter.com/brainbomb_tony">
           <span class="icon">
             <i class="fab fa-twitter"></i>
           </span>
@@ -521,37 +520,7 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'all'
-      },
-      options: {
-        renderActions: {
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 
 

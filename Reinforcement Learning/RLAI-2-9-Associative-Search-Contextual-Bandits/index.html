@@ -170,7 +170,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#from-k-armed-bandit-to-reinforcement-learning"><span class="nav-number">1.</span> <span class="nav-text"> From k-armed bandit to Reinforcement learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text"> References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,16 +201,16 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <a href="https://github.com/Tony-Tan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tony-Tan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <a href="mailto:tony.face2ai@gmail.com" title="E-Mail → mailto:tony.face2ai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+        <a href="https://twitter.com/brainbomb_tony" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;brainbomb_tony" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100043728642162" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100043728642162" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
       </span>
   </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
@@ -320,50 +320,59 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> Associative, Stationary, Nonassociative, Nonstationary, Contextual Bandits <a id="more"></a> ## From k-armed bandit to Reinforcement learning So far, we have learned several methods to solve <span class="math inline">\(k\)</span>-armed bandit problem for both stationary and nonstationary: 1. <a href="TODO">'An Introduction to <span class="math inline">\(k\)</span>-armed Bandit Problem'</a> 2. <a href="TODO">'Incremental Implementation'</a> 3. <a href="TODO">'Optimistic Initial Value'</a> 4. <a href="TODO">'the 10-armed Testbed'</a></p>
+        <p><strong>Keywords:</strong> Associative, Stationary, Nonassociative, Nonstationary, Contextual Bandits</p>
+<a id="more"></a>
+<h2 id="from-k-armed-bandit-to-reinforcement-learning"><a class="markdownIt-Anchor" href="#from-k-armed-bandit-to-reinforcement-learning"></a> From k-armed bandit to Reinforcement learning</h2>
+<p>So far, we have learned several methods to solve <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>-armed bandit problem for both stationary and nonstationary:</p>
+<ol>
+<li><a href="TODO">‘An Introduction to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>-armed Bandit Problem’</a></li>
+<li><a href="TODO">‘Incremental Implementation’</a></li>
+<li><a href="TODO">‘Optimistic Initial Value’</a></li>
+<li><a href="TODO">‘the 10-armed Testbed’</a></li>
+</ol>
 <p>and so on.</p>
 <p>All these tasks are nonassociative. Because they do not need to associate different action with different situations. In all the tasks we have talked about are all in one situation no matter it is stationary or nonstationary. In the nonassociative problem, we explore and exploite. But the general reinforcement learning tasks are always more than one situation. And its goal is to learn a policy to map from situations to the actions that are best in those situation.</p>
 <p>Understanding the difference between nonassociative and associative task is a good way to learn full reinforcement learning.</p>
-<p>Consider several k-armed bandits: <span class="math display">\[
-\{\text{kab}_1,\text{kab}_2,\cdots,\text{kab}_n\}\tag{1}
-\]</span></p>
-<p>And in each step, we face a random slot machine from the set in equation(1). If the agent can not tell the slot machine in the set apart, this is a nonassociation problem. And this task can not be solved by the methods we have learned so far unless the are very simlar: <img src="./non-association.jpeg" /></p>
-<p>However, if the agent can verify these different situatiin, for example these machines have different colors, so we can learn a policy associate to each situation(a certain color machine), like for the red machine, action 2 is best, and for the yellow one the first action is taken. This is the association task. So to solve this kind of problem, we need : 1. not only trial-and-error learning to search for the best action like in the nonassociative ones, 2. but also associate these action to the situations</p>
-<p><img src="./association.jpeg" /></p>
+<p>Consider several k-armed bandits:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable width="100%"><mtr><mtd width="50%"></mtd><mtd><mrow><mo stretchy="false">{</mo><msub><mtext>kab</mtext><mn>1</mn></msub><mo separator="true">,</mo><msub><mtext>kab</mtext><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mtext>kab</mtext><mi>n</mi></msub><mo stretchy="false">}</mo></mrow></mtd><mtd width="50%"></mtd><mtd><mtext>(1)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">\{\text{kab}_1,\text{kab}_2,\cdots,\text{kab}_n\}\tag{1}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord text"><span class="mord">kab</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord text"><span class="mord">kab</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord text"><span class="mord">kab</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span><span class="tag"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(</span><span class="mord"><span class="mord">1</span></span><span class="mord">)</span></span></span></span></span></span></p>
+<p>And in each step, we face a random slot machine from the set in equation(1). If the agent can not tell the slot machine in the set apart, this is a nonassociation problem. And this task can not be solved by the methods we have learned so far unless the are very simlar:<br />
+<img src="./non-association.jpeg" alt="" /></p>
+<p>However, if the agent can verify these different situatiin, for example these machines have different colors, so we can learn a policy associate to each situation(a certain color machine), like for the red machine, action 2 is best, and for the yellow one the first action is taken. This is the association task. So to solve this kind of problem, we need :</p>
+<ol>
+<li>not only trial-and-error learning to search for the best action like in the nonassociative ones,</li>
+<li>but also associate these action to the situations</li>
+</ol>
+<p><img src="./association.jpeg" alt="" /></p>
 <p>The bandit problems with associative search are called contextual bandits(color or other information can be used to verified the situation). And it is a good stage help us understand full reinforcement learning from the simplest nonassociative problems such as the k-armed bandits we have learned.</p>
 <p>This table conclude the difference and relation of k-armed bandit problems, associative search tasks, and full reinforcement learning:</p>
 <table>
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 40%" />
-<col style="width: 33%" />
-</colgroup>
 <thead>
-<tr class="header">
-<th style="text-align: center;">task</th>
-<th style="text-align: center;">Effect of action</th>
-<th style="text-align: center;">Situation</th>
+<tr>
+<th style="text-align:center">task</th>
+<th style="text-align:center">Effect of action</th>
+<th style="text-align:center">Situation</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(k\)</span>-armed bandits</td>
-<td style="text-align: center;">reward</td>
-<td style="text-align: center;">never change</td>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>-armed bandits</td>
+<td style="text-align:center">reward</td>
+<td style="text-align:center">never change</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">associative search tasks</td>
-<td style="text-align: center;">reward</td>
-<td style="text-align: center;">can be verified, but dicided by environment</td>
+<tr>
+<td style="text-align:center">associative search tasks</td>
+<td style="text-align:center">reward</td>
+<td style="text-align:center">can be verified, but dicided by environment</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">full reinforcement learning</td>
-<td style="text-align: center;">reward &amp; situation</td>
-<td style="text-align: center;">decided by action</td>
+<tr>
+<td style="text-align:center">full reinforcement learning</td>
+<td style="text-align:center">reward &amp; situation</td>
+<td style="text-align:center">decided by action</td>
 </tr>
 </tbody>
 </table>
-<h2 id="references">References</h2>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
 
     </div>
 
@@ -372,20 +381,6 @@
     
 
     <footer class="post-footer">
-          <div class="reward-container">
-  <div></div>
-  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
-    Donate
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
-        <span>PayPal</span>
-      </div>
-
-  </div>
-</div>
-
           
 
 <div class="post-copyright">
@@ -409,7 +404,7 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/username">
+        <a target="_blank" class="social-link" href="https://twitter.com/brainbomb_tony">
           <span class="icon">
             <i class="fab fa-twitter"></i>
           </span>
@@ -559,37 +554,7 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'all'
-      },
-      options: {
-        renderActions: {
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 
 

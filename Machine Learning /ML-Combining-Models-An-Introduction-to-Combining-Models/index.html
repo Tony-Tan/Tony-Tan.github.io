@@ -168,7 +168,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#combining-models1"><span class="nav-number">1.</span> <span class="nav-text">Combining Models1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#organising-models"><span class="nav-number">2.</span> <span class="nav-text">Organising Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#combining-models"><span class="nav-number">1.</span> <span class="nav-text"> Combining Models[1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#organising-models"><span class="nav-number">2.</span> <span class="nav-text"> Organising Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text"> References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,16 +199,16 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <a href="https://github.com/Tony-Tan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tony-Tan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <a href="mailto:tony.face2ai@gmail.com" title="E-Mail → mailto:tony.face2ai@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+        <a href="https://twitter.com/brainbomb_tony" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;brainbomb_tony" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100043728642162" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id&#x3D;100043728642162" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
       </span>
   </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
@@ -322,19 +322,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> combining models <a id="more"></a></p>
-<h2 id="combining-models1">Combining Models<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
-<p>The mixture of Gaussians had been discussed in post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">'Mixtures of Gaussians'</a>. It can not only be used to introduce 'EM algorithm' but contain a strategy to improve model performance. All models we have studied, beside neural networks, are all single-distribution models. This is like that, to solve a problem we invite an expert who is very good at the problem, and we just do what the expert said. However, if our problem is too hard that no expert can deal with it by himself, it is spontaneous to think about how about inviting more experts. This inspiration gives a new way to improve performance by combining multiple models but not just by improving the performance of a single model.</p>
-<h2 id="organising-models">Organising Models</h2>
+        <p><strong>Keywords:</strong> combining models</p>
+<a id="more"></a>
+<h2 id="combining-models"><a class="markdownIt-Anchor" href="#combining-models"></a> Combining Models<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h2>
+<p>The mixture of Gaussians had been discussed in post <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">‘Mixtures of Gaussians’</a>. It can not only be used to introduce ‘EM algorithm’ but contain a strategy to improve model performance. All models we have studied, beside neural networks, are all single-distribution models. This is like that, to solve a problem we invite an expert who is very good at the problem, and we just do what the expert said. However, if our problem is too hard that no expert can deal with it by himself, it is spontaneous to think about how about inviting more experts. This inspiration gives a new way to improve performance by combining multiple models but not just by improving the performance of a single model.</p>
+<h2 id="organising-models"><a class="markdownIt-Anchor" href="#organising-models"></a> Organising Models</h2>
 <p>A naive idea is voting by several models equally, which means averaging all predication of all models. However, different models have different abilities, voting equally is not a good idea. Then boosting and other methods were introduced.</p>
 <p>In some combining methods, such as AdaBoost(boosting), bootstrap, bagging, and e.t.c, the input data has an identical distribution with the training set. However, in some methods, the training set is cut into several subsets with different distribution with the original training set. The decision tree is such a method. A decision tree is a sequence of binary selection and it can be employed in both regression and classification tasks.</p>
-<p>We will briefly discuss: - <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Combining-Models-Committees/">committees</a> - <a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Combining-Models-Boosting-and-Adaboost/">boosting</a> - <a href="">decision tree</a></p>
+<p>We will briefly discuss:</p>
+<ul>
+<li><a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Combining-Models-Committees/">committees</a></li>
+<li><a href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Combining-Models-Boosting-and-Adaboost/">boosting</a></li>
+<li><a href="">decision tree</a></li>
+</ul>
 <p>in the following posts.</p>
-<h2 id="references">References</h2>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
 </ol>
 </section>
 
@@ -345,20 +352,6 @@
     
 
     <footer class="post-footer">
-          <div class="reward-container">
-  <div></div>
-  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
-    Donate
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/paypal.png" alt="Anthony Tan PayPal">
-        <span>PayPal</span>
-      </div>
-
-  </div>
-</div>
-
           
 
 <div class="post-copyright">
@@ -382,7 +375,7 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/username">
+        <a target="_blank" class="social-link" href="https://twitter.com/brainbomb_tony">
           <span class="icon">
             <i class="fab fa-twitter"></i>
           </span>
@@ -533,37 +526,7 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'all'
-      },
-      options: {
-        renderActions: {
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 
 
