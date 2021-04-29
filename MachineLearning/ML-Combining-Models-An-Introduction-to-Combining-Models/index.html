@@ -168,7 +168,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#combining-models"><span class="nav-number">1.</span> <span class="nav-text"> Combining Models[1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#organising-models"><span class="nav-number">2.</span> <span class="nav-text"> Organising Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text"> References</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Combining-Models1"><span class="nav-number">1.</span> <span class="nav-text">Combining Models1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Organising-Models"><span class="nav-number">2.</span> <span class="nav-text">Organising Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -322,13 +322,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Keywords:</strong> combining models</p>
-<span id="more"></span>
-<h2 id="combining-models"><a class="markdownIt-Anchor" href="#combining-models"></a> Combining Models<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h2>
-<p>The mixture of Gaussians had been discussed in post <a target="_blank" rel="noopener" href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">‘Mixtures of Gaussians’</a>. It can not only be used to introduce ‘EM algorithm’ but contain a strategy to improve model performance. All models we have studied, beside neural networks, are all single-distribution models. This is like that, to solve a problem we invite an expert who is very good at the problem, and we just do what the expert said. However, if our problem is too hard that no expert can deal with it by himself, it is spontaneous to think about how about inviting more experts. This inspiration gives a new way to improve performance by combining multiple models but not just by improving the performance of a single model.</p>
-<h2 id="organising-models"><a class="markdownIt-Anchor" href="#organising-models"></a> Organising Models</h2>
-<p>A naive idea is voting by several models equally, which means averaging all predication of all models. However, different models have different abilities, voting equally is not a good idea. Then boosting and other methods were introduced.</p>
-<p>In some combining methods, such as AdaBoost(boosting), bootstrap, bagging, and e.t.c, the input data has an identical distribution with the training set. However, in some methods, the training set is cut into several subsets with different distribution with the original training set. The decision tree is such a method. A decision tree is a sequence of binary selection and it can be employed in both regression and classification tasks.</p>
+        <p><strong>Keywords:</strong> combining models<br><span id="more"></span></p>
+<h2 id="Combining-Models1"><a href="#Combining-Models1" class="headerlink" title="Combining Models1"></a>Combining Models<sup><a href="#fn_1" id="reffn_1">1</a></sup></h2><p>The mixture of Gaussians had been discussed in post <a target="_blank" rel="noopener" href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Mixture-Models-Mixtures-of-Gaussians/">‘Mixtures of Gaussians’</a>. It can not only be used to introduce ‘EM algorithm’ but contain a strategy to improve model performance. All models we have studied, beside neural networks, are all single-distribution models. This is like that, to solve a problem we invite an expert who is very good at the problem, and we just do what the expert said. However, if our problem is too hard that no expert can deal with it by himself, it is spontaneous to think about how about inviting more experts. This inspiration gives a new way to improve performance by combining multiple models but not just by improving the performance of a single model.</p>
+<h2 id="Organising-Models"><a href="#Organising-Models" class="headerlink" title="Organising Models"></a>Organising Models</h2><p>A naive idea is voting by several models equally, which means averaging all predication of all models. However, different models have different abilities, voting equally is not a good idea. Then boosting and other methods were introduced.</p>
+<p>In some combining methods, such as AdaBoost(boosting), bootstrap, bagging, and e.t.c, the input data has an identical distribution with the training set. However, in some methods, the training set is cut into several subsets with different distribution with the original training set. The decision tree is such a method. A decision tree is a sequence of binary selection and it can be employed in both regression and classification tasks. </p>
 <p>We will briefly discuss:</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://brainbomb.org/Artificial-Intelligence/Machine-Learning/ML-Combining-Models-Committees/">committees</a></li>
@@ -336,14 +333,9 @@
 <li><a href="">decision tree</a></li>
 </ul>
 <p>in the following posts.</p>
-<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><blockquote id="fn_1">
+<sup>1</sup>. Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
 
     </div>
 
