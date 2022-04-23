@@ -16,7 +16,6 @@ markup: pdc
 
 ## Preliminariess
 
-
 1. Linear Algebra(the concepts of space, vector)
 2. Calculus 
 
