@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/</link>
+    <description>Recent content on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 14 Feb 2020 11:33:36 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Linear Classification] Least Squares Estimation</title>
+      <link>https://anthony-tan.com/deep_learning/ml-linear-regression-least-squares-estimation/</link>
+      <pubDate>Fri, 14 Feb 2020 11:33:36 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/deep_learning/ml-linear-regression-least-squares-estimation/</guid>
+      <description>Keywords: least squares estimation
+Squares of the difference between the output of a predictor and the target are wildly used loss function especially in regression problems:
+$$ \ell(\hat{\boldsymbol{y}}_i,\boldsymbol{y}_i)=(\hat{\boldsymbol{y}}_i-\boldsymbol{y}_i)^T(\hat{\boldsymbol{y}}_i-\boldsymbol{y}_i) \tag{1} $$
+Linear Regression1 Linear regression is a good problem to begin our machine learning career. Not only because of its easiest form and logic but also it&amp;rsquo;s a good basis from which we can extend to other more complicated methods like nonlinear regression and kernel functions.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://anthony-tan.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/about/</guid>
+      <description>About Me Hi, I&amp;rsquo;m Anthony Tan(谭升). I am now living in Shenzhen, China. I&amp;rsquo;m a full-time computer vision algorithm engineer and a part-time individual reinforcement learning researcher. I have had a great interest in artificial intelligence since I watched the movie &amp;ldquo;Iron man&amp;rdquo; when I was a middle school student. And to get deeper into these subjects, I&amp;rsquo;d like to apply for a Ph.D. project on reinforcement learning in the following years.</description>
+    </item>
+    
+    
+    
+  </channel>
+</rss>
