@@ -12,17 +12,8 @@
       <pubDate>Wed, 09 Oct 2019 18:36:40 +0000</pubDate>
       
       <guid>https://anthony-tan.com/deep_learning/introduction-to-linear-regression/</guid>
-      <description>## Preliminariess
-1. Linear Algebra(the concepts of space, vector)
-2. Calculus 
-
-## What is Linear Regression
-
-Linear regression is a basic idea in statistical and machine learning based on the linear combination. And it was usually used to predict some responses to some inputs(predictors). 
-
-### Machine Learning and Statistical Learning 
-
-Machine learning and statistical learning are similar but have some distinctions.</description>
+      <description>Preliminariess Linear Algebra(the concepts of space, vector) Calculus  What is Linear Regression Linear regression is a basic idea in statistical and machine learning based on the linear combination. And it was usually used to predict some responses to some inputs(predictors).
+Machine Learning and Statistical Learning Machine learning and statistical learning are similar but have some distinctions. In machine learning, models, regression models, or classification models, are used to predict the outputs of the new incoming inputs.</description>
     </item>
     
     <item>
