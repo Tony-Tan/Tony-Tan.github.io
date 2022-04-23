@@ -12,4 +12,4 @@ echo $commit
 git commit -m "$commit"
 
 # master
-git push origin master
+git push origin source
