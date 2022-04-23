@@ -1,3 +1,8 @@
+---
+comments: true
+---
+
+
 # About Me
 
 Hi, I'm Anthony Tan(谭升). I am now living in Shenzhen, China. I'm a full-time computer vision algorithm engineer and a part-time individual reinforcement learning researcher. I have had a great interest in artificial intelligence since I watched the movie "Iron man" when I was a middle school student. And to get deeper into these subjects, I'd like to apply for a Ph.D. project on reinforcement learning in the following years. So far, I've learned and reviewed some papers that are necessary for reinforcement learning research, and some mathematics, like calculus, linear algebra, probability, and so on.
