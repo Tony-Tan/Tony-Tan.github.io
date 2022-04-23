@@ -34,6 +34,10 @@
     {{- else }}{{ .Content }}{{ end }}
   </div>
   {{- end }}
+  
+  <figure class="article-discussion">
+    {{ template "_internal/disqus.html" . }}
+  </figure>
 
   <footer class="post-footer">
     {{- if .Params.tags }}
@@ -55,9 +59,7 @@
   {{- partial "comments.html" . }}
   {{- end }} -->
   
-  <figure class="article-discussion">
-    {{ template "_internal/disqus.html" . }}
-  </figure>
+  
 </article>
 
 {{- end }}{{/* end main */}}
