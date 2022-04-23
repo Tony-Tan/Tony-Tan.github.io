@@ -2,42 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://anthony-tan.com/deep_learning/ml-linear-regression-least-squares-estimation/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/tags/algorithm/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/categories/artificial-intelligence/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/categories/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/deep_learning/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/tags/linear-regression/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/tags/machine-learning/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/categories/machine-learning/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/tags/regression/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
-    <loc>https://anthony-tan.com/tags/</loc>
-    <lastmod>2020-02-14T11:33:36+00:00</lastmod>
-  </url><url>
     <loc>https://anthony-tan.com/about/</loc>
   </url><url>
+    <loc>https://anthony-tan.com/</loc>
+  </url><url>
     <loc>https://anthony-tan.com/archives/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/categories/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/deep_learning/</loc>
   </url><url>
     <loc>https://anthony-tan.com/math/</loc>
   </url><url>
@@ -46,5 +19,7 @@
     <loc>https://anthony-tan.com/search/</loc>
   </url><url>
     <loc>https://anthony-tan.com/series/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/</loc>
   </url>
 </urlset>
