@@ -20,4 +20,4 @@ jobs:
           branch: main
           hugoVersion: 'extended_0.58.3'
           cname: https://anthony-tan.com
-          repo: Tony-Tan.github.io
+          repo: Tony-Tan/Tony-Tan.github.io
