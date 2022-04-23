@@ -12,9 +12,10 @@ date: 2019-10-09 18:36:40
 markup: pdc
 ---
 
-<!-- more -->
+
 
 ## Preliminaries
+
 1. Linear Algebra(the concepts of space, vector)
 2. Calculus 
 
