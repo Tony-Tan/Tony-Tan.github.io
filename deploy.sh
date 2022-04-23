@@ -1,5 +1,6 @@
 #!/bin/bash
 
+hugo
 
 git add .
 

@@ -23,7 +23,7 @@ languages:
         weight: 1
         menu:
             main:
-                - name: Deep Learning
+                - name: Machine(Deep) Learning
                   url: deep_learning/
                   weight: 1
                 - name: Reinforcement Learning
