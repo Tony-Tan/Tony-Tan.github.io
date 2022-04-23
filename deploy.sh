@@ -11,5 +11,5 @@ echo $commit
 # 提交
 git commit -m "$commit"
 
-# 推送到source分支上
-git push origin source
+# master
+git push origin master
