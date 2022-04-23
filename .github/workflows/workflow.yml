@@ -18,6 +18,6 @@ jobs:
         with:
           githubToken: ${{ secrets.ACTIONS_TOKEN }}
           branch: main
-          hugoVersion: 'extended_'
+          hugoVersion: 'extended_0.58.3'
           cname: https://anthony-tan.com
           repo: Tony-Tan.github.io
