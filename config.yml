@@ -10,7 +10,7 @@ buildFuture: false
 buildExpired: true
 enableEmoji: true
 pygmentsUseClasses: true
-disqusShortname: anthony-tan-com
+disqusShortname: 'anthony-tan-com'
 # googleAnalytics: UA-123-45
 
 minify:
