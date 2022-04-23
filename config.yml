@@ -125,7 +125,7 @@ params:
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
     ShowToc: true
-    # comments: true
+    comments: true
     # images: ["./me.jpg"]
 
     profileMode:
