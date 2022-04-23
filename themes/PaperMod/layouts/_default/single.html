@@ -51,9 +51,13 @@
     {{- end }}
   </footer>
 
-  {{- if (.Param "comments") }}
+  <!-- {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
-  {{- end }}
+  {{- end }} -->
+  
+  <figure class="article-discussion">
+    {{ template "_internal/disqus.html" . }}
+  </figure>
 </article>
 
 {{- end }}{{/* end main */}}
