@@ -9,6 +9,7 @@ categories:
   - Artificial Intelligence
   - Machine Learning
 date: 2020-02-14 11:33:36
+comments: true
 ---
 
 **Keywords:** least squares estimation
