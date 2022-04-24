@@ -20,13 +20,13 @@ url: "/A-Simple-Linear-Regression"
 ---
 
 
-## Preliminariess
+## Preliminaries
 1. Linear Algebra(the concepts of space, vector)
 2. Calculus 
 
 ## Notations of Linear Regression[^1]
 
-We have already created a simple linear model in the post ["An Introduction to Linear Regression"](https://anthony-tan.com/ml-introduction_to_linear_regression/). According to the definition of linearity, we can develop a simplest linear regression model:
+We have already created a simple linear model in the post ["An Introduction to Linear Regression"](https://anthony-tan.com/ml-introduction_to_linear_regression/). According to the definition of linearity, we can develop the simplest linear regression model:
 
 $$
 Y\sim w_1X+w_0\tag{1}
@@ -34,7 +34,7 @@ $$
 
 where the symbol $\sim$ is read as "is approximately modeled as". Equation (1) can also be described as "regressing $Y$ on $X$(or $Y$ onto $X$)".
 
-Go back to the example that was given in ["An Introduction to Linear Regression"](https://anthony-tan.com/ml-introduction_to_linear_regression/). Combining with the equation (1), we get a model of the budget of TV advertisement and sales:
+Go back to the example that was given in ["An Introduction to Linear Regression"](https://anthony-tan.com/ml-introduction_to_linear_regression/). Combining with the equation (1), we get a model of the budget for TV advertisement and sales:
 
 $$
 \text{Sales}=w_1\times \text{TV}+ w_0\tag{2}
@@ -48,7 +48,7 @@ $$
 y=\hat{w_1}x+\hat{w_0}\tag{3}
 $$
 
-The hat symbol "$\;\hat{}\;$" is used to present that this variable is a prediction, which means it is not the true value of the variable but a conjecture through some certain mathematical strategies or methods else.
+The hat symbol "$\;\hat{}\;$" is used to present that this variable is a prediction, which means it is not the true value of the variable but a conjecture through certain mathematical strategies or methods else.
 
 Then, a new input $x_i$ has its prediction:
 
@@ -85,15 +85,15 @@ $$
 e_i=y_i-\hat{y}_i\tag{7}
 $$
 
-$y_i$ is the target, which is the value our model is trying to achieve. So, the smaller the $|e_i|$ is, the better the model is. Because the absolute operation is not a good analytic operation, so we replace it with the quadratic operation:
+$y_i$ is the target, which is the value our model is trying to achieve. So, the smaller the $|e_i|$ is, the better the model is. Because the absolute operation is not a good analytic operation, we replace it with the quadratic operation:
 
 $$
 \mathcal{L}_\text{RSS}=e_1^2+e_2^2+\dots+e_n^2\tag{8}
 $$
 
-$\mathcal{L}_\text{RSS}$ means "Residual Sum of Squares", the sum of total square residual. And to find a better model, wo need to minimize the sum of total residual. In machine learning, this is called loss function.
+$\mathcal{L}_\text{RSS}$ means "Residual Sum of Squares", the sum of total square residual. And to find a better model, we need to minimize the sum of the total residual. In machine learning, this is called loss function.
 
-Now we take eqation(4),(7) into (8):
+Now we take equations (4),(7) into (8):
 
 $$
 \begin{aligned}
@@ -105,9 +105,9 @@ $$
 
 To minimize the function "$\mathcal{L}_\text{RSS}$", the calculus told us the possible minimum(maximum) points always stay at stationary points. And the stationary points are the points where the derivative of the function is zero. Remember that the minimum(maximum) points must be stationary points, but the stationary point is not necessary to be a minimum(maximum) point. For more information, 'Numerical Optimization' is a good book.
 
-Since the '$\mathcal{L}_\text{RSS}$' is a function of a vector $\begin{bmatrix}w_0&w_1\end{bmatrix}^T$, the derivative is replaced by partial derivative. As the '$\mathcal{L}_\text{RSS}$' is just a simple quadric surface of, the minimum or maximum exist, and there is one and only one stationary point. 
+Since the '$\mathcal{L}_\text{RSS}$' is a function of a vector $\begin{bmatrix}w_0&w_1\end{bmatrix}^T$, the derivative is replaced by partial derivative. As the '$\mathcal{L}_\text{RSS}$' is just a simple quadric surface, the minimum or maximum exists, and there is one and only one stationary point. 
 
-Then our mission to find the best parameters for the regression has been converted to calculus the solution of function system that the derivative(partial derivative) is set to zero.
+Then our mission to find the best parameters for the regression has been converted to calculus the solution of the function system that the derivative(partial derivative) is set to zero.
 
 The partial derivative of $\hat{w_1}$ is 
 
@@ -189,22 +189,22 @@ y_mean=0
 x_sum=0
 x_mean=0
 for x,y in zip(data_TV,data_sale):
- y_sum+=y
- x_sum+=x
+    y_sum+=y
+    x_sum+=x
 if len(data_sale)!=0:
- y_mean=y_sum/len(data_sale)
+    y_mean=y_sum/len(data_sale)
 if len(data_TV)!=0:
- x_mean=x_sum/len(data_TV)
+    x_mean=x_sum/len(data_TV)
 
 # calculate w_1
 w_1=0
 a=0
 b=0
 for x,y in zip(data_TV,data_sale):
- a += x*(y-y_mean)
- b += x*(x-x_mean)
+    a += x*(y-y_mean)
+    b += x*(x-x_mean)
 if b!=0:
- w_1=a/b
+    w_1=a/b
 
 # calculate w_0
 w_0=y_mean-w_1*x_mean
@@ -219,7 +219,7 @@ plt.plot(x,w_1*x+w_0,'r-')
 plt.show()
 ```
 
-After runing the code, we got:
+After running the code, we got:
 
 ![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_19_45_LinearRegression.png)
 
