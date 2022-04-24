@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>maximum likelihood estimation on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/maximum-likelihood-estimation/</link>
+    <description>Recent content in maximum likelihood estimation on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 15 Feb 2020 00:41:25 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/maximum-likelihood-estimation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maximum Likelihood Estimation</title>
+      <link>https://anthony-tan.com/Maximum-Likelihood-Estimation/</link>
+      <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Maximum-Likelihood-Estimation/</guid>
+      <description>Square Loss Function for Regression1 For any input \(\mathbf{x}\), our goal in a regression task is to give a prediction \(\hat{y}=f(\mathbf{x})\) to approximate target \(t\) where the function \(f(\cdot)\) is the chosen hypothesis or model as mentioned in the post https://anthony-tan.com/A-Simple-Linear-Regression/.
+The difference between \(t\) and \(\hat{y}\) can be called ‘error’ or more precisely ‘loss’. Because in an approximation task, ‘error’ occurs by chance and always exists, and ‘loss’ is a good word to represent the difference.</description>
+    </item>
+    
+  </channel>
+</rss>

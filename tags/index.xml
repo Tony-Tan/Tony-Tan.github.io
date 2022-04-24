@@ -5,7 +5,52 @@
     <link>https://anthony-tan.com/tags/</link>
     <description>Recent content in Tags on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 Feb 2020 11:33:36 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Feb 2020 00:41:25 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>least square estimation</title>
+      <link>https://anthony-tan.com/tags/least-square-estimation/</link>
+      <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/least-square-estimation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linear regression</title>
+      <link>https://anthony-tan.com/tags/linear-regression/</link>
+      <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/linear-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://anthony-tan.com/tags/machine-learning/</link>
+      <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>maximum likelihood estimation</title>
+      <link>https://anthony-tan.com/tags/maximum-likelihood-estimation/</link>
+      <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/maximum-likelihood-estimation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>regression function</title>
+      <link>https://anthony-tan.com/tags/regression-function/</link>
+      <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/regression-function/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>column space</title>
       <link>https://anthony-tan.com/tags/column-space/</link>
@@ -21,24 +66,6 @@
       <pubDate>Fri, 14 Feb 2020 11:33:36 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/least-squares-estimation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linear regression</title>
-      <link>https://anthony-tan.com/tags/linear-regression/</link>
-      <pubDate>Fri, 14 Feb 2020 11:33:36 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/linear-regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine learning</title>
-      <link>https://anthony-tan.com/tags/machine-learning/</link>
-      <pubDate>Fri, 14 Feb 2020 11:33:36 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
       <description></description>
     </item>
     

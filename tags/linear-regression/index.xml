@@ -5,7 +5,17 @@
     <link>https://anthony-tan.com/tags/linear-regression/</link>
     <description>Recent content in linear regression on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 Feb 2020 11:33:36 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/linear-regression/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Feb 2020 00:41:25 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/linear-regression/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maximum Likelihood Estimation</title>
+      <link>https://anthony-tan.com/Maximum-Likelihood-Estimation/</link>
+      <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Maximum-Likelihood-Estimation/</guid>
+      <description>Square Loss Function for Regression1 For any input \(\mathbf{x}\), our goal in a regression task is to give a prediction \(\hat{y}=f(\mathbf{x})\) to approximate target \(t\) where the function \(f(\cdot)\) is the chosen hypothesis or model as mentioned in the post https://anthony-tan.com/A-Simple-Linear-Regression/.
+The difference between \(t\) and \(\hat{y}\) can be called ‘error’ or more precisely ‘loss’. Because in an approximation task, ‘error’ occurs by chance and always exists, and ‘loss’ is a good word to represent the difference.</description>
+    </item>
+    
     <item>
       <title>Least Squares Estimation</title>
       <link>https://anthony-tan.com/Least-Squares-Estimation/</link>
