@@ -3,14 +3,13 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 markup: pdc
-lastmod: true
+lastmod: {{ .Lastmod }}
 categories:
     - 
 tags:
     - 
 description: ""
 thumbnail: ""
-images: ""
 keywords: ""
 url: ""
 ---

@@ -3,7 +3,7 @@ title: 'An Introduction to Linear Regression'
 date: 2019-10-09 18:36:40
 markup: pdc
 draft: false
-lastmod: true
+lastmod: 2022-04-24 11:40:01
 tags:
     - Linear Regression
     - Statistical Learning
@@ -13,7 +13,6 @@ keywords:
     - feature
     - statistical learning
 thumbnail: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
-# images: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
 url: "/ml-introduction_to_linear_regression"
 ---
 

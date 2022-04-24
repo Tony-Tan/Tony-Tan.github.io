@@ -13,6 +13,7 @@ pygmentsUseClasses: true
 disqusShortname: 'anthony-tan-com'
 googleAnalytics: UA-105335860-12
 relativeURLs: true
+enableGitInfo: true
 minify:
     disableXML: true
     # minifyOutput: true
