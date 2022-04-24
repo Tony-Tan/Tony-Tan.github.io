@@ -15,8 +15,8 @@ keywords:
     - feature
     - statistical learning
 images: 
-    - "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
-url: "/ml-introduction_to_linear_regression"
+    - "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_19_51_total.png"
+url: "/An-Introduction-to-Linear-Regression"
 ---
 
 ## Preliminariess
@@ -107,7 +107,7 @@ The tranformation, equation(4), is called **feature extraction**. $\mathbf{y}$ i
 This example is taken from (James2013[^1]), It is about the sale between different kinds of advertisements. I downloaded the data set from [http://faculty.marshall.usc.edu/gareth-james/ISL/data.html](http://faculty.marshall.usc.edu/gareth-james/ISL/data.html). It's a CSV file, including 200 rows.
 Here I draw 3 pictures using 'matplotlib' to make the data more visible. They are advertisements for 'TV', 'Radio', 'Newspaper' to 'Sales' respectively.
 
-![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total)
+![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_19_51_total.png)
 
 From these figures, we can find TV ads and Sales looks like having a stronger relationship than radio ads and sales. However, the Newspaper ads and Sales look independent.
 
