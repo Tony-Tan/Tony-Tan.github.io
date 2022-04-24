@@ -17,11 +17,10 @@ markup: pdc
 draft: false
 mages: 
     - "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_22_09_projection.png"
-url: "/An-Introduction-to-Linear-Regression"
+url: "/Least-Squares-Estimation"
 ---
 
-**Keywords:** 
-<!-- more -->
+
 ## Priliminaries
 1. [A Simple Linear Regression](https://anthony-tan.com/A-Simple-Linear-Regression/)
 2. the column space
