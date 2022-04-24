@@ -11,7 +11,7 @@ buildExpired: true
 enableEmoji: true
 pygmentsUseClasses: true
 disqusShortname: 'anthony-tan-com'
-# googleAnalytics: UA-123-45
+googleAnalytics: UA-105335860-12
 
 minify:
     disableXML: true
@@ -118,7 +118,7 @@ params:
     defaultTheme: auto
     # disableThemeToggle: true
     ShowShareButtons: true
-    ShowReadingTime: true
+    ShowReadingTime: false
     # disableSpecial1stPost: true
     displayFullLangName: true
     ShowPostNavLinks: true
@@ -140,7 +140,8 @@ params:
               url: archives
             - name: Tags
               url: tags
-
+            - name: Search
+              url: search/
     # homeInfoParams:
     #     Title: "Welcome to my websit"
     #     Content: >
