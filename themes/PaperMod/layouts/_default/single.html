@@ -35,9 +35,7 @@
   </div>
   {{- end }}
   
-  <figure class="article-discussion">
-    {{ template "_internal/disqus.html" . }}
-  </figure>
+  
 
   <footer class="post-footer">
     {{- if .Params.tags }}
@@ -58,7 +56,9 @@
   <!-- {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
   {{- end }} -->
-  
+  <figure class="article-discussion">
+    {{ template "_internal/disqus.html" . }}
+  </figure>
   
 </article>
 

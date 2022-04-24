@@ -3,10 +3,12 @@ title: 'An Introduction to Linear Regression'
 date: 2019-10-09 18:36:40
 markup: pdc
 draft: false
-lastmod: 2022-04-24 11:40:01
 tags:
     - Linear Regression
     - Statistical Learning
+    - feature
+    - basis function
+    - feature extraction
 keywords:
     - linear regression
     - machine learning

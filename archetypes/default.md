@@ -3,7 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 markup: pdc
-lastmod: {{ .Lastmod }}
+lastmod: [":fileModTime", ":default"]
 categories:
     - 
 tags:

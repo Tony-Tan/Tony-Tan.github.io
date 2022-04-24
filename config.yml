@@ -17,6 +17,9 @@ enableGitInfo: true
 minify:
     disableXML: true
     # minifyOutput: true
+# frontmatter:
+#   lastmod: [":fileModTime", "lastmod"]
+# dateFormatToUse: "2006-01-02 15:04"
 
 languages:
     en:
