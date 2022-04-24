@@ -14,7 +14,7 @@ keywords:
     - machine learning
     - feature
     - statistical learning
-thumbnail: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
+image: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
 url: "/ml-introduction_to_linear_regression"
 ---
 
