@@ -5,7 +5,52 @@
     <link>https://anthony-tan.com/tags/</link>
     <description>Recent content in Tags on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 09 Oct 2019 18:36:40 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Oct 2019 20:35:27 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linear regression</title>
+      <link>https://anthony-tan.com/tags/linear-regression/</link>
+      <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/linear-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://anthony-tan.com/tags/machine-learning/</link>
+      <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Residual Sum of Squares</title>
+      <link>https://anthony-tan.com/tags/residual-sum-of-squares/</link>
+      <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/residual-sum-of-squares/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistical learning</title>
+      <link>https://anthony-tan.com/tags/statistical-learning/</link>
+      <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/statistical-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>training set</title>
+      <link>https://anthony-tan.com/tags/training-set/</link>
+      <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/training-set/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>basis function</title>
       <link>https://anthony-tan.com/tags/basis-function/</link>
@@ -30,24 +75,6 @@
       <pubDate>Wed, 09 Oct 2019 18:36:40 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/feature-extraction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linear Regression</title>
-      <link>https://anthony-tan.com/tags/linear-regression/</link>
-      <pubDate>Wed, 09 Oct 2019 18:36:40 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/linear-regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Statistical Learning</title>
-      <link>https://anthony-tan.com/tags/statistical-learning/</link>
-      <pubDate>Wed, 09 Oct 2019 18:36:40 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/statistical-learning/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>machine learning on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/machine-learning/</link>
+    <description>Recent content in machine learning on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 11 Oct 2019 20:35:27 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Simple Linear Regression</title>
+      <link>https://anthony-tan.com/A-Simple-Linear-Regression/</link>
+      <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/A-Simple-Linear-Regression/</guid>
+      <description>Preliminariess Linear Algebra(the concepts of space, vector) Calculus  Notations of Linear Regression1 We have already created a simple linear model in the post “An Introduction to Linear Regression”. According to the definition of linearity, we can develop a simplest linear regression model:
+\[ Y\sim w_1X+w_0\tag{1} \]
+where the symbol \(\sim\) is read as “is approximately modeled as”. Equation (1) can also be described as “regressing \(Y\) on \(X\)(or \(Y\) onto \(X\))”.</description>
+    </item>
+    
+  </channel>
+</rss>

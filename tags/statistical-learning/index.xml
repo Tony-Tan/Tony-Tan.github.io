@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Statistical Learning on Anthony&#39;s Blogs</title>
+    <title>statistical learning on Anthony&#39;s Blogs</title>
     <link>https://anthony-tan.com/tags/statistical-learning/</link>
-    <description>Recent content in Statistical Learning on Anthony&#39;s Blogs</description>
+    <description>Recent content in statistical learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 09 Oct 2019 18:36:40 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/statistical-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Oct 2019 20:35:27 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/statistical-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Simple Linear Regression</title>
+      <link>https://anthony-tan.com/A-Simple-Linear-Regression/</link>
+      <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/A-Simple-Linear-Regression/</guid>
+      <description>Preliminariess Linear Algebra(the concepts of space, vector) Calculus  Notations of Linear Regression1 We have already created a simple linear model in the post “An Introduction to Linear Regression”. According to the definition of linearity, we can develop a simplest linear regression model:
+\[ Y\sim w_1X+w_0\tag{1} \]
+where the symbol \(\sim\) is read as “is approximately modeled as”. Equation (1) can also be described as “regressing \(Y\) on \(X\)(or \(Y\) onto \(X\))”.</description>
+    </item>
+    
     <item>
       <title>An Introduction to Linear Regression</title>
-      <link>https://anthony-tan.com/ml-introduction_to_linear_regression/</link>
+      <link>https://anthony-tan.com/An-Introduction-to-Linear-Regression/</link>
       <pubDate>Wed, 09 Oct 2019 18:36:40 +0000</pubDate>
       
-      <guid>https://anthony-tan.com/ml-introduction_to_linear_regression/</guid>
+      <guid>https://anthony-tan.com/An-Introduction-to-Linear-Regression/</guid>
       <description>Preliminariess Linear Algebra(the concepts of space, vector) Calculus  What is Linear Regression Linear regression is a basic idea in statistical and machine learning based on the linear combination. And it was usually used to predict some responses to some inputs(predictors).
 Machine Learning and Statistical Learning Machine learning and statistical learning are similar but have some distinctions. In machine learning, models, regression models, or classification models, are used to predict the outputs of the new incoming inputs.</description>
     </item>
