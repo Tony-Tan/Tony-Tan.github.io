@@ -12,7 +12,7 @@ enableEmoji: true
 pygmentsUseClasses: true
 disqusShortname: 'anthony-tan-com'
 googleAnalytics: UA-105335860-12
-# relativeURLs: true
+
 minify:
     disableXML: true
     # minifyOutput: true
