@@ -12,7 +12,7 @@
       <pubDate>Fri, 11 Oct 2019 20:35:27 +0000</pubDate>
       
       <guid>https://anthony-tan.com/A-Simple-Linear-Regression/</guid>
-      <description>Preliminaries Linear Algebra(the concepts of space, vector) Calculus  Notations of Linear Regression1 We have already created a simple linear model in the post “An Introduction to Linear Regression”. According to the definition of linearity, we can develop the simplest linear regression model:
+      <description>Preliminaries Linear Algebra(the concepts of space, vector) Calculus An Introduction to Linear Regression  Notations of Linear Regression1 We have already created a simple linear model in the post “An Introduction to Linear Regression”. According to the definition of linearity, we can develop the simplest linear regression model:
 \[ Y\sim w_1X+w_0\tag{1} \]
 where the symbol \(\sim\) is read as “is approximately modeled as”. Equation (1) can also be described as “regressing \(Y\) on \(X\)(or \(Y\) onto \(X\))”.</description>
     </item>
