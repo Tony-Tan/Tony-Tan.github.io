@@ -1,5 +1,9 @@
 ---
 title: 'An Introduction to Linear Regression'
+date: 2019-10-09 18:36:40
+markup: pdc
+draft: true
+lastmod: true
 tags:
     - Linear Regression
     - Statistical Learning
@@ -8,11 +12,11 @@ keywords:
     - machine learning
     - feature
     - statistical learning
-date: 2019-10-09 18:36:40
-markup: pdc
+description: ""
+thumbnail: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
+images: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
+url: "ml-introduction_to_linear_regression"
 ---
-
-
 
 ## Preliminariess
 
@@ -103,7 +107,7 @@ The tranformation, equation(4), is called **feature extraction**. $\mathbf{y}$ i
 This example is taken from (James2013[^1]), It is about the sale between different kinds of advertisements. I downloaded the data set from [http://faculty.marshall.usc.edu/gareth-james/ISL/data.html](http://faculty.marshall.usc.edu/gareth-james/ISL/data.html). It's a CSV file, including 200 rows.
 Here I draw 3 pictures using 'matplotlib' to make the data more visible. They are advertisements for 'TV', 'Radio', 'Newspaper' to 'Sales' respectively.
 
-![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_23_21_Introduction-to-Linear-Regression_total)
+![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total)
 
 From these figures, we can find TV ads and Sales looks like having a stronger relationship than radio ads and sales. However, the Newspaper ads and Sales look independent.
 
