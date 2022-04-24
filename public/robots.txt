@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://anthony-tan.com/sitemap.xml
