@@ -22,7 +22,8 @@ url: "/A-Simple-Linear-Regression"
 
 ## Preliminaries
 1. Linear Algebra(the concepts of space, vector)
-2. Calculus 
+2. Calculus
+3. [An Introduction to Linear Regression](https://anthony-tan.com/An-Introduction-to-Linear-Regression/)
 
 ## Notations of Linear Regression[^1]
 
