@@ -12,7 +12,7 @@ keywords:
     - machine learning
     - feature
     - statistical learning
-description: ""
+description: "Linear regression is a basic idea in statistical and machine learning based on the linear combination. And it was usually used to predict some responses to some inputs(predictors). "
 thumbnail: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
 images: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_09_total"
 url: "/ml-introduction_to_linear_regression"
