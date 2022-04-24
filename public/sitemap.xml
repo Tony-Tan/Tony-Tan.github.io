@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://anthony-tan.com/about/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/archives/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/categories/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/deep_learning/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/math/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/reinforcement_learning/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/search/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/series/</loc>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/</loc>
+  </url>
+</urlset>
