@@ -8,15 +8,15 @@
     <lastBuildDate>Fri, 14 Feb 2020 11:33:36 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Least Squares Estimation</title>
-      <link>https://anthony-tan.com/An-Introduction-to-Linear-Regression/</link>
+      <link>https://anthony-tan.com/Least-Squares-Estimation/</link>
       <pubDate>Fri, 14 Feb 2020 11:33:36 +0000</pubDate>
       
-      <guid>https://anthony-tan.com/An-Introduction-to-Linear-Regression/</guid>
-      <description>Keywords: ## Priliminaries 1. A Simple Linear Regression 2. the column space
-Another Example of Linear Regression 1 In the blog A Simple Linear Regression, squares of the difference between the output of a predictor and the target were used as a loss function in a regression problem. And it could be also written as:
+      <guid>https://anthony-tan.com/Least-Squares-Estimation/</guid>
+      <description>Priliminaries A Simple Linear Regression the column space  Another Example of Linear Regression 1 In the blog A Simple Linear Regression, squares of the difference between the output of a predictor and the target were used as a loss function in a regression problem. And it could be also written as:
 \[ \ell(\hat{\mathbf{y}}_i,\mathbf{y}_i)=(\hat{\mathbf{y}}_i-\mathbf{y}_i)^T(\hat{\mathbf{y}}_i-\mathbf{y}_i) \tag{1} \]
 The linear regression model in a matrix form is:
-\[ y=\mathbf{w}^T\mathbf{x}+\mathbf{b}\tag{2} \]</description>
+\[ y=\mathbf{w}^T\mathbf{x}+\mathbf{b}\tag{2} \]
+What we do in this post is analyze the least-squares methods from two different viewpoints</description>
     </item>
     
     <item>
