@@ -18,7 +18,10 @@ draft: false
 mages: ""
 url: "/Maximum-Likelihood-Estimation"
 ---
-
+## Priliminaries
+1. [A Simple Linear Regression](https://anthony-tan.com/A-Simple-Linear-Regression/)
+2. [Least Squares Estimation](https://anthony-tan.com/Least-Squares-Estimation/)
+3. linear algebra
 
 ## Square Loss Function for Regression[^1]
 
