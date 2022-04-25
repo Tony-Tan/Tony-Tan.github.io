@@ -6,12 +6,23 @@
     <description>Recent content in Machine(Deep) Learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://anthony-tan.com/deep_learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Polynomial Regression and Features-Extension of Linear Regression</title>
+      <link>https://anthony-tan.com/Polynomial-Regression-and-Features-Extension-of-Linear-Regression/</link>
+      <pubDate>Sat, 15 Feb 2020 22:00:40 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Polynomial-Regression-and-Features-Extension-of-Linear-Regression/</guid>
+      <description>Priliminaries A Simple Linear Regression Least Squares Estimation  Extending Linear Regression with Features1 The original linear regression is in the form:
+\[ \begin{aligned} y(\mathbf{x})&amp;amp;= b + \mathbf{w}^T \mathbf{x}\\ &amp;amp;=w_01 + w_1x_1+ w_2x_2+\cdots + w_{m+1}x_{m+1} \end{aligned}\tag{1} \]
+where the input vector \(\mathbf{x}\) and parameter \(\mathbf{w}\) are \(m\)-dimension vectors whose first components are \(1\) and bias \(w_0=b\) respectively. This equation is linear for both the input vector and parameter vector. Then an idea come to us, if we set \(x_i=\phi_i(\mathbf{x})\) then equation (1) convert to:</description>
+    </item>
+    
+    <item>
       <title>Maximum Likelihood Estimation</title>
       <link>https://anthony-tan.com/Maximum-Likelihood-Estimation/</link>
       <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
       
       <guid>https://anthony-tan.com/Maximum-Likelihood-Estimation/</guid>
-      <description>Square Loss Function for Regression1 For any input \(\mathbf{x}\), our goal in a regression task is to give a prediction \(\hat{y}=f(\mathbf{x})\) to approximate target \(t\) where the function \(f(\cdot)\) is the chosen hypothesis or model as mentioned in the post https://anthony-tan.com/A-Simple-Linear-Regression/.
+      <description>Priliminaries A Simple Linear Regression Least Squares Estimation linear algebra  Square Loss Function for Regression1 For any input \(\mathbf{x}\), our goal in a regression task is to give a prediction \(\hat{y}=f(\mathbf{x})\) to approximate target \(t\) where the function \(f(\cdot)\) is the chosen hypothesis or model as mentioned in the post https://anthony-tan.com/A-Simple-Linear-Regression/.
 The difference between \(t\) and \(\hat{y}\) can be called ‘error’ or more precisely ‘loss’. Because in an approximation task, ‘error’ occurs by chance and always exists, and ‘loss’ is a good word to represent the difference.</description>
     </item>
     

@@ -12,7 +12,7 @@
       <pubDate>Sat, 15 Feb 2020 00:41:25 +0000</pubDate>
       
       <guid>https://anthony-tan.com/Maximum-Likelihood-Estimation/</guid>
-      <description>Square Loss Function for Regression1 For any input \(\mathbf{x}\), our goal in a regression task is to give a prediction \(\hat{y}=f(\mathbf{x})\) to approximate target \(t\) where the function \(f(\cdot)\) is the chosen hypothesis or model as mentioned in the post https://anthony-tan.com/A-Simple-Linear-Regression/.
+      <description>Priliminaries A Simple Linear Regression Least Squares Estimation linear algebra  Square Loss Function for Regression1 For any input \(\mathbf{x}\), our goal in a regression task is to give a prediction \(\hat{y}=f(\mathbf{x})\) to approximate target \(t\) where the function \(f(\cdot)\) is the chosen hypothesis or model as mentioned in the post https://anthony-tan.com/A-Simple-Linear-Regression/.
 The difference between \(t\) and \(\hat{y}\) can be called ‘error’ or more precisely ‘loss’. Because in an approximation task, ‘error’ occurs by chance and always exists, and ‘loss’ is a good word to represent the difference.</description>
     </item>
     
