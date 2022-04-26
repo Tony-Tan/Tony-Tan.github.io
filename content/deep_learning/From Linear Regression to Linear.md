@@ -24,7 +24,7 @@ keywords:
 date: 2020-02-17 11:20:11
 markup: pdc
 draft: false
-mages: ""
+images: ""
 url: "/From-Linear-Regression-to-Linear-Classification"
 ---
 
