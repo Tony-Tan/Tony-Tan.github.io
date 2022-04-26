@@ -13,7 +13,7 @@ keywords:
 date: 2020-02-17 16:15:28
 markup: pdc
 draft: false
-images: "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_26_20_50_1-1.jpeg"
+images: ""
 url: "/Discriminant-Functions-and-Decision-Boundary"
 ---
 
