@@ -5,7 +5,17 @@
     <link>https://anthony-tan.com/tags/linear-classification/</link>
     <description>Recent content in linear classification on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 17 Feb 2020 16:15:28 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/linear-classification/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Feb 2020 17:01:38 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/linear-classification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fisher Linear Discriminant(LDA)</title>
+      <link>https://anthony-tan.com/Fisher-Linear-Discriminant/</link>
+      <pubDate>Wed, 19 Feb 2020 17:01:38 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Fisher-Linear-Discriminant/</guid>
+      <description>Preliminaries linear algebra   inner multiplication projection  Idea of Fisher linear discriminant1 ‘Least-square method’ in classification can only deal with a small set of tasks. That is because it was designed for the regression task. Then we come to the famous Fisher linear discriminant. This method is also discriminative for it gives directly the class to which the input \(\mathbf{x}\) belongs. Assuming that the linear function
+\[ y=\mathbf{w}^T\mathbf{x}+w_0\tag{1} \]</description>
+    </item>
+    
     <item>
       <title>Discriminant Functions and Decision Boundary</title>
       <link>https://anthony-tan.com/Discriminant-Functions-and-Decision-Boundary/</link>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Fisher linear discriminant on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/fisher-linear-discriminant/</link>
+    <description>Recent content in Fisher linear discriminant on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 19 Feb 2020 17:01:38 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/fisher-linear-discriminant/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fisher Linear Discriminant(LDA)</title>
+      <link>https://anthony-tan.com/Fisher-Linear-Discriminant/</link>
+      <pubDate>Wed, 19 Feb 2020 17:01:38 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Fisher-Linear-Discriminant/</guid>
+      <description>Preliminaries linear algebra   inner multiplication projection  Idea of Fisher linear discriminant1 ‘Least-square method’ in classification can only deal with a small set of tasks. That is because it was designed for the regression task. Then we come to the famous Fisher linear discriminant. This method is also discriminative for it gives directly the class to which the input \(\mathbf{x}\) belongs. Assuming that the linear function
+\[ y=\mathbf{w}^T\mathbf{x}+w_0\tag{1} \]</description>
+    </item>
+    
+  </channel>
+</rss>
