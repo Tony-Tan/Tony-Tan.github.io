@@ -6,7 +6,12 @@ tags:
   - features extension
   - least square estimation
   - machine learning
-
+keywords:
+  - polynomial regression
+  - linear regression
+  - features extension
+  - least square estimation
+  - machine learning
 date: 2020-02-15 22:00:40
 markup: pdc
 draft: false
