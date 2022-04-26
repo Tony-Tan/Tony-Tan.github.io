@@ -5,7 +5,43 @@
     <link>https://anthony-tan.com/tags/</link>
     <description>Recent content in Tags on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 17 Feb 2020 12:39:31 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Feb 2020 16:15:28 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>decision boundary</title>
+      <link>https://anthony-tan.com/tags/decision-boundary/</link>
+      <pubDate>Mon, 17 Feb 2020 16:15:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/decision-boundary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>decision surfaces</title>
+      <link>https://anthony-tan.com/tags/decision-surfaces/</link>
+      <pubDate>Mon, 17 Feb 2020 16:15:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/decision-surfaces/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>discriminant functions</title>
+      <link>https://anthony-tan.com/tags/discriminant-functions/</link>
+      <pubDate>Mon, 17 Feb 2020 16:15:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/discriminant-functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linear classification</title>
+      <link>https://anthony-tan.com/tags/linear-classification/</link>
+      <pubDate>Mon, 17 Feb 2020 16:15:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/linear-classification/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>binary code scheme</title>
       <link>https://anthony-tan.com/tags/binary-code-scheme/</link>
@@ -25,29 +61,11 @@
     </item>
     
     <item>
-      <title>decision surfaces</title>
-      <link>https://anthony-tan.com/tags/decision-surfaces/</link>
-      <pubDate>Mon, 17 Feb 2020 12:39:31 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/decision-surfaces/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>least squares estimation</title>
       <link>https://anthony-tan.com/tags/least-squares-estimation/</link>
       <pubDate>Mon, 17 Feb 2020 12:39:31 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/least-squares-estimation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linear Classification</title>
-      <link>https://anthony-tan.com/tags/linear-classification/</link>
-      <pubDate>Mon, 17 Feb 2020 12:39:31 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/linear-classification/</guid>
       <description></description>
     </item>
     

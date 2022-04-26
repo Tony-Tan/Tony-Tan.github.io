@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>discriminant functions on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/discriminant-functions/</link>
+    <description>Recent content in discriminant functions on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 17 Feb 2020 16:15:28 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/discriminant-functions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Discriminant Functions and Decision Boundary</title>
+      <link>https://anthony-tan.com/Discriminant-Functions-and-Decision-Boundary/</link>
+      <pubDate>Mon, 17 Feb 2020 16:15:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Discriminant-Functions-and-Decision-Boundary/</guid>
+      <description>Preliminaries convex definition linear algebra   vector length vector direction  Discriminant Function in Classification The discriminant function or discriminant model is on the other side of the generative model. And we, here, have a look at the behavior of the discriminant function in linear classification.1
+In the post ‘Least Squares Classification’, we have seen, in a linear classification task, the decision boundary is a line or hyperplane by which we separate two classes.</description>
+    </item>
+    
+  </channel>
+</rss>
