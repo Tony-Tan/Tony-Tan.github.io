@@ -7,6 +7,13 @@ tags:
   - binary code scheme
   - decision boundaries
   - decision surfaces
+keywords:
+  - machine learning
+  - linear classification
+  - least squares estimation
+  - binary code scheme
+  - decision boundaries
+  - decision surfaces
 date: 2020-02-17 12:39:31
 markup: pdc
 draft: false
