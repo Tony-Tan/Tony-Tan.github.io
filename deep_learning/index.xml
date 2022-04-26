@@ -6,6 +6,16 @@
     <description>Recent content in Machine(Deep) Learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://anthony-tan.com/deep_learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Least Squares in Classification</title>
+      <link>https://anthony-tan.com/Least-Squares-in-Classification/</link>
+      <pubDate>Mon, 17 Feb 2020 12:39:31 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Least-Squares-in-Classification/</guid>
+      <description>Preliminaries A Simple Linear Regression Least Squares Estimation From Linear Regression to Linear Classification pseudo-inverse  Least Squares for Classification1 Least-squares for linear regression had been talked about in ‘Simple Linear Regression’. And in this post, we want to find out whether this powerful algorithm can be used in classification.
+Recalling the distinction between the properties of classification and regression, two points need to be emphasized again(‘From Linear Regression to Linear Classification’):</description>
+    </item>
+    
+    <item>
       <title>From Linear Regression to Linear Classification</title>
       <link>https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/</link>
       <pubDate>Mon, 17 Feb 2020 11:20:11 +0000</pubDate>

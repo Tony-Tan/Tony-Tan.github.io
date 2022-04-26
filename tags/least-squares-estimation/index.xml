@@ -5,7 +5,17 @@
     <link>https://anthony-tan.com/tags/least-squares-estimation/</link>
     <description>Recent content in least squares estimation on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 Feb 2020 11:33:36 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/least-squares-estimation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Feb 2020 12:39:31 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/least-squares-estimation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Least Squares in Classification</title>
+      <link>https://anthony-tan.com/Least-Squares-in-Classification/</link>
+      <pubDate>Mon, 17 Feb 2020 12:39:31 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Least-Squares-in-Classification/</guid>
+      <description>Preliminaries A Simple Linear Regression Least Squares Estimation From Linear Regression to Linear Classification pseudo-inverse  Least Squares for Classification1 Least-squares for linear regression had been talked about in ‘Simple Linear Regression’. And in this post, we want to find out whether this powerful algorithm can be used in classification.
+Recalling the distinction between the properties of classification and regression, two points need to be emphasized again(‘From Linear Regression to Linear Classification’):</description>
+    </item>
+    
     <item>
       <title>Least Squares Estimation</title>
       <link>https://anthony-tan.com/Least-Squares-Estimation/</link>
