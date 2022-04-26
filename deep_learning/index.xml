@@ -6,6 +6,16 @@
     <description>Recent content in Machine(Deep) Learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://anthony-tan.com/deep_learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>From Linear Regression to Linear Classification</title>
+      <link>https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/</link>
+      <pubDate>Mon, 17 Feb 2020 11:20:11 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/</guid>
+      <description>Preliminaries An Introduction to Linear Regression A Simple Linear Regression Bayesian theorem Feature extraction  Recall Linear Regression The goal of a regression problem is to find out a function or hypothesis that given an input \(\mathbf{x}\), it can make a prediction \(\hat{y}\) to estimate the target. Both the target \(y\) and prediction \(\hat{y}\) here are continuous. They have the properties of numbers1:
+ Consider 3 inputs \(\mathbf{x}_1\), \(\mathbf{x}_2\) and \(\mathbf{x}_3\) and their coresponding targets are \(y_1=0\), \(y_2=1\) and \(y_3=2\).</description>
+    </item>
+    
+    <item>
       <title>Polynomial Regression and Features-Extension of Linear Regression</title>
       <link>https://anthony-tan.com/Polynomial-Regression-and-Features-Extension-of-Linear-Regression/</link>
       <pubDate>Sat, 15 Feb 2020 22:00:40 +0000</pubDate>

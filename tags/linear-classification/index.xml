@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linear Classification on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/linear-classification/</link>
+    <description>Recent content in Linear Classification on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 17 Feb 2020 11:20:11 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/linear-classification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Linear Regression to Linear Classification</title>
+      <link>https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/</link>
+      <pubDate>Mon, 17 Feb 2020 11:20:11 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/</guid>
+      <description>Preliminaries An Introduction to Linear Regression A Simple Linear Regression Bayesian theorem Feature extraction  Recall Linear Regression The goal of a regression problem is to find out a function or hypothesis that given an input \(\mathbf{x}\), it can make a prediction \(\hat{y}\) to estimate the target. Both the target \(y\) and prediction \(\hat{y}\) here are continuous. They have the properties of numbers1:
+ Consider 3 inputs \(\mathbf{x}_1\), \(\mathbf{x}_2\) and \(\mathbf{x}_3\) and their coresponding targets are \(y_1=0\), \(y_2=1\) and \(y_3=2\).</description>
+    </item>
+    
+  </channel>
+</rss>
