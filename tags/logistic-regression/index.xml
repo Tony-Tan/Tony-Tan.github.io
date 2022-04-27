@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>logistic regression on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/logistic-regression/</link>
+    <description>Recent content in logistic regression on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 20 Feb 2020 21:02:47 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Logistic Regression</title>
+      <link>https://anthony-tan.com/Logistic-Regression/</link>
+      <pubDate>Thu, 20 Feb 2020 21:02:47 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Logistic-Regression/</guid>
+      <description>Preliminaries ‘An Introduction to Probabilistic Generative Models for Linear Classification’  Idea of logistic regression1 Logistic sigmoid function(logistic function for short) had been introduced in post ‘An Introduction to Probabilistic Generative Models for Linear Classification’. It has an elegant form:
+\[ \delta(a)=\frac{1}{1+e^{-a}}\tag{1} \]
+and when \(a=0\), \(\delta(a)=\frac{1}{2}\) and this is just the half of the range of logistic function. This gives us a strong implication that we can set \(a\) equals to some functions \(y(\mathbf{x})\), and then</description>
+    </item>
+    
+  </channel>
+</rss>

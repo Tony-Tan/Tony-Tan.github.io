@@ -5,7 +5,18 @@
     <link>https://anthony-tan.com/tags/machine-learning/</link>
     <description>Recent content in machine learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 20 Feb 2020 16:13:30 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Feb 2020 21:02:47 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Logistic Regression</title>
+      <link>https://anthony-tan.com/Logistic-Regression/</link>
+      <pubDate>Thu, 20 Feb 2020 21:02:47 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Logistic-Regression/</guid>
+      <description>Preliminaries ‘An Introduction to Probabilistic Generative Models for Linear Classification’  Idea of logistic regression1 Logistic sigmoid function(logistic function for short) had been introduced in post ‘An Introduction to Probabilistic Generative Models for Linear Classification’. It has an elegant form:
+\[ \delta(a)=\frac{1}{1+e^{-a}}\tag{1} \]
+and when \(a=0\), \(\delta(a)=\frac{1}{2}\) and this is just the half of the range of logistic function. This gives us a strong implication that we can set \(a\) equals to some functions \(y(\mathbf{x})\), and then</description>
+    </item>
+    
     <item>
       <title>An Introduction to Probabilistic Generative Models</title>
       <link>https://anthony-tan.com/An-Introduction-to-Probabilistic-Generative-Models/</link>
