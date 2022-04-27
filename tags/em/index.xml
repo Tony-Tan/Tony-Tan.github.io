@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>EM on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/em/</link>
+    <description>Recent content in EM on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Mar 2020 20:04:15 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/em/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EM Algorithm</title>
+      <link>https://anthony-tan.com/EM-Algorithm/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/EM-Algorithm/</guid>
+      <description>Preliminaries Gaussian distribution log-likelihood Calculus  partial derivative Lagrange multiplier   EM Algorithm for Gaussian Mixture1 Analysis Maximizing likelihood could not be used in the Gaussian mixture model directly, because of its severe defects which we have come across at ‘Maximum Likelihood of Gaussian Mixtures’. With the inspiration of K-means, a two-step algorithm was developed.
+The objective function is the log-likelihood function:
+\[ \begin{aligned} \ln \Pr(\mathbf{x}|\mathbf{\pi},\mathbf{\mu},\Sigma)&amp;amp;=\ln (\Pi_{n=1}^N\sum_{j=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k))\\ &amp;amp;=\sum_{n=1}^{N}\ln \sum_{j=1}^{K}\pi_j\mathcal{N}(\mathbf{x}_n|\mathbf{\mu}_j,\Sigma_j)\\ \end{aligned}\tag{1} \] ### \(\mu_k\)</description>
+    </item>
+    
+    <item>
+      <title>Mixtures of Gaussians</title>
+      <link>https://anthony-tan.com/Mixtures-of-Gaussians/</link>
+      <pubDate>Thu, 05 Mar 2020 16:05:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Mixtures-of-Gaussians/</guid>
+      <description>Preliminaries Probability Theory   multiplication principle joint distribution the Bayesian theory Gaussian distribution  Calculus 1,2  A Formal Introduction to Mixtures of Gaussians1 We have introduced a mixture distribution in the post ‘An Introduction to Mixture Models’. And the example in that post was just two components Gaussian Mixture. However, in this post, we would like to talk about Gaussian mixtures formally. And it severs to motivate the development of the expectation-maximization(EM) algorithm.</description>
+    </item>
+    
+  </channel>
+</rss>

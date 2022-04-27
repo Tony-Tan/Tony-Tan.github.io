@@ -5,7 +5,178 @@
     <link>https://anthony-tan.com/tags/</link>
     <description>Recent content in Tags on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 20 Feb 2020 21:02:47 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Mar 2020 20:04:15 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EM</title>
+      <link>https://anthony-tan.com/tags/em/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/em/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EM Algorithm</title>
+      <link>https://anthony-tan.com/tags/em-algorithm/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/em-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lagrange multiplier</title>
+      <link>https://anthony-tan.com/tags/lagrange-multiplier/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/lagrange-multiplier/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>log-likelihood</title>
+      <link>https://anthony-tan.com/tags/log-likelihood/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/log-likelihood/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://anthony-tan.com/tags/machine-learning/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mixture models</title>
+      <link>https://anthony-tan.com/tags/mixture-models/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/mixture-models/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gaussian mixtures</title>
+      <link>https://anthony-tan.com/tags/gaussian-mixtures/</link>
+      <pubDate>Thu, 05 Mar 2020 18:54:20 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/gaussian-mixtures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>maximum likelihood</title>
+      <link>https://anthony-tan.com/tags/maximum-likelihood/</link>
+      <pubDate>Thu, 05 Mar 2020 18:54:20 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/maximum-likelihood/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>expectation-maximization</title>
+      <link>https://anthony-tan.com/tags/expectation-maximization/</link>
+      <pubDate>Thu, 05 Mar 2020 16:05:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/expectation-maximization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>latent varible</title>
+      <link>https://anthony-tan.com/tags/latent-varible/</link>
+      <pubDate>Thu, 05 Mar 2020 16:05:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/latent-varible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reponsibility</title>
+      <link>https://anthony-tan.com/tags/reponsibility/</link>
+      <pubDate>Thu, 05 Mar 2020 16:05:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/reponsibility/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>responsibility</title>
+      <link>https://anthony-tan.com/tags/responsibility/</link>
+      <pubDate>Thu, 05 Mar 2020 16:05:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/responsibility/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>1-of-K coding scheme</title>
+      <link>https://anthony-tan.com/tags/1-of-k-coding-scheme/</link>
+      <pubDate>Wed, 04 Mar 2020 22:08:03 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/1-of-k-coding-scheme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>clustering</title>
+      <link>https://anthony-tan.com/tags/clustering/</link>
+      <pubDate>Wed, 04 Mar 2020 22:08:03 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/clustering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fisher linear discriminant</title>
+      <link>https://anthony-tan.com/tags/fisher-linear-discriminant/</link>
+      <pubDate>Wed, 04 Mar 2020 22:08:03 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/fisher-linear-discriminant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>K-means algorithm</title>
+      <link>https://anthony-tan.com/tags/k-means-algorithm/</link>
+      <pubDate>Wed, 04 Mar 2020 22:08:03 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/k-means-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unsupervised learning</title>
+      <link>https://anthony-tan.com/tags/unsupervised-learning/</link>
+      <pubDate>Wed, 04 Mar 2020 22:08:03 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/unsupervised-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>continuous latent variable</title>
+      <link>https://anthony-tan.com/tags/continuous-latent-variable/</link>
+      <pubDate>Wed, 04 Mar 2020 19:30:08 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/continuous-latent-variable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>latent variable</title>
+      <link>https://anthony-tan.com/tags/latent-variable/</link>
+      <pubDate>Wed, 04 Mar 2020 19:30:08 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/latent-variable/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Heaviside step function</title>
       <link>https://anthony-tan.com/tags/heaviside-step-function/</link>
@@ -43,15 +214,6 @@
     </item>
     
     <item>
-      <title>machine learning</title>
-      <link>https://anthony-tan.com/tags/machine-learning/</link>
-      <pubDate>Thu, 20 Feb 2020 21:02:47 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>generative models</title>
       <link>https://anthony-tan.com/tags/generative-models/</link>
       <pubDate>Thu, 20 Feb 2020 16:13:30 +0000</pubDate>
@@ -84,15 +246,6 @@
       <pubDate>Wed, 19 Feb 2020 17:01:38 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/discriminant-functions/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Fisher linear discriminant</title>
-      <link>https://anthony-tan.com/tags/fisher-linear-discriminant/</link>
-      <pubDate>Wed, 19 Feb 2020 17:01:38 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/fisher-linear-discriminant/</guid>
       <description></description>
     </item>
     

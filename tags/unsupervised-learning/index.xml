@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>unsupervised learning on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/unsupervised-learning/</link>
+    <description>Recent content in unsupervised learning on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 04 Mar 2020 22:08:03 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/unsupervised-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K-means Clustering</title>
+      <link>https://anthony-tan.com/K-means-Clustering/</link>
+      <pubDate>Wed, 04 Mar 2020 22:08:03 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/K-means-Clustering/</guid>
+      <description>Preliminaries Numerical Optimization  necessary conditions for maximum  K-means algorithm Fisher Linear Discriminant  Clustering Problem1 The first thing we should do before introducing the algorithm is to make the task clear. A mathematical form is usually the best way.
+Clustering is a kind of unsupervised learning task. So there is no correct or incorrect solution because there is no teacher or target in the task. Clustering is similar to classification during predicting since the output of clustering and classification are discrete.</description>
+    </item>
+    
+  </channel>
+</rss>

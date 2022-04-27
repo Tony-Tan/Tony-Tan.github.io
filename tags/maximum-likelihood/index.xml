@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>maximum likelihood on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/maximum-likelihood/</link>
+    <description>Recent content in maximum likelihood on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Mar 2020 18:54:20 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/maximum-likelihood/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maximum Likelihood of Gaussian Mixtures</title>
+      <link>https://anthony-tan.com/Maximum-Likelihood-of-Gaussian-Mixtures/</link>
+      <pubDate>Thu, 05 Mar 2020 18:54:20 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Maximum-Likelihood-of-Gaussian-Mixtures/</guid>
+      <description>Preliminaries Probability Theory   multiplication principle joint distribution the Bayesian theory Gaussian distribution log-likelihood function  ‘Maximum Likelihood Estimation’  Maximum Likelihood1 Gaussian mixtures had been discussed in ‘Mixtures of Gaussians’. And once we have a training data set and a certain hypothesis, what we should do next is estimate the parameters of the model. Both kinds of parameters from a mixture of Gaussians \(\Pr(\mathbf{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k)\): - the parameters of Gaussian: \(\mathbf{\mu}_k,\Sigma_k\) - and latent variables: \(\mathbf{z}\)</description>
+    </item>
+    
+  </channel>
+</rss>

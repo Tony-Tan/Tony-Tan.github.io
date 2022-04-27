@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>latent variable on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/latent-variable/</link>
+    <description>Recent content in latent variable on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 04 Mar 2020 19:30:08 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/latent-variable/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Introduction to Mixture Models</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Mixture-Models/</link>
+      <pubDate>Wed, 04 Mar 2020 19:30:08 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Mixture-Models/</guid>
+      <description>Preliminaries linear regression Maximum Likelihood Estimation Gaussian Distribution Conditional Distribution  From Supervised to Unsupervised Learning1 We have discussed many machine learning algorithms, including linear regression, linear classification, neural network models, and e.t.c, till now. However, most of them are supervised learning, which means a teacher is leading the models to bias toward a certain task. In these problems our attention was on the probability distribution of parameters given inputs, outputs, and models:</description>
+    </item>
+    
+  </channel>
+</rss>

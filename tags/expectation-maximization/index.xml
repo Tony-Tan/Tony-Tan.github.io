@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>expectation-maximization on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/expectation-maximization/</link>
+    <description>Recent content in expectation-maximization on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Mar 2020 16:05:50 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/expectation-maximization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mixtures of Gaussians</title>
+      <link>https://anthony-tan.com/Mixtures-of-Gaussians/</link>
+      <pubDate>Thu, 05 Mar 2020 16:05:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Mixtures-of-Gaussians/</guid>
+      <description>Preliminaries Probability Theory   multiplication principle joint distribution the Bayesian theory Gaussian distribution  Calculus 1,2  A Formal Introduction to Mixtures of Gaussians1 We have introduced a mixture distribution in the post ‘An Introduction to Mixture Models’. And the example in that post was just two components Gaussian Mixture. However, in this post, we would like to talk about Gaussian mixtures formally. And it severs to motivate the development of the expectation-maximization(EM) algorithm.</description>
+    </item>
+    
+  </channel>
+</rss>

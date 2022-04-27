@@ -6,6 +6,54 @@
     <description>Recent content in Machine(Deep) Learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://anthony-tan.com/deep_learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>EM Algorithm</title>
+      <link>https://anthony-tan.com/EM-Algorithm/</link>
+      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/EM-Algorithm/</guid>
+      <description>Preliminaries Gaussian distribution log-likelihood Calculus  partial derivative Lagrange multiplier   EM Algorithm for Gaussian Mixture1 Analysis Maximizing likelihood could not be used in the Gaussian mixture model directly, because of its severe defects which we have come across at ‘Maximum Likelihood of Gaussian Mixtures’. With the inspiration of K-means, a two-step algorithm was developed.
+The objective function is the log-likelihood function:
+\[ \begin{aligned} \ln \Pr(\mathbf{x}|\mathbf{\pi},\mathbf{\mu},\Sigma)&amp;amp;=\ln (\Pi_{n=1}^N\sum_{j=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k))\\ &amp;amp;=\sum_{n=1}^{N}\ln \sum_{j=1}^{K}\pi_j\mathcal{N}(\mathbf{x}_n|\mathbf{\mu}_j,\Sigma_j)\\ \end{aligned}\tag{1} \] ### \(\mu_k\)</description>
+    </item>
+    
+    <item>
+      <title>Maximum Likelihood of Gaussian Mixtures</title>
+      <link>https://anthony-tan.com/Maximum-Likelihood-of-Gaussian-Mixtures/</link>
+      <pubDate>Thu, 05 Mar 2020 18:54:20 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Maximum-Likelihood-of-Gaussian-Mixtures/</guid>
+      <description>Preliminaries Probability Theory   multiplication principle joint distribution the Bayesian theory Gaussian distribution log-likelihood function  ‘Maximum Likelihood Estimation’  Maximum Likelihood1 Gaussian mixtures had been discussed in ‘Mixtures of Gaussians’. And once we have a training data set and a certain hypothesis, what we should do next is estimate the parameters of the model. Both kinds of parameters from a mixture of Gaussians \(\Pr(\mathbf{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k)\): - the parameters of Gaussian: \(\mathbf{\mu}_k,\Sigma_k\) - and latent variables: \(\mathbf{z}\)</description>
+    </item>
+    
+    <item>
+      <title>Mixtures of Gaussians</title>
+      <link>https://anthony-tan.com/Mixtures-of-Gaussians/</link>
+      <pubDate>Thu, 05 Mar 2020 16:05:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Mixtures-of-Gaussians/</guid>
+      <description>Preliminaries Probability Theory   multiplication principle joint distribution the Bayesian theory Gaussian distribution  Calculus 1,2  A Formal Introduction to Mixtures of Gaussians1 We have introduced a mixture distribution in the post ‘An Introduction to Mixture Models’. And the example in that post was just two components Gaussian Mixture. However, in this post, we would like to talk about Gaussian mixtures formally. And it severs to motivate the development of the expectation-maximization(EM) algorithm.</description>
+    </item>
+    
+    <item>
+      <title>K-means Clustering</title>
+      <link>https://anthony-tan.com/K-means-Clustering/</link>
+      <pubDate>Wed, 04 Mar 2020 22:08:03 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/K-means-Clustering/</guid>
+      <description>Preliminaries Numerical Optimization  necessary conditions for maximum  K-means algorithm Fisher Linear Discriminant  Clustering Problem1 The first thing we should do before introducing the algorithm is to make the task clear. A mathematical form is usually the best way.
+Clustering is a kind of unsupervised learning task. So there is no correct or incorrect solution because there is no teacher or target in the task. Clustering is similar to classification during predicting since the output of clustering and classification are discrete.</description>
+    </item>
+    
+    <item>
+      <title>An Introduction to Mixture Models</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Mixture-Models/</link>
+      <pubDate>Wed, 04 Mar 2020 19:30:08 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Mixture-Models/</guid>
+      <description>Preliminaries linear regression Maximum Likelihood Estimation Gaussian Distribution Conditional Distribution  From Supervised to Unsupervised Learning1 We have discussed many machine learning algorithms, including linear regression, linear classification, neural network models, and e.t.c, till now. However, most of them are supervised learning, which means a teacher is leading the models to bias toward a certain task. In these problems our attention was on the probability distribution of parameters given inputs, outputs, and models:</description>
+    </item>
+    
+    <item>
       <title>Logistic Regression</title>
       <link>https://anthony-tan.com/Logistic-Regression/</link>
       <pubDate>Thu, 20 Feb 2020 21:02:47 +0000</pubDate>

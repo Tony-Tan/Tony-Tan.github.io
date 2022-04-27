@@ -3,165 +3,231 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://anthony-tan.com/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/heaviside-step-function/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/em/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/linear-classification/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/em-algorithm/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/logistic-regression/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/EM-Algorithm/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/Logistic-Regression/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/lagrange-multiplier/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/logistic-sigmoid-function/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/log-likelihood/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/machine-learning/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/mixture-models/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/An-Introduction-to-Probabilistic-Generative-Models/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/gaussian-mixtures/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/generative-models/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/maximum-likelihood/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/sofemax-function/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/Maximum-Likelihood-of-Gaussian-Mixtures/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/decision-boundary/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/expectation-maximization/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://anthony-tan.com/tags/discriminant-functions/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <loc>https://anthony-tan.com/tags/latent-varible/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/Mixtures-of-Gaussians/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/reponsibility/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/responsibility/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/1-of-k-coding-scheme/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/clustering/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/fisher-linear-discriminant/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/k-means-algorithm/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/K-means-Clustering/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/unsupervised-learning/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/An-Introduction-to-Mixture-Models/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/continuous-latent-variable/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/latent-variable/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/heaviside-step-function/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/linear-classification/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/logistic-regression/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/Logistic-Regression/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/logistic-sigmoid-function/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/An-Introduction-to-Probabilistic-Generative-Models/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/generative-models/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/sofemax-function/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/decision-boundary/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
+  </url><url>
+    <loc>https://anthony-tan.com/tags/discriminant-functions/</loc>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/Fisher-Linear-Discriminant/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/lda/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/decision-surfaces/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/Discriminant-Functions-and-Decision-Boundary/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/binary-code-scheme/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/decision-boundaries/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/least-squares-estimation/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/Least-Squares-in-Classification/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/active-function/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/algorithm/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/decision-regions/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/discriminate-model/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/generative-model/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/features-extension/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/least-square-estimation/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/linear-regression/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/polynomial-regression/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/Polynomial-Regression-and-Features-Extension-of-Linear-Regression/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/maximum-likelihood-estimation/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/Maximum-Likelihood-Estimation/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/regression-function/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/column-space/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/Least-Squares-Estimation/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/projection/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/A-Simple-Linear-Regression/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/residual-sum-of-squares/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/statistical-learning/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/training-set/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/An-Introduction-to-Linear-Regression/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/basis-function/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/feature/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/tags/feature-extraction/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/about/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/archives/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/categories/</loc>
   </url><url>
     <loc>https://anthony-tan.com/deep_learning/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/math/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/reinforcement_learning/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/search/</loc>
-    <lastmod>2022-04-27T14:01:25+08:00</lastmod>
+    <lastmod>2022-04-27T22:46:39+08:00</lastmod>
   </url><url>
     <loc>https://anthony-tan.com/series/</loc>
   </url>
