@@ -24,15 +24,15 @@ url: "/Maximum-Likelihood-of-Gaussian-Mixtures"
   - the Bayesian theory
   - Gaussian distribution
   - log-likelihood function
-2. ['Maximum Likelihood Estimation']()
+2. ['Maximum Likelihood Estimation'](https://anthony-tan.com/Maximum-Likelihood-Estimation/)
 
 ## Maximum Likelihood[^1]
 
-Gaussian mixtures had been discussed in ['Mixtures of Gaussians'](). And once we have a training data set and a certain hypothesis, what we should do next is estimate the parameters of the model. Both kinds of parameters from a mixture of Gaussians $\Pr(\mathbf{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k)$:
+Gaussian mixtures had been discussed in ['Mixtures of Gaussians'](https://anthony-tan.com/Mixtures-of-Gaussians/). And once we have a training data set and a certain hypothesis, what we should do next is estimate the parameters of the model. Both kinds of parameters from a mixture of Gaussians $\Pr(\mathbf{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k)$:
 - the parameters of Gaussian: $\mathbf{\mu}_k,\Sigma_k$ 
 - and latent variables: $\mathbf{z}$
 
-need to be estimated. When we investigated the linear regression problems, ['Maximum Likelihood Estimation']() method assumed the output of the linear model also has a Gaussian distribution. So, we could try the maximum likelihood again in the Gaussian mixture task, and find whether it could solve the problem.
+need to be estimated. When we investigated the linear regression problems, ['Maximum Likelihood Estimation'](https://anthony-tan.com/Maximum-Likelihood-Estimation/) method assumed the output of the linear model also has a Gaussian distribution. So, we could try the maximum likelihood again in the Gaussian mixture task, and find whether it could solve the problem.
 
 Notations: 
 - input data: $\{\mathbf{x}_1,\cdots,\mathbf{x}_N\}$ for $\mathbf{x}_i\in \mathbb{R}^D$ and $i=\{1,2,\cdots,N\}$ and assuming they are i.i.d. Rearranging them in a matrix:
@@ -56,7 +56,7 @@ Z = \begin{bmatrix}
 $$
 
 
-Once we got these two matrices, based on the definition of ['Mixtures of Gaussians']():
+Once we got these two matrices, based on the definition of ['Mixtures of Gaussians'](https://anthony-tan.com/Mixtures-of-Gaussians/):
 
 $$
 \Pr(\mathbf{x})= \sum_{k=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k)\tag{3}

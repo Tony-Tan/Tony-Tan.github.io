@@ -34,7 +34,7 @@ url: "/Mixtures-of-Gaussians"
 
 ## A Formal Introduction to Mixtures of Gaussians[^1]
 
-We have introduced a mixture distribution in the post ['An Introduction to Mixture Models'](). And the example in that post was just two components Gaussian Mixture. However, in this post, we would like to talk about Gaussian mixtures formally. And it severs to motivate the development of the expectation-maximization(EM) algorithm.
+We have introduced a mixture distribution in the post ['An Introduction to Mixture Models'](https://anthony-tan.com/An-Introduction-to-Mixture-Models/). And the example in that post was just two components Gaussian Mixture. However, in this post, we would like to talk about Gaussian mixtures formally. And it severs to motivate the development of the expectation-maximization(EM) algorithm.
 
 Gaussian mixture distribution can be written as:
 

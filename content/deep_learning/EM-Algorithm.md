@@ -26,7 +26,7 @@ url: "/EM-Algorithm"
 
 ### Analysis
 
-Maximizing likelihood could not be used in the Gaussian mixture model directly, because of its severe defects which we have come across at ['Maximum Likelihood of Gaussian Mixtures'](). With the inspiration of [K-means](), a two-step algorithm was developed.
+Maximizing likelihood could not be used in the Gaussian mixture model directly, because of its severe defects which we have come across at ['Maximum Likelihood of Gaussian Mixtures'](https://anthony-tan.com/Maximum-Likelihood-of-Gaussian-Mixtures/). With the inspiration of [K-means](https://anthony-tan.com/K-means-Clustering/), a two-step algorithm was developed.
 
 The objective function is the log-likelihood function:
 
@@ -56,7 +56,7 @@ $$
 $$
 
 
-In the post ['Mixtures of Gaussians'](), we had defined:
+In the post ['Mixtures of Gaussians'](https://anthony-tan.com/Mixtures-of-Gaussians/), we had defined:
 
 $$
 \gamma_{nk}=\Pr(k=1|\mathbf{x}_n)=\frac{\pi_k \mathcal{N}(\mathbf{x}_n|\mathbf{\mu}_k,\Sigma_k)}{\sum_{j=1}^{K}\pi_j\mathcal{N}(\mathbf{x}_n|\mathbf{\mu}_j,\Sigma_j)}\tag{4}
@@ -151,7 +151,7 @@ The initial value of the parameters could be randomly selected. But some other t
 
 ## Python Code for EM
 
-The input data should be normalized as what we did in ['K-means algorithm']()
+The input data should be normalized as what we did in ['K-means algorithm'](https://anthony-tan.com/K-means-Clustering/)
 
 ```python
 def Gaussian( x, u, variance):

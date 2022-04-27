@@ -27,7 +27,7 @@ url: "/K-means-Clustering"
 
 1. Numerical Optimization
     - necessary conditions for maximum
-2. [K-means algorithm]()
+2. [K-means algorithm](https://anthony-tan.com/K-means-Clustering/)
 3. [Fisher Linear Discriminant ](https://anthony-tan.com/Fisher-Linear-Discriminant/)
 
 

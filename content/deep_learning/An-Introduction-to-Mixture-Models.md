@@ -102,8 +102,8 @@ So the conditional distribution of $x$ given $z$ is just a single-variable Gauss
 
 Mixture distribution can be used to cluster data and what we are going to study are:
 
-1. Non probabilistic version: [K-means algorithm]()
-2. Discrete latent variable and a relative algorithm which is known as [EM algorithm]()
+1. Non probabilistic version: [K-means algorithm](https://anthony-tan.com/K-means-Clustering/)
+2. Discrete latent variable and a relative algorithm which is known as [EM algorithm](https://anthony-tan.com/EM-Algorithm/)
 
 
 ## References
