@@ -104,7 +104,6 @@ $$
   &=\frac{(\mathbf{w}^T(\mathbf{m}_1-\mathbf{m}_2))^T(\mathbf{w}^T(\mathbf{m}_1-\mathbf{m}_2))}{\sum_{n\in \mathcal{C}_1}(y_n - m_1)^2+\sum_{n\in \mathcal{C}_2}(y_n - m_2)^2}\\
   &=\frac{(\mathbf{w}^T(\mathbf{m}_1-\mathbf{m}_2))^T(\mathbf{w}^T(\mathbf{m}_1-\mathbf{m}_2))}
   {\sum_{n\in \mathcal{C}_1}(\mathbf{w}^T\mathbf{x}_n - \mathbf{w}^T\mathbf{m}_1)^2+\sum_{n\in \mathcal{C}_2}(\mathbf{w}^T\mathbf{x}_n - \mathbf{w}^T\mathbf{m}_2)^2}\\
-  
   &=\frac{\mathbf{w}^T(\mathbf{m}_1-\mathbf{m}_2)(\mathbf{m}_1-\mathbf{m}_2)^T\mathbf{w}}
   {\mathbf{w}^T(\sum_{n\in \mathcal{C}_1}(\mathbf{x}_n - \mathbf{m}_1)(\mathbf{x}_n - \mathbf{m}_1)^T+\sum_{n\in \mathcal{C}_2}(\mathbf{x}_n - \mathbf{m}_2)(\mathbf{x}_n - \mathbf{m}_2)^T)\mathbf{w}}
 \end{aligned}\tag{7}
