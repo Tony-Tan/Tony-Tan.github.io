@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>generative models on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/generative-models/</link>
+    <description>Recent content in generative models on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 20 Feb 2020 16:13:30 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/generative-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Introduction to Probabilistic Generative Models</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Probabilistic-Generative-Models/</link>
+      <pubDate>Thu, 20 Feb 2020 16:13:30 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Probabilistic-Generative-Models/</guid>
+      <description>Preliminaries Probability   Bayesian Formular  Calculus  Probabilistic Generative Models1 The generative model used for making decisions contains an inference step and a decision step:
+Inference step is to calculate \(\Pr(\mathcal{C}_k|\mathbf{x})\) which means the probability of \(\mathbf{x}\) belonging to the class \(\mathcal{C}_k\) given \(\mathbf{x}\) Decision step is to make a decision based on \(\Pr(\mathcal{C}_k|\mathbf{x})\) which was calculated in step 1  In this post, we just give an introduction and a framework for the probabilistic generative model in classification.</description>
+    </item>
+    
+  </channel>
+</rss>

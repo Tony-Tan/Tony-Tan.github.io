@@ -5,7 +5,52 @@
     <link>https://anthony-tan.com/tags/</link>
     <description>Recent content in Tags on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 19 Feb 2020 17:01:38 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Feb 2020 16:13:30 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>generative models</title>
+      <link>https://anthony-tan.com/tags/generative-models/</link>
+      <pubDate>Thu, 20 Feb 2020 16:13:30 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/generative-models/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linear classification</title>
+      <link>https://anthony-tan.com/tags/linear-classification/</link>
+      <pubDate>Thu, 20 Feb 2020 16:13:30 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/linear-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logistic sigmoid function</title>
+      <link>https://anthony-tan.com/tags/logistic-sigmoid-function/</link>
+      <pubDate>Thu, 20 Feb 2020 16:13:30 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/logistic-sigmoid-function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://anthony-tan.com/tags/machine-learning/</link>
+      <pubDate>Thu, 20 Feb 2020 16:13:30 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sofemax function</title>
+      <link>https://anthony-tan.com/tags/sofemax-function/</link>
+      <pubDate>Thu, 20 Feb 2020 16:13:30 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/sofemax-function/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>decision boundary</title>
       <link>https://anthony-tan.com/tags/decision-boundary/</link>
@@ -39,24 +84,6 @@
       <pubDate>Wed, 19 Feb 2020 17:01:38 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/lda/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linear classification</title>
-      <link>https://anthony-tan.com/tags/linear-classification/</link>
-      <pubDate>Wed, 19 Feb 2020 17:01:38 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/linear-classification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine learning</title>
-      <link>https://anthony-tan.com/tags/machine-learning/</link>
-      <pubDate>Wed, 19 Feb 2020 17:01:38 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
       <description></description>
     </item>
     
