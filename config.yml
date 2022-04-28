@@ -27,23 +27,23 @@ languages:
         weight: 1
         menu:
             main:
-                - name: Machine(Deep) Learning
-                  url: deep_learning/
+                - name: Machine Learning
+                  url: machine_learning/
                   weight: 1
+                - name: Deep Learning
+                  url: deep_learning/
+                  weight: 2
                 - name: Reinforcement Learning
                   url: reinforcement_learning/
-                  weight: 2
+                  weight: 3
                 - name: Math
                   url: math/
-                  weight: 3
+                  weight: 4
                 # - name: Distributed 
                 #   url: archives
                 #   weight: 4
                 - name: Archive
                   url: archives
-                  weight: 5
-                - name: Categories
-                  url: categories/
                   weight: 6
                 - name: Tags
                   url: tags/
