@@ -38,8 +38,8 @@ A naive idea is voting by several models equally, which means averaging the pred
 In some combining methods, such as AdaBoost(boosting), bootstrap, bagging, and e.t.c, the input data has an identical distribution with the training set. However, in some methods, the training set is cut into several subsets with different distributions from the original training set. The decision tree is such a method. A decision tree is a sequence of binary selection and it worked well in both regression and classification tasks. 
 
 We will briefly discuss:
-- [committees]()
-- [boosting]()
+- [committees](https://anthony-tan.com/Committees/)
+- [boosting](https://anthony-tan.com/Boosting-and-AdaBoost/)
 - [decision tree]()
 
 in the following posts.

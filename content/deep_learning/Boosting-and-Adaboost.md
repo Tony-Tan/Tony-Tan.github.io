@@ -20,7 +20,7 @@ url: "/Boosting-and-AdaBoost"
 ---
 
 ## Preliminaries
-1. [Committee]()
+1. [Committee](https://anthony-tan.com/Committees/)
 
 
 
