@@ -5,22 +5,121 @@
     <link>https://anthony-tan.com/tags/</link>
     <description>Recent content in Tags on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Mar 2020 20:04:15 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Mar 2020 15:40:46 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AdaBoost</title>
+      <link>https://anthony-tan.com/tags/adaboost/</link>
+      <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/adaboost/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>boosting</title>
+      <link>https://anthony-tan.com/tags/boosting/</link>
+      <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/boosting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>classifier</title>
+      <link>https://anthony-tan.com/tags/classifier/</link>
+      <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/classifier/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Combining Models</title>
+      <link>https://anthony-tan.com/tags/combining-models/</link>
+      <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/combining-models/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://anthony-tan.com/tags/machine-learning/</link>
+      <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>committees</title>
+      <link>https://anthony-tan.com/tags/committees/</link>
+      <pubDate>Sat, 07 Mar 2020 13:55:21 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/committees/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mixture models</title>
+      <link>https://anthony-tan.com/tags/mixture-models/</link>
+      <pubDate>Sat, 07 Mar 2020 13:55:21 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/mixture-models/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bayesian model averaging</title>
+      <link>https://anthony-tan.com/tags/bayesian-model-averaging/</link>
+      <pubDate>Sat, 07 Mar 2020 13:10:39 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/bayesian-model-averaging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BMA</title>
+      <link>https://anthony-tan.com/tags/bma/</link>
+      <pubDate>Sat, 07 Mar 2020 13:10:39 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/bma/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mixture of Gaussian</title>
+      <link>https://anthony-tan.com/tags/mixture-of-gaussian/</link>
+      <pubDate>Sat, 07 Mar 2020 13:10:39 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/mixture-of-gaussian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bagging</title>
+      <link>https://anthony-tan.com/tags/bagging/</link>
+      <pubDate>Sat, 07 Mar 2020 12:04:00 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/bagging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EM algorithm</title>
+      <link>https://anthony-tan.com/tags/em-algorithm/</link>
+      <pubDate>Sat, 07 Mar 2020 12:04:00 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/em-algorithm/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>EM</title>
       <link>https://anthony-tan.com/tags/em/</link>
       <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/em/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>EM Algorithm</title>
-      <link>https://anthony-tan.com/tags/em-algorithm/</link>
-      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/em-algorithm/</guid>
       <description></description>
     </item>
     
@@ -39,24 +138,6 @@
       <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/log-likelihood/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine learning</title>
-      <link>https://anthony-tan.com/tags/machine-learning/</link>
-      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mixture models</title>
-      <link>https://anthony-tan.com/tags/mixture-models/</link>
-      <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/mixture-models/</guid>
       <description></description>
     </item>
     

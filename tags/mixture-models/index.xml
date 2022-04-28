@@ -5,7 +5,18 @@
     <link>https://anthony-tan.com/tags/mixture-models/</link>
     <description>Recent content in mixture models on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Mar 2020 20:04:15 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/mixture-models/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Mar 2020 13:55:21 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/mixture-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Committees</title>
+      <link>https://anthony-tan.com/Committees/</link>
+      <pubDate>Sat, 07 Mar 2020 13:55:21 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Committees/</guid>
+      <description>Preliminaries Basic machine learning concepts Probability Theory concepts   expectation correlated random variable  Analysis of Committees1 The committee is a native inspiration for how to combine several models(or we can say how to combine the outputs of several models). For example, we can combine all the models by:
+\[ y_{COM}(X)=\frac{1}{M}\sum_{m=1}^My_m(X)\tag{1} \]
+Then we want to find out whether this average prediction of models is better than every one of them.</description>
+    </item>
+    
     <item>
       <title>EM Algorithm</title>
       <link>https://anthony-tan.com/EM-Algorithm/</link>

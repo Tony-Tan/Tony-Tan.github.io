@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>committees on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/committees/</link>
+    <description>Recent content in committees on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 07 Mar 2020 13:55:21 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/committees/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Committees</title>
+      <link>https://anthony-tan.com/Committees/</link>
+      <pubDate>Sat, 07 Mar 2020 13:55:21 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Committees/</guid>
+      <description>Preliminaries Basic machine learning concepts Probability Theory concepts   expectation correlated random variable  Analysis of Committees1 The committee is a native inspiration for how to combine several models(or we can say how to combine the outputs of several models). For example, we can combine all the models by:
+\[ y_{COM}(X)=\frac{1}{M}\sum_{m=1}^My_m(X)\tag{1} \]
+Then we want to find out whether this average prediction of models is better than every one of them.</description>
+    </item>
+    
+  </channel>
+</rss>

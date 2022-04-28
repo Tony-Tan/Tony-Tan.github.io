@@ -6,6 +6,49 @@
     <description>Recent content in Machine(Deep) Learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://anthony-tan.com/deep_learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Boosting and AdaBoost</title>
+      <link>https://anthony-tan.com/Boosting-and-AdaBoost/</link>
+      <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Boosting-and-AdaBoost/</guid>
+      <description>Preliminaries Committee  Boosting1 The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple ‘base’ classifiers to produce a form of the committee that:
+performances better than any of the base classifiers and each base classifier has a different weight factor  Adaboost Adaboost is short for adaptive boosting.</description>
+    </item>
+    
+    <item>
+      <title>Committees</title>
+      <link>https://anthony-tan.com/Committees/</link>
+      <pubDate>Sat, 07 Mar 2020 13:55:21 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Committees/</guid>
+      <description>Preliminaries Basic machine learning concepts Probability Theory concepts   expectation correlated random variable  Analysis of Committees1 The committee is a native inspiration for how to combine several models(or we can say how to combine the outputs of several models). For example, we can combine all the models by:
+\[ y_{COM}(X)=\frac{1}{M}\sum_{m=1}^My_m(X)\tag{1} \]
+Then we want to find out whether this average prediction of models is better than every one of them.</description>
+    </item>
+    
+    <item>
+      <title>Bayesian Model Averaging(BMA) and Combining Models</title>
+      <link>https://anthony-tan.com/Bayesian-Model-Averaging-and-Combining-Models/</link>
+      <pubDate>Sat, 07 Mar 2020 13:10:39 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Bayesian-Model-Averaging-and-Combining-Models/</guid>
+      <description>Preliminaries Bayesian Theorem  Bayesian Model Averaging(BMA)1 Bayesian model averaging(BMA) is another wildly used method that is very like a combining model. However, the difference between BMA and combining models is also significant.
+A Bayesian model averaging is a Bayesian formula in which the random variable are models(hypothesizes) \(h=1,2,\cdots,H\) with prior probability \(\Pr(h)\), then the marginal distribution over data \(X\) is:
+\[ \Pr(X)=\sum_{h=1}^{H}\Pr(X|h)\Pr(h) \]
+And the MBA is used to select a model(hypothesis) that can model the data best through Bayesian theory.</description>
+    </item>
+    
+    <item>
+      <title>An Introduction to Combining Models</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Combining-Models/</link>
+      <pubDate>Sat, 07 Mar 2020 12:04:00 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Combining-Models/</guid>
+      <description>Preliminaries ‘Mixtures of Gaussians’ Basic machine learning concepts  Combining Models1 The mixture of Gaussians had been discussed in the post ‘Mixtures of Gaussians’. It was used to introduce the ‘EM algorithm’ but it gave us the inspiration of improving model performance.
+All models we have studied, besides neural networks, are all single-distribution models. That is just like that, to solve a problem we invite an expert who is very good at this kind of problem, then we just do whatever the expert said.</description>
+    </item>
+    
+    <item>
       <title>EM Algorithm</title>
       <link>https://anthony-tan.com/EM-Algorithm/</link>
       <pubDate>Thu, 05 Mar 2020 20:04:15 +0000</pubDate>

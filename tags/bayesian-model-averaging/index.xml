@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Bayesian model averaging on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/bayesian-model-averaging/</link>
+    <description>Recent content in Bayesian model averaging on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 07 Mar 2020 13:10:39 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/bayesian-model-averaging/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bayesian Model Averaging(BMA) and Combining Models</title>
+      <link>https://anthony-tan.com/Bayesian-Model-Averaging-and-Combining-Models/</link>
+      <pubDate>Sat, 07 Mar 2020 13:10:39 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Bayesian-Model-Averaging-and-Combining-Models/</guid>
+      <description>Preliminaries Bayesian Theorem  Bayesian Model Averaging(BMA)1 Bayesian model averaging(BMA) is another wildly used method that is very like a combining model. However, the difference between BMA and combining models is also significant.
+A Bayesian model averaging is a Bayesian formula in which the random variable are models(hypothesizes) \(h=1,2,\cdots,H\) with prior probability \(\Pr(h)\), then the marginal distribution over data \(X\) is:
+\[ \Pr(X)=\sum_{h=1}^{H}\Pr(X|h)\Pr(h) \]
+And the MBA is used to select a model(hypothesis) that can model the data best through Bayesian theory.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AdaBoost on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/adaboost/</link>
+    <description>Recent content in AdaBoost on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 07 Mar 2020 15:40:46 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/adaboost/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boosting and AdaBoost</title>
+      <link>https://anthony-tan.com/Boosting-and-AdaBoost/</link>
+      <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Boosting-and-AdaBoost/</guid>
+      <description>Preliminaries Committee  Boosting1 The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple ‘base’ classifiers to produce a form of the committee that:
+performances better than any of the base classifiers and each base classifier has a different weight factor  Adaboost Adaboost is short for adaptive boosting.</description>
+    </item>
+    
+    <item>
+      <title>An Introduction to Combining Models</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Combining-Models/</link>
+      <pubDate>Sat, 07 Mar 2020 12:04:00 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Combining-Models/</guid>
+      <description>Preliminaries ‘Mixtures of Gaussians’ Basic machine learning concepts  Combining Models1 The mixture of Gaussians had been discussed in the post ‘Mixtures of Gaussians’. It was used to introduce the ‘EM algorithm’ but it gave us the inspiration of improving model performance.
+All models we have studied, besides neural networks, are all single-distribution models. That is just like that, to solve a problem we invite an expert who is very good at this kind of problem, then we just do whatever the expert said.</description>
+    </item>
+    
+  </channel>
+</rss>
