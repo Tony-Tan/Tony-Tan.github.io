@@ -33,7 +33,7 @@ date: 2019-12-10 10:54:57
 ## Preliminaries
 1. [linear classifier](https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/)
 2. [An Introduction to Neural Networks](https://anthony-tan.com/An-Introduction-to-Neural-Networks)
-3. 
+ 
 
 ## Theory and Notation[^1]
 We are not able to build any artificial cells up to now. It seems impossible to build a neuron network through biological materials manually, either. To investigate the ability of neurons we have built mathematical models of the neuron. These models have been assigned a number of neuron-like properties. However, there must be a balance between the number of properties contained by the mathematical models and the current computational abilities of the machines.
@@ -342,9 +342,10 @@ A recurrent network is a network in which there is a feedback connection. Here w
 where:
 
 $$
-a(0)=\mathbf{p}\\
+a(0)=\mathbf{p} \newline
 a(t+1)=f(W\mathbf{p}+\mathbf{b})\tag{22}
 $$
+
 
 ## References
 [^1]: Demuth, H.B., Beale, M.H., De Jess, O. and Hagan, M.T., 2014. Neural network design. Martin Hagan.
