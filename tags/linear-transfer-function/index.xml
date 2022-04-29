@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linear Transfer Function on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/linear-transfer-function/</link>
+    <description>Recent content in Linear Transfer Function on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 10 Dec 2019 10:54:57 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/linear-transfer-function/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Neuron Model and Network Architecture</title>
+      <link>https://anthony-tan.com/deep_learning/neuron-model-and-network-architecture/</link>
+      <pubDate>Tue, 10 Dec 2019 10:54:57 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/deep_learning/neuron-model-and-network-architecture/</guid>
+      <description>Preliminaries  linear classifier An Introduction to Neural Networks   Theory and Notation1 We are not able to build any artificial cells up to now. It seems impossible to build a neuron network through biological materials manually, either. To investigate the ability of neurons we have built mathematical models of the neuron. These models have been assigned a number of neuron-like properties. However, there must be a balance between the number of properties contained by the mathemetical models and the current computational abilities of the machines.</description>
+    </item>
+    
+  </channel>
+</rss>

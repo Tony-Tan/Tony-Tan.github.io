@@ -4,6 +4,16 @@
     <title>Categories on Anthony&#39;s Blogs</title>
     <link>https://anthony-tan.com/categories/</link>
     <description>Recent content in Categories on Anthony&#39;s Blogs</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://anthony-tan.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 10 Dec 2019 10:54:57 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Artificial Neural Networks</title>
+      <link>https://anthony-tan.com/categories/artificial-neural-networks/</link>
+      <pubDate>Tue, 10 Dec 2019 10:54:57 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/categories/artificial-neural-networks/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

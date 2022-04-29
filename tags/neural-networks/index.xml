@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Neural Networks on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/neural-networks/</link>
+    <description>Recent content in Neural Networks on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 08 Dec 2019 19:01:32 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Introduction to Neural Networks</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Neural-Networks/</link>
+      <pubDate>Sun, 08 Dec 2019 19:01:32 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Neural-Networks/</guid>
+      <description>Preliminaries Nothing  Neural Networks1 Neural Networks are a model of our brain that is built with neurons and is considered the source of intelligence. There are almost \(10^{11}\) neurons in the human brain and \(10^4\) connections of each neuron to other neurons. Some of these brilliant structures were given when we were born. Some other structures could be established by experience, and this progress is called learning. Learning is also considered as the establishment or modification of the connections between neurons.</description>
+    </item>
+    
+  </channel>
+</rss>
