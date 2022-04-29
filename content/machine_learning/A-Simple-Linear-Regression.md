@@ -7,13 +7,13 @@ tags:
     - training set
     - Residual Sum of Squares
 date: 2019-10-11 20:35:27
-markup: pdc
 keywords:
     - linear regression
     - machine learning
     - statistical learning
     - training set
     - Residual Sum of Squares
+markup: pdc
 images: 
     - "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_19_41_LinearRegression.png"
 url: "/A-Simple-Linear-Regression"

@@ -29,6 +29,10 @@ keywords:
 categories:
  - Artificial Neural Networks
 date: 2019-12-10 10:54:57
+markup: pdc
+draft: false
+images: ""
+url: "/Neuron-Model-and-Network-Architecture"
 ---
 ## Preliminaries
 1. [linear classifier](https://anthony-tan.com/From-Linear-Regression-to-Linear-Classification/)
@@ -342,7 +346,7 @@ A recurrent network is a network in which there is a feedback connection. Here w
 where:
 
 $$
-a(0)=\mathbf{p} \newline
+a(0)=\mathbf{p} \\
 a(t+1)=f(W\mathbf{p}+\mathbf{b})\tag{22}
 $$
 
