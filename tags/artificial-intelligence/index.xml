@@ -12,7 +12,7 @@
       <pubDate>Tue, 10 Dec 2019 10:54:57 +0000</pubDate>
       
       <guid>https://anthony-tan.com/deep_learning/neuron-model-and-network-architecture/</guid>
-      <description>Preliminaries  linear classifier An Introduction to Neural Networks   Theory and Notation1 We are not able to build any artificial cells up to now. It seems impossible to build a neuron network through biological materials manually, either. To investigate the ability of neurons we have built mathematical models of the neuron. These models have been assigned a number of neuron-like properties. However, there must be a balance between the number of properties contained by the mathematical models and the current computational abilities of the machines.</description>
+      <description>Preliminaries  linear classifier An Introduction to Neural Networks  Theory and Notation1 We are not able to build any artificial cells up to now. It seems impossible to build a neuron network through biological materials manually, either. To investigate the ability of neurons we have built mathematical models of the neuron. These models have been assigned a number of neuron-like properties. However, there must be a balance between the number of properties contained by the mathematical models and the current computational abilities of the machines.</description>
     </item>
     
     <item>
