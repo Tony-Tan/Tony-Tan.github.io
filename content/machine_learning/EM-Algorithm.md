@@ -36,6 +36,8 @@ $$
 &=\sum_{n=1}^{N}\ln \sum_{j=1}^{K}\pi_j\mathcal{N}(\mathbf{x}_n|\mathbf{\mu}_j,\Sigma_j)\\
 \end{aligned}\tag{1}
 $$
+
+
 ### $\mu_k$
 
 The condition that must be satisfied at a maximum of log-likelihood is the derivative(partial derivative) of parameters are $0$. So we should calculate the partial derivatives of $\mu_k$:
