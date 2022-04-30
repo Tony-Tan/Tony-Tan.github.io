@@ -14,7 +14,7 @@
       <guid>https://anthony-tan.com/EM-Algorithm/</guid>
       <description>Preliminaries Gaussian distribution log-likelihood Calculus  partial derivative Lagrange multiplier   EM Algorithm for Gaussian Mixture1 Analysis Maximizing likelihood could not be used in the Gaussian mixture model directly, because of its severe defects which we have come across at ‘Maximum Likelihood of Gaussian Mixtures’. With the inspiration of K-means, a two-step algorithm was developed.
 The objective function is the log-likelihood function:
-\[ \begin{aligned} \ln \Pr(\mathbf{x}|\mathbf{\pi},\mathbf{\mu},\Sigma)&amp;amp;=\ln (\Pi_{n=1}^N\sum_{j=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k))\\ &amp;amp;=\sum_{n=1}^{N}\ln \sum_{j=1}^{K}\pi_j\mathcal{N}(\mathbf{x}_n|\mathbf{\mu}_j,\Sigma_j)\\ \end{aligned}\tag{1} \] ### \(\mu_k\)</description>
+\[ \begin{aligned} \ln \Pr(\mathbf{x}|\mathbf{\pi},\mathbf{\mu},\Sigma)&amp;amp;=\ln (\Pi_{n=1}^N\sum_{j=1}^{K}\pi_k\mathcal{N}(\mathbf{x}|\mathbf{\mu}_k,\Sigma_k))\\ &amp;amp;=\sum_{n=1}^{N}\ln \sum_{j=1}^{K}\pi_j\mathcal{N}(\mathbf{x}_n|\mathbf{\mu}_j,\Sigma_j)\\ \end{aligned}\tag{1} \]</description>
     </item>
     
   </channel>
