@@ -23,12 +23,13 @@ keywords:
 categories:
  - Artificial Neural Networks
 date: 2019-12-08 19:01:32
-lastmod: 2022-04-29 14:00:00
 markup: pdc
 draft: false
 images: ""
 url: "/An-Introduction-to-Neural-Networks"
 ---
+
+
 ## Preliminaries
 1. Nothing
 
