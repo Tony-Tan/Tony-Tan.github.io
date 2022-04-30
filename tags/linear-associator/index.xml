@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linear Associator on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/linear-associator/</link>
+    <description>Recent content in Linear Associator on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 17 Dec 2019 18:24:40 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/linear-associator/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Supervised Hebbian Learning</title>
+      <link>https://anthony-tan.com/Supervised-Hebbian-Learning/</link>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Supervised-Hebbian-Learning/</guid>
+      <description>Preliminaries Linear algebra  Hebb Rule1 Hebb rule is one of the earliest neural network learning laws. It was published in 1949 by Donald O. Hebb, a Canadian psychologist, in his work ’ The Organization of Behavior’. In this great book, he proposed a possible mechanism for synaptic modification in the brain. And this rule then was used in training the artificial neural networks for pattern recognition.
+’ The Organization of Behavior’ The main premise of the book is that behavior could be explained by the action of a neuron.</description>
+    </item>
+    
+  </channel>
+</rss>

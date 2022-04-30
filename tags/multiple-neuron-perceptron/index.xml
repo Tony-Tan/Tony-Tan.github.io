@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Multiple-Neuron Perceptron on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/multiple-neuron-perceptron/</link>
+    <description>Recent content in Multiple-Neuron Perceptron on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 11 Dec 2019 21:30:42 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/multiple-neuron-perceptron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning Rules and Perceptron Learning Rule</title>
+      <link>https://anthony-tan.com/Learning-Rules-and-Perceptron-Learning-Rule/</link>
+      <pubDate>Wed, 11 Dec 2019 21:30:42 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Learning-Rules-and-Perceptron-Learning-Rule/</guid>
+      <description>Preliminaries supervised learning unsupervised learning reinforcement learning ‘An Introduction to Neural Networks’  Learning Rules1 We have built some neural network models in the post ‘An Introduction to Neural Networks’ and as we know architectures and learning rules are two main aspects of designing a useful network. The architectures we have introduced could not be used yet. What we are going to do is to investigate the learning rules for different architectures.</description>
+    </item>
+    
+  </channel>
+</rss>

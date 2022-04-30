@@ -5,7 +5,36 @@
     <link>https://anthony-tan.com/tags/artificial-neural-networks/</link>
     <description>Recent content in Artificial Neural Networks on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 10 Dec 2019 10:54:57 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/artificial-neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Dec 2019 18:24:40 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/artificial-neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Supervised Hebbian Learning</title>
+      <link>https://anthony-tan.com/Supervised-Hebbian-Learning/</link>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Supervised-Hebbian-Learning/</guid>
+      <description>Preliminaries Linear algebra  Hebb Rule1 Hebb rule is one of the earliest neural network learning laws. It was published in 1949 by Donald O. Hebb, a Canadian psychologist, in his work ’ The Organization of Behavior’. In this great book, he proposed a possible mechanism for synaptic modification in the brain. And this rule then was used in training the artificial neural networks for pattern recognition.
+’ The Organization of Behavior’ The main premise of the book is that behavior could be explained by the action of a neuron.</description>
+    </item>
+    
+    <item>
+      <title>Implement of Perceptron</title>
+      <link>https://anthony-tan.com/Implement-of-Perceptron/</link>
+      <pubDate>Thu, 12 Dec 2019 13:10:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Implement-of-Perceptron/</guid>
+      <description>Preliminaries An Introduction to Neural Networks Neuron Model and Network Architecture Perceptron Learning Rule  Implement of Perceptron1 What we need to do next is to implement the algorithm described in ‘Perceptron Learning Rule’ and observe the effect of 1. different parameters, 2. different training sets, 3. and different transfer functions.
+A single neuron perceptron consists of a linear combination and a threshold operation simply. So we note its capacity is close to a linear classification.</description>
+    </item>
+    
+    <item>
+      <title>Learning Rules and Perceptron Learning Rule</title>
+      <link>https://anthony-tan.com/Learning-Rules-and-Perceptron-Learning-Rule/</link>
+      <pubDate>Wed, 11 Dec 2019 21:30:42 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Learning-Rules-and-Perceptron-Learning-Rule/</guid>
+      <description>Preliminaries supervised learning unsupervised learning reinforcement learning ‘An Introduction to Neural Networks’  Learning Rules1 We have built some neural network models in the post ‘An Introduction to Neural Networks’ and as we know architectures and learning rules are two main aspects of designing a useful network. The architectures we have introduced could not be used yet. What we are going to do is to investigate the learning rules for different architectures.</description>
+    </item>
+    
     <item>
       <title>Neuron Model and Network Architecture</title>
       <link>https://anthony-tan.com/Neuron-Model-and-Network-Architecture/</link>

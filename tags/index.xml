@@ -495,7 +495,7 @@
     <item>
       <title>Artificial Intelligence</title>
       <link>https://anthony-tan.com/tags/artificial-intelligence/</link>
-      <pubDate>Tue, 10 Dec 2019 10:54:57 +0000</pubDate>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/artificial-intelligence/</guid>
       <description></description>
@@ -504,9 +504,90 @@
     <item>
       <title>Artificial Neural Networks</title>
       <link>https://anthony-tan.com/tags/artificial-neural-networks/</link>
-      <pubDate>Tue, 10 Dec 2019 10:54:57 +0000</pubDate>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/artificial-neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hebbian Learning</title>
+      <link>https://anthony-tan.com/tags/hebbian-learning/</link>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/hebbian-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linear Associator</title>
+      <link>https://anthony-tan.com/tags/linear-associator/</link>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/linear-associator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Supervised Hebbian Learning</title>
+      <link>https://anthony-tan.com/tags/supervised-hebbian-learning/</link>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/supervised-hebbian-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Variations of Hebb Learning</title>
+      <link>https://anthony-tan.com/tags/variations-of-hebb-learning/</link>
+      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/variations-of-hebb-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Perceptron</title>
+      <link>https://anthony-tan.com/tags/perceptron/</link>
+      <pubDate>Thu, 12 Dec 2019 13:10:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/perceptron/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Perceptron Learning Rule</title>
+      <link>https://anthony-tan.com/tags/perceptron-learning-rule/</link>
+      <pubDate>Thu, 12 Dec 2019 13:10:28 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/perceptron-learning-rule/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Learning Rules</title>
+      <link>https://anthony-tan.com/tags/learning-rules/</link>
+      <pubDate>Wed, 11 Dec 2019 21:30:42 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/learning-rules/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multiple-Neuron Perceptron</title>
+      <link>https://anthony-tan.com/tags/multiple-neuron-perceptron/</link>
+      <pubDate>Wed, 11 Dec 2019 21:30:42 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/multiple-neuron-perceptron/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Perceptron Architecture</title>
+      <link>https://anthony-tan.com/tags/perceptron-architecture/</link>
+      <pubDate>Wed, 11 Dec 2019 21:30:42 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/perceptron-architecture/</guid>
       <description></description>
     </item>
     
