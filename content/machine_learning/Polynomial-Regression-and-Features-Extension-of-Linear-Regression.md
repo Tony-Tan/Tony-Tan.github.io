@@ -15,7 +15,7 @@ keywords:
 date: 2020-02-15 22:00:40
 markup: pdc
 draft: false
-mages: ""
+images: ""
 url: "/Polynomial-Regression-and-Features-Extension-of-Linear-Regression"
 ---
 
