@@ -7,6 +7,13 @@ tags:
  - Supervised Hebbian Learning
  - Linear Associator
  - Variations of Hebb Learning
+keywords:
+ - Artificial Neural Networks
+ - Artificial Intelligence
+ - Hebbian Learning
+ - Supervised Hebbian Learning
+ - Linear Associator
+ - Variations of Hebb Learning
 categories:
  - Artificial Neural Networks
 date: 2019-12-17 18:24:40
