@@ -152,9 +152,17 @@ $$
 
 The contour plot and 3-D plots are:
 
-![](./Neural-Network-Design-Quadratic-Functions/contour_1.jpeg)
+![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_05_01_22_40_contour_1.jpeg)
 
-![](./Neural-Network-Design-Quadratic-Funtions/3_D_1.gif)
+![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_05_01_22_41_3_D_1.gif)
+
+
+
+
+
+
+
+
 
 Another example:
 
@@ -180,8 +188,10 @@ $$
 $$
 
 The contour plot and 3-D plots is:
-![](./Neural-Network-Design-Quadratic-Funtions/contour_2.jpeg)
-![](./Neural-Network-Design-Quadratic-Funtions/3_D_2.gif)
+
+![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_05_01_22_40_contour_2.jpeg)
+
+![](https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_05_01_22_44_3_D_2.gif)
 
 ## Conclusion
 1. $\lambda_i>0$ or $i=1,2,\cdots$, $F(x)$ have a single strong minimum
