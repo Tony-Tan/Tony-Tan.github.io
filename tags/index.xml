@@ -495,7 +495,7 @@
     <item>
       <title>Artificial Intelligence</title>
       <link>https://anthony-tan.com/tags/artificial-intelligence/</link>
-      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/artificial-intelligence/</guid>
       <description></description>
@@ -504,9 +504,144 @@
     <item>
       <title>Artificial Neural Networks</title>
       <link>https://anthony-tan.com/tags/artificial-neural-networks/</link>
-      <pubDate>Tue, 17 Dec 2019 18:24:40 +0000</pubDate>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/artificial-neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eigenvalues</title>
+      <link>https://anthony-tan.com/tags/eigenvalues/</link>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/eigenvalues/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eigenvectors</title>
+      <link>https://anthony-tan.com/tags/eigenvectors/</link>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/eigenvectors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hessian matrix</title>
+      <link>https://anthony-tan.com/tags/hessian-matrix/</link>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/hessian-matrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quadratic Functions</title>
+      <link>https://anthony-tan.com/tags/quadratic-functions/</link>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/quadratic-functions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Taylor Series</title>
+      <link>https://anthony-tan.com/tags/taylor-series/</link>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/taylor-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Associative Learning</title>
+      <link>https://anthony-tan.com/tags/associative-learning/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/associative-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Competitive Learning</title>
+      <link>https://anthony-tan.com/tags/competitive-learning/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/competitive-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>First-order Conditions</title>
+      <link>https://anthony-tan.com/tags/first-order-conditions/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/first-order-conditions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>global optimization</title>
+      <link>https://anthony-tan.com/tags/global-optimization/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/global-optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Necessary Conditions for Optimality</title>
+      <link>https://anthony-tan.com/tags/necessary-conditions-for-optimality/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/necessary-conditions-for-optimality/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimum points</title>
+      <link>https://anthony-tan.com/tags/optimum-points/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/optimum-points/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Performance Learning</title>
+      <link>https://anthony-tan.com/tags/performance-learning/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/performance-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>performance surfaces</title>
+      <link>https://anthony-tan.com/tags/performance-surfaces/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/performance-surfaces/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Saddle Points</title>
+      <link>https://anthony-tan.com/tags/saddle-points/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/saddle-points/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Second-order Condition</title>
+      <link>https://anthony-tan.com/tags/second-order-condition/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/second-order-condition/</guid>
       <description></description>
     </item>
     

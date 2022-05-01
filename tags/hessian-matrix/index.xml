@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hessian matrix on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/hessian-matrix/</link>
+    <description>Recent content in Hessian matrix on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 19 Dec 2019 15:45:37 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/hessian-matrix/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quadratic Functions</title>
+      <link>https://anthony-tan.com/Quadratic-Functions/</link>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Quadratic-Functions/</guid>
+      <description>Preliminaries Linear algebra Calculus 1,2 Taylor series  Quadratic Functions1 Quadratic function, a type of performance index, is universal. One of its key properties is that it can be represented in a second-order Taylor series precisely.
+\[ F(\mathbf{x})=\frac{1}{2}\mathbf{x}^TA\mathbf{x}+\mathbf{d}\mathbf{x}+c\tag{1} \]
+where \(A\) is a symmetric matrix(if it is not symmetric, it can be easily converted into symmetric). And recall the property of gradient:
+\[ \nabla (\mathbf{h}^T\mathbf{x})=\nabla (\mathbf{x}^T\mathbf{h})=\mathbf{h}\tag{2} \]
+and
+\[ \nabla (\mathbf{x}^TQ\mathbf{x})=Q\mathbf{x}+Q^T\mathbf{x}=2Q\mathbf{x}\tag{3} \]</description>
+    </item>
+    
+  </channel>
+</rss>

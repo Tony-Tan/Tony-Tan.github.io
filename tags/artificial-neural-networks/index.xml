@@ -5,7 +5,30 @@
     <link>https://anthony-tan.com/tags/artificial-neural-networks/</link>
     <description>Recent content in Artificial Neural Networks on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 17 Dec 2019 18:24:40 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/artificial-neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Dec 2019 15:45:37 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/artificial-neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quadratic Functions</title>
+      <link>https://anthony-tan.com/Quadratic-Functions/</link>
+      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Quadratic-Functions/</guid>
+      <description>Preliminaries Linear algebra Calculus 1,2 Taylor series  Quadratic Functions1 Quadratic function, a type of performance index, is universal. One of its key properties is that it can be represented in a second-order Taylor series precisely.
+\[ F(\mathbf{x})=\frac{1}{2}\mathbf{x}^TA\mathbf{x}+\mathbf{d}\mathbf{x}+c\tag{1} \]
+where \(A\) is a symmetric matrix(if it is not symmetric, it can be easily converted into symmetric). And recall the property of gradient:
+\[ \nabla (\mathbf{h}^T\mathbf{x})=\nabla (\mathbf{x}^T\mathbf{h})=\mathbf{h}\tag{2} \]
+and
+\[ \nabla (\mathbf{x}^TQ\mathbf{x})=Q\mathbf{x}+Q^T\mathbf{x}=2Q\mathbf{x}\tag{3} \]</description>
+    </item>
+    
+    <item>
+      <title>Performance Surfaces and Optimum Points</title>
+      <link>https://anthony-tan.com/Performance-Surfaces-and-Optimum-Points/</link>
+      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Performance-Surfaces-and-Optimum-Points/</guid>
+      <description>Preliminaries Perceptron learning algorithm Hebbian learning algorithm Linear algebra  Neural Network Training Technique1 Several architectures of the neural networks had been introduced. And each neural network had its own learning rule, like, the perceptron learning algorithm, and the Hebbian learning algorithm. When more and more neural network architectures were designed, some general training methods were necessary. Up to now, we can classify all training rules in three categories in a general way:</description>
+    </item>
+    
     <item>
       <title>Supervised Hebbian Learning</title>
       <link>https://anthony-tan.com/Supervised-Hebbian-Learning/</link>
