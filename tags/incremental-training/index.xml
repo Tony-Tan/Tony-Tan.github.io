@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>incremental training on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/incremental-training/</link>
+    <description>Recent content in incremental training on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 02 Jan 2020 17:49:55 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/incremental-training/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backpropagation, Batch Training, and Incremental Training</title>
+      <link>https://anthony-tan.com/Backpropagation-Batch-Training-and-Incremental-Training/</link>
+      <pubDate>Thu, 02 Jan 2020 17:49:55 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Backpropagation-Batch-Training-and-Incremental-Training/</guid>
+      <description>Preliminaries Calculus 1,2 Linear Algebra  Batch v.s. Incremental Training1 In both LMS and BP algorithms, the error in each update process step is not MSE but SE \(e=t_i-a_i\) which is calculated just by a data point of the training set. This is called a stochastic gradient descent algorithm. And why it is called ‘stochastic’ is because error at every iterative step is approximated by randomly selected train data points but not the whole data set.</description>
+    </item>
+    
+  </channel>
+</rss>

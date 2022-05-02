@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Steepest Descent on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/steepest-descent/</link>
+    <description>Recent content in Steepest Descent on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 20 Dec 2019 11:39:19 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/steepest-descent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Steepest Descent Method</title>
+      <link>https://anthony-tan.com/Steepest-Descent-Method/</link>
+      <pubDate>Fri, 20 Dec 2019 11:39:19 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Steepest-Descent-Method/</guid>
+      <description>Preliminaries ‘An Introduction to Performance Optimization’ Linear algebra Calculus 1,2  Direction Based Algorithm and a Variation1 This post describes a direction searching algorithm(\(\mathbf{x}_{k}\)). And its variation gives a way to estimate step length (\(\alpha_k\)).
+Steepest Descent To find the minimum points of a performance index by an iterative algorithm, we want to decrease the value of the performance index step by step which looks like going down from the top of the hill.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Function Approximation on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/function-approximation/</link>
+    <description>Recent content in Function Approximation on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 31 Dec 2019 10:29:33 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/function-approximation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Introduction to Backpropagation and Multilayer Perceptrons</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Backpropagation-and-Multilayer-Perceptrons/</link>
+      <pubDate>Tue, 31 Dec 2019 10:29:33 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Backpropagation-and-Multilayer-Perceptrons/</guid>
+      <description>Preliminaries Performance learning Perceptron learning rule Supervised Hebbian learning LMS  Form LMS to Backpropagation1 The LMS algorithm is a kind of ‘performance learning’. And we have studied several learning rules(algorithms) till now, such as ‘Perceptron learning rule’ and ‘Supervised Hebbian learning’. And they were based on the idea of the physical mechanism of biological neuron networks.
+Then performance learning was represented. Because of its outstanding performance, we go further and further away from natural intelligence into performance learning.</description>
+    </item>
+    
+  </channel>
+</rss>

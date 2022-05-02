@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>performance optimization on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/performance-optimization/</link>
+    <description>Recent content in performance optimization on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 20 Dec 2019 11:38:50 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/performance-optimization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Introduction to Performance Optimization</title>
+      <link>https://anthony-tan.com/An-Introduction-to-Performance-Optimization/</link>
+      <pubDate>Fri, 20 Dec 2019 11:38:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/An-Introduction-to-Performance-Optimization/</guid>
+      <description>Preliminaries Nothing  Performance Optimization1 Taylor series had been used for analyzing the performance surface and locating the optimum points of a certain performance index. This short post is a brief introduction to performance optimization and the following posts are the samples of three optimization algorithms categories:
+‘Steepest Descent’ “Newton’s Method” ‘Conjugate Gradient’  Recall the analysis of the performance index, which is a function of the parameters of the model.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,7 +5,16 @@
     <link>https://anthony-tan.com/tags/performance-learning/</link>
     <description>Recent content in Performance Learning on Anthony&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 19 Dec 2019 08:57:53 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/performance-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Dec 2019 18:51:59 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/performance-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Widrow-Hoff Learning</title>
+      <link>https://anthony-tan.com/Widrow-Hoff-Learning/</link>
+      <pubDate>Mon, 23 Dec 2019 18:51:59 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Widrow-Hoff-Learning/</guid>
+      <description>Preliminaries ‘Performance Surfaces and Optimum Points’ Linear algebra stochastic approximation Probability Theory  ADALINE, LMS, and Widrow-Hoff learning1 Performance learning had been discussed. But we have not used it in any neural network. In this post, we talk about an important application of performance learning. And this new neural network was invented by Frank Widrow and his graduate student Marcian Hoff in 1960. It was almost the same time as Perceptron was developed which had been discussed in ‘Perceptron Learning Rule’.</description>
+    </item>
+    
     <item>
       <title>Performance Surfaces and Optimum Points</title>
       <link>https://anthony-tan.com/Performance-Surfaces-and-Optimum-Points/</link>

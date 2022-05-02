@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>steepest descent method on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/steepest-descent-method/</link>
+    <description>Recent content in steepest descent method on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 21 Dec 2019 13:40:24 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/steepest-descent-method/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conjugate Gradient</title>
+      <link>https://anthony-tan.com/Conjugate-Gradient/</link>
+      <pubDate>Sat, 21 Dec 2019 13:40:24 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Conjugate-Gradient/</guid>
+      <description>Preliminaries ‘steepest descent method’ “Newton’s method”  Conjugate Gradient1 We have learned ‘steepest descent method’ and “Newton’s method”. The main advantage of Newton’s method is the speed, it converges quickly. And the main advantage of the steepest descent method guarantees to converge to a local minimum. But the limit of Newton’s method is that it needs too many resources for both computation and storage when the number of parameters is large.</description>
+    </item>
+    
+  </channel>
+</rss>

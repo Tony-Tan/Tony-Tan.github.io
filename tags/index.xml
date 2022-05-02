@@ -495,7 +495,7 @@
     <item>
       <title>Artificial Intelligence</title>
       <link>https://anthony-tan.com/tags/artificial-intelligence/</link>
-      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      <pubDate>Tue, 07 Jan 2020 10:14:53 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/artificial-intelligence/</guid>
       <description></description>
@@ -504,9 +504,216 @@
     <item>
       <title>Artificial Neural Networks</title>
       <link>https://anthony-tan.com/tags/artificial-neural-networks/</link>
-      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
+      <pubDate>Tue, 07 Jan 2020 10:14:53 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/artificial-neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>backpropagation</title>
+      <link>https://anthony-tan.com/tags/backpropagation/</link>
+      <pubDate>Tue, 07 Jan 2020 10:14:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/backpropagation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BP</title>
+      <link>https://anthony-tan.com/tags/bp/</link>
+      <pubDate>Tue, 07 Jan 2020 10:14:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/bp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Speed Backpropagation up</title>
+      <link>https://anthony-tan.com/tags/speed-backpropagation-up/</link>
+      <pubDate>Tue, 07 Jan 2020 10:14:53 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/speed-backpropagation-up/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>batch training</title>
+      <link>https://anthony-tan.com/tags/batch-training/</link>
+      <pubDate>Thu, 02 Jan 2020 17:49:55 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/batch-training/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>incremental training</title>
+      <link>https://anthony-tan.com/tags/incremental-training/</link>
+      <pubDate>Thu, 02 Jan 2020 17:49:55 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/incremental-training/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jacobian matrix</title>
+      <link>https://anthony-tan.com/tags/jacobian-matrix/</link>
+      <pubDate>Wed, 01 Jan 2020 14:26:55 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/jacobian-matrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Chain Rule</title>
+      <link>https://anthony-tan.com/tags/the-chain-rule/</link>
+      <pubDate>Wed, 01 Jan 2020 14:26:55 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/the-chain-rule/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Function Approximation</title>
+      <link>https://anthony-tan.com/tags/function-approximation/</link>
+      <pubDate>Tue, 31 Dec 2019 10:29:33 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/function-approximation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LMS</title>
+      <link>https://anthony-tan.com/tags/lms/</link>
+      <pubDate>Tue, 31 Dec 2019 10:29:33 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/lms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>multilayer perceptrons</title>
+      <link>https://anthony-tan.com/tags/multilayer-perceptrons/</link>
+      <pubDate>Tue, 31 Dec 2019 10:29:33 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/multilayer-perceptrons/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pattern Classification</title>
+      <link>https://anthony-tan.com/tags/pattern-classification/</link>
+      <pubDate>Tue, 31 Dec 2019 10:29:33 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/pattern-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ADALINE</title>
+      <link>https://anthony-tan.com/tags/adaline/</link>
+      <pubDate>Mon, 23 Dec 2019 18:51:59 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/adaline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Adaptive LInear NEuron,</title>
+      <link>https://anthony-tan.com/tags/adaptive-linear-neuron/</link>
+      <pubDate>Mon, 23 Dec 2019 18:51:59 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/adaptive-linear-neuron/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Performance Learning</title>
+      <link>https://anthony-tan.com/tags/performance-learning/</link>
+      <pubDate>Mon, 23 Dec 2019 18:51:59 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/performance-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stochastic gradient</title>
+      <link>https://anthony-tan.com/tags/stochastic-gradient/</link>
+      <pubDate>Mon, 23 Dec 2019 18:51:59 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/stochastic-gradient/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Widrow-Hoff learning,</title>
+      <link>https://anthony-tan.com/tags/widrow-hoff-learning/</link>
+      <pubDate>Mon, 23 Dec 2019 18:51:59 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/widrow-hoff-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Conjugate Gradient</title>
+      <link>https://anthony-tan.com/tags/conjugate-gradient/</link>
+      <pubDate>Sat, 21 Dec 2019 13:40:24 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/conjugate-gradient/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>steepest descent method</title>
+      <link>https://anthony-tan.com/tags/steepest-descent-method/</link>
+      <pubDate>Sat, 21 Dec 2019 13:40:24 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/steepest-descent-method/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Newton&#39;s method</title>
+      <link>https://anthony-tan.com/tags/newtons-method/</link>
+      <pubDate>Sat, 21 Dec 2019 11:39:56 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/newtons-method/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>https://anthony-tan.com/tags/optimization/</link>
+      <pubDate>Sat, 21 Dec 2019 11:39:56 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Taylor series</title>
+      <link>https://anthony-tan.com/tags/taylor-series/</link>
+      <pubDate>Sat, 21 Dec 2019 11:39:56 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/taylor-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Steepest Descent</title>
+      <link>https://anthony-tan.com/tags/steepest-descent/</link>
+      <pubDate>Fri, 20 Dec 2019 11:39:19 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/steepest-descent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>performance optimization</title>
+      <link>https://anthony-tan.com/tags/performance-optimization/</link>
+      <pubDate>Fri, 20 Dec 2019 11:38:50 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/tags/performance-optimization/</guid>
       <description></description>
     </item>
     
@@ -543,15 +750,6 @@
       <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/quadratic-functions/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Taylor Series</title>
-      <link>https://anthony-tan.com/tags/taylor-series/</link>
-      <pubDate>Thu, 19 Dec 2019 15:45:37 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/taylor-series/</guid>
       <description></description>
     </item>
     
@@ -606,15 +804,6 @@
       <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
       
       <guid>https://anthony-tan.com/tags/optimum-points/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Performance Learning</title>
-      <link>https://anthony-tan.com/tags/performance-learning/</link>
-      <pubDate>Thu, 19 Dec 2019 08:57:53 +0000</pubDate>
-      
-      <guid>https://anthony-tan.com/tags/performance-learning/</guid>
       <description></description>
     </item>
     

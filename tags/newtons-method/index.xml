@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Newton&#39;s method on Anthony&#39;s Blogs</title>
+    <link>https://anthony-tan.com/tags/newtons-method/</link>
+    <description>Recent content in Newton&#39;s method on Anthony&#39;s Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 21 Dec 2019 11:39:56 +0000</lastBuildDate><atom:link href="https://anthony-tan.com/tags/newtons-method/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Newton&#39;s Method</title>
+      <link>https://anthony-tan.com/Newton_s-Method/</link>
+      <pubDate>Sat, 21 Dec 2019 11:39:56 +0000</pubDate>
+      
+      <guid>https://anthony-tan.com/Newton_s-Method/</guid>
+      <description>Preliminaries ‘steepest descent algorithm’ Linear Algebra Calculus 1,2  Newton’s Method1 Taylor series gives us the conditions for minimum points based on both first-order items and the second-order item. And first-order item approximation of a performance index function produced a powerful algorithm for locating the minimum points which we call ‘steepest descent algorithm’.
+Now we want to have an insight into the second-order approximation of a function to find out whether there is an algorithm that can also work as a guide to the minimum points.</description>
+    </item>
+    
+  </channel>
+</rss>
