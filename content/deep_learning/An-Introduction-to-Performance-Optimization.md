@@ -22,9 +22,9 @@ url: "/An-Introduction-to-Performance-Optimization"
 ## Performance Optimization[^1]
 Taylor series had been used for analyzing the performance surface and locating the optimum points of a certain performance index. This short post is a brief introduction to performance optimization and the following posts are the samples of three optimization algorithms categories:
 
-1. ['Steepest Descent'](#TODO)
-2. ["Newton's Method"](#TODO)
-3. ['Conjugate Gradient'](#TODO)
+1. ['Steepest Descent'](https://anthony-tan.com/Steepest-Descent-Method/)
+2. ["Newton's Method"](https://anthony-tan.com/Newton_s-Method/)
+3. ['Conjugate Gradient'](https://anthony-tan.com/Conjugate-Gradient/)
 
 Recall the analysis of the performance index, which is a function of the parameters of the model. Most of the optimization problems could not be solved analytically. So, searching for the whole solution space is a straightforward strategy. However, no algorithms or computers can search a whole parameter space even which has only 1 dimension to locate the optimal points of the surface. So we need a map.
 

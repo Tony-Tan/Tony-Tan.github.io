@@ -28,14 +28,14 @@ url: "/Widrow-Hoff-Learning"
 ---
 
 ## Preliminaries
-1. ['Performance Surfaces and Optimum Points'](#TODO)
+1. ['Performance Surfaces and Optimum Points'](https://anthony-tan.com/Performance-Surfaces-and-Optimum-Points/)
 2. Linear algebra
 3. stochastic approximation
 4. Probability Theory
 
 ## ADALINE, LMS, and Widrow-Hoff learning[^1]
 
-Performance learning had been discussed. But we have not used it in any neural network. In this post, we talk about an important application of performance learning. And this new neural network was invented by Frank Widrow and his graduate student Marcian Hoff in 1960. It was almost the same time as Perceptron was developed which had been discussed in ['Perceptron Learning Rule'](#TODO). 
+Performance learning had been discussed. But we have not used it in any neural network. In this post, we talk about an important application of performance learning. And this new neural network was invented by Frank Widrow and his graduate student Marcian Hoff in 1960. It was almost the same time as Perceptron was developed which had been discussed in ['Perceptron Learning Rule'](https://anthony-tan.com/Learning-Rules-and-Perceptron-Learning-Rule/). 
 
 It is called Widrow-Hoff Learning. This is an approximate steepest descent algorithm. And the performance index used in the learning rule is mean square error.
 
@@ -46,7 +46,7 @@ Perceptron was discussed because it is still used in the current tasks. And it's
 
 ADALINE (Adaptive LInear NEuron) and a learning rule called LMS(Least Mean Square) algorithm were introduced in the paper *'Adaptive switching circuits'*. The only distinction between perceptron and ADALINE is only the transfer function which in perceptron is a hard-limiting but in ADALINE is linear. And they have the same inherent limitation: they can only deal with the linear separable problem. 
 
-And the learning rule LMS algorithm is more powerful than the perceptron learning rule. The perceptron learning algorithm always gives a decision boundary through a training point(a sample of the training set)or near a training point as we have talked about in ['Perceptron Learning Rule'](#TODO). So this classification is not strong enough, and LMS can fix this problem. LMS had great success in signal processing but it did not work well in adapting the algorithm to the multilayer network. Backpropagation is a descendant of the LMS algorithm.
+And the learning rule LMS algorithm is more powerful than the perceptron learning rule. The perceptron learning algorithm always gives a decision boundary through a training point(a sample of the training set)or near a training point as we have talked about in ['Perceptron Learning Rule'](https://anthony-tan.com/Learning-Rules-and-Perceptron-Learning-Rule/). So this classification is not strong enough, and LMS can fix this problem. LMS had great success in signal processing but it did not work well in adapting the algorithm to the multilayer network. Backpropagation is a descendant of the LMS algorithm.
 
 
 ## ADALINE Network
@@ -114,7 +114,7 @@ $$
 \end{bmatrix}\tag{5}
 $$
 
-$\mathbf{x}$ is used to refer to as a parameter to make it successive with the posts about performance optimization(['Performance Surfaces and Optimum Points'](#TODO))
+$\mathbf{x}$ is used to refer to as a parameter to make it successive with the posts about performance optimization(['Performance Surfaces and Optimum Points'](https://anthony-tan.com/Performance-Surfaces-and-Optimum-Points/))
 and equation(1) became:
 
 $$
@@ -145,7 +145,7 @@ where:
 - $R=\mathbb{E}[\mathbf{z}\mathbf{z}^T]$ is input correlation matrix whose diagonal iters are mean square value of input.
 - $C=\mathbb{E}[t^2]$ is a constant.
 
-equation(9) is a ['quadratic function'](#TODO). and we can rewrite it in the form:
+equation(9) is a ['quadratic function'](https://anthony-tan.com/Quadratic-Functions/). and we can rewrite it in the form:
 
 $$
 F(\mathbf{x})=C+ \mathbf{d}^T\mathbf{x}+\frac{1}{2}\mathbf{x}^TA\mathbf{x}\tag{10}
@@ -176,7 +176,7 @@ because $R$ is comprised of inputs, so inputs decides the matrix $R$ and $R$ dec
 
 LMS is the short for least mean square. And it is the algorithm for searching the minimum of the performance index.
 
-When $\mathbf{h}$ and $R$ are known, stationary points can be found directly. If $R^{-1}$ is impossible to calculate we can use ['steepest descent algorithm'](#TODO). However, in common both $\mathbf{h}$ and $R$ are unknown or are not convenient to be calculated. We would use the approximate steepest descent in which **we use an estimated gradient**. 
+When $\mathbf{h}$ and $R$ are known, stationary points can be found directly. If $R^{-1}$ is impossible to calculate we can use ['steepest descent algorithm'](https://anthony-tan.com/Steepest-Descent-Method/). However, in common both $\mathbf{h}$ and $R$ are unknown or are not convenient to be calculated. We would use the approximate steepest descent in which **we use an estimated gradient**. 
 
 
 And we also instead **expectation of square error** with **a squared error**:
@@ -320,7 +320,7 @@ $$
   \alpha<\frac{1}{\lambda_\text{max}}\tag{31}
 $$
 
-Because of $A=2R$ so equation (31) gives the same condition as ['steepest descent algorithm'](#TODO)
+Because of $A=2R$ so equation (31) gives the same condition as ['steepest descent algorithm'](https://anthony-tan.com/Steepest-Descent-Method/)
 
 Under this condition, when the system becomes stable, we would have:
 

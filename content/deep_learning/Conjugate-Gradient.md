@@ -20,14 +20,14 @@ url: "/Conjugate-Gradient"
 ---
 
 ## Preliminaries
-1. ['steepest descent method'](#TODO)
-2. ["Newton's method"](#TODO)
+1. ['steepest descent method'](https://anthony-tan.com/Steepest-Descent-Method/)
+2. ["Newton's method"](https://anthony-tan.com/Newton_s-Method/)
 
 ## Conjugate Gradient[^1]
 
-We have learned ['steepest descent method'](#TODO) and ["Newton's method"](#TODO). The main advantage of Newton's method is the speed, it converges quickly. And the main advantage of the steepest descent method guarantees to converge to a local minimum. But the limit of Newton's method is that it needs too many resources for both computation and storage when the number of parameters is large. And the speed of the steepest descent method is too slow. What we are going to research is to mix them up into a new algorithm that needs fewer resources but convergents quickly. In other words, we use first-order derivatives but still have quadratic efficiency.
+We have learned ['steepest descent method'](https://anthony-tan.com/Steepest-Descent-Method/) and ["Newton's method"](https://anthony-tan.com/Newton_s-Method/). The main advantage of Newton's method is the speed, it converges quickly. And the main advantage of the steepest descent method guarantees to converge to a local minimum. But the limit of Newton's method is that it needs too many resources for both computation and storage when the number of parameters is large. And the speed of the steepest descent method is too slow. What we are going to research is to mix them up into a new algorithm that needs fewer resources but convergents quickly. In other words, we use first-order derivatives but still have quadratic efficiency.
 
-In the last section of [steepest descent method](#TODO), we found that when we minimize along the line at every iteration of the steepest descent method the directions of descent steps are orthogonal for a quadratic function.  
+In the last section of ['steepest descent method'](https://anthony-tan.com/Steepest-Descent-Method/), we found that when we minimize along the line at every iteration of the steepest descent method the directions of descent steps are orthogonal for a quadratic function.  
 
 Our target here was simplified to a quadratic function to have an insight into the process of the new method:
 
@@ -49,7 +49,7 @@ $$
 
 when the matrix $A$ is positive definite, eigenvectors are mutually orthogonal. And then equation(3) equal to $0$ when $k\neq j$
 
-['Quadratic function'](#TODO) told us the eigenvectors are principal axes, and searching along these eigenvectors can finally minimize the quadratic function.
+['Quadratic function'](https://anthony-tan.com/Quadratic-Functions/) told us the eigenvectors are principal axes, and searching along these eigenvectors can finally minimize the quadratic function.
 
 The calculation of a Hessian matrix should be avoided in our new method because of the computational resources. So searching along the directions of eigenvectors would not be used. 
 

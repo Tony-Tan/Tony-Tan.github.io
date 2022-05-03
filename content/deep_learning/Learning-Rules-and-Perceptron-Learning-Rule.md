@@ -54,7 +54,7 @@ We have built some neural network models in the post ['An Introduction to Neural
 
 A perceptron is an easy model of a neuron, and what we are interested in is how to design a learning rule or develop a certain algorithm to make a perceptron possible to classify input signals. Perceptron is the easiest neuron model, and it is a good basis for more complex networks.
 
-In a perceptron, it has weights, biases, and transfer functions. These are basic components of a neuron model. However, the transfer function here is specialized as a ['hard limit function'](#TODO)
+In a perceptron, it has weights, biases, and transfer functions. These are basic components of a neuron model. However, the transfer function here is specialized as a ['hard limit function'](https://anthony-tan.com/Neuron-Model-and-Network-Architecture/)
 
 $$
 f(x) = \begin{cases}

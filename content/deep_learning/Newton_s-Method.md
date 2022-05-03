@@ -21,12 +21,12 @@ images: ""
 url: "/Newton_s-Method"
 ---
 ## Preliminaries
-1. ['steepest descent algorithm'](#TODO)
+1. ['steepest descent algorithm'](https://anthony-tan.com/Steepest-Descent-Method/)
 2. Linear Algebra
 3. Calculus 1,2
 
 ## Newton's Method[^1]
-Taylor series gives us the conditions for minimum points based on both first-order items and the second-order item. And first-order item approximation of a performance index function produced a powerful algorithm for locating the minimum points which we call ['steepest descent algorithm'](#TODO). 
+Taylor series gives us the conditions for minimum points based on both first-order items and the second-order item. And first-order item approximation of a performance index function produced a powerful algorithm for locating the minimum points which we call ['steepest descent algorithm'](https://anthony-tan.com/Steepest-Descent-Method/). 
 
 Now we want to have an insight into the second-order approximation of a function to find out whether there is an algorithm that can also work as a guide to the minimum points. The approximation of $F(\mathbf{x}_{k+1})$ is:
 

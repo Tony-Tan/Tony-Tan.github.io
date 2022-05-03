@@ -24,7 +24,7 @@ url: "/The-Backpropagation-Algorithm"
 ---
 
 ## Preliminaries
-1. [An Introduction to Backpropagation and Multilayer Perceptrons](#TODO)
+1. [An Introduction to Backpropagation and Multilayer Perceptrons](https://anthony-tan.com/An-Introduction-to-Backpropagation-and-Multilayer-Perceptrons/)
 2. Culculus 1,2
 3. Linear algebra
 4. Jacobian matrix
@@ -65,7 +65,7 @@ for $m = 1, 2, 3, \cdots M-1$. $M$ is the number of layers in the neural network
 
 We have had a network now. Then we need to definite a performance index for this 3-layer network. 
 
-MSE is used here as the performance index the same as what the LMS algorithm did in post ['Widrow-Hoff Learning'](#TODO). And the training set is:
+MSE is used here as the performance index the same as what the LMS algorithm did in post ['Widrow-Hoff Learning'](https://anthony-tan.com/Widrow-Hoff-Learning/). And the training set is:
 
 $$
 \{\mathbf{p}_1,\mathbf{t}_1\},\{\mathbf{p}_2,\mathbf{t}_2\},\cdots \{\mathbf{p}_Q,\mathbf{t}_Q\}\tag{4}
@@ -95,7 +95,7 @@ $$
 
 where the expectations are replaced by the calculation of current input, output, and target.
 
-Reviewing the ['steepest descent algorithm'](#TODO), the gradient descent algorithm of approximate MSE is also called stochastic gradient descent:
+Reviewing the ['steepest descent algorithm'](https://anthony-tan.com/Steepest-Descent-Method/), the gradient descent algorithm of approximate MSE is also called stochastic gradient descent:
 
 $$
 \begin{aligned}

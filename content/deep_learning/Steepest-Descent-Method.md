@@ -19,7 +19,7 @@ images: ""
 url: "/Steepest-Descent-Method"
 ---
 ## Preliminaries
-1. ['An Introduction to Performance Optimization'](#TODO)
+1. ['An Introduction to Performance Optimization'](https://anthony-tan.com/An-Introduction-to-Performance-Optimization/)
 2. Linear algebra
 3. Calculus 1,2
 

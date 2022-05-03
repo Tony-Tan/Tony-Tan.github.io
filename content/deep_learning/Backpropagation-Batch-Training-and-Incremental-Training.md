@@ -62,7 +62,7 @@ $$
 
 ## Using Backpropagation
 
-Building a toy BP program is a good way to go deeper inside the algorithm. The details of the design of the algorithm could be found in ['The Backpropagation Algorithm'](#TODO). And the task is consist of three essential parts:
+Building a toy BP program is a good way to go deeper inside the algorithm. The details of the design of the algorithm could be found in ['The Backpropagation Algorithm'](https://anthony-tan.com/The-Backpropagation-Algorithm/). And the task is consist of three essential parts:
 
 1. Choice of network architecture 
 2. The algorithm used to train to a network would convergent
@@ -105,7 +105,7 @@ The four final approximate results of these for the function are:
 
 Limit of 1-3-1 network has been illustrated above and the capacity of 1-3-1 network can only approximate $g(p)=1+\sin(\frac{i\pi}{4}\cdot p)$ for $i=\{1,2,3,4\}$.
 
-$g(p)=1+\sin(\frac{8\pi}{4}\cdot p)$ can not be regressed by 1-3-1 for its flexibility is not enough for the target function. This can also be concluded by the property of these three neurons in the hidden layer whose transfer function is log-sigmoid. Because these three neurons have only three 'steps'(which has been described in ['An Introduction to Backpropagation and Multilayer Perceptrons'](#TODO)). These three steps are trained to approximate the three crests of the target functions. So when the target functions have more than 3 crests (including 3 crests), 1-3-1 can not regress the target function accurately.
+$g(p)=1+\sin(\frac{8\pi}{4}\cdot p)$ can not be regressed by 1-3-1 for its flexibility is not enough for the target function. This can also be concluded by the property of these three neurons in the hidden layer whose transfer function is log-sigmoid. Because these three neurons have only three 'steps'(which has been described in ['An Introduction to Backpropagation and Multilayer Perceptrons'](https://anthony-tan.com/An-Introduction-to-Backpropagation-and-Multilayer-Perceptrons/)). These three steps are trained to approximate the three crests of the target functions. So when the target functions have more than 3 crests (including 3 crests), 1-3-1 can not regress the target function accurately.
 
 ### 1-2-1, 1-3-1, 1-4-1, 1-5-1 networks for $g(p)=1+\sin(\frac{6\pi}{4}\cdot p)$
 

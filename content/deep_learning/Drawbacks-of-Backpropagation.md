@@ -21,13 +21,13 @@ images: ""
 url: "/Drawbacks-of-Backpropagation"
 ---
 ## Preliminaries
-1. ['An Introduction to Backpropagation and Multilayer Perceptrons'](#TODO)
-2. ['The Backpropagation Algorithm'](#TODO)
+1. ['An Introduction to Backpropagation and Multilayer Perceptrons'](https://anthony-tan.com/An-Introduction-to-Backpropagation-and-Multilayer-Perceptrons/)
+2. ['The Backpropagation Algorithm'](https://anthony-tan.com/The-Backpropagation-Algorithm/)
 
 ## Speed Backpropagation up [^1]
-BP algorithm has been described in ['An Introduction to Backpropagation and Multilayer Perceptrons'](#TODO). And the implementation of the BP algorithm has been recorded at ['The Backpropagation Algorithm'](#TODO). BP has worked in many applications for many years, but there are too many drawbacks in the process. The basic BP algorithm is too slow for most practical applications that it might take days or even weeks in training. And the following posts are some investigations to make the BP algorithm more practical and speed it up.
+BP algorithm has been described in ['An Introduction to Backpropagation and Multilayer Perceptrons'](https://anthony-tan.com/An-Introduction-to-Backpropagation-and-Multilayer-Perceptrons/). And the implementation of the BP algorithm has been recorded at ['The Backpropagation Algorithm'](https://anthony-tan.com/The-Backpropagation-Algorithm/). BP has worked in many applications for many years, but there are too many drawbacks in the process. The basic BP algorithm is too slow for most practical applications that it might take days or even weeks in training. And the following posts are some investigations to make the BP algorithm more practical and speed it up.
 
-In the post ['Backpropagation, Batch Training, and Incremental Training'](#TODO), the BP approximation example had shown that the algorithm converged very slowly. BP is a variation of LMS and LMS is a variation of ['steepest descent'](#TODO). So BP is a kind of steepest descent, and the difference between them is the calculation of derivatives. Steepest descent is the simplest and the slowest, while Newton and conjugate algorithms are faster. Then inspiration comes to us whether these algorithms can be used in speeding up the convergence of BP.
+In the post ['Backpropagation, Batch Training, and Incremental Training'](https://anthony-tan.com/Backpropagation-Batch-Training-and-Incremental-Training/), the BP approximation example had shown that the algorithm converged very slowly. BP is a variation of LMS and LMS is a variation of ['steepest descent'](https://anthony-tan.com/Steepest-Descent-Method/). So BP is a kind of steepest descent, and the difference between them is the calculation of derivatives. Steepest descent is the simplest and the slowest, while Newton and conjugate algorithms are faster. Then inspiration comes to us whether these algorithms can be used in speeding up the convergence of BP.
 
 Research on faster algorithms falls on rough two categories and some aspects would be discussed:
 
@@ -93,7 +93,7 @@ So $b^1_1=0$ and $b^1_2=0$ are not good initial values. And if initial values of
 
 ## Convergence Example
 
-The batching method has been introduced in ['Backpropagation, Batch Training, and Incremental Training'](#TODO). It is a generalized method that uses the whole training set of the ['The Backpropagation Algorithm'](#TODO), which uses one point of the training set at a time. The following process is based on the batching method.
+The batching method has been introduced in ['Backpropagation, Batch Training, and Incremental Training'](https://anthony-tan.com/Backpropagation-Batch-Training-and-Incremental-Training/). It is a generalized method that uses the whole training set of the ['The Backpropagation Algorithm'](https://anthony-tan.com/The-Backpropagation-Algorithm/), which uses one point of the training set at a time. The following process is based on the batching method.
 
 Now let's consider the parameter $w^1_{1,1}$ and the $w^2_{1,1}$ while other parameters are set to optimum solution as in equation(1).
 
