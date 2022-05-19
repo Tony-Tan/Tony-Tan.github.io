@@ -24,14 +24,14 @@ url: "/Boosting-and-AdaBoost"
 
 
 
-## Boosting[^1]
+## Boosting 
 
-The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple 'base' classifiers to produce a form of the committee that:
+The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple 'base' classifiers to produce a form of the committee that[^1]:
 
 1. performances better than any of the base classifiers and
 2. each base classifier has a different weight factor
 
-## Adaboost
+## Adaboost 
 
 Adaboost is short for adaptive boosting. It is a method combining several weak classifiers which are just better than random guesses and it gives a better performance than the committee. The base classifiers in AdaBoost are trained sequentially, and their training set is the same but with different weights for each sample. So when we consider the distribution of training data, every weak classifier was trained on different sample distribution. **This might be an important reason for the improvement of AdaBoost from the committee**. And the weights for weak classifiers are generated depending on the performance of the previous classifier.
 

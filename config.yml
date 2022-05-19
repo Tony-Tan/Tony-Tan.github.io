@@ -132,7 +132,9 @@ params:
     ShowPostNavLinks: true
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
+    
     ShowToc: true
+    TocOpen: true
     comments: true
     # images: ["./me.jpg"]
 
