@@ -6,13 +6,14 @@ tags:
     - AdaBoost
     - Boosting
     - classifier
+date: 2020-03-07 15:40:46
 keywords:
     - Machine Learning
     - Combining Models
     - AdaBoost
     - Boosting
     - classifier
-date: 2020-03-07 15:40:46
+
 markup: pdc
 draft: false
 images: ""
@@ -24,9 +25,9 @@ url: "/Boosting-and-AdaBoost"
 
 
 
-## Boosting 
+## Boosting
 
-The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple 'base' classifiers to produce a form of the committee that[^1]:
+The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple 'base' classifiers to produce a form of the committee that:
 
 1. performances better than any of the base classifiers and
 2. each base classifier has a different weight factor
@@ -214,4 +215,5 @@ A 40-classifiers AdaBoost gives a relatively good prediction:
 where there is only one misclassified point.
 
 ## References
+
 [^1]: Bishop, Christopher M. Pattern recognition and machine learning. springer, 2006.

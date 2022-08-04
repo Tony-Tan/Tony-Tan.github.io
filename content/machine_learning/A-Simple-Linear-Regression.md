@@ -14,6 +14,7 @@ keywords:
     - training set
     - Residual Sum of Squares
 markup: pdc
+draft: false
 images: 
     - "https://raw.githubusercontent.com/Tony-Tan/picgo_images_bed/master/2022_04_24_19_41_LinearRegression.png"
 url: "/A-Simple-Linear-Regression"

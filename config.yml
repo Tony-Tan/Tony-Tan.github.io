@@ -140,7 +140,7 @@ params:
 
     profileMode:
         enabled: true
-        title: PaperMod
+        title: Anthony Tan
         imageUrl: "./me.jpg"
         imageTitle: Me
         # imageWidth: 120
