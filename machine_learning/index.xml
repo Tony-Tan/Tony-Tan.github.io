@@ -11,7 +11,7 @@
       <pubDate>Sat, 07 Mar 2020 15:40:46 +0000</pubDate>
       
       <guid>https://anthony-tan.com/Boosting-and-AdaBoost/</guid>
-      <description>Preliminaries Committee  Boosting The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple ‘base’ classifiers to produce a form of the committee that1:
+      <description>Preliminaries Committee  Boosting The committee has an equal weight for every prediction from all models, and it gives little improvement than a single model. Then boosting was built for this problem. Boosting is a technique of combining multiple ‘base’ classifiers to produce a form of the committee that:
 performances better than any of the base classifiers and each base classifier has a different weight factor  Adaboost Adaboost is short for adaptive boosting.</description>
     </item>
     
