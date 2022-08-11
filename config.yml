@@ -43,6 +43,9 @@ languages:
                 - name: Math
                   url: math/
                   weight: 4
+                - name: Others
+                  url: others/
+                  weight: 5
                 # - name: Distributed 
                 #   url: archives
                 #   weight: 4
