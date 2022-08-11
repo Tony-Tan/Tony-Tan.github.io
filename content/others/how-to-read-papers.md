@@ -3,7 +3,7 @@ title: "How to Read Papers"
 date: 2022-08-11T19:21:20+08:00
 draft: false
 markup: pdc
-# mermaid: true
+mermaid: true
 lastmod: [":fileModTime", ":default"]
 categories:
     - 
@@ -12,7 +12,7 @@ tags:
 description: ""
 thumbnail: ""
 keywords: ""
-url: ""
+url: "how-to-read-papers"
 ---
 The following workflow is a conclusion of the video: {{< youtube id="txjl_Q4jCyQ?list=PLFXJ6jwg0qW-7UM8iUTj3qKqdhbQULP5I" >}}  from Mu Li of Amazon
 
@@ -48,6 +48,5 @@ flowchart TB
 		
 	end
 	dec2 .->|"go on"| p3.->next
-	
 ```
 
