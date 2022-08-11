@@ -3,6 +3,7 @@ title: "How to Read Papers"
 date: 2022-08-11T19:21:20+08:00
 draft: false
 markup: pdc
+mermaid: true
 lastmod: [":fileModTime", ":default"]
 categories:
     - 
