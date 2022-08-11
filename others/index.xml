@@ -11,7 +11,7 @@
       <pubDate>Thu, 11 Aug 2022 19:21:20 +0800</pubDate>
       
       <guid>https://anthony-tan.com/others/how_to_read_papers/</guid>
-      <description>The following workflow is a conclusion of the video https://www.youtube.com/watch?v=txjl_Q4jCyQ&amp;amp;list=PLFXJ6jwg0qW-7UM8iUTj3qKqdhbQULP5I&amp;amp;index=2 from Mu Li of Amazon
+      <description>The following workflow is a conclusion of the video:   from Mu Li of Amazon
 flowchart TB next(&amp;quot;another paper&amp;quot;) subgraph p1 [&amp;quot;Pass 1(Selection)&amp;quot;] direction LR title[Title] abs[Abstract] conc[Conclusion] FaT[&amp;quot;Figures and Tablets&amp;quot;] title--&amp;gt;abs--&amp;gt;conc--&amp;gt; FaT end p1.-&amp;gt; dec{Decision}.-&amp;gt;|&amp;quot;stop(low quality or\nlow relation)&amp;quot;| next dec.-&amp;gt;|&amp;quot;go on&amp;quot;| p2 subgraph p2 [&amp;quot;Pass 2(Selection)&amp;quot;] direction TB int_cit[&amp;quot;Introduction:\nSome important Citations&amp;quot; ] method_ME[&amp;quot;Method:\nwithout Math and Engineering\nfocus on figures and tablets&amp;quot;] end p2.-&amp;gt;dec2{Decision} dec2.-&amp;gt;|&amp;quot;too hard to understand,\n go to one of\n the citations\nin introduction&amp;quot;| next dec2.</description>
     </item>
     
