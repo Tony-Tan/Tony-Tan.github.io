@@ -13,7 +13,7 @@ Hi, I'm Anthony Tan(谭升). I am now living in Shenzhen, China. I'm a full-time
 
 
 
-However the bigger one in the picture is me, Tony, and the smaller one is my dog, Potato(He was too young to take a shower when we take the picture, and now he is no more a dirty puppy😀)
+However the bigger one in the picture is me, Tony, and the smaller one is my dog, Potato(He was too young to take a shower when we took the picture, and now he is no more a dirty puppy😀)
 
 ## Why the blogs
 
