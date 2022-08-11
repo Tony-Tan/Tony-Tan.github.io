@@ -1,7 +1,7 @@
 ---
 title: "How to Read Papers"
 date: 2022-08-11T19:21:20+08:00
-draft: true
+draft: false
 markup: pdc
 lastmod: [":fileModTime", ":default"]
 categories:
