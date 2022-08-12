@@ -13,7 +13,7 @@
       
       <guid>https://anthony-tan.com/how-to-read-papers/</guid>
       <description>The following workflow is a conclusion of the video:   from Mu Li of Amazon
-flowchart TB next(&amp;quot;another paper&amp;quot;) subgraph p1 [&amp;quot;Pass 1(Selection)&amp;quot;] direction LR title[Title] abs[Abstract] conc[Conclusion] FaT[&amp;quot;Figures and Tablets&amp;quot;] title--&amp;gt;abs--&amp;gt;conc--&amp;gt; FaT end p1.-&amp;gt; dec{Decision}.-&amp;gt;|&amp;quot;stop(low quality or\nlow relation)&amp;quot;| next dec.-&amp;gt;|&amp;quot;go on&amp;quot;| p2 subgraph p2 [&amp;quot;Pass 2(Selection)&amp;quot;] direction TB int_cit[&amp;quot;Introduction:\nSome important Citations&amp;quot; ] method_ME[&amp;quot;Method:\nwithout Math and Engineering\nfocus on figures and tablets&amp;quot;] end p2.-&amp;gt;dec2{Decision} dec2.-&amp;gt;|&amp;quot;too hard to understand,\n go to one of\n the citations\nin introduction&amp;quot;| next dec2.</description>
+flowchart TB next(&#34;another paper&#34;) subgraph p1 [&#34;Pass 1(Selection)&#34;] direction LR title[Title] abs[Abstract] conc[Conclusion] FaT[&#34;Figures and Tablets&#34;] title--abs--conc-- FaT end p1.- dec{Decision}.-|&#34;stop(low quality or\nlow relation)&#34;| next dec.-|&#34;go on&#34;| p2 subgraph p2 [&#34;Pass 2(Selection)&#34;] direction TB int_cit[&#34;Introduction:\nSome important Citations&#34; ] method_ME[&#34;Method:\nwithout Math and Engineering\nfocus on figures and tablets&#34;]	end p2.-dec2{Decision} dec2.-|&#34;too hard to understand,\n go to one of\n the citations\nin introduction&#34;</description>
     </item>
     
     <item>
