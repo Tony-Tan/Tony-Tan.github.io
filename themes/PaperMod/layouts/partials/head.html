@@ -153,3 +153,32 @@
 {{- end -}}
 
 {{ partial "math.html" . }}
+
+
+
+<!-- 使用cdn加载文件 -->
+{{ if .Page.Store.Get "hasMermaid" }}
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+    // 自定义mermaid配置
+    const config = {
+        startOnLoad:true,
+        
+        theme: 'forest',
+        themeVariables: {
+            lineColor: "#888888"    // 由于paperMod的代码块背景是黑色的，这里将线条设置为白色
+        },
+        flowchart: {
+            useMaxWidth:true,
+            htmlLabels:true
+            }
+    };
+    mermaid.initialize(config);
+    // 需要注意的是，要将初始化代码放到 window.onload 回调函数里面才有用
+    // 否则会因为在html元素加载前进行初始化，找不到元素而失效
+    window.onload = () => {
+        window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    }
+    </script>
+{{ end }}
