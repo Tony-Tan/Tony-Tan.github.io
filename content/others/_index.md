@@ -1,6 +1,5 @@
 ---
 title: Others
-summary: Other categpries of Posts
-description: Other categpries of Posts
+summary: 
+description: Something alse about reading, writing and e.t.c
 ---
-Something alse about reading, writing and e.t.c
